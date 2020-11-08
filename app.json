@@ -1,7 +1,7 @@
 {
-  "name": "Catuserbot",
-  "description": "A telethon userbot based on snapdragon code(xtratgbot) .Easy to use and friendly bot . Maintained by Sandeep ",
-  "logo": "https://telegra.ph/file/3d60313110c58684b31ea.jpg",
+  "name": "VIPER -THE USERBOT",
+  "description": "A PYTHON USERBOT WHICH IS ROLE-MODEL FOR ALL OTHER USERBOTS ) .Easy to use and friendly bot . Maintained by ANONYMOUS ",
+  "logo": "https://telegra.ph/file/37209bec61783afd2052f.jpg",
   "keywords": [
     "telegram",
     "userbot",
@@ -9,7 +9,7 @@
     "modular",
     "productivity"
   ],
-  "repository": "https://github.com/sandy1709/catuserbot/",
+  "repository": "https://github.com/suhaash02/viperuserbot/",
   "website": "#TODO",
   "success_url": "#TODO",
   "env": {
