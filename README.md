@@ -18,7 +18,7 @@ Get APP ID and API HASH from [HERE](https://my.telegram.org) and BOT TOKEN from 
 </p>
 
 
-[![catuserbot logo](https://telegra.ph/file/7e1e89621fabbf02596f8.jpg)](https://heroku.com/deploy?template=https://github.com/suhaash02/viperuserbot)
+[![catuserbot logo](https://telegra.ph/file/37209bec61783afd2052f.jpg)](https://heroku.com/deploy?template=https://github.com/suhaash02/viperuserbot)
 
 
 ### Join [here](https://t.me/Viper_support) for updates and tuts and [here](https://t.me/viperuserbot_support) for discussion and bugs
