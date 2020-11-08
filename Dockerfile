@@ -1,7 +1,7 @@
-FROM sandy1709/catuserbot:latest
+FROM suhaash02/viperuserbot:latest
 
 #clonning repo 
-RUN git clone https://github.com/sandy1709/catuserbot.git /root/userbot
+RUN git clone https://github.com/suhaash02/viperuserbot.git /root/userbot
 #working directory 
 WORKDIR /root/userbot
 
