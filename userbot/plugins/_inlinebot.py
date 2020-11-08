@@ -25,7 +25,7 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             buttons = [
                 (
                     custom.Button.inline("Stats", data="stats"),
-                    Button.url("Repo", "https://github.com/sandy1709/catuserbot"),
+                    Button.url("Repo", "https://github.com/suhaash02/viperuserbot"),
                 )
             ]
             if CAT_IMG and CAT_IMG.endswith((".jpg", ".png")):
@@ -137,7 +137,7 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             ]
             result = builder.article(
                 title="secret message",
-                text=f"🔒 A whisper message to {sandy}, Only he/she can open it.",
+                text=f"🔒 A whisper message to {shiva}, Only he/she can open it.",
                 buttons=buttons,
             )
             await event.answer([result] if result else None)
@@ -200,7 +200,7 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
         await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
     @tgbot.on(
-        events.callbackquery.CallbackQuery(  # pylint:disable=E0602
+        events.callbackquery.CallbackQuery(  
             data=re.compile(b"us_plugin_(.*)")
         )
     )
