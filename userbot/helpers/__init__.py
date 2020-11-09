@@ -1,5 +1,5 @@
 from . import fonts
-from . import memeshelper as catmemes
+from . import memeshelper as vipermemes
 from .exceptions import CancelProcess
 from .functions import *
 from .memeifyhelpers import *
