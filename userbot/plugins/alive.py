@@ -26,7 +26,7 @@ async def amireallyalive(alive):
         cat_caption = f"**✮ MY BOT IS RUNNING SUCCESFULLY ✮**\n\n"
         cat_caption += f"**✧ Database :** `{check_sgnirts}`\n"
         cat_caption += f"**✧ Telethon version :** `{version.__version__}\n`"
-        cat_caption += f"**✧ Catuserbot Version :** `{catversion}`\n"
+        cat_caption += f"**✧ Viper Version :** `{catversion}`\n"
         cat_caption += f"**✧ Python Version :** `{python_version()}\n`"
         cat_caption += f"**✧ Uptime :** `{uptime}\n`"
         cat_caption += f"**✧ Master:** [{DEFAULTUSER}](tg://user?id={hmm})\n"
@@ -40,7 +40,7 @@ async def amireallyalive(alive):
             f"**✮ MY BOT IS RUNNING SUCCESFULLY ✮**\n\n"
             f"**✧ Database :** `{check_sgnirts}`\n"
             f"**✧ Telethon Version :** `{version.__version__}\n`"
-            f"**✧ Catuserbot Version :** `{catversion}`\n"
+            f"**✧ Viper Version :** `{catversion}`\n"
             f"**✧ Python Version :** `{python_version()}\n`"
             f"**✧ Uptime :** `{uptime}\n`"
             f"**✧ Master:** [{DEFAULTUSER}](tg://user?id={hmm})\n",
@@ -57,9 +57,9 @@ async def amireallyalive(alive):
     if alive.reply_to_msg_id:
         reply_to_id = await alive.get_reply_message()
     hmm = bot.uid
-    cat_caption = f"**Catuserbot is Up and Running**\n"
+    cat_caption = f"**VIPER is ready to rock**\n"
     cat_caption += f"**  -Telethon version :** `{version.__version__}\n`"
-    cat_caption += f"**  -Catuserbot Version :** `{catversion}`\n"
+    cat_caption += f"**  -Viper Version :** `{catversion}`\n"
     cat_caption += f"**  -Python Version :** `{python_version()}\n`"
     cat_caption += f"**  -Master:** [{DEFAULTUSER}](tg://user?id={hmm})\n"
     results = await bot.inline_query(tgbotusername, cat_caption)  # pylint:disable=E0602
