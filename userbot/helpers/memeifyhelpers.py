@@ -59,7 +59,7 @@ def get_warp_length(width):
     return int((20.0 / 1024.0) * (width + 0.0))
 
 
-async def cat_meme(topString, bottomString, filename, endname):
+async def viper_meme(topString, bottomString, filename, endname):
     img = Image.open(filename)
     imageSize = img.size
     # find biggest font size that works
@@ -105,7 +105,7 @@ async def cat_meme(topString, bottomString, filename, endname):
     img.save(endname)
 
 
-async def cat_meeme(upper_text, lower_text, picture_name, endname):
+async def viper_meeme(upper_text, lower_text, picture_name, endname):
     main_image = catimage(filename=picture_name)
     main_image.resize(
         1024, int(((main_image.height * 1.0) / (main_image.width * 1.0)) * 1024.0)
@@ -179,7 +179,7 @@ async def make_gif(event, file):
             if response.text.startswith("Send me an animated sticker!"):
                 return "`This file is not supported`"
             response = response if response.media else await conv.get_response()
-            catresponse = response if response.media else await conv.get_response()
+            viperresponse = response if response.media else await conv.get_response()
             await event.client.send_read_acknowledge(conv.chat_id)
             catfile = await event.client.download_media(catresponse, "./temp")
             return await unzip(catfile)
