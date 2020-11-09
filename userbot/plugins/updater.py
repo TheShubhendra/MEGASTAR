@@ -1,11 +1,4 @@
-# Copyright (C) 2019 The Raphielscape Company LLC.
-# Licensed under the Raphielscape Public License, Version 1.c (the "License");
-# you may not use this file except in compliance with the License.
-# credits to @AvinashReddy3108
-"""
-This module updates the userbot based on upstream revision
-Ported from Kensurbot
-"""
+
 import asyncio
 import sys
 from os import environ, execle, path, remove
@@ -19,7 +12,7 @@ from . import CMD_HELP, runcmd
 HEROKU_APP_NAME = Var.HEROKU_APP_NAME
 HEROKU_API_KEY = Var.HEROKU_API_KEY
 UPSTREAM_REPO_BRANCH = "master"
-UPSTREAM_REPO_URL = "https://github.com/sandy1709/catuserbot"
+UPSTREAM_REPO_URL = "https://github.com/suhaash02/viperuserbot"
 
 requirements_path = path.join(
     path.dirname(path.dirname(path.dirname(__file__))), "requirements.txt"
@@ -202,7 +195,7 @@ async def upstream(event):
         return
     if changelog == "" and not force_update:
         await event.edit(
-            "\n`CATUSERBOT is`  **up-to-date**  `with`  "
+            "\n`VIPER IS `  **BREATHING-NOW**  `with`  "
             f"**{UPSTREAM_REPO_BRANCH}**\n"
         )
         return repo.__del__()
@@ -223,43 +216,6 @@ async def upstream(event):
     return
 
 
-@bot.on(admin_cmd(outgoing=True, pattern=r"badcat$"))
-@bot.on(sudo_cmd(pattern="badcat$", allow_sudo=True))
-async def upstream(event):
-    event = await edit_or_reply(event, "`Pulling the bad cat repo wait a sec ....`")
-    off_repo = "https://github.com/Jisan09/catuserbot"
-    catcmd = f"rm -rf .git"
-    try:
-        await runcmd(catcmd)
-    except BaseException:
-        pass
-    try:
-        txt = "`Oops.. Updater cannot continue due to "
-        txt += "some problems occured`\n\n**LOGTRACE:**\n"
-        repo = Repo()
-    except NoSuchPathError as error:
-        await event.edit(f"{txt}\n`directory {error} is not found`")
-        return repo.__del__()
-    except GitCommandError as error:
-        await event.edit(f"{txt}\n`Early failure! {error}`")
-        return repo.__del__()
-    except InvalidGitRepositoryError:
-        repo = Repo.init()
-        origin = repo.create_remote("upstream", off_repo)
-        origin.fetch()
-        repo.create_head("master", origin.refs.master)
-        repo.heads.master.set_tracking_branch(origin.refs.master)
-        repo.heads.master.checkout(True)
-    try:
-        repo.create_remote("upstream", off_repo)
-    except BaseException:
-        pass
-    ac_br = repo.active_branch.name
-    ups_rem = repo.remote("upstream")
-    ups_rem.fetch(ac_br)
-    await event.edit("`Deploying userbot, please wait....`")
-    await deploy(event, repo, ups_rem, ac_br, txt)
-
 
 CMD_HELP.update(
     {
@@ -273,7 +229,5 @@ CMD_HELP.update(
         "\n\n**Syntax : **`.update deploy`"
         "\n**Usage :** Deploy your userbot.So even you restart it doesnt go back to previous version"
         "\nThis will triggered deploy always, even no updates."
-        "\n\n**Syntax : **`.badcat`"
-        "\n**Usage :** Shifts from official cat repo to jisan's repo(for gali commands)"
     }
 )
