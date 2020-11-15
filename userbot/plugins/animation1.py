@@ -163,7 +163,7 @@ async def _(event):
     for i in animation_ttl:
         await asyncio.sleep(animation_interval)
         await event.edit(animation_chars[i % 10])
-
+    
 
 @bot.on(admin_cmd(pattern=f"hypno$", outgoing=True))
 @bot.on(sudo_cmd(pattern=f"hypno$", allow_sudo=True))
