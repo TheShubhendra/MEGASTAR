@@ -6,7 +6,7 @@ Get APP ID and API HASH from [HERE](https://my.telegram.org) and BOT TOKEN from 
 
 [![Get string session](https://img.shields.io/badge/REPL%20RUN-Run%20Online-blue.svg)]()
 
-[![Deploy To Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/suhaash02/viperuserbot/tree/main)
+[![Deploy To Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/aritramandal/DORA/tree/main)
 <p align="center">
   <a href="https://github.com/suhaash02/viperuserbot/fork">
     <img src="https://img.shields.io/github/forks/suhaash02/viperuserbot?label=Fork&style=social">
