@@ -1,6 +1,6 @@
-# ㅤ 𝙇𝙀𝙂𝙀𝙉𝘿 𝙐𝙎𝙀𝙍𝘽𝙊𝙏🌹
+#  𝙇𝙀𝙂𝙀𝙉𝘿 𝙐𝙎𝙀𝙍𝘽𝙊𝙏🌹
 
-### Best and ideal userbot made by @YOU_ARE_UNDER_ARREST and  @none1p
+### Best and ideal userbot made by `@YOU_ARE_UNDER_ARREST` and  `@none1p`
 
 
 
