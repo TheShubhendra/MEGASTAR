@@ -99,5 +99,5 @@ Fortunately there are no Mandatory vars for the UniBorg Support Config.
 
 - The userbot will not work without setting the mandatory vars.
 
-# If any ban occures due to use of userbot the respective dev will not be responsible..
+# `If any ban occures due to use of userbot the respective dev will not be responsible..`
 
