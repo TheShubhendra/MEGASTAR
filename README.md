@@ -1,6 +1,6 @@
 # LEGEND USERBOT 🌹
 
-### Cool userbot made by @YOU_ARE_UNDER_ARREST and  @none1p
+### Best and ideal userbot made by @YOU_ARE_UNDER_ARREST and  @none1p
 
 
 
@@ -14,12 +14,12 @@
 ### MADE WITH PYTHON
 
 
-[![Build Status](https://travis-ci.com/aritramandal/LEGEND.svg?branch=master)](https://travis-ci.com/aritramandal/LEGEND) ![Python Version](https://img.shields.io/badge/python-3.8-lightgrey) ![Release](https://img.shields.io/github/v/release/aritramandal/LEGEND) ![Stars](https://img.shields.io/github/stars/aritramandal/LEGEND) ![Forks](https://img.shields.io/github/forks/aritramandal/LEGEND) ![Issues Open](https://img.shields.io/github/issues/aritramandal/LEGEND) ![Issues Closed](https://img.shields.io/github/issues-closed/aritramandal/LEGEND) ![PR Open](https://img.shields.io/github/issues-pr/aritramandal/LEGEND) ![PR Closed](https://img.shields.io/github/issues-pr-closed/aritramandal/LEGEND) ![Contributors](https://img.shields.io/github/contributors/aritramandal/LEGEND) ![Repo Size](https://img.shields.io/github/repo-size/aritramandal/LEGEND) ![License](https://img.shields.io/github/license/aritramandal/LEGEND) ![Commit Activity](https://img.shields.io/github/commit-activity/m/aritramandal/LEGEND) [![Main Repo!](https://img.shields.io/badge/Main%20Repo-!-orange)](https://github.com/aritramandal/LEGEND) [![Join Channel!](https://img.shields.io/badge/Join%20Channel-!-red)](https://t.me/legend_userbot_support_channel) 
+[![Build Status](https://travis-ci.com/Bristi-OP/LEGEND.svg?branch=master)](https://travis-ci.com/Bristi-OP/LEGEND) ![Python Version](https://img.shields.io/badge/python-3.8-lightgrey) ![Release](https://img.shields.io/github/v/release/Bristi-OP/LEGEND) ![Stars](https://img.shields.io/github/stars/Bristi-OP/LEGEND) ![Forks](https://img.shields.io/github/forks/Bristi-OP/LEGEND) ![Issues Open](https://img.shields.io/github/issues/Bristi-OP/LEGEND) ![Issues Closed](https://img.shields.io/github/issues-closed/Bristi-OP/LEGEND) ![PR Open](https://img.shields.io/github/issues-pr/Bristi-OP/LEGEND) ![PR Closed](https://img.shields.io/github/issues-pr-closed/Bristi-OP/LEGEND) ![Contributors](https://img.shields.io/github/contributors/Bristi-OP/LEGEND) ![Repo Size](https://img.shields.io/github/repo-size/Bristi-OP/LEGEND) ![License](https://img.shields.io/github/license/Bristi-OP/LEGEND) ![Commit Activity](https://img.shields.io/github/commit-activity/m/Bristi-OP/LEGEND) [![Main Repo!](https://img.shields.io/badge/Main%20Repo-!-orange)](https://github.com/Bristi-OP/LEGEND) [![Join Channel!](https://img.shields.io/badge/Join%20Channel-!-red)](https://t.me/legend_userbot_support_channel) 
 
 
 ### EASY WAY TO DEPLOY
 
-[![Deploy To Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/aritramandal/LEGEND/)
+[![Deploy To Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Bristi-OP/LEGEND/)
 
 ### STRING SESSION 
 
