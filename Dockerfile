@@ -1,7 +1,7 @@
-FROM suhaash02/viperuserbot:latest
+FROM Bristi-OP/LEGEND:latest
 
 #clonning repo 
-RUN git clone https://github.com/suhaash02/viperuserbot.git /root/userbot
+RUN git clone https://github.com/Bristi-OP/LEGEND.git/root/userbot
 #working directory 
 WORKDIR /root/userbot
 
