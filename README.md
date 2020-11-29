@@ -1,29 +1,67 @@
+# LEGEND USERBOT 🌹
 
-# VIPER USERBOT
-
-### The Easy Way to deploy the bot
-Get APP ID and API HASH from [HERE](https://my.telegram.org) and BOT TOKEN from [Bot Father](https://t.me/botfather) and then Generate stringsession by clicking on run.on.repl.it button below and then click on deploy to heroku . Before clicking on deploy to heroku just click on fork and star just below
-
-[![Get string session](https://img.shields.io/badge/REPL%20RUN-Run%20Online-blue.svg)]()
-
-[![Deploy To Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/aritramandal/DORA/tree/main)
-<p align="center">
-  <a href="https://github.com/suhaash02/viperuserbot/fork">
-    <img src="https://img.shields.io/github/forks/suhaash02/viperuserbot?label=Fork&style=social">
-    
-  </a>
-  <a href="https://github.com/suhaash02/viperuserbot">
-    <img src="https://img.shields.io/github/stars/suhaash02/viperuserbot?style=social">
-  </a>
-</p>
+### Cool userbot made by @YOU_ARE_UNDER_ARREST and  @none1p
 
 
-[![catuserbot logo](https://telegra.ph/file/37209bec61783afd2052f.jpg)](https://heroku.com/deploy?template=https://github.com/suhaash02/viperuserbot)
+
+![logo](https://telegra.ph/file/ee654dc022141d6a4b608.jpg)
 
 
-### Join [here](https://t.me/Viper_support) for updates and tuts and [here](https://t.me/viperuserbot_support) for discussion and bugs
 
-### The Normal Way
+
+
+
+### MADE WITH PYTHON
+
+
+[![Build Status](https://travis-ci.com/aritramandal/LEGEND.svg?branch=master)](https://travis-ci.com/aritramandal/LEGEND) ![Python Version](https://img.shields.io/badge/python-3.8-lightgrey) ![Release](https://img.shields.io/github/v/release/aritramandal/LEGEND) ![Stars](https://img.shields.io/github/stars/aritramandal/LEGEND) ![Forks](https://img.shields.io/github/forks/aritramandal/LEGEND) ![Issues Open](https://img.shields.io/github/issues/aritramandal/LEGEND) ![Issues Closed](https://img.shields.io/github/issues-closed/aritramandal/LEGEND) ![PR Open](https://img.shields.io/github/issues-pr/aritramandal/LEGEND) ![PR Closed](https://img.shields.io/github/issues-pr-closed/aritramandal/LEGEND) ![Contributors](https://img.shields.io/github/contributors/aritramandal/LEGEND) ![Repo Size](https://img.shields.io/github/repo-size/aritramandal/LEGEND) ![License](https://img.shields.io/github/license/aritramandal/LEGEND) ![Commit Activity](https://img.shields.io/github/commit-activity/m/aritramandal/LEGEND) [![Main Repo!](https://img.shields.io/badge/Main%20Repo-!-orange)](https://github.com/aritramandal/LEGEND) [![Join Channel!](https://img.shields.io/badge/Join%20Channel-!-red)](https://t.me/legend_userbot_support_channel) 
+
+
+### EASY WAY TO DEPLOY
+
+[![Deploy To Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/aritramandal/LEGEND/)
+
+### STRING SESSION 
+
+<p align="centre"><a href="https://repl.it/@aritramandal1/Legenduserbot?template=https://repl.it/@aritramandal1/Legenduserbot#main.py"> <img src="https://telegra.ph/file/b9133ebfd256fb7d2993a.jpg" alt="GET STRING" width="200" height="100.100"/></a></p>
+<p align="centre"><a href="https://repl.it/@bristi648/Legenduserbot?template=https://repl.it/@bristi648/Legenduserbot"> <img src="https://telegra.ph/file/938cab3c80aa99cb2937e.jpg" alt="GET STRING" width="200" height="100.100"/></a></p>
+
+
+
+
+
+
+### By TEAM #𝙻𝙴𝙶𝙴𝙽𝙳™
+
+### DON'T FORK THIS REPO 
+
+
+### LEGEND USERBOT SUPPORT CHANNEL
+
+
+
+
+
+<p align="centre"><a href="https://t.me/legend_userbot_support_channel?template=https://t.me/legend_userbot_support_channel"> <img src="https://telegra.ph/file/6b2aeeccbbf98a3e64f01.jpg" alt="JOIN NOW " width="200" height="200.200"/></a></p>
+
+
+
+
+
+### LEGEND USERBOT SUPPORT GROUP
+
+
+
+
+
+
+<p align="centre"><a href="https://t.me/LEGEND_USERBOT_SUPPORT?template=https://t.me/LEGEND_USERBOT_SUPPORT"> <img src="https://telegra.ph/file/9ff92c38775ab62acf606.jpg" alt="JOIN NOW " width="200" height="200.200"/></a></p>
+
+
+
+
+
+###  The Normal Way
 
 An example `local_config.py` file could be:
 
@@ -36,13 +74,13 @@ from heroku_config import Var
 
 class Development(Var):
   APP_ID = 6
-  API_HASH = "eb06d4abfb49dc3eeb1aeb98ae0f581e"
+  API_HASH = "eb06d4abfb49dc3eeb1aeb98aq0f581e"
 ```
 
 ### UniBorg Configuration
 
 
-
+            
 **Heroku Configuration**
 Simply just leave the Config as it is.
 
@@ -57,4 +95,9 @@ Fortunately there are no Mandatory vars for the UniBorg Support Config.
 
     - `APP_ID`:   You can get this value from https://my.telegram.org
     - `API_HASH`:   You can get this value from https://my.telegram.org
+    - `HEROKU_API`: You can get this value from https://dashboard.heroku.com/account 
+
 - The userbot will not work without setting the mandatory vars.
+
+
+
