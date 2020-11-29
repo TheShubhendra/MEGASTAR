@@ -1,7 +1,7 @@
 {
-  "name": "VIPER -THE USERBOT",
+  "name": "LEGEND USERBOT",
   "description": "A PYTHON USERBOT WHICH IS ROLE-MODEL FOR ALL OTHER USERBOTS ) .Easy to use and friendly bot . Maintained by ANONYMOUS ",
-  "logo": "https://telegra.ph/file/37209bec61783afd2052f.jpg",
+  "logo": "https://telegra.ph/file/1869e37a3c152e0f959a8.jpg",
   "keywords": [
     "telegram",
     "userbot",
@@ -9,7 +9,7 @@
     "modular",
     "productivity"
   ],
-  "repository": "https://github.com/suhaash02/viperuserbot/",
+  "repository": "https://github.com/Bristi-OP/LEGEND/",
   "website": "#TODO",
   "success_url": "#TODO",
   "env": {
@@ -23,19 +23,19 @@
       "required": false
     },
     "ALIVE_NAME": {
-      "description": "give your name",
+      "description": "Give your name",
       "value": ""
     },
     "APP_ID": {
-      "description": "Get this value from my.telegram.org! Please do not steal",
+      "description": "Get this value from my.telegram.org!",
       "value": ""
     },
     "API_HASH": {
-      "description": "Get this value from my.telegram.org! Please do not steal",
+      "description": "Get this value from my.telegram.org!",
       "value": ""
     },
     "STRING_SESSION": {
-      "description": "Get this value by running python3 telesetup.py locally",
+      "description": "Get this value from https://repl.it/@aritramandal1/Legenduserbot",
       "value": ""
     },
     "TG_BOT_USER_NAME_BF_HER": {
@@ -43,7 +43,7 @@
       "value": ""
     },
     "TG_BOT_TOKEN_BF_HER": {
-      "description": "Needed for inline buttons maker. Make a bot at http://telegram.dog/BotFather and get the token of your bot.Worth it. Get it.",
+      "description": "Needed for inline buttons maker. Make a bot at http://telegram.dog/BotFather and get the token of your bot. Don't forget to on the inline mode",
       "value": ""
     },
     "HEROKU_API_KEY": {
@@ -54,10 +54,10 @@
     "HEROKU_APP_NAME": {
       "description": "YOUR app name ",
       "value": "",
-      "required": false
+      "required": true
     },
     "DEFAULT_BIO": {
-      "description": "Your bio here note bio must have only 70characters or less.",
+      "description": "Your bio here note- bio must have only 70 characters or less.",
       "value": "",
       "required": false
     },    
@@ -93,7 +93,7 @@
     },
     "UB_BLACK_LIST_CHAT": {
       "description": "set blacklist_chats where you do not want userbot features",
-      "value": "-1051754159",
+      "value": "",
       "required": false
     },
     "DOWNLOAD_PFP_URL_CLOCK": {
