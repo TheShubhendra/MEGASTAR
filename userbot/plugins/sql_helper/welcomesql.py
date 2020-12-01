@@ -71,3 +71,4 @@ def updateprevious_welcome(chat_id, previous_welcome):
     row = SESSION.query(JoinWelcome).get(str(chat_id))
     row.previous_welcome = previous_welcome
     SESSION.commit()
+# legend userbot
