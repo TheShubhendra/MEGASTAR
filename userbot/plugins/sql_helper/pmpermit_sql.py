@@ -2,7 +2,7 @@ from sqlalchemy import Column, String
 
 from userbot.plugins.sql_helper import BASE, SESSION
 
-
+         
 class PMPermit(BASE):
     __tablename__ = "pmpermit"
     chat_id = Column(String(14), primary_key=True)
