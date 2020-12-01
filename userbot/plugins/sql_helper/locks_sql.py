@@ -70,7 +70,7 @@ def is_locked(chat_id, lock_type):
     if lock_type == "url":
         return curr_perm.url
 
-
+    
 def get_locks(chat_id):
     try:
         return SESSION.query(Locks).get(str(chat_id))
