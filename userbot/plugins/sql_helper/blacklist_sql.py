@@ -4,7 +4,7 @@ from sqlalchemy import Column, String, UnicodeText, distinct, func
 
 from userbot.plugins.sql_helper import BASE, SESSION
 
-
+  
 class BlackListFilters(BASE):
     __tablename__ = "blacklist"
     chat_id = Column(String(14), primary_key=True)
