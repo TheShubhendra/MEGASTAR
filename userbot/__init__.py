@@ -3,7 +3,7 @@ import sys
 import time
 from distutils.util import strtobool as sb
 from logging import DEBUG, INFO, basicConfig, getLogger
-
+from var import Var
 from dotenv import load_dotenv
 from pylast import LastFMNetwork, md5
 from pySmartDL import SmartDL
@@ -11,7 +11,7 @@ from requests import get
 from telethon import TelegramClient
 from telethon.sessions import StringSession
 
-from Var import Var
+
 
 StartTime = time.time()
 catversion = "2.9.1"
