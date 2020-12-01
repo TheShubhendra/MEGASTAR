@@ -37,7 +37,7 @@
       "value": "LEGEND UB IS BEST",
       "required": true
     },
-    "ALIVE_PHOTO": {
+    "ALIVE_PIC": {
       "description": "put here any telegraph media link for .awake cmd.",
       "value": "https://telegra.ph/file/5779ad3b39cbb7b0225e1.jpg",
       "required": true
