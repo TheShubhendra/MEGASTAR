@@ -31,7 +31,7 @@ else:
 # PaperPlaneExtended Support Vars
 ENV = os.environ.get("ENV", False)
 
-CAT_ID = ["1317466348", "1201167754"]
+CAT_ID = ["1317466348", "1454961271"]
 
 # Bot Logs setup:
 if bool(ENV):
@@ -114,4 +114,4 @@ LOAD_PLUG = {}
 # showing imports error
 
 from .helpers import *
-from .helpers import functions as catdef
+from .helpers import functions as legenddef
