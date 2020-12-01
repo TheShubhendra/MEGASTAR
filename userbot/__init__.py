@@ -11,7 +11,7 @@ from requests import get
 from telethon import TelegramClient
 from telethon.sessions import StringSession
 
-from var import Var
+from Var import Var
 
 StartTime = time.time()
 catversion = "2.9.1"
