@@ -73,8 +73,8 @@ __The Userbot should work by setting only the first two variables__
 from heroku_config import Var
 
 class Development(Var):
-  APP_ID = 6
-  API_HASH = "eb06d4abfb49dc3eeb1aeb98aq0f581e"
+  APP_ID = 7
+  API_HASH = "ek06d9abkb49dc3eeb1aob98ao0fd81e"
 ```
 
 ### UniBorg Configuration
