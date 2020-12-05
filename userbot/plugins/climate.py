@@ -18,7 +18,7 @@ from pytz import timezone as tz
 
 from .. import CMD_HELP
 from .. import OPEN_WEATHER_MAP_APPID as OWM_API
-from ..utils import admin_cmd, edit_or_reply, errors_handler, sudo_cmd
+from ..utils import admin_cmd, edit_or_reply, errors_handler
 
 logging.basicConfig(
     format="[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s", level=logging.WARNING
@@ -42,7 +42,6 @@ async def get_tz(con):
 
 
 @bot.on(admin_cmd(outgoing=True, pattern="climate( (.*)|$)"))
-@bot.on(sudo_cmd(pattern="climate( (.*)|$)", allow_sudo=True))
 @errors_handler
 async def get_weather(weather):
     """ For .weather command, gets the current weather of a city. """
@@ -141,7 +140,6 @@ async def get_weather(weather):
 
 
 @bot.on(admin_cmd(outgoing=True, pattern="setcity(?: |$)(.*)"))
-@bot.on(sudo_cmd(pattern="setcity(?: |$)(.*)", allow_sudo=True))
 @errors_handler
 async def set_default_city(city):
     """ For .ctime command, change the default userbot country for date and time commands. """
@@ -190,7 +188,6 @@ async def set_default_city(city):
 
 
 @bot.on(admin_cmd(pattern="wttr ?(.*)"))
-@bot.on(sudo_cmd(pattern="wttr ?(.*)", allow_sudo=True))
 async def _(event):
     global DEFCITY
     reply_to_id = None
