@@ -1,18 +1,16 @@
-# collage plugin for catuserbot by @sandy1709
 
 # Copyright (C) 2020 Alfiananda P.A
-#
+
 # Licensed under the Raphielscape Public License, Version 1.d (the "License");
 # you may not use this file except in compliance with the License.
 
 import os
 
-from ..utils import admin_cmd, edit_or_reply, sudo_cmd
+from ..utils import admin_cmd, edit_or_reply
 from . import CMD_HELP, make_gif, runcmd
 
 
 @bot.on(admin_cmd(pattern="collage(?: |$)(.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern="collage(?: |$)(.*)", allow_sudo=True))
 async def collage(cat):
     catinput = cat.pattern_match.group(1)
     reply = await cat.get_reply_message()
