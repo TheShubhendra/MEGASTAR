@@ -236,36 +236,7 @@ def sudo_cmd(pattern=None, command=None, **args):
         elif pattern.startswith(r"^"):
             args["pattern"] = re.compile(pattern)
             cmd = pattern.replace("$", "").replace("^", "").replace("\\", "")
-            try:
-                SUDO_LIST[file_test].append(cmd)
-            except BaseException:
-                SUDO_LIST.update({file_test: [cmd]})
-        else:
-            if len(Config.SUDO_COMMAND_HAND_LER) == 2:
-                legendreg = "^" + Config.SUDO_COMMAND_HAND_LER
-                reg = Config.SUDO_COMMAND_HAND_LER[1]
-            elif len(Config.SUDO_COMMAND_HAND_LER) == 1:
-                legendreg = "^\\" + Config.SUDO_COMMAND_HAND_LER
-                reg = Config.COMMAND_HAND_LER
-            args["pattern"] = re.compile(legendreg + pattern)
-            if command is not None:
-                cmd = reg + command
-            else:
-                cmd = (
-                    (reg + pattern).replace("$", "").replace("\\", "").replace("^", "")
-                )
-            try:
-                SUDO_LIST[file_test].append(cmd)
-            except BaseException:
-                SUDO_LIST.update({file_test: [cmd]})
-    args["outgoing"] = True
-    # should this command be available for other users?
-    if allow_sudo:
-        args["from_users"] = list(Config.SUDO_USERS)
-        # Mutually exclusive with outgoing (can only set one of either).
-        args["incoming"] = True
-        del args["allow_sudo"]
-    # error handling condition check
+            # error handling condition check
     elif "incoming" in args and not args["incoming"]:
         args["outgoing"] = True
     # add blacklist chats, UB should not respond in these chats
