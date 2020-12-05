@@ -2,12 +2,11 @@ import asyncio
 
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
-from ..utils import admin_cmd, edit_or_reply, sudo_cmd
+from ..utils import admin_cmd, edit_or_reply
 from . import CMD_HELP, parse_pre, sanga_seperator
 
 
 @bot.on(admin_cmd(pattern="(sg|sgu)($| (.*))"))
-@bot.on(sudo_cmd(pattern="(sg|sgu)($| (.*))", allow_sudo=True))
 async def _(event):
     # https://t.me/catuserbot_support/181159
     input_str = "".join(event.text.split(maxsplit=1)[1:])
