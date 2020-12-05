@@ -4,11 +4,10 @@
 from telethon.tl.functions.messages import SaveDraftRequest
 
 from .. import CMD_HELP
-from ..utils import admin_cmd, sudo_cmd
+from ..utils import admin_cmd
 
 
 @bot.on(admin_cmd(pattern="chain$"))
-@bot.on(sudo_cmd(pattern="chain$", allow_sudo=True))
 async def _(event):
     await event.edit("Counting...")
     count = -1
