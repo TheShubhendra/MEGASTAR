@@ -9,7 +9,7 @@ import spamwatch as spam_watch
 from validators.url import url
 
 from .. import *
-from ..Config import Config
+from ..config import Config
 
 # =================== CONSTANT ===================
 USERID = bot.uid
