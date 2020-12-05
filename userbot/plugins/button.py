@@ -7,7 +7,7 @@ import re
 from telethon import Button
 
 from .. import CMD_HELP
-from ..utils import admin_cmd, edit_or_reply, sudo_cmd
+from ..utils import admin_cmd, edit_or_reply
 
 # regex obtained from:
 # https://github.com/PaulSonOfLars/tgbot/blob/master/tg_bot/modules/helper_funcs/string_handling.py#L23
@@ -15,7 +15,6 @@ BTN_URL_REGEX = re.compile(r"(\[([^\[]+?)\]\<buttonurl:(?:/{0,2})(.+?)(:same)?\>
 
 
 @bot.on(admin_cmd(pattern=r"cbutton(?: |$)(.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern=r"cbutton(?: |$)(.*)", allow_sudo=True))
 async def _(event):
     chat = event.chat_id
     reply_message = await event.get_reply_message()
@@ -68,7 +67,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern=r"ibutton( (.*)|$)", outgoing=True))
-@bot.on(sudo_cmd(pattern=r"ibutton( (.*)|$)", allow_sudo=True))
 async def _(event):
     reply_to_id = None
     catinput = "".join(event.text.split(maxsplit=1)[1:])
