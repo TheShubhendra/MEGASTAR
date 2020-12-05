@@ -1,110 +1,137 @@
+import asyncio
+import os
+import requests
 import time
-from platform import python_version
+from PIL import Image
+from io import BytesIO
+from datetime import datetime
+import random
+from telethon import events
+from userbot.utils import admin_cmd
+from userbot import ALIVE_NAME
+from telethon.tl.types import ChannelParticipantsAdmins
+DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "LEGEND"
+ALIVE_PIC = os.environ.get("ALIVE_PIC" , None)
 
-from telethon import version
+global legend
+legend = borg.uid
+edit_time = 5
+""" =======================CONSTANTS====================== """
+file1 = "https://telegra.ph/file/ea5c671288eaede7f5407.jpg"
+file2 = "https://telegra.ph/file/3a8f1d5e1d6243337a405.jpg"
+file3 = "https://telegra.ph/file/2727d041dfa5335fcf244.jpg"
+file4 = "https://telegra.ph/file/bde1379997eb26df7b695.jpg"
+""" =======================CONSTANTS====================== """
+pm_caption = "**🅻🅴🅶🅴🅽🅳 🅸🆂 🅾︎🅽🅻🅸🅽🅴 **\n\n"
+pm_caption += "**Yes Master, Am Alive And Systems Are Working Perfectly As It Should Be...**\n\n"
+pm_caption += "✘ About My System ✘\n\n"
+pm_caption += "➾ **ᴛᴇʟᴇᴛʜᴏɴ ᴠᴇʀꜱɪᴏɴ** ☞ 1.17.5\n"
+pm_caption += "➾ **ꜱᴜᴘᴘᴏʀᴛ ᴄʜᴀɴɴᴇʟ** ☞ [ᴊᴏɪɴ](https://t.me/legend_userbot)\n"
+pm_caption += "➾ **ꜱᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ** ☞ [ᴊᴏɪɴ](https://t.me/legend_userbot_support)"
+pm_caption += "➾ **ʟɪᴄᴇɴꜱᴇ**  ☞ [𝚃𝙴𝙰𝙼 𝙻𝙴𝙶𝙴𝙽𝙳](https://github.com/aritramandal)\n"
+pm_caption += "➾ **ᴄᴏᴘʏʀɪɢʜᴛ ʙʏ** ☞ [🄻🄴🄶🄴🄽🄳](https://github.com/Bristi-OP/LEGEND)\n\n"
+pm_caption += f"➾ **ᴍʏ ᴍᴀsᴛᴇʀ** ☞ [{DEFAULTUSER}](tg://user?id={legend})\n"
 
-from userbot import ALIVE_NAME, CMD_HELP, StartTime, catdef, catversion
+@borg.on(admin_cmd(pattern=r"alive"))
 
-from ..utils import admin_cmd, edit_or_reply, sudo_cmd
+async def amireallyalive(yes):
+    chat = await yes.get_chat()
+    global legend
+    legend = borg.uid
+    on = await borg.send_file(yes.chat_id, file=file1,caption=pm_caption)
 
-DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "cat"
-CAT_IMG = Config.ALIVE_PIC
+    await asyncio.sleep(edit_time)
+    ok = await borg.edit_message(yes.chat_id, on, file=file2) 
+
+    await asyncio.sleep(edit_time)
+    ok2 = await borg.edit_message(yes.chat_id, ok, file=file3)
+
+    await asyncio.sleep(edit_time)
+    ok3 = await borg.edit_message(yes.chat_id, ok2, file=file1)
+    
+    await asyncio.sleep(edit_time)
+    ok4 = await borg.edit_message(yes.chat_id, ok3, file=file3)
+    
+    await asyncio.sleep(edit_time)
+    ok5 = await borg.edit_message(yes.chat_id, ok4, file=file2)
+    
+    await asyncio.sleep(edit_time)
+    ok6 = await borg.edit_message(yes.chat_id, ok5, file=file1)
+    
+    await asyncio.sleep(edit_time)
+    ok7 = await borg.edit_message(yes.chat_id, ok6, file=file4)
+
+    await yes.delete()
+    
+    """ For .alive command, check if the bot is running.  """
+    await borg.send_file(yes.chat_id, PM_IMG,caption=pm_caption)
+    await yes.delete()
 
 
-@bot.on(admin_cmd(outgoing=True, pattern="alive$"))
-@bot.on(sudo_cmd(pattern="alive$", allow_sudo=True))
+def get_readable_time(seconds: int) -> str:
+    count = 0
+    ping_time = ""
+    time_list = []
+    time_suffix_list = ["s", "m", "h", "days"]
+
+    while count < 4:
+        count += 1
+        if count < 3:
+            remainder, result = divmod(seconds, 60)
+        else:
+            remainder, result = divmod(seconds, 24)
+        if seconds == 0 and remainder == 0:
+            break
+        time_list.append(int(result))
+        seconds = int(remainder)
+
+    for x in range(len(time_list)):
+        time_list[x] = str(time_list[x]) + time_suffix_list[x]
+    if len(time_list) == 4:
+        ping_time += time_list.pop() + ", "
+
+    time_list.reverse()
+    ping_time += ":".join(time_list)
+
+    return ping_time
+
+
+@borg.on(admin_cmd(outgoing=True, pattern="salive"))
 async def amireallyalive(alive):
-    if alive.fwd_from:
-        return
-    reply_to_id = alive.message
-    uptime = await catdef.get_readable_time((time.time() - StartTime))
-    _, check_sgnirts = check_data_base_heal_th()
-    hmm = bot.uid
-    if alive.reply_to_msg_id:
-        reply_to_id = await alive.get_reply_message()
-    if CAT_IMG:
-        cat_caption = f"**✮ MY BOT IS RUNNING SUCCESFULLY ✮**\n\n"
-        cat_caption += f"**✧ Database :** `{check_sgnirts}`\n"
-        cat_caption += f"**✧ Telethon version :** `{version.__version__}\n`"
-        cat_caption += f"**✧ Viper Version :** `{catversion}`\n"
-        cat_caption += f"**✧ Python Version :** `{python_version()}\n`"
-        cat_caption += f"**✧ Uptime :** `{uptime}\n`"
-        cat_caption += f"**✧ Master:** [{DEFAULTUSER}](tg://user?id={hmm})\n"
-        await alive.client.send_file(
-            alive.chat_id, CAT_IMG, caption=cat_caption, reply_to=reply_to_id
-        )
+    """ For .alive command, check if the bot is running.  """
+    if ALIVE_PHOTTO:
+        pm_caption = "**🄻🄴🄶🄴🄽🄳 🄸🅂 🄾🄽🄻🄸🄽🄴**\n"
+        pm_caption += f"**𝕄𝕪 𝔹𝕠𝕤𝕤**            : {DEFAULTUSER}\n"
+        pm_caption += "𝚃𝙴𝙻𝙴𝚃𝙷𝙾𝙽 𝚅𝙴𝚁𝚂𝙸𝙾𝙽        : 1.17.5\n"
+        pm_caption += "𝙿𝚈𝚃𝙷𝙾𝙽 𝚅𝙴𝚁𝚂𝙸𝙾𝙽          : 3.9.0\n"
+        pm_caption += "𝚂𝚄𝙿𝙿𝙾𝚁𝚃 𝙲𝙷𝙰𝙽𝙽𝙴𝙻         : [ᴊᴏɪɴ](https://t.me/legend_userbot)\n"
+        pm_caption += "𝚂𝚄𝙿𝙿𝙾𝚁𝚃 𝙶𝚁𝙾𝚄𝙿           : [ᴊᴏɪɴ](https://t.me/legend_userbot_support)\n"
+        pm_caption += "𝘓𝘐𝘚𝘌𝘕𝘊𝘌                  : [AGPL-3.0  ʟɪᴄᴇɴꜱᴇ](http://www.gnu.org/licenses/gpl-3.0.en.html)\n"
+        pm_caption += "𝘾𝙊𝙋𝙔𝙍𝙄𝙂𝙃𝙏 𝘽𝙔            : [ @YOU_ARE_UNDER_ARREST ](https://t.me/YOU_ARE_UNDER_ARREST)\n"
+        pm_caption += "───▄▀▀▀▄▄▄▄▄▄▄▀▀▀▄───\n ───█▒▒░░░░░░░░░▒▒█───\n    ────█░░█░░░░░█░░█────\n   ─▄▄──█░░░▀█▀░░░█──▄▄─\n    █░░█─▀▄░░░░░░░▄▀─█░░█\n    █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█\n    █░░╦─╦╔╗╦─╔╗╔╗╔╦╗╔╗░░█\n    █░░║║║╠─║─║─║║║║║╠─░░█\n   █░░╚╩╝╚╝╚╝╚╝╚╝╩─╩╚╝░░█\n    █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█\n"
+        chat = await alive.get_chat()
         await alive.delete()
-    else:
-        await edit_or_reply(
-            alive,
-            f"**✮ MY BOT IS RUNNING SUCCESFULLY ✮**\n\n"
-            f"**✧ Database :** `{check_sgnirts}`\n"
-            f"**✧ Telethon Version :** `{version.__version__}\n`"
-            f"**✧ Viper Version :** `{catversion}`\n"
-            f"**✧ Python Version :** `{python_version()}\n`"
-            f"**✧ Uptime :** `{uptime}\n`"
-            f"**✧ Master:** [{DEFAULTUSER}](tg://user?id={hmm})\n",
-        )
-
-
-@bot.on(admin_cmd(outgoing=True, pattern="ialive$"))
-@bot.on(sudo_cmd(pattern="ialive$", allow_sudo=True))
-async def amireallyalive(alive):
-    if alive.fwd_from:
+        """ For .allive command, check if the bot is running.  """
+        await borg.send_file(alive.chat_id, ALIVE_PHOTTO,caption=pm_caption, link_preview = False)
+        await allive.delete()
         return
-    tgbotusername = Var.TG_BOT_USER_NAME_BF_HER
-    reply_to_id = alive.message
-    if alive.reply_to_msg_id:
-        reply_to_id = await alive.get_reply_message()
-    hmm = bot.uid
-    cat_caption = f"**VIPER is ready to rock**\n"
-    cat_caption += f"**  -Telethon version :** `{version.__version__}\n`"
-    cat_caption += f"**  -Viper Version :** `{catversion}`\n"
-    cat_caption += f"**  -Python Version :** `{python_version()}\n`"
-    cat_caption += f"**  -Master:** [{DEFAULTUSER}](tg://user?id={hmm})\n"
-    results = await bot.inline_query(tgbotusername, cat_caption)  # pylint:disable=E0602
-    await results[0].click(alive.chat_id, reply_to=reply_to_id, hide_via=True)
-    await alive.delete()
-
-
-# UniBorg Telegram UseRBot
-# Copyright (C) 2020 @UniBorg
-# This code is licensed under
-# the "you can't use this for anything - public or private,
-# unless you know the two prime factors to the number below" license
-# 543935563961418342898620676239017231876605452284544942043082635399903451854594062955
-# വിവരണം അടിച്ചുമാറ്റിക്കൊണ്ട് പോകുന്നവർ
-# ക്രെഡിറ്റ് വെച്ചാൽ സന്തോഷമേ ഉള്ളു..!
-# uniborg
-
-
-def check_data_base_heal_th():
-    # https://stackoverflow.com/a/41961968
-    is_database_working = False
-    output = "No Database is set"
-    if not Var.DB_URI:
-        return is_database_working, output
-    from userbot.plugins.sql_helper import SESSION
-
-    try:
-        # to check database we will execute raw query
-        SESSION.execute("SELECT 1")
-    except Exception as e:
-        output = f"❌ {str(e)}"
-        is_database_working = False
-    else:
-        output = "Functioning Normally"
-        is_database_working = True
-    return is_database_working, output
-
-
-CMD_HELP.update(
-    {
-        "alive": "**Plugin :** `alive`\
-      \n\n**Syntax : **`.alive` \
-      \n**Function : **__status of bot will be showed__\
-      \n\n**Syntax : **`.ialive` \
-      \n**Function : **__inline status of bot will be shown.__\
-      \nSet `ALIVE_PIC` var for media in alive message"
-    }
-)
+    req = requests.get("https://telegra.ph/file/a47ec82a3a5c96f4aa5fe.png")
+    req.raise_for_status()
+    file = BytesIO(req.content)
+    file.seek(0)
+    img = Image.open(file)
+    with BytesIO() as sticker:
+        img.save(sticker, "webp")
+        sticker.name = "sticker.webp"
+        sticker.seek(0)
+        await borg.send_file(alive.chat_id, file=sticker)
+        await borg.send_message(alive.chat_id,"**🄻🄴🄶🄴🄽🄳 🄸🅂 🄾🄽🄻🄸🄽🄴**\n"
+                      f"**𝕄𝕪 𝔹𝕠𝕤𝕤**            : {DEFAULTUSER}\n"
+                      "𝚃𝙴𝙻𝙴𝚃𝙷𝙾𝙽 𝚅𝙴𝚁𝚂𝙸𝙾𝙽        : 1.17.5\n"
+                      "𝙿𝚈𝚃𝙷𝙾𝙽 𝚅𝙴𝚁𝚂𝙸𝙾𝙽          : 3.9.0\n"
+                      "𝚂𝚄𝙿𝙿𝙾𝚁𝚃 𝙲𝙷𝙰𝙽𝙽𝙴𝙻         : [ᴊᴏɪɴ](https://t.me/legend_userbot)\n"
+                      "𝚂𝚄𝙿𝙿𝙾𝚁𝚃 𝙶𝚁𝙾𝚄𝙿           : [ᴊᴏɪɴ](https://t.me/legend_userbot_support)\n"
+                      "𝘓𝘐𝘚𝘌𝘕𝘊𝘌                  : [AGPL-3.0  ʟɪᴄᴇɴꜱᴇ](http://www.gnu.org/licenses/gpl-3.0.en.html)\n"
+                      "𝘾𝙊𝙋𝙔𝙍𝙄𝙂𝙃𝙏 𝘽𝙔            : [ @YOU_ARE_UNDER_ARREST ](https://t.me/YOU_ARE_UNDER_ARREST)\n"
+                                "───▄▀▀▀▄▄▄▄▄▄▄▀▀▀▄───\n ───█▒▒░░░░░░░░░▒▒█───\n    ────█░░█░░░░░█░░█────\n   ─▄▄──█░░░▀█▀░░░█──▄▄─\n    █░░█─▀▄░░░░░░░▄▀─█░░█\n    █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█\n    █░░╦─╦╔╗╦─╔╗╔╗╔╦╗╔╗░░█\n    █░░║║║╠─║─║─║║║║║╠─░░█\n   █░░╚╩╝╚╝╚╝╚╝╚╝╩─╩╚╝░░█\n    █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█\n" ,link_preview = False) 
+        await alive.delete()
