@@ -2,7 +2,7 @@
 from telethon.tl.types import InputMediaDice
 
 from .. import CMD_HELP
-from ..utils import admin_cmd, sudo_cmd
+from ..utils import admin_cmd
 
 # EMOJI CONSTANTS
 DART_E_MOJI = "🎯"
@@ -13,12 +13,6 @@ FOOT_E_MOJI = "⚽️"
 
 
 @bot.on(admin_cmd(pattern=f"({DART_E_MOJI}|dart) ([1-6])"))
-@bot.on(
-    sudo_cmd(
-        pattern=f"({DART_E_MOJI}|dart) ([1-6])",
-        allow_sudo=True,
-    )
-)
 async def _(event):
     if event.fwd_from:
         return
@@ -42,12 +36,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern=f"({DICE_E_MOJI}|dice) ([1-6])"))
-@bot.on(
-    sudo_cmd(
-        pattern=f"({DICE_E_MOJI}|dice) ([1-6])",
-        allow_sudo=True,
-    )
-)
 async def _(event):
     if event.fwd_from:
         return
@@ -71,12 +59,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern=f"({BALL_E_MOJI}|bb) ([1-5])"))
-@bot.on(
-    sudo_cmd(
-        pattern=f"({BALL_E_MOJI}|bb) ([1-5])",
-        allow_sudo=True,
-    )
-)
 async def _(event):
     if event.fwd_from:
         return
@@ -100,12 +82,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern=f"({FOOT_E_MOJI}|fb) ([1-5])"))
-@bot.on(
-    sudo_cmd(
-        pattern=f"({FOOT_E_MOJI}|fb) ([1-5])",
-        allow_sudo=True,
-    )
-)
 async def _(event):
     if event.fwd_from:
         return
