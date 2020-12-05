@@ -44,8 +44,8 @@ for name in files:
 
 LOGS.info("kek!! your viper is poisonous now.!!!")
 LOGS.info(
-    "Congratulations, now type .alive to view viper is redy to hit\n"
-    "support and thank @anonymous for this awsm bot"
+    "Congratulations, now type .alive to view if the legend is on your service\n"
+    "support and thank @none1p and @YOU_ARE_UNDER_ARREST for this awesome userbot made by them"
 )
 
 if len(argv) not in (1, 3, 4):
