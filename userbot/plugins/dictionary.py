@@ -7,11 +7,10 @@ import asyncurban
 from PyDictionary import PyDictionary
 
 from .. import CMD_HELP
-from ..utils import admin_cmd, edit_or_reply, sudo_cmd
+from ..utils import admin_cmd, edit_or_reply
 
 
 @bot.on(admin_cmd(pattern="ud (.*)"))
-@bot.on(sudo_cmd(pattern="ud (.*)", allow_sudo=True))
 async def _(event):
     word = event.pattern_match.group(1)
     urban = asyncurban.UrbanDictionary()
@@ -28,7 +27,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern="meaning (.*)"))
-@bot.on(sudo_cmd(pattern="meaning (.*)", allow_sudo=True))
 async def _(event):
     word = event.pattern_match.group(1)
     dictionary = PyDictionary()
