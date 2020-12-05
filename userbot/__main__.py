@@ -6,7 +6,7 @@ import telethon.utils
 from telethon import TelegramClient
 
 from . import LOGS, bot
-from .uniborgConfig import Config
+from .config import Config
 from .utils import load_module
 
 
