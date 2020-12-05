@@ -16,7 +16,7 @@ DEFAULTUSER = str(AUTONAME) if AUTONAME else str(ALIVE_NAME)
 DEFAULTUSERBIO = (
     str(DEFAULT_BIO)
     if DEFAULT_BIO
-    else "sıɥʇ ǝpoɔǝp uǝɥʇ llıʇu∩ ˙ ǝɔɐds ǝʇɐʌıɹd ǝɯos ǝɯ ǝʌı⅁˙"
+    else "LEGEND USERBOT IS BEST ❤️"
 )
 if Config.PRIVATE_GROUP_BOT_API_ID is None:
     BOTLOG = False
