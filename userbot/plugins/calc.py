@@ -4,11 +4,10 @@ import sys
 import traceback
 
 from .. import CMD_HELP
-from ..utils import admin_cmd, edit_or_reply, sudo_cmd
+from ..utils import admin_cmd, edit_or_reply
 
 
 @bot.on(admin_cmd(pattern="calc (.*)"))
-@bot.on(sudo_cmd(pattern="calc (.*)", allow_sudo=True))
 async def _(car):
     cmd = car.text.split(" ", maxsplit=1)[1]
     event = await edit_or_reply(car, "Calculating ...")
