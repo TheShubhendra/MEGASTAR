@@ -19,13 +19,12 @@ from hachoir.parser import createParser
 from telethon.tl.types import DocumentAttributeVideo
 
 from .. import CMD_HELP
-from ..utils import admin_cmd, edit_or_reply, progress, sudo_cmd
+from ..utils import admin_cmd, edit_or_reply, progress
 
 thumb_image_path = Config.TMP_DOWNLOAD_DIRECTORY + "/thumb_image.jpg"
 
 
 @bot.on(admin_cmd(pattern=("zip ?(.*)")))
-@bot.on(sudo_cmd(pattern="zip ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -69,7 +68,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern="unzip ?(.*)"))
-@bot.on(sudo_cmd(pattern="unzip ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -142,7 +140,6 @@ def zipdir(dirName):
 
 
 @bot.on(admin_cmd(pattern=("rar ?(.*)")))
-@bot.on(sudo_cmd(pattern="rar ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -190,7 +187,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern=("tar ?(.*)")))
-@bot.on(sudo_cmd(pattern="tar ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -271,7 +267,6 @@ async def create_archive(input_directory):
 
 
 @bot.on(admin_cmd(pattern="unrar"))
-@bot.on(sudo_cmd(pattern="unrar", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -360,7 +355,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern="untar"))
-@bot.on(sudo_cmd(pattern="untar", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
