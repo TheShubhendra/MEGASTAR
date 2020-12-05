@@ -4,7 +4,7 @@ import re
 from telethon import events
 
 from .. import BOTLOG_CHATID, CMD_HELP, bot
-from ..utils import admin_cmd, edit_or_reply, sudo_cmd
+from ..utils import admin_cmd, edit_or_reply
 from .sql_helper.filter_sql import (
     add_filter,
     get_filters,
@@ -36,7 +36,6 @@ async def filter_incoming_handler(handler):
 
 
 @bot.on(admin_cmd(pattern="filter (.*)"))
-@bot.on(sudo_cmd(pattern="filter (.*)", allow_sudo=True))
 async def add_new_filter(new_handler):
     keyword = new_handler.pattern_match.group(1)
     string = new_handler.text.partition(keyword)[2]
@@ -77,7 +76,6 @@ async def add_new_filter(new_handler):
 
 
 @bot.on(admin_cmd(pattern="filters$"))
-@bot.on(sudo_cmd(pattern="filters$", allow_sudo=True))
 async def on_snip_list(event):
     OUT_STR = "There are no filters in this chat."
     filters = get_filters(event.chat_id)
@@ -102,7 +100,6 @@ async def on_snip_list(event):
 
 
 @bot.on(admin_cmd(pattern="stop (.*)"))
-@bot.on(sudo_cmd(pattern="stop (.*)", allow_sudo=True))
 async def remove_a_filter(r_handler):
     filt = r_handler.pattern_match.group(1)
     if not remove_filter(r_handler.chat_id, filt):
@@ -112,7 +109,6 @@ async def remove_a_filter(r_handler):
 
 
 @bot.on(admin_cmd(pattern="rmfilters$"))
-@bot.on(sudo_cmd(pattern="rmfilters$", allow_sudo=True))
 async def on_all_snip_delete(event):
     filters = get_filters(event.chat_id)
     if filters:
