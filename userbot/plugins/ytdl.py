@@ -1,5 +1,4 @@
 # Thanks to @AvinashReddy3108 for this plugin
-# Instadl by @Jisan7509
 
 import asyncio
 import os
@@ -23,12 +22,11 @@ from youtube_dl.utils import (
     XAttrMetadataError,
 )
 
-from ..utils import admin_cmd, edit_or_reply, sudo_cmd
+from ..utils import admin_cmd, edit_or_reply
 from . import CMD_HELP
 
 
 @bot.on(admin_cmd(pattern="yt(a|v) (.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern="yt(a|v) (.*)", allow_sudo=True))
 async def download_video(v_url):
     """ For .ytdl command, download media from YouTube and many other sites. """
     url = v_url.pattern_match.group(2)
@@ -165,7 +163,6 @@ async def download_video(v_url):
 
 
 @bot.on(admin_cmd(pattern="yts (.*)"))
-@bot.on(sudo_cmd(pattern="yts (.*)", allow_sudo=True))
 async def yt_search(video_q):
     """ For .yts command, do a YouTube search from Telegram. """
     query = video_q.pattern_match.group(1)
@@ -226,7 +223,6 @@ async def youtube_search(
 
 
 @bot.on(admin_cmd(pattern="insta (.*)"))
-@bot.on(sudo_cmd(pattern="insta (.*)", allow_sudo=True))
 async def kakashi(event):
     if event.fwd_from:
         return
