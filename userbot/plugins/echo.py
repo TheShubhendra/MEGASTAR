@@ -12,12 +12,11 @@ from telethon import events
 from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 
 from .. import CMD_HELP
-from ..utils import admin_cmd, edit_or_reply, sudo_cmd
+from ..utils import admin_cmd, edit_or_reply
 from .sql_helper.echo_sql import addecho, get_all_echos, is_echo, remove_echo
 
 
 @bot.on(admin_cmd(pattern="addecho$"))
-@bot.on(sudo_cmd(pattern="addecho$", allow_sudo=True))
 async def echo(cat):
     if cat.fwd_from:
         return
@@ -41,7 +40,6 @@ async def echo(cat):
 
 
 @bot.on(admin_cmd(pattern="rmecho$"))
-@bot.on(sudo_cmd(pattern="rmecho$", allow_sudo=True))
 async def echo(cat):
     if cat.fwd_from:
         return
@@ -65,7 +63,6 @@ async def echo(cat):
 
 
 @bot.on(admin_cmd(pattern="listecho$"))
-@bot.on(sudo_cmd(pattern="listecho$", allow_sudo=True))
 async def echo(cat):
     if cat.fwd_from:
         return
