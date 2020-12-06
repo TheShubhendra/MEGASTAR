@@ -33,7 +33,7 @@ from telethon.tl.types import (
 from telethon.utils import get_input_location
 
 from .. import BOTLOG, BOTLOG_CHATID, CMD_HELP
-from ..utils import admin_cmd, edit_or_reply, sudo_cmd
+from ..utils import admin_cmd, edit_or_reply
 
 
 @bot.on(admin_cmd(outgoing=True, pattern="kickme$"))
@@ -43,7 +43,6 @@ async def kickme(leave):
 
 
 @bot.on(admin_cmd(pattern="admins ?(.*)"))
-@bot.on(sudo_cmd(pattern="admins ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -96,7 +95,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern="bots ?(.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern="bots ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -131,7 +129,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern=r"users ?(.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern=r"users ?(.*)", allow_sudo=True))
 async def get_users(show):
     if show.fwd_from:
         return
@@ -189,7 +186,6 @@ async def get_users(show):
 
 
 @bot.on(admin_cmd(pattern="chatinfo(?: |$)(.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern="chatinfo(?: |$)(.*)", allow_sudo=True))
 async def info(event):
     catevent = await edit_or_reply(event, "`Analysing the chat...`")
     chat = await get_chatinfo(event, catevent)
@@ -205,7 +201,6 @@ async def info(event):
 
 
 @bot.on(admin_cmd(pattern="unbanall ?(.*)"))
-@bot.on(sudo_cmd(pattern="unbanall ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -236,7 +231,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern="ikuck ?(.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern="ikuck ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -379,7 +373,6 @@ None: {}""".format(
 
 # Ported by ©[NIKITA](t.me/kirito6969) and ©[EYEPATCH](t.me/NeoMatrix90)
 @bot.on(admin_cmd(pattern=f"zombies ?(.*)"))
-@bot.on(sudo_cmd(pattern="zombies ?(.*)", allow_sudo=True))
 async def rm_deletedacc(show):
     con = show.pattern_match.group(1).lower()
     del_u = 0
