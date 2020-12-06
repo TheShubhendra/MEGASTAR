@@ -23,7 +23,7 @@ from googleapiclient.errors import HttpError
 from googleapiclient.http import MediaFileUpload
 from telethon import events
 
-from ..utils import admin_cmd, edit_or_reply, humanbytes, sudo_cmd, time_formatter
+from ..utils import admin_cmd, edit_or_reply, humanbytes, time_formatter
 from . import (
     BOTLOG_CHATID,
     CMD_HELP,
@@ -94,7 +94,6 @@ GDRIVE_ID = re.compile(
 
 
 @bot.on(admin_cmd(pattern="gauth$", command="gauth", outgoing=True))
-@bot.on(sudo_cmd(pattern="gauth$", command="gauth", allow_sudo=True))
 async def generate_credentials(gdrive):
     """ - Only generate once for long run - """
     hmm = bot.uid
@@ -181,7 +180,6 @@ async def create_app(gdrive):
 
 
 @bot.on(admin_cmd(pattern="greset$", command="greset", outgoing=True))
-@bot.on(sudo_cmd(pattern="greset$", command="greset", allow_sudo=True))
 async def reset_credentials(gdrive):
     """ - Reset credentials or change account - """
     hmm = bot.uid
@@ -754,13 +752,6 @@ async def lists(gdrive):
         outgoing=True,
     )
 )
-@bot.on(
-    sudo_cmd(
-        pattern="glist(?: |$)(-l \d+)?(?: |$)?(.*)?(?: |$)",
-        command="glist",
-        allow_sudo=True,
-    )
-)
 async def catlists(gdrive):
     await lists(gdrive)
 
@@ -768,13 +759,6 @@ async def catlists(gdrive):
 @bot.on(
     admin_cmd(
         pattern="gdf (mkdir|rm|chck) (.*)", command="gdf (mkdir|rm|chck)", outgoing=True
-    )
-)
-@bot.on(
-    sudo_cmd(
-        pattern="gdf (mkdir|rm|chck) (.*)",
-        command="gdf (mkdir|rm|chck)",
-        allow_sudo=True,
     )
 )
 async def google_drive_managers(gdrive):
@@ -933,7 +917,6 @@ async def google_drive_managers(gdrive):
 
 
 @bot.on(admin_cmd(pattern="gabort$", command="gabort", outgoing=True))
-@bot.on(sudo_cmd(pattern="gabort$", command="gabort", allow_sudo=True))
 async def cancel_process(gdrive):
     """
     Abort process for download and upload
@@ -950,7 +933,6 @@ async def cancel_process(gdrive):
 
 
 @bot.on(admin_cmd(pattern="ugd(?: |$)(.*)", command="ugd", outgoing=True))
-@bot.on(sudo_cmd(pattern="ugd(?: |$)(.*)", command="ugd", allow_sudo=True))
 async def google_drive(gdrive):
     reply = ""
     """ - Parsing all google drive function - """
@@ -1126,13 +1108,6 @@ async def google_drive(gdrive):
         pattern="(gdfset|gdfclear)(?: |$)(.*)",
         command="(gdfset|gdfclear)",
         outgoing=True,
-    )
-)
-@bot.on(
-    sudo_cmd(
-        pattern="(gdfset|gdfclear)(?: |$)(.*)",
-        command="(gdfset|gdfclear)",
-        allow_sudo=True,
     )
 )
 async def set_upload_folder(gdrive):
@@ -1349,7 +1324,6 @@ async def get_file_name(content):
 
 
 @bot.on(admin_cmd(pattern="gdl ?(-u)? (.*)", command="(gdl|gdl -u)", outgoing=True))
-@bot.on(sudo_cmd(pattern="gdl ?(-u)? (.*)", command="(gdl|gdl -u)", allow_sudo=True))
 async def g_download(event):
     if event.fwd_from:
         return
