@@ -2,7 +2,6 @@
 Support chatbox for pmpermit.
 Used by incoming messages with trigger as /start
 Will not work for already approved people.
-Credits: written by ༺αиυвιѕ༻ {@A_Dark_Princ3}
 """
 import asyncio
 
@@ -12,7 +11,7 @@ import userbot.plugins.sql_helper.pmpermit_sql as pmpermit_sql
 
 from . import ALIVE_NAME, PM_START
 
-DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "cat"
+DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Legend"
 PREV_REPLY_MESSAGE = {}
 
 
@@ -38,14 +37,14 @@ async def _(event):
             "`d`. To request something\n"
         )
         ONE = (
-            "__Okay. Your request has been registered. Do not spam my master's inbox.You can expect a reply within 24 light years. He is a busy man, unlike you probably.__\n\n"
+            "__Okay. Your request has been registered. Do not spam my master's inbox.You can expect a reply within 24 light years. He/she is a busy person, unlike you probably.__\n\n"
             "**⚠️ You will be blocked and reported if you spam nibba. ⚠️**\n\n"
             "__Use__ `/start` __to go back to the main menu.__"
         )
         TWO = " `███████▄▄███████████▄  \n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\n▓▓▓▓▓▓█░░░░░░░░░░░░░░█\n▓▓▓▓▓▓███░░░░░░░░░░░░█\n██████▀▀▀█░░░░██████▀  \n░░░░░░░░░█░░░░█  \n░░░░░░░░░░█░░░█  \n░░░░░░░░░░░█░░█  \n░░░░░░░░░░░█░░█  \n░░░░░░░░░░░░▀▀ `\n\n**So uncool, this is not your home. Go bother someone else. You have been blocked and reported until further notice.**"
-        THREE = "__Okay. My master has not seen your message yet.He usually responds to people,though idk about retarted ones.__\n __He'll respond when he comes back, if he wants to.There's already a lot of pending messages😶__\n **Please do not spam unless you wish to be blocked and reported.**"
-        FOUR = "`Okay. please have the basic manners as to not bother my master too much. If he wishes to help you, he will respond to you soon.`\n**Do not ask repeatdly else you will be blocked and reported.**"
-        LWARN = "**This is your last warning. DO NOT send another message else you will be blocked and reported. Keep patience. My master will respond you ASAP.**\n__Use__ `/start` __to go back to the main menu.__"
+        THREE = "__Okay. My boss has not seen your message yet.He/she usually responds to people,though idk about retarted ones.__\n __will respond when comes back, if he/she wants to.There's already a lot of pending messages😶__\n **Please do not spam unless you wish to be blocked and reported.**"
+        FOUR = "`Okay. please have the basic manners as to not bother my boss too much. If he wishes to help you, he/she will respond to you soon.`\n**Do not ask repeatdly else you will be blocked and reported.**"
+        LWARN = "**This is your last warning. DO NOT send another message else you will be blocked and reported. Keep patience. My boss will respond you ASAP.**\n__Use__ `/start` __to go back to the main menu.__"
         try:
             async with event.client.conversation(chat) as conv:
                 if pmpermit_sql.is_approved(chat_id):
