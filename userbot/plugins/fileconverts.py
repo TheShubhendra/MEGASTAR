@@ -12,7 +12,7 @@ from telethon.errors import PhotoInvalidDimensionsError
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.functions.messages import SendMediaRequest
 
-from ..utils import admin_cmd, edit_or_reply, progress, sudo_cmd
+from ..utils import admin_cmd, edit_or_reply, progress
 from . import CMD_HELP
 
 if not os.path.isdir("./temp"):
@@ -20,7 +20,6 @@ if not os.path.isdir("./temp"):
 
 
 @bot.on(admin_cmd(pattern="stoi$"))
-@bot.on(sudo_cmd(pattern="stoi$", allow_sudo=True))
 async def _(cat):
     if cat.fwd_from:
         return
@@ -55,7 +54,6 @@ async def _(cat):
 
 
 @bot.on(admin_cmd(pattern="itos$"))
-@bot.on(sudo_cmd(pattern="itos$", allow_sudo=True))
 async def _(cat):
     if cat.fwd_from:
         return
@@ -97,7 +95,6 @@ async def silently_send_message(conv, text):
 
 
 @bot.on(admin_cmd(pattern="ttf ?(.*)"))
-@bot.on(sudo_cmd(pattern="ttf ?(.*)", allow_sudo=True))
 async def get(event):
     name = event.text[5:]
     if name is None:
@@ -115,7 +112,6 @@ async def get(event):
 
 
 @bot.on(admin_cmd(pattern="ftoi$"))
-@bot.on(sudo_cmd(pattern="ftoi$", allow_sudo=True))
 async def on_file_to_photo(event):
     target = await event.get_reply_message()
     catt = await edit_or_reply(event, "Converting.....")
@@ -149,7 +145,6 @@ async def on_file_to_photo(event):
 
 
 @bot.on(admin_cmd(pattern="gif$"))
-@bot.on(sudo_cmd(pattern="gif$", allow_sudo=True))
 async def _(event):
     catreply = await event.get_reply_message()
     if not catreply or not catreply.media or not catreply.media.document:
@@ -200,7 +195,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern="nfc ?(.*)"))
-@bot.on(sudo_cmd(pattern="nfc ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
