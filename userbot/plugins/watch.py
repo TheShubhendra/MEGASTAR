@@ -7,7 +7,7 @@
 from justwatch import JustWatch, justwatchapi
 
 from .. import CMD_HELP
-from ..utils import admin_cmd, edit_or_reply, sudo_cmd
+from ..utils import admin_cmd, edit_or_reply
 
 justwatchapi.__dict__["HEADER"] = {
     "User-Agent": "JustWatch client (github.com/dawoudt/JustWatchAPI)"
@@ -78,7 +78,6 @@ def get_provider(url):
 
 
 @bot.on(admin_cmd(pattern="watch (.*)"))
-@bot.on(sudo_cmd(pattern="watch (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
