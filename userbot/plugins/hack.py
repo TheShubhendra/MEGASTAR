@@ -4,14 +4,13 @@ import asyncio
 
 from telethon.tl.functions.users import GetFullUserRequest
 
-from ..utils import admin_cmd, edit_or_reply, sudo_cmd
+from ..utils import admin_cmd, edit_or_reply
 from . import ALIVE_NAME, CMD_HELP
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "cat"
 
 
 @bot.on(admin_cmd(pattern=r"hack$", outgoing=True))
-@bot.on(sudo_cmd(pattern=r"hack$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -48,7 +47,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern=f"thack$", outgoing=True))
-@bot.on(sudo_cmd(pattern=r"thack$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -74,7 +72,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern=f"wahack$", outgoing=True))
-@bot.on(sudo_cmd(pattern=r"wahack$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
