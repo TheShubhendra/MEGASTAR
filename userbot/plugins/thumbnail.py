@@ -7,14 +7,13 @@ from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 from PIL import Image
 
-from ..utils import admin_cmd, edit_or_reply, sudo_cmd
+from ..utils import admin_cmd, edit_or_reply
 from . import CMD_HELP, take_screen_shot
 
 thumb_image_path = Config.TMP_DOWNLOAD_DIRECTORY + "/thumb_image.jpg"
 
 
 @bot.on(admin_cmd(pattern="savethumb$"))
-@bot.on(sudo_cmd(pattern="savethumb$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -44,7 +43,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern="clearthumb$"))
-@bot.on(sudo_cmd(pattern="clearthumb$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -56,7 +54,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern="getthumb$"))
-@bot.on(sudo_cmd(pattern="getthumb$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
