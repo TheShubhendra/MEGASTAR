@@ -2,11 +2,10 @@ from asyncio import sleep
 
 import requests
 
-from ..utils import admin_cmd, edit_or_reply, sudo_cmd
+from ..utils import admin_cmd, edit_or_reply
 
 
 @bot.on(admin_cmd(pattern="lmg (.*)"))
-@bot.on(sudo_cmd(pattern="lmg (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -28,7 +27,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern="lmy (.*)"))
-@bot.on(sudo_cmd(pattern="lmy (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -52,7 +50,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern="ddg (.*)"))
-@bot.on(sudo_cmd(pattern="ddg (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -76,7 +73,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern="lmalt (.*)"))
-@bot.on(sudo_cmd(pattern="lmalt (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -98,7 +94,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern="lmvar (.*)"))
-@bot.on(sudo_cmd(pattern="lmvar (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -122,7 +117,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern="lmlog (.*)"))
-@bot.on(sudo_cmd(pattern="lmlog (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -144,7 +138,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern="dyno (.*)"))
-@bot.on(sudo_cmd(pattern="dyno (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -166,7 +159,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern="lmkp (.*)"))
-@bot.on(sudo_cmd(pattern="lmkp (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -188,7 +180,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern="gem (.*)"))
-@bot.on(sudo_cmd(pattern="gem (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -210,7 +201,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern="archive (.*)"))
-@bot.on(sudo_cmd(pattern="archive (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
