@@ -5,12 +5,11 @@ from telethon.errors.rpcerrorlist import PollOptionInvalidError
 from telethon.tl.types import InputMediaPoll, Poll
 
 from .. import CMD_HELP
-from ..utils import admin_cmd, edit_or_reply, sudo_cmd
+from ..utils import admin_cmd, edit_or_reply
 from . import Build_Poll
 
 
 @bot.on(admin_cmd(pattern="poll( (.*)|$)"))
-@bot.on(sudo_cmd(pattern="poll( (.*)|$)", allow_sudo=True))
 async def pollcreator(catpoll):
     reply_to_id = None
     if catpoll.reply_to_msg_id:
