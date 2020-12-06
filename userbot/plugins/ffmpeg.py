@@ -5,7 +5,7 @@ import os
 import time
 from datetime import datetime
 
-from ..utils import admin_cmd, edit_or_reply, progress, 
+from ..utils import admin_cmd, edit_or_reply, progress
 
 FF_MPEG_DOWN_LOAD_MEDIA_PATH = "unievent.client.media.ffmpeg"
 
