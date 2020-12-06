@@ -3,11 +3,10 @@ Syntax: .invite <User(s)>"""
 
 from telethon import functions
 
-from ..utils import admin_cmd, sudo_cmd
+from ..utils import admin_cmd
 
 
 @bot.on(admin_cmd(pattern="invite ?(.*)"))
-@bot.on(sudo_cmd(pattern="invite ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
