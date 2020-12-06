@@ -6,8 +6,7 @@ from telethon.tl.functions.channels import EditAdminRequest
 from telethon.tl.types import ChatAdminRights
 
 from .. import ALIVE_NAME, CMD_HELP
-from ..utils import admin_cmd, edit_or_reply, 
-
+from ..utils import admin_cmd, edit_or_reply
 logging.basicConfig(
     format="[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s", level=logging.WARNING
 )
