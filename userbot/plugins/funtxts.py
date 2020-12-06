@@ -1,10 +1,9 @@
 import nekos
 
-from ..utils import admin_cmd, edit_or_reply, sudo_cmd
+from ..utils import admin_cmd, edit_or_reply
 
 
 @bot.on(admin_cmd(pattern="tcat$"))
-@bot.on(sudo_cmd(pattern="tcat$", allow_sudo=True))
 async def hmm(cat):
     if cat.fwd_from:
         return
@@ -13,7 +12,6 @@ async def hmm(cat):
 
 
 @bot.on(admin_cmd(pattern="why$"))
-@bot.on(sudo_cmd(pattern="why$", allow_sudo=True))
 async def hmm(cat):
     if cat.fwd_from:
         return
@@ -22,7 +20,6 @@ async def hmm(cat):
 
 
 @bot.on(admin_cmd(pattern="fact$"))
-@bot.on(sudo_cmd(pattern="fact$", allow_sudo=True))
 async def hmm(cat):
     if cat.fwd_from:
         return
