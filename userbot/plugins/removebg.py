@@ -17,12 +17,11 @@ import os
 
 import requests
 
-from ..utils import admin_cmd, edit_or_reply, sudo_cmd
+from ..utils import admin_cmd, edit_or_reply
 from . import CMD_HELP, convert_toimage
 
 
 @bot.on(admin_cmd(pattern="(rmbg|srmbg) ?(.*)"))
-@bot.on(sudo_cmd(pattern="(rmbg|srmbg) ?(.*)", allow_sudo=True))
 async def remove_background(event):
     if event.fwd_from:
         return
@@ -77,7 +76,7 @@ async def remove_background(event):
             await event.delete()
         elif cmd == "srmbg":
             with io.BytesIO(output_file_name.content) as remove_bg_image:
-                remove_bg_image.name = "CATBG_less.webp"
+                remove_bg_image.name = "LUBBG_less.webp"
                 await event.client.send_file(
                     event.chat_id,
                     remove_bg_image,
