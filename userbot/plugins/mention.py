@@ -2,11 +2,10 @@
 
 from telethon.tl.types import ChannelParticipantsAdmins
 
-from ..utils import admin_cmd, edit_or_reply, sudo_cmd
+from ..utils import admin_cmd, edit_or_reply
 
 
 @bot.on(admin_cmd(pattern="tagall$"))
-@bot.on(sudo_cmd(pattern="tagall$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -22,7 +21,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern="all (.*)"))
-@bot.on(sudo_cmd(pattern="all (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -43,7 +41,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern="report$"))
-@bot.on(sudo_cmd(pattern="report$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -63,7 +60,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern="men (.*)"))
-@bot.on(sudo_cmd(pattern="men (.*)", allow_sudo=True))
 async def _(event):
     input_str = event.pattern_match.group(1)
     if event.reply_to_msg_id:
