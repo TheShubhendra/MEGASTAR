@@ -2,13 +2,12 @@ from telethon import events, functions, types
 from telethon.tl.functions.messages import EditChatDefaultBannedRightsRequest
 from telethon.tl.types import ChatBannedRights
 
-from ..utils import admin_cmd, sudo_cmd
+from ..utils import admin_cmd
 from . import CMD_HELP
 from .sql_helper.locks_sql import get_locks, is_locked, update_lock
 
 
 @bot.on(admin_cmd(pattern=r"lock( (?P<target>\S+)|$)"))
-@bot.on(sudo_cmd(pattern=r"lock( (?P<target>\S+)|$)", allow_sudo=True))
 async def _(event):
     # Space weirdness in regex required because argument is optional and other
     # commands start with ".lock"
@@ -109,7 +108,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern="unlock (.*)"))
-@bot.on(sudo_cmd(pattern="unlock (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -208,7 +206,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern="locks$"))
-@bot.on(sudo_cmd(pattern="locks$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
