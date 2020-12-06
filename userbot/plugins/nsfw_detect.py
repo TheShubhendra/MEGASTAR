@@ -5,12 +5,11 @@ import os
 
 import requests
 
-from ..utils import admin_cmd, sudo_cmd
+from ..utils import admin_cmd
 from . import CMD_HELP
 
 
 @bot.on(admin_cmd(pattern="detect$", outgoing=True))
-@bot.on(sudo_cmd(pattern="detect$", allow_sudo=True))
 async def detect(event):
     if Config.DEEP_AI is None:
         return await edit_delete(
