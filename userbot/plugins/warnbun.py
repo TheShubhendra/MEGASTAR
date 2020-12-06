@@ -3,11 +3,10 @@ import html
 
 import userbot.plugins.sql_helper.warns_sql as sql
 
-from ..utils import admin_cmd, edit_or_reply, sudo_cmd
+from ..utils import admin_cmd, edit_or_reply
 
 
 @bot.on(admin_cmd(pattern="warn (.*)"))
-@bot.on(sudo_cmd(pattern="warn (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -39,7 +38,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern="warns$"))
-@bot.on(sudo_cmd(pattern="warns$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -67,7 +65,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern="reset_warns$"))
-@bot.on(sudo_cmd(pattern="reset_warns$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
