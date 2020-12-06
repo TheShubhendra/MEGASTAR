@@ -1,13 +1,12 @@
 import asyncio
 
-from ..utils import admin_cmd, edit_or_reply, sudo_cmd
+from ..utils import admin_cmd, edit_or_reply
 from . import ALIVE_NAME
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "cat"
 
 
 @bot.on(admin_cmd(outgoing=True, pattern="kilr( (.*)|$)"))
-@bot.on(sudo_cmd(pattern="kilr( (.*)|$)", allow_sudo=True))
 async def _(event):
     name = event.pattern_match.group(1)
     if not name:
@@ -33,7 +32,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern="eye$"))
-@bot.on(sudo_cmd(pattern="eye$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -60,7 +58,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern="thinking$"))
-@bot.on(sudo_cmd(pattern="thinking$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -111,7 +108,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern=f"snake$", outgoing=True))
-@bot.on(sudo_cmd(pattern="snake$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -153,7 +149,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern=f"human$", outgoing=True))
-@bot.on(sudo_cmd(pattern="human$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -184,7 +179,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern=f"mc$", outgoing=True))
-@bot.on(sudo_cmd(pattern="mc$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -227,7 +221,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern="virus$"))
-@bot.on(sudo_cmd(pattern="virus$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -272,7 +265,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern=r"repe$", outgoing=True))
-@bot.on(sudo_cmd(pattern="repe$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -317,7 +309,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern=f"nikal$", outgoing=True))
-@bot.on(sudo_cmd(pattern="nikal$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -338,7 +329,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern=f"music$", outgoing=True))
-@bot.on(sudo_cmd(pattern="music$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -364,7 +354,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern=f"squ$", outgoing=True))
-@bot.on(sudo_cmd(pattern="squ$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
