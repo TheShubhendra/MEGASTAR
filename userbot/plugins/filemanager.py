@@ -8,7 +8,7 @@ import time
 from pathlib import Path
 
 from ..utils import admin_cmd, edit_or_reply, humanbytes
-from . import CMD_HELP, runcmd 
+from . import CMD_HELP
 
 
 @bot.on(admin_cmd(pattern="ls ?(.*)"))
