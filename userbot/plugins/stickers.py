@@ -22,7 +22,7 @@ from telethon.tl.types import (
 )
 
 from .. import CMD_HELP
-from ..utils import admin_cmd, edit_or_reply, sudo_cmd
+from ..utils import admin_cmd, edit_or_reply
 
 KANGING_STR = [
     "Using Witchery to kang this sticker...",
@@ -41,7 +41,6 @@ combot_stickers_url = "https://combot.org/telegram/stickers?q="
 
 
 @bot.on(admin_cmd(outgoing=True, pattern="kang ?(.*)"))
-@bot.on(sudo_cmd(pattern="kang ?(.*)", allow_sudo=True))
 async def kang(args):
     """ For .kang command, kangs stickers or creates new ones. """
     user = await bot.get_me()
@@ -91,7 +90,7 @@ async def kang(args):
         return
     if photo:
         splat = args.text.split()
-        emoji = emoji if emojibypass else "😂"
+        emoji = emoji if emojibypass else "🙂"
         pack = 1
         if len(splat) == 3:
             if char_is_emoji(splat[1]):
@@ -287,7 +286,6 @@ async def kang(args):
 
 
 @bot.on(admin_cmd(pattern="stkrinfo$", outgoing=True))
-@bot.on(sudo_cmd(pattern="stkrinfo$", allow_sudo=True))
 async def get_pack_info(event):
     if not event.is_reply:
         await edit_or_reply(event, "`I can't fetch info from nothing, can I ?!`")
@@ -331,7 +329,6 @@ async def get_pack_info(event):
 
 
 @bot.on(admin_cmd(pattern="stickers ?(.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern="stickers ?(.*)", allow_sudo=True))
 async def cb_sticker(event):
     split = event.pattern_match.group(1)
     if not split:
