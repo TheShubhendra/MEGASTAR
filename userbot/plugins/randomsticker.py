@@ -8,14 +8,13 @@ import requests
 from PIL import Image
 from telethon import functions, types, utils
 
-from ..utils import admin_cmd, sudo_cmd
+from ..utils import admin_cmd
 
 BASE_URL = "https://headp.at/pats/{}"
 PAT_IMAGE = "pat.webp"
 
 
 @bot.on(admin_cmd(pattern="cat$"))
-@bot.on(sudo_cmd(pattern="cat$", allow_sudo=True))
 async def _(event):
     try:
         await event.delete()
@@ -39,7 +38,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern="dab$", outgoing=True))
-@bot.on(sudo_cmd(pattern="dab$", allow_sudo=True))
 async def handler(event):
     blacklist = {
         1653974154589768377,
@@ -76,7 +74,6 @@ async def handler(event):
 
 
 @bot.on(admin_cmd(pattern="brain$", outgoing=True))
-@bot.on(sudo_cmd(pattern="brain$", allow_sudo=True))
 async def handler(event):
     blacklist = {}
     try:
@@ -103,7 +100,6 @@ async def handler(event):
 
 
 @bot.on(admin_cmd(pattern="pat$", outgoing=True))
-@bot.on(sudo_cmd(pattern="pat$", allow_sudo=True))
 async def lastfm(event):
     try:
         await event.delete()
