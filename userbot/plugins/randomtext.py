@@ -11,11 +11,10 @@ No Logic Pligon for @PepeBot
 import random
 from asyncio import sleep
 
-from ..utils import admin_cmd, edit_or_reply, sudo_cmd
+from ..utils import admin_cmd, edit_or_reply
 
 
 @bot.on(admin_cmd(pattern=r"sing$", outgoing=True))
-@bot.on(sudo_cmd(pattern=r"sing$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -155,7 +154,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern=f"hps$", outgoing=True))
-@bot.on(sudo_cmd(pattern=f"hps$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -245,7 +243,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern=f"gott$", outgoing=True))
-@bot.on(sudo_cmd(pattern=f"gott$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -395,7 +392,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern=f"gotm$", outgoing=True))
-@bot.on(sudo_cmd(pattern=f"gotm$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -555,7 +551,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern="bello$", outgoing=True))
-@bot.on(sudo_cmd(pattern="bello$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -941,7 +936,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern=r"tip$", outgoing=True))
-@bot.on(sudo_cmd(pattern=r"tip$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -1303,7 +1297,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern=r"qt$"))
-@bot.on(sudo_cmd(pattern=r"qt$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -1491,7 +1484,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern=f"logic$", outgoing=True))
-@bot.on(sudo_cmd(pattern=f"logic$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
