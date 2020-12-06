@@ -6,13 +6,12 @@ Syntax: .mash <text>
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
-from userbot.utils import admin_cmd, sudo_cmd
+from userbot.utils import admin_cmd
 
 from . import CMD_HELP, reply_id
 
 
 @bot.on(admin_cmd(pattern="mash ?(.*)"))
-@bot.on(sudo_cmd(pattern="mash ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
