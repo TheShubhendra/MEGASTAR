@@ -7,12 +7,11 @@ import os
 import time
 from pathlib import Path
 
-from ..utils import admin_cmd, edit_or_reply, humanbytes, sudo_cmd
+from ..utils import admin_cmd, edit_or_reply, humanbytes
 from . import CMD_HELP, runcmd
 
 
 @bot.on(admin_cmd(pattern="ls ?(.*)"))
-@bot.on(sudo_cmd(pattern="ls ?(.*)", allow_sudo=True))
 async def lst(event):
     cat = "".join(event.text.split(maxsplit=1)[1:])
     path = cat or os.getcwd()
@@ -93,7 +92,6 @@ async def lst(event):
 
 
 @bot.on(admin_cmd(pattern="rem (.*)"))
-@bot.on(sudo_cmd(pattern="rem (.*)", allow_sudo=True))
 async def lst(event):
     cat = event.pattern_match.group(1)
     if cat:
