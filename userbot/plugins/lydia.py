@@ -7,7 +7,7 @@ from time import time
 from coffeehouse.api import API
 from coffeehouse.lydia import LydiaAI
 
-from ..utils import admin_cmd, edit_or_reply, sudo_cmd
+from ..utils import admin_cmd, edit_or_reply
 from . import BOTLOG, BOTLOG_CHATID, CMD_HELP
 from .sql_helper.lydia_ai_sql import add_s, get_all_s, get_s, remove_s
 
@@ -20,7 +20,6 @@ if Var.LYDIA_API_KEY:
 
 
 @bot.on(admin_cmd(pattern="(en|re|li)ai$", outgoing=True))
-@bot.on(sudo_cmd(pattern="(en|re|li)ai$", allow_sudo=True))
 async def lydia_disable_enable(event):
     if event.fwd_from:
         return
