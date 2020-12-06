@@ -2,12 +2,11 @@
 import random
 import re
 
-from ..utils import admin_cmd, edit_or_reply, sudo_cmd
+from ..utils import admin_cmd, edit_or_reply
 from . import CMD_HELP, fonts
 
 
 @bot.on(admin_cmd(pattern="str(?: |$)(.*)"))
-@bot.on(sudo_cmd(pattern="str(?: |$)(.*)", allow_sudo=True))
 async def stretch(stret):
     textx = await stret.get_reply_message()
     message = stret.text
@@ -26,7 +25,6 @@ async def stretch(stret):
 
 
 @bot.on(admin_cmd(pattern="zal(?: |$)(.*)"))
-@bot.on(sudo_cmd(pattern="zal(?: |$)(.*)", allow_sudo=True))
 async def zal(zgfy):
     reply_text = list()
     textx = await zgfy.get_reply_message()
@@ -62,7 +60,6 @@ async def zal(zgfy):
 
 
 @bot.on(admin_cmd(pattern="cp(?: |$)(.*)"))
-@bot.on(sudo_cmd(pattern="cp(?: |$)(.*)", allow_sudo=True))
 async def copypasta(cp_e):
     textx = await cp_e.get_reply_message()
     message = cp_e.pattern_match.group(1)
@@ -96,7 +93,6 @@ async def copypasta(cp_e):
 
 
 @bot.on(admin_cmd(pattern="weeb(?: |$)(.*)"))
-@bot.on(sudo_cmd(pattern="weeb(?: |$)(.*)", allow_sudo=True))
 async def weebify(event):
     args = event.pattern_match.group(1)
     if not args:
@@ -114,7 +110,6 @@ async def weebify(event):
 
 
 @bot.on(admin_cmd(pattern="downside(?: |$)(.*)"))
-@bot.on(sudo_cmd(pattern="downside(?: |$)(.*)", allow_sudo=True))
 async def stylish_generator(event):
     args = event.pattern_match.group(1)
     if not args:
@@ -134,7 +129,6 @@ async def stylish_generator(event):
 
 
 @bot.on(admin_cmd(pattern="subscript(?: |$)(.*)"))
-@bot.on(sudo_cmd(pattern="subscript(?: |$)(.*)", allow_sudo=True))
 async def stylish_generator(event):
     args = event.pattern_match.group(1)
     if not args:
@@ -154,7 +148,6 @@ async def stylish_generator(event):
 
 
 @bot.on(admin_cmd(pattern="superscript(?: |$)(.*)"))
-@bot.on(sudo_cmd(pattern="superscript(?: |$)(.*)", allow_sudo=True))
 async def stylish_generator(event):
     args = event.pattern_match.group(1)
     if not args:
