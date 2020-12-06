@@ -14,7 +14,7 @@ import requests
 import urllib3
 
 from .. import CMD_HELP
-from ..utils import admin_cmd, edit_or_reply, sudo_cmd
+from ..utils import admin_cmd, edit_or_reply
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 # =================
@@ -26,7 +26,6 @@ HEROKU_API_KEY = Config.HEROKU_API_KEY
 
 
 @bot.on(admin_cmd(pattern=r"(set|get|del) var (.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern=r"(set|get|del) var (.*)", allow_sudo=True))
 async def variable(var):
     """
     Manage most of ConfigVars setting, set new var, get current var,
@@ -106,7 +105,6 @@ async def variable(var):
 
 
 @bot.on(admin_cmd(pattern="usage$", outgoing=True))
-@bot.on(sudo_cmd(pattern="usage$", allow_sudo=True))
 async def dyno_usage(dyno):
     """
     Get your account Dyno Usage
@@ -165,7 +163,6 @@ async def dyno_usage(dyno):
 
 
 @bot.on(admin_cmd(pattern="herokulogs$", outgoing=True))
-@bot.on(sudo_cmd(pattern="herokulogs$", allow_sudo=True))
 async def _(dyno):
     try:
         Heroku = heroku3.from_key(HEROKU_API_KEY)
