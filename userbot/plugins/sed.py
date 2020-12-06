@@ -12,9 +12,7 @@ KNOWN_RE_BOTS = re.compile(
     r"(regex|moku|BananaButler_|rgx|l4mR)bot", flags=re.IGNORECASE
 )
 
-# Heavily based on
-# https://github.com/SijmenSchoon/regexbot/blob/master/regexbot.py
-
+@SSP2306
 last_msgs = defaultdict(lambda: deque(maxlen=10))
 
 
