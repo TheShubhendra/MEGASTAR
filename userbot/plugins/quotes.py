@@ -11,7 +11,7 @@ from . import CMD_HELP
 async def quote_search(event):
     if event.fwd_from:
         return
-    catevent = await edit_or_reply(event, "`Processing...`")
+    event = await edit_or_reply(event, "`Processing...`")
     input_str = event.pattern_match.group(1)
     if not input_str:
         api_url = "https://quotes.cwprojects.live/random"
@@ -26,9 +26,9 @@ async def quote_search(event):
         except:
             response = None
     if response is not None:
-        await catevent.edit(f"`{response['text']}`")
+        await event.edit(f"`{response['text']}`")
     else:
-        await edit_delete(catevent, "`Sorry Zero results found`", 5)
+        await edit_delete(event, "`Sorry Zero results found`", 5)
 
 
 CMD_HELP.update(
