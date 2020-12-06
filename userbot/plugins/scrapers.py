@@ -11,12 +11,11 @@ import requests
 from wikipedia import summary
 from wikipedia.exceptions import DisambiguationError, PageError
 
-from ..utils import admin_cmd, edit_or_reply, sudo_cmd
+from ..utils import admin_cmd, edit_or_reply
 from . import BOTLOG, BOTLOG_CHATID
 
 
 @bot.on(admin_cmd(outgoing=True, pattern=r"wiki (.*)"))
-@bot.on(sudo_cmd(allow_sudo=True, pattern=r"wiki (.*)"))
 async def wiki(wiki_q):
     """ For .wiki command, fetch content from Wikipedia. """
     match = wiki_q.pattern_match.group(1)
@@ -52,9 +51,8 @@ async def wiki(wiki_q):
 
 
 @bot.on(admin_cmd(pattern="imdb (.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern="imdb (.*)", allow_sudo=True))
 async def imdb(e):
-    catevent = await edit_or_reply(e, "`searching........")
+    event = await edit_or_reply(e, "`searching........")
     try:
         movie_name = e.pattern_match.group(1)
         remove_space = movie_name.split(" ")
@@ -115,7 +113,7 @@ async def imdb(e):
                 mov_rating = r.strong["title"]
         else:
             mov_rating = "Not available"
-        await catevent.edit(
+        await event.edit(
             "<a href=" + poster + ">&#8203;</a>"
             "<b>Title : </b><code>"
             + mov_title
@@ -141,4 +139,4 @@ async def imdb(e):
             parse_mode="HTML",
         )
     except IndexError:
-        await catevent.edit("Plox enter **Valid movie name** kthx")
+        await event.edit("Plox enter **Valid movie name** kthx")
