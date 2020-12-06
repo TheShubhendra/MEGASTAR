@@ -15,12 +15,11 @@ from telethon.tl.types import MessageEntityMentionName
 from telethon.utils import get_input_location
 
 from .. import CMD_HELP, LOGS, TEMP_DOWNLOAD_DIRECTORY
-from ..utils import admin_cmd, edit_or_reply, sudo_cmd
+from ..utils import admin_cmd, edit_or_reply
 from . import spamwatch
 
 
 @bot.on(admin_cmd(pattern="userinfo(?: |$)(.*)"))
-@bot.on(sudo_cmd(pattern="userinfo(?: |$)(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -122,7 +121,6 @@ async def get_full_user(event):
 
 
 @bot.on(admin_cmd(pattern="whois(?: |$)(.*)"))
-@bot.on(sudo_cmd(pattern="whois(?: |$)(.*)", allow_sudo=True))
 async def who(event):
     cat = await edit_or_reply(event, "`Fetching userinfo wait....`")
     if not os.path.isdir(TEMP_DOWNLOAD_DIRECTORY):
@@ -235,7 +233,6 @@ async def fetch_info(replied_user, event):
 
 
 @bot.on(admin_cmd(pattern="link(?: |$)(.*)"))
-@bot.on(sudo_cmd(pattern="link(?: |$)(.*)", allow_sudo=True))
 async def permalink(mention):
     """ For .link command, generates a link to the user's PM with a custom text. """
     user, custom = await get_user_from_event(mention)
