@@ -1,12 +1,11 @@
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
-from ..utils import admin_cmd, edit_or_reply, sudo_cmd
+from ..utils import admin_cmd, edit_or_reply
 from . import CMD_HELP
 
 
 @bot.on(admin_cmd(pattern="ctg$", outgoing=True))
-@bot.on(sudo_cmd(pattern="ctg$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -18,7 +17,7 @@ async def _(event):
         await edit_or_reply(event, "```Reply to a Link```")
         return
     chat = "@chotamreaderbot"
-    catevent = await edit_or_reply(event, "```Processing```")
+    event = await edit_or_reply(event, "```Processing```")
     async with event.client.conversation(chat) as conv:
         try:
             response = conv.wait_event(
@@ -28,14 +27,14 @@ async def _(event):
             response = await response
             await event.client.send_read_acknowledge(conv.chat_id)
         except YouBlockedUserError:
-            await catevent.edit(
+            await event.edit(
                 "`RIP Check Your Blacklist Boss and unblock @chotamreaderbot`"
             )
             return
         if response.text.startswith(""):
-            await catevent.edit("Am I Dumb Or Am I Dumb?")
+            await event.edit("Am I Dumb Or Am I Dumb?")
         else:
-            await catevent.delete()
+            await event.delete()
             await event.client.send_message(event.chat_id, response.message)
 
 
