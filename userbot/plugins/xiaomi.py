@@ -5,12 +5,11 @@
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
-from ..utils import admin_cmd, edit_or_reply, sudo_cmd
+from ..utils import admin_cmd, edit_or_reply
 from . import CMD_HELP
 
 
 @bot.on(admin_cmd(pattern="firmware(?: |$)(.*)"))
-@bot.on(sudo_cmd(pattern="firmware(?: |$)(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -34,7 +33,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern="vendor(?: |$)(.*)"))
-@bot.on(sudo_cmd(pattern="vendor(?: |$)(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -58,7 +56,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern="specs(?: |$)(.*)"))
-@bot.on(sudo_cmd(pattern="specs(?: |$)(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -82,7 +79,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern="fastboot(?: |$)(.*)"))
-@bot.on(sudo_cmd(pattern="fastboot(?: |$)(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -106,7 +102,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern="recovery(?: |$)(.*)"))
-@bot.on(sudo_cmd(pattern="recovery(?: |$)(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -130,7 +125,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern="pb(?: |$)(.*)"))
-@bot.on(sudo_cmd(pattern="pb(?: |$)(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -154,7 +148,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern="of(?: |$)(.*)"))
-@bot.on(sudo_cmd(pattern="of(?: |$)(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
