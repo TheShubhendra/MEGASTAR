@@ -14,12 +14,11 @@ from PIL import Image, ImageColor
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
-from ..utils import admin_cmd, edit_or_reply, sudo_cmd
+from ..utils import admin_cmd, edit_or_reply
 from . import CMD_HELP
 
 
 @bot.on(admin_cmd(pattern="scan ?(.*)"))
-@bot.on(sudo_cmd(pattern="scan ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -61,7 +60,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern=r"decode$", outgoing=True))
-@bot.on(sudo_cmd(pattern=r"decode$", allow_sudo=True))
 async def parseqr(qr_e):
     if not os.path.isdir(Config.TEMP_DIR):
         os.makedirs(Config.TEMP_DIR)
@@ -98,7 +96,6 @@ async def parseqr(qr_e):
 
 
 @bot.on(admin_cmd(pattern="barcode ?(.*)"))
-@bot.on(sudo_cmd(pattern="barcode ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -150,7 +147,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern=r"makeqr(?: |$)([\s\S]*)", outgoing=True))
-@bot.on(sudo_cmd(pattern=r"makeqr(?: |$)([\s\S]*)", allow_sudo=True))
 async def make_qr(makeqr):
     #  .makeqr command, make a QR Code containing the given content.
     input_str = makeqr.pattern_match.group(1)
@@ -190,7 +186,6 @@ async def make_qr(makeqr):
 
 
 @bot.on(admin_cmd(pattern="cal (.*)"))
-@bot.on(sudo_cmd(pattern="cal (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -209,7 +204,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern="currency (.*)"))
-@bot.on(sudo_cmd(pattern="currency (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -246,7 +240,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern="currencies$"))
-@bot.on(sudo_cmd(pattern="currencies$", allow_sudo=True))
 async def currencylist(ups):
     if ups.fwd_from:
         return
@@ -260,7 +253,6 @@ async def currencylist(ups):
 
 
 @bot.on(admin_cmd(pattern="ifsc (.*)"))
-@bot.on(sudo_cmd(pattern="ifsc (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -277,7 +269,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern="color (.*)"))
-@bot.on(sudo_cmd(pattern="color (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -313,7 +304,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern="xkcd ?(.*)"))
-@bot.on(sudo_cmd(pattern="xkcd ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
