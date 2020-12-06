@@ -2,12 +2,11 @@ import sys
 from os import execl
 from time import sleep
 
-from ..utils import admin_cmd, edit_or_reply, sudo_cmd
+from ..utils import admin_cmd, edit_or_reply
 from . import BOTLOG, BOTLOG_CHATID, CMD_HELP, bot
 
 
 @bot.on(admin_cmd(pattern="restart$"))
-@bot.on(sudo_cmd(pattern="restart$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -22,7 +21,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern="shutdown$"))
-@bot.on(sudo_cmd(pattern="shutdown$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -33,7 +31,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern="sleep( [0-9]+)?$"))
-@bot.on(sudo_cmd(pattern="sleep( [0-9]+)?$", allow_sudo=True))
 async def _(event):
     if " " not in event.pattern_match.group(1):
         return await edit_or_reply(event, "Syntax: `.sleep time`")
