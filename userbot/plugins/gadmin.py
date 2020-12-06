@@ -16,7 +16,7 @@ from telethon.tl.types import ChatBannedRights, MessageEntityMentionName
 
 import userbot.plugins.sql_helper.gban_sql_helper as gban_sql
 
-from ..utils import admin_cmd, edit_or_reply, sudo_cmd
+from ..utils import admin_cmd, edit_or_reply
 from . import BOTLOG, BOTLOG_CHATID, CAT_ID, CMD_HELP, admin_groups
 from .sql_helper.mute_sql import is_muted, mute, unmute
 
@@ -45,7 +45,6 @@ UNBAN_RIGHTS = ChatBannedRights(
 
 
 @bot.on(admin_cmd(pattern=r"gban(?: |$)(.*)"))
-@bot.on(sudo_cmd(pattern=r"gban(?: |$)(.*)", allow_sudo=True))
 async def catgban(cat):
     cate = await edit_or_reply(cat, "gbanning.......")
     start = datetime.now()
@@ -117,7 +116,6 @@ async def catgban(cat):
 
 
 @bot.on(admin_cmd(pattern=r"ungban(?: |$)(.*)"))
-@bot.on(sudo_cmd(pattern=r"ungban(?: |$)(.*)", allow_sudo=True))
 async def catgban(cat):
     cate = await edit_or_reply(cat, "ungbaning.....")
     start = datetime.now()
@@ -171,7 +169,6 @@ async def catgban(cat):
 
 
 @bot.on(admin_cmd(pattern="listgban$"))
-@bot.on(sudo_cmd(pattern=r"listgban$", allow_sudo=True))
 async def gablist(event):
     if event.fwd_from:
         return
@@ -204,7 +201,6 @@ async def gablist(event):
 
 
 @bot.on(admin_cmd(outgoing=True, pattern=r"gmute ?(\d+)?"))
-@bot.on(sudo_cmd(pattern=r"gmute ?(\d+)?", allow_sudo=True))
 async def startgmute(event):
     private = False
     if event.fwd_from:
@@ -245,7 +241,6 @@ async def startgmute(event):
 
 
 @bot.on(admin_cmd(outgoing=True, pattern=r"ungmute ?(\d+)?"))
-@bot.on(sudo_cmd(pattern=r"ungmute ?(\d+)?", allow_sudo=True))
 async def endgmute(event):
     private = False
     if event.fwd_from:
