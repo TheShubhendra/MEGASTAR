@@ -6,7 +6,7 @@ import sys
 import traceback
 
 from .. import CMD_HELP
-from ..utils import admin_cmd, edit_or_reply,
+from ..utils import admin_cmd, edit_or_reply
 
 
 @bot.on(admin_cmd(pattern="bash (.*)"))
