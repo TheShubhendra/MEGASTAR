@@ -10,12 +10,11 @@ from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 
-from ..utils import admin_cmd, edit_or_reply, sudo_cmd
+from ..utils import admin_cmd, edit_or_reply
 from . import CMD_HELP, awooify, baguette, iphonex, lolice
 
 
 @bot.on(admin_cmd("mask$", outgoing=True))
-@bot.on(sudo_cmd(pattern="mask$", allow_sudo=True))
 async def _(catbot):
     reply_message = await catbot.get_reply_message()
     if not reply_message.media or not reply_message:
@@ -46,7 +45,6 @@ async def _(catbot):
 
 
 @bot.on(admin_cmd(pattern="awooify$"))
-@bot.on(sudo_cmd(pattern="awooify$", allow_sudo=True))
 async def catbot(catmemes):
     replied = await catmemes.get_reply_message()
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
@@ -97,7 +95,6 @@ async def catbot(catmemes):
 
 
 @bot.on(admin_cmd(pattern="lolice$"))
-@bot.on(sudo_cmd(pattern="lolice$", allow_sudo=True))
 async def catbot(catmemes):
     replied = await catmemes.get_reply_message()
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
@@ -148,7 +145,6 @@ async def catbot(catmemes):
 
 
 @bot.on(admin_cmd(pattern="bun$"))
-@bot.on(sudo_cmd(pattern="bun$", allow_sudo=True))
 async def catbot(catmemes):
     replied = await catmemes.get_reply_message()
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
@@ -199,7 +195,6 @@ async def catbot(catmemes):
 
 
 @bot.on(admin_cmd(pattern="iphx$"))
-@bot.on(sudo_cmd(pattern="iphx$", allow_sudo=True))
 async def catbot(catmemes):
     replied = await catmemes.get_reply_message()
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
