@@ -32,7 +32,7 @@ from urllib.error import HTTPError
 
 from pySmartDL import SmartDL
 
-from ..utils import admin_cmd, edit_or_reply, humanbytes, sudo_cmd
+from ..utils import admin_cmd, edit_or_reply, humanbytes
 from . import CMD_HELP, LOGS, time_formatter
 
 TEMP_DOWNLOAD_DIRECTORY = Config.TMP_DOWNLOAD_DIRECTORY
@@ -54,7 +54,6 @@ async def subprocess_run(megadl, cmd):
 
 
 @bot.on(admin_cmd(outgoing=True, pattern=r"mega(?: |$)(.*)"))
-@bot.on(sudo_cmd(allow_sudo=True, pattern=r"mega(?: |$)(.*)"))
 async def mega_downloader(megadl):
     catevent = await edit_or_reply(megadl, "`Collecting information...`")
     if not os.path.isdir(TEMP_DOWNLOAD_DIRECTORY):
