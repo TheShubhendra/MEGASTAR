@@ -10,7 +10,7 @@ import subprocess
 import requests
 
 from .. import CMD_HELP
-from ..utils import admin_cmd, edit_or_reply, sudo_cmd
+from ..utils import admin_cmd, edit_or_reply
 
 link_regex = re.compile(
     "((https?):((//)|(\\\\))+([\w\d:#@%/;$()~_?\+-=\\\.&](#!)?)*)", re.DOTALL
@@ -18,7 +18,6 @@ link_regex = re.compile(
 
 
 @bot.on(admin_cmd(pattern="labstack( (.*)|$)"))
-@bot.on(sudo_cmd(pattern="labstack( (.*)|$)", allow_sudo=True))
 async def labstack(event):
     if event.fwd_from:
         return
@@ -82,17 +81,11 @@ async def labstack(event):
         pattern="webupload ?(.+?|) --(fileio|oload|anonfiles|transfer|filebin|anonymousfiles|vshare|bayfiles)"
     )
 )
-@bot.on(
-    sudo_cmd(
-        pattern="webupload ?(.+?|) --(fileio|oload|anonfiles|transfer|filebin|anonymousfiles|vshare|bayfiles)",
-        allow_sudo=True,
-    )
-)
 async def _(event):
     editor = await edit_or_reply(event, "processing ...")
     input_str = event.pattern_match.group(1)
     selected_transfer = event.pattern_match.group(2)
-    catcheck = None
+    check = None
     if input_str:
         file_name = input_str
     else:
@@ -100,7 +93,7 @@ async def _(event):
         file_name = await event.client.download_media(
             reply.media, Config.TMP_DOWNLOAD_DIRECTORY
         )
-        catcheck = True
+        check = True
     # a dictionary containing the shell commands
     CMD_WEB = {
         "fileio": 'curl -F "file=@{full_file_path}" https://file.io',
@@ -144,7 +137,7 @@ async def _(event):
         await editor.edit(result)
     else:
         await editor.edit(error)
-    if catcheck:
+    if check:
         os.remove(file_name)
 
 
