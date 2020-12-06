@@ -5,13 +5,12 @@ Userbot plugin for CatUserbot
 """
 import emoji
 
-from ..utils import admin_cmd, edit_or_reply, sudo_cmd
+from ..utils import admin_cmd, edit_or_reply,
 from . import CMD_HELP
 from . import fonts as emojify
 
 
 @bot.on(admin_cmd(pattern="emoji(?: |$)(.*)"))
-@bot.on(sudo_cmd(pattern="emoji(?: |$)(.*)", allow_sudo=True))
 async def itachi(event):
     args = event.pattern_match.group(1)
     if not args:
@@ -34,7 +33,6 @@ async def itachi(event):
 
 
 @bot.on(admin_cmd(pattern="cmoji(?: |$)(.*)"))
-@bot.on(sudo_cmd(pattern="cmoji(?: |$)(.*)", allow_sudo=True))
 async def itachi(event):
     args = event.pattern_match.group(1)
     if not args:
