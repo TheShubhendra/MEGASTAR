@@ -27,13 +27,12 @@ Type `.poto` for get **All profile pics of that User**
 
 import asyncio
 
-from ..utils import admin_cmd, edit_or_reply, sudo_cmd
+from ..utils import admin_cmd, edit_or_reply
 
 name = "Profile Photos"
 
 
 @bot.on(admin_cmd(pattern="poto ?(.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern="poto ?(.*)", allow_sudo=True))
 async def potocmd(event):
     """Gets the profile photos of replied users, channels or chats"""
     uid = "".join(event.raw_text.split(maxsplit=1)[1:])
