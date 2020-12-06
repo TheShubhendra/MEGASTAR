@@ -7,11 +7,10 @@ from userbot.utils import load_module
 from var import Var
 
 from .. import CMD_HELP
-from ..utils import admin_cmd, sudo_cmd
+from ..utils import admin_cmd,
 
 
 @bot.on(admin_cmd(pattern="extdl$", outgoing=True))
-@bot.on(sudo_cmd(pattern="extdl$", allow_sudo=True))
 async def install(event):
     if event.fwd_from:
         return
