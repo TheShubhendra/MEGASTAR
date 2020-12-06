@@ -1,7 +1,3 @@
-"""
-by  @sandy1709 ( https://t.me/mrconfused  )
-"""
-# songs finder for catuserbot
 
 import asyncio
 import os
@@ -12,7 +8,7 @@ from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 from validators.url import url
 
-from ..utils import admin_cmd, edit_or_reply, sudo_cmd
+from ..utils import admin_cmd, edit_or_reply
 from . import CMD_HELP, name_dl, reply_id, runcmd, song_dl, video_dl, yt_search
 
 # =========================================================== #
@@ -28,7 +24,6 @@ SONGBOT_BLOCKED_STRING = "<code>Please unblock @songdl_bot and try again</code>"
 
 
 @bot.on(admin_cmd(pattern="(song|song320)($| (.*))"))
-@bot.on(sudo_cmd(pattern="(song|song320)($| (.*))", allow_sudo=True))
 async def _(event):
     reply_to_id = await reply_id(event)
     reply = await event.get_reply_message()
@@ -107,7 +102,6 @@ async def delete_messages(event, chat, from_message):
 
 
 @bot.on(admin_cmd(pattern="vsong( (.*)|$)"))
-@bot.on(sudo_cmd(pattern="vsong( (.*)|$)", allow_sudo=True))
 async def _(event):
     reply_to_id = await reply_id(event)
     reply = await event.get_reply_message()
@@ -173,7 +167,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern="song2 (.*)"))
-@bot.on(sudo_cmd(pattern="song2 (.*)", allow_sudo=True))
 async def cat_song_fetcer(event):
     if event.fwd_from:
         return
