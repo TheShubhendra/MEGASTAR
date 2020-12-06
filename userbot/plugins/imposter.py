@@ -54,7 +54,7 @@ async def _(event):
     await stcr3.delete()
     await text4.delete()
     stcr4 = await event.client.send_file(
-        event.chat_id, "CAADAQADLwADnjOcH-wxu-ehy6NRAg"
+        event.chat_id, "Tobw7BkaeSFbwMqbkIhKiw"
     )
     legendevent = await event.reply(f"{name} is ejected.......")
     await asyncio.sleep(2)
@@ -85,14 +85,14 @@ async def _(event):
         )
         await asyncio.sleep(4)
         await legendevent.delete()
-        await event.client.send_file(event.chat_id, "CAADAQADLQADnjOcH39IqwyR6Q_0Ag")
+        await event.client.send_file(event.chat_id, "Tobw7BkaeSFbwMqbkIhKiw")
     elif cmd == "n":
         await legendevent.edit(
             f". 　　　。　　　　•　 　ﾟ　　。 　　.\n .　　　 　　.　　　　　。　　 。　. 　\n\n  . 　　 。   　     ඞ         。 . 　　 • 　　　　•\n\n  ﾟ{name} was not an Imposter.      。　. 　 　       。　.                                        。　. \n                                   　.          。　  　. \n　'         1 Impostor remains    　 。　.  　　.                。　.        。 　     .          。 　            .               .         .    ,      。\n　　ﾟ　　　.　　.    ,　 　。　 　. 　 .     。"
         )
         await asyncio.sleep(4)
         await legendevent.delete()
-        await event.client.send_file(event.chat_id, "CAADAQADQAADnjOcH-WOkB8DEctJAg")
+        await event.client.send_file(event.chat_id, "Tobw7BkaeSFbwMqbkIhKiw")
 
 
 @bot.on(admin_cmd(pattern="timp(|n) (.*)", outgoing=True))
