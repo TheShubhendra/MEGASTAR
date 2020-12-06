@@ -5,14 +5,13 @@ from datetime import datetime
 import requests
 from github import Github
 
-from ..utils import admin_cmd, edit_or_reply, sudo_cmd
+from ..utils import admin_cmd, edit_or_reply
 from . import CMD_HELP
 
 GIT_TEMP_DIR = "./temp/"
 
 
 @bot.on(admin_cmd(pattern="github (.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern="github (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -52,7 +51,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern="commit$", outgoing=True))
-@bot.on(sudo_cmd(pattern="commit$", allow_sudo=True))
 async def download(event):
     if event.fwd_from:
         return
