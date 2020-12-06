@@ -1,90 +1,52 @@
-import asyncio
 
+# Retrieves the name history and the username history of the replied user..
+import datetime
+from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
+from telethon.tl.functions.account import UpdateNotifySettingsRequest
+from userbot.utils import admin_cmd
+from userbot import bot, CMD_HELP
 
-from ..utils import admin_cmd, edit_or_reply
-from . import CMD_HELP, parse_pre, sanga_seperator
-
-
-@bot.on(admin_cmd(pattern="(sg|sgu)($| (.*))"))
+@borg.on(admin_cmd(pattern="sg ?(.*)"))
 async def _(event):
-    # https://t.me/catuserbot_support/181159
-    input_str = "".join(event.text.split(maxsplit=1)[1:])
-    reply_message = await event.get_reply_message()
-    if not input_str and not reply_message:
-        catevent = await edit_or_reply(
-            event,
-            "`reply to  user's text message to get name/username history or give userid`",
-        )
-        await asyncio.sleep(5)
-        return await catevent.delete()
-    if input_str:
-        try:
-            uid = int(input_str)
-        except ValueError:
-            try:
-                u = await event.client.get_entity(input_str)
-            except ValueError:
-                catevent = await edit_or_reply(
-                    event, "`Give userid or username to find name history`"
-                )
-                await asyncio.sleep(5)
-                return await catevent.delete()
-            uid = u.id
-    else:
-        uid = reply_message.sender_id
-    chat = "@SangMataInfo_bot"
-    catevent = await edit_or_reply(event, "`Processing...`")
+    if event.fwd_from:
+        return 
+    if not event.reply_to_msg_id:
+       await event.edit("Reply to any user message.")
+       return
+    reply_message = await event.get_reply_message() 
+    chat = "Sangmatainfo_bot"
+    sender = reply_message.sender.id
+    if reply_message.sender.bot:
+       await event.edit("Reply to actual users message.")
+       return
+    await event.edit("Checking...")
     async with event.client.conversation(chat) as conv:
-        try:
-            await conv.send_message(f"/search_id {uid}")
-        except YouBlockedUserError:
-            await catevent.edit("`unblock @Sangmatainfo_bot and then try`")
-            await asyncio.sleep(5)
-            return await catevent.delete()
-        responses = []
-        while True:
-            try:
-                response = await conv.get_response(timeout=2)
-            except asyncio.TimeoutError:
-                break
-            responses.append(response.text)
-        await event.client.send_read_acknowledge(conv.chat_id)
-    if not responses:
-        await catevent.edit("`bot can't fetch results`")
-        await asyncio.sleep(5)
-        return await catevent.delete()
-    if "No records found" in responses:
-        await catevent.edit("`The user doesn't have any record`")
-        await asyncio.sleep(5)
-        return await catevent.delete()
-    names, usernames = await sanga_seperator(responses)
-    cmd = event.pattern_match.group(1)
-    if cmd == "sg":
-        sandy = None
-        for i in names:
-            if sandy:
-                await event.reply(i, parse_mode=parse_pre)
-            else:
-                sandy = True
-                await catevent.edit(i, parse_mode=parse_pre)
-    elif cmd == "sgu":
-        sandy = None
-        for i in usernames:
-            if sandy:
-                await event.reply(i, parse_mode=parse_pre)
-            else:
-                sandy = True
-                await catevent.edit(i, parse_mode=parse_pre)
+          try:     
+              #await conv.send_message("/search_id {}".format(sender))
+              response1 = conv.wait_event(events.NewMessage(incoming=True,from_users=461843263))
+              response2 = conv.wait_event(events.NewMessage(incoming=True,from_users=461843263))
+              response3 = conv.wait_event(events.NewMessage(incoming=True,from_users=461843263))
+              await conv.send_message("/search_id {}".format(sender))
+              response1 = await response1 
+              response2 = await response2 
+              response3= await response3 
+          except YouBlockedUserError: 
+              await event.reply("Please unblock ( @Sangmatainfo_bot ) ")
+              return
+          if response1.text.startswith("No records found"):
+             await event.edit("User never changed his Username...")
+          else: 
+             await event.delete()
+             await event.client.send_message(event.chat_id, response2.message)
+             
+             await event.client.send_message(event.chat_id, response3.message)
 
 
 CMD_HELP.update(
     {
-        "sangmata": "**Plugin : **`sangmata`\
-    \n\n**Syntax : **`.sg <username/userid/reply>`\
-    \n**Function : **__Shows you the previous name history of user.__\
-    \n\n**Syntax : **`.sgu <username/userid/reply>`\
-    \n**Function : **__Shows you the previous username history of user.__\
-    "
+        "sangmata": "__**PLUGIN NAME :** sangmata__\
+    \n\n📌** CMD ★** `.sg`\
+    \n**USAGE   ★  **Retrieves the name and username history of the replied user even if he has forwarded message privacy..! This may not always work as perfect it should be..if doesn't then try once again.."
     }
 )
