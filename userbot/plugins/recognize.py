@@ -4,11 +4,10 @@ from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
 from .. import CMD_HELP
-from ..utils import admin_cmd, edit_or_reply, sudo_cmd
+from ..utils import admin_cmd, edit_or_reply
 
 
 @bot.on(admin_cmd(pattern="recognize ?(.*)"))
-@bot.on(sudo_cmd(pattern="recognize ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -23,7 +22,7 @@ async def _(event):
     if reply_message.sender.bot:
         await event.edit("Reply to actual users message.")
         return
-    cat = await edit_or_reply(event, "recognizeing this media")
+    lub = await edit_or_reply(event, "recognizeing this media")
     async with event.client.conversation(chat) as conv:
         try:
             response = conv.wait_event(
@@ -32,7 +31,7 @@ async def _(event):
             await event.client.forward_messages(chat, reply_message)
             response = await response
         except YouBlockedUserError:
-            await cat.edit("unblock @Rekognition_Bot and try again")
+            await lub.edit("unblock @Rekognition_Bot and try again")
             return
         if response.text.startswith("See next message."):
             response = conv.wait_event(
@@ -40,10 +39,10 @@ async def _(event):
             )
             response = await response
             msg = response.message.message
-            await cat.edit(msg)
+            await lub.edit(msg)
             await event.client.send_read_acknowledge(conv.chat_id)
         else:
-            await cat.edit("sorry, I couldnt find it")
+            await lub.edit("sorry, I couldnt find it")
             await event.client.send_read_acknowledge(conv.chat_id)
 
 
