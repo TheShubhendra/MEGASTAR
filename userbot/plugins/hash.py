@@ -11,11 +11,9 @@ from subprocess import run as runapp
 import pybase64
 
 from .. import CMD_HELP
-from ..utils import admin_cmd, edit_or_reply, errors_handler, sudo_cmd
-
+from ..utils import admin_cmd, edit_or_reply, errors_handler
 
 @bot.on(admin_cmd(outgoing=True, pattern="hash (.*)"))
-@bot.on(sudo_cmd(allow_sudo=True, pattern="hash (.*)"))
 @errors_handler
 async def gethash(hash_q):
     """ For .hash command, find the md5, sha1, sha256, sha512 of the string. """
@@ -59,7 +57,6 @@ async def gethash(hash_q):
 
 
 @bot.on(admin_cmd(outgoing=True, pattern="hbase (en|de) (.*)"))
-@bot.on(sudo_cmd(allow_sudo=True, pattern="hbase (en|de) (.*)"))
 @errors_handler
 async def endecrypt(query):
     """ For .base64 command, find the base64 encoding of the given string. """
