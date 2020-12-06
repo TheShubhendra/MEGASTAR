@@ -2,46 +2,14 @@
 
 from telethon import events
 
-from ..utils import admin_cmd, edit_or_reply, sudo_cmd
-from . import BOTLOG_CHATID, CMD_HELP, cat_users
+from ..utils import admin_cmd, edit_or_reply
+from . import BOTLOG_CHATID, CMD_HELP
 from .sql_helper.snip_sql import add_note, get_note, get_notes, rm_note
 
 
-@bot.on(events.NewMessage(pattern=r"\#(\S+)", from_users=cat_users))
-async def incom_note(getnt):
-    try:
-        if not (await getnt.get_sender()).bot:
-            notename = getnt.text[1:]
-            note = get_note(notename)
-            message_id_to_reply = getnt.message.reply_to_msg_id
-            if not message_id_to_reply:
-                message_id_to_reply = None
-            if note:
-                if note.f_mesg_id:
-                    msg_o = await bot.get_messages(
-                        entity=BOTLOG_CHATID, ids=int(note.f_mesg_id)
-                    )
-                    await getnt.delete()
-                    await bot.send_message(
-                        getnt.chat_id,
-                        msg_o,
-                        reply_to=message_id_to_reply,
-                        link_preview=False,
-                    )
-                elif note.reply:
-                    await getnt.delete()
-                    await bot.send_message(
-                        getnt.chat_id,
-                        note.reply,
-                        reply_to=message_id_to_reply,
-                        link_preview=False,
-                    )
-    except AttributeError:
-        pass
 
 
 @bot.on(admin_cmd(pattern=r"snips (\w*)"))
-@bot.on(sudo_cmd(pattern=r"snips (\w*)", allow_sudo=True))
 async def add_snip(fltr):
     keyword = fltr.pattern_match.group(1)
     string = fltr.text.partition(keyword)[2]
@@ -80,7 +48,6 @@ async def add_snip(fltr):
 
 
 @bot.on(admin_cmd(pattern="snipl$"))
-@bot.on(sudo_cmd(pattern=r"snipl$", allow_sudo=True))
 async def on_snip_list(event):
     message = "There are no saved notes in this chat"
     notes = get_notes()
@@ -105,11 +72,10 @@ async def on_snip_list(event):
 
 
 @bot.on(admin_cmd(pattern=r"snipd (\S+)"))
-@bot.on(sudo_cmd(pattern=r"snipd (\S+)", allow_sudo=True))
 async def on_snip_delete(event):
     name = event.pattern_match.group(1)
-    catsnip = get_note(name)
-    if catsnip:
+    snip = get_note(name)
+    if snip:
         rm_note(name)
     else:
         return await edit_or_reply(
