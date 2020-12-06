@@ -10,7 +10,7 @@ from bs4 import BeautifulSoup
 from PIL import Image
 from search_engine_parser import GoogleSearch
 
-from ..utils import admin_cmd, edit_or_reply, errors_handler, sudo_cmd
+from ..utils import admin_cmd, edit_or_reply, errors_handler
 from . import BOTLOG, BOTLOG_CHATID, CMD_HELP, bot
 
 opener = urllib.request.build_opener()
@@ -19,7 +19,6 @@ opener.addheaders = [("User-agent", useragent)]
 
 
 @bot.on(admin_cmd(outgoing=True, pattern=r"gs (.*)"))
-@bot.on(sudo_cmd(allow_sudo=True, pattern=r"gs (.*)"))
 async def gsearch(q_event):
     catevent = await edit_or_reply(q_event, "`searching........`")
     match = q_event.pattern_match.group(1)
@@ -53,7 +52,6 @@ async def gsearch(q_event):
 
 
 @bot.on(admin_cmd(pattern="grs$"))
-@bot.on(sudo_cmd(pattern="grs$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -114,7 +112,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern=r"reverse(?: |$)(\d*)", outgoing=True))
-@bot.on(sudo_cmd(pattern=r"reverse(?: |$)(\d*)", allow_sudo=True))
 @errors_handler
 async def _(img):
     if os.path.isfile("okgoogle.png"):
