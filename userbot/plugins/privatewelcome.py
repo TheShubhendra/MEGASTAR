@@ -1,7 +1,7 @@
 from telethon import events
 
 from .. import BOTLOG_CHATID, CMD_HELP, bot
-from ..utils import admin_cmd, edit_or_reply, sudo_cmd
+from ..utils import admin_cmd, edit_or_reply
 from .sql_helper import pmpermit_sql as pmpermit_sql
 from .sql_helper.welcomesql import (
     addwelcome_setting,
@@ -73,7 +73,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern=r"savepwel ?(.*)"))
-@bot.on(sudo_cmd(pattern=r"savepwel ?(.*)", allow_sudo=True))
 async def save_welcome(event):
     msg = await event.get_reply_message()
     string = "".join(event.text.split(maxsplit=1)[1:])
@@ -109,7 +108,6 @@ async def save_welcome(event):
 
 
 @bot.on(admin_cmd(pattern="clearpwel$"))
-@bot.on(sudo_cmd(pattern="clearpwel$", allow_sudo=True))
 async def del_welcome(event):
     if rmwelcome_setting(event.chat_id) is True:
         await edit_or_reply(event, "`Welcome note deleted for this chat.`")
@@ -118,7 +116,6 @@ async def del_welcome(event):
 
 
 @bot.on(admin_cmd(pattern="listpwel$"))
-@bot.on(sudo_cmd(pattern="listpwel$", allow_sudo=True))
 async def show_welcome(event):
     cws = getcurrent_welcome_settings(event.chat_id)
     if not cws:
