@@ -1,4 +1,4 @@
-# pastebin for catuserbot
+# pastebin for LEGEND USERBOT
 
 import os
 
@@ -7,7 +7,7 @@ from requests import exceptions, get
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
-from ..utils import admin_cmd, edit_or_reply, sudo_cmd
+from ..utils import admin_cmd, edit_or_reply
 from . import CMD_HELP
 
 
@@ -23,9 +23,8 @@ DOGBIN_URL = "https://del.dog/"
 
 
 @bot.on(admin_cmd(pattern="paste( (.*)|$)", outgoing=True))
-@bot.on(sudo_cmd(pattern="paste( (.*)|$)", allow_sudo=True))
 async def _(event):
-    catevent = await edit_or_reply(event, "`pasting to del dog.....`")
+    event = await edit_or_reply(event, "`pasting to del dog.....`")
     input_str = "".join(event.text.split(maxsplit=1)[1:])
     if input_str:
         message = input_str
@@ -56,19 +55,18 @@ async def _(event):
     if r["isUrl"]:
         nurl = f"https://del.dog/v/{r['key']}"
         rawurl = f"https://del.dog/raw/{r['key']}"
-        await catevent.edit(
-            f"**Pasted to dogbin : **[dog]({nurl}).\n**Raw url :** [raw link]({rawurl})\n**GoTo Original URL: **[link]({url})"
+        await event.edit(
+            f"**Pasted to dogbin : **[dog]({nurl}).\n**Raw url :** [raw link]({rawurl})\n**GoTo Original URL: **[link]({url}\n @legend_userbot)"
         )
     else:
-        await catevent.edit(
-            f"**Pasted to dogbin : **[dog]({url})\n**Raw url :** [raw link](https://del.dog/raw/{r['key']})"
+        await event.edit(
+            f"**Pasted to dogbin : **[dog]({url})\n**Raw url :** [raw link](https://del.dog/raw/{r['key']}\n @legend_userbot)"
         )
 
 
 @bot.on(admin_cmd(pattern="neko( (.*)|$)", outgoing=True))
-@bot.on(sudo_cmd(pattern="neko( (.*)|$)", allow_sudo=True))
 async def _(event):
-    catevent = await edit_or_reply(event, "`pasting to neko bin.....`")
+    event = await edit_or_reply(event, "`pasting to neko bin.....`")
     input_str = "".join(event.text.split(maxsplit=1)[1:])
     if input_str:
         message = input_str
@@ -117,14 +115,13 @@ async def _(event):
             .get("key")
         )
         url = f"https://nekobin.com/{key}"
-    reply_text = f"**Pasted to Nekobin : **[neko]({url})\n**Raw url : **[Raw](https://nekobin.com/raw/{key})"
-    await catevent.edit(reply_text)
+    reply_text = f"**Pasted to Nekobin : **[neko]({url})\n**Raw url : **[Raw](https://nekobin.com/raw/{key}\n @legend_userbot)"
+    await event.edit(reply_text)
 
 
 @bot.on(admin_cmd(pattern="iffuci( (.*)|$)", outgoing=True))
-@bot.on(sudo_cmd(pattern="iffuci( (.*)|$)", allow_sudo=True))
 async def _(event):
-    catevent = await edit_or_reply(event, "`pasting to del dog.....`")
+    event = await edit_or_reply(event, "`pasting to del dog.....`")
     input_str = "".join(event.text.split(maxsplit=1)[1:])
     if input_str:
         message = input_str
@@ -154,19 +151,18 @@ async def _(event):
     url = f"https://iffuci.tk/{r['key']}"
     if r["isUrl"]:
         nurl = f"https://iffuci.tk/v/{r['key']}"
-        await catevent.edit(
+        await event.edit(
             "code is pasted to {}. GoTo Original URL: {}".format(nurl, url)
         )
     else:
-        await catevent.edit("code is pasted to {}".format(url))
+        await event.edit("code is pasted to {}".format(url))
 
 
 @bot.on(admin_cmd(outgoing=True, pattern="getpaste( (.*)|$)"))
-@bot.on(sudo_cmd(allow_sudo=True, pattern="getpaste( (.*)|$)"))
 async def get_dogbin_content(dog_url):
     textx = await dog_url.get_reply_message()
     message = dog_url.pattern_match.group(1)
-    catevent = await edit_or_reply(dog_url, "`Getting dogbin content...`")
+    event = await edit_or_reply(dog_url, "`Getting dogbin content...`")
     if not message and textx:
         message = str(textx.message)
     format_normal = f"{DOGBIN_URL}"
@@ -179,33 +175,32 @@ async def get_dogbin_content(dog_url):
     elif message.startswith("del.dog/"):
         message = message[len("del.dog/") :]
     else:
-        await catevent.edit("`Is that even a dogbin url?`")
+        await event.edit("`Is that even a dogbin url?`")
         return
     resp = get(f"{DOGBIN_URL}raw/{message}")
     try:
         resp.raise_for_status()
     except exceptions.HTTPError as HTTPErr:
-        await catevent.edit(
+        await event.edit(
             "Request returned an unsuccessful status code.\n\n" + str(HTTPErr)
         )
         return
     except exceptions.Timeout as TimeoutErr:
-        await catevent.edit("Request timed out." + str(TimeoutErr))
+        await event.edit("Request timed out." + str(TimeoutErr))
         return
     except exceptions.TooManyRedirects as RedirectsErr:
-        await catevent.edit(
+        await event.edit(
             "Request exceeded the configured number of maximum redirections."
             + str(RedirectsErr)
         )
         return
     reply_text = "`Fetched dogbin URL content successfully!`\n\n`Content:` " + resp.text
-    await catevent.edit(reply_text)
+    await event.edit(reply_text)
 
 
 @bot.on(admin_cmd(pattern="paster( (.*)|$)", outgoing=True))
-@bot.on(sudo_cmd(pattern="paster( (.*)|$)", allow_sudo=True))
 async def _(event):
-    catevent = await edit_or_reply(event, "`pasting to del dog.....`")
+    event = await edit_or_reply(event, "`pasting to del dog.....`")
     input_str = "".join(event.text.split(maxsplit=1)[1:])
     previous_message = None
     if input_str:
@@ -236,7 +231,7 @@ async def _(event):
     url = f"https://del.dog/{r['key']}"
     chat = "@chotamreaderbot"
     # This module is modded by @ViperAdnan #KeepCredit
-    await catevent.edit("**Making instant view...**")
+    await event.edit("**Making instant view...**")
     async with event.client.conversation(chat) as conv:
         try:
             response = conv.wait_event(
@@ -245,9 +240,9 @@ async def _(event):
             await event.client.send_message(chat, url)
             response = await response
         except YouBlockedUserError:
-            await catevent.edit("```Please unblock me (@chotamreaderbot) u Nigga```")
+            await event.edit("```Please unblock me (@chotamreaderbot) u Nigga```")
             return
-        await catevent.delete()
+        await event.delete()
         await event.client.send_message(
             event.chat_id, response.message, reply_to=previous_message
         )
