@@ -1,11 +1,10 @@
 from asyncio import sleep
 
-from ..utils import admin_cmd, sudo_cmd
+from ..utils import admin_cmd
 from . import CMD_HELP
 
 
 @bot.on(admin_cmd(pattern="sdm (\d*) (.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern="sdm (\d*) (.*)", allow_sudo=True))
 async def selfdestruct(destroy):
     cat = ("".join(destroy.text.split(maxsplit=1)[1:])).split(" ", 1)
     message = cat[1]
@@ -20,7 +19,6 @@ async def selfdestruct(destroy):
 
 
 @bot.on(admin_cmd(pattern="selfdm (\d*) (.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern="selfdm (\d*) (.*)", allow_sudo=True))
 async def selfdestruct(destroy):
     cat = ("".join(destroy.text.split(maxsplit=1)[1:])).split(" ", 1)
     message = cat[1]
