@@ -8,7 +8,7 @@ from datetime import datetime
 import psutil
 from telethon import __version__
 
-from ..utils import admin_cmd, edit_or_reply, sudo_cmd
+from ..utils import admin_cmd, edit_or_reply
 from . import ALIVE_NAME, CMD_HELP, runcmd
 
 # ================= CONSTANT =================
@@ -73,7 +73,6 @@ def get_size(bytes, suffix="B"):
 
 
 @bot.on(admin_cmd(pattern="cpu$"))
-@bot.on(sudo_cmd(pattern="cpu$", allow_sudo=True))
 async def _(event):
     cmd = "cat /proc/cpuinfo | grep 'model name'"
     o = (await runcmd(cmd))[0]
@@ -83,7 +82,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern=f"sysd$", outgoing=True))
-@bot.on(sudo_cmd(pattern=f"sysd$", allow_sudo=True))
 async def sysdetails(sysd):
     cmd = "git clone https://github.com/dylanaraps/neofetch.git"
     await runcmd(cmd)
