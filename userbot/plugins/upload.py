@@ -11,7 +11,7 @@ from hachoir.parser import createParser
 from pymediainfo import MediaInfo
 from telethon.tl.types import DocumentAttributeVideo
 
-from ..utils import admin_cmd, edit_or_reply, sudo_cmd
+from ..utils import admin_cmd, edit_or_reply
 from . import CMD_HELP, make_gif, progress, runcmd, thumb_from_audio
 
 PATH = os.path.join("./temp", "temp_vid.mp4")
@@ -130,7 +130,6 @@ async def upload(path, event, udir_event):
 
 
 @bot.on(admin_cmd(pattern="upload (.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern="upload (.*)", allow_sudo=True))
 async def uploadir(event):
     global uploaded
     input_str = "".join(event.text.split(maxsplit=1)[1:])
@@ -166,7 +165,6 @@ async def uploadir(event):
 
 
 @bot.on(admin_cmd(pattern="circle ?(.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern="circle ?(.*)", allow_sudo=True))
 async def video_catfile(event):
     reply = await event.get_reply_message()
     input_str = "".join(event.text.split(maxsplit=1)[1:])
