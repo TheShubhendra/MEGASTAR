@@ -6,7 +6,7 @@ from telethon.tl.functions.channels import EditAdminRequest
 from telethon.tl.types import ChatAdminRights
 
 from .. import ALIVE_NAME, CMD_HELP
-from ..utils import admin_cmd, edit_or_reply, sudo_cmd
+from ..utils import admin_cmd, edit_or_reply, 
 
 logging.basicConfig(
     format="[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s", level=logging.WARNING
@@ -16,7 +16,6 @@ DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "cat"
 
 
 @bot.on(admin_cmd(pattern="scam ?(.*)"))
-@bot.on(sudo_cmd(pattern="scam ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -33,7 +32,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern="prankpromote ?(.*)"))
-@bot.on(sudo_cmd(pattern="prankpromote ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -56,7 +54,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern=f"padmin$", outgoing=True))
-@bot.on(sudo_cmd(pattern="padmin$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
