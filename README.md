@@ -108,7 +108,7 @@ Risk. Specifically you can redistribute and/or modify it under the terms of the
 published by the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version. 
 
-#Credits (Thanks)
+#  Credits (Thanks)
   `Cat userbot`
 
 # `If any ban occures due to use of userbot the respective dev will not be responsible..`
