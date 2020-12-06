@@ -8,7 +8,7 @@ from pytz import country_names as c_n
 from pytz import country_timezones as c_tz
 from pytz import timezone as tz
 
-from ..utils import admin_cmd, edit_or_reply, sudo_cmd
+from ..utils import admin_cmd, edit_or_reply
 from . import CMD_HELP, COUNTRY, TZ_NUMBER
 
 FONT_FILE_TO_USE = "/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf"
@@ -41,13 +41,6 @@ async def get_tz(con):
 
 
 @bot.on(admin_cmd(outgoing=True, pattern="ctime(?: |$)(.*)(?<![0-9])(?: |$)([0-9]+)?"))
-@bot.on(
-    sudo_cmd(
-        outgoing=True,
-        pattern="ctime(?: |$)(.*)(?<![0-9])(?: |$)([0-9]+)?",
-        allow_sudo=True,
-    )
-)
 async def time_func(tdata):
     """For .time command, return the time of
     1. The country passed as an argument,
@@ -115,7 +108,6 @@ async def time_func(tdata):
 
 
 @bot.on(admin_cmd(pattern="time ?(.*)"))
-@bot.on(sudo_cmd(pattern="time ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
