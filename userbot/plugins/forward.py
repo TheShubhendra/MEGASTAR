@@ -1,13 +1,12 @@
 import string
 
-from ..utils import admin_cmd, edit_or_reply, sudo_cmd
+from ..utils import admin_cmd, edit_or_reply
 from . import CMD_HELP
 
 msg_cache = {}
 
 
 @bot.on(admin_cmd(pattern="frwd$"))
-@bot.on(sudo_cmd(pattern="frwd$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -30,7 +29,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern="resend$"))
-@bot.on(sudo_cmd(pattern="resend$", allow_sudo=True))
 async def _(event):
     try:
         await event.delete()
@@ -43,7 +41,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern=r"fpost\s+(.*)"))
-@bot.on(sudo_cmd(pattern="fpost\s+(.*)", allow_sudo=True))
 async def _(event):
     await event.delete()
     text = event.pattern_match.group(1)
