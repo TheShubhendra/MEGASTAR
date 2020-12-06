@@ -5,14 +5,13 @@ import os
 import lyricsgenius
 from tswift import Song
 
-from ..utils import admin_cmd, edit_or_reply, sudo_cmd
+from ..utils import admin_cmd, edit_or_reply
 from . import CMD_HELP
 
 GENIUS = os.environ.get("GENIUS_API_TOKEN", None)
 
 
 @bot.on(admin_cmd(outgoing=True, pattern="lyrics ?(.*)"))
-@bot.on(sudo_cmd(allow_sudo=True, pattern="lyrics ?(.*)"))
 async def _(event):
     catevent = await edit_or_reply(event, "wi8..! I am searching your lyrics....`")
     reply_to_id = event.message.id
@@ -52,7 +51,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(outgoing=True, pattern="glyrics ?(.*)"))
-@bot.on(sudo_cmd(allow_sudo=True, pattern="glyrics ?(.*)"))
 async def lyrics(lyric):
     if lyric.pattern_match.group(1):
         query = lyric.pattern_match.group(1)
