@@ -1,4 +1,4 @@
-# catUserbot module for having some fun with people.
+# legend Userbot module for having some fun with people.
 
 # Copyright (C) 2019 The Raphielscape Company LLC.
 # Licensed under the Raphielscape Public License, Version 1.b (the "License");
@@ -13,7 +13,7 @@ from telethon import functions
 from telethon.tl.functions.users import GetFullUserRequest
 from telethon.tl.types import ChannelParticipantsAdmins, MessageEntityMentionName
 
-from ..utils import admin_cmd, edit_or_reply, sudo_cmd
+from ..utils import admin_cmd, edit_or_reply
 from . import ALIVE_NAME, BOTLOG, BOTLOG_CHATID, CMD_HELP, catmemes
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "cat"
@@ -53,7 +53,6 @@ async def get_user(event):
 
 
 @bot.on(admin_cmd(outgoing=True, pattern=r"(\w+)say (.*)"))
-@bot.on(sudo_cmd(pattern="(\w+)say (.*)", allow_sudo=True))
 async def univsaye(cowmsg):
     arg = cowmsg.pattern_match.group(1).lower()
     text = cowmsg.pattern_match.group(2)
@@ -67,7 +66,6 @@ async def univsaye(cowmsg):
 
 
 @bot.on(admin_cmd(pattern="coin ?(.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern="coin ?(.*)", allow_sudo=True))
 async def _(event):
     r = random.randint(1, 100)
     input_str = event.pattern_match.group(1)
@@ -102,7 +100,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern=r"slap(?: |$)(.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern="slap(?: |$)(.*)", allow_sudo=True))
 async def who(event):
     replied_user = await get_user(event)
     caption = await catmemes.slap(replied_user, event, DEFAULTUSER)
@@ -118,7 +115,6 @@ async def who(event):
 
 
 @bot.on(admin_cmd(outgoing=True, pattern="(yes|no|maybe|decide)$"))
-@bot.on(sudo_cmd(pattern="(yes|no|maybe|decide)$", allow_sudo=True))
 async def decide(event):
     decision = event.pattern_match.group(1).lower()
     message_id = event.reply_to_msg_id or None
@@ -143,7 +139,6 @@ async def decide(event):
 
 
 @bot.on(admin_cmd(pattern=f"shout", outgoing=True))
-@bot.on(sudo_cmd(pattern=f"shout", allow_sudo=True))
 async def shout(args):
     msg = "```"
     messagestr = args.text
@@ -161,7 +156,6 @@ async def shout(args):
 
 
 @bot.on(admin_cmd(outgoing=True, pattern="owo ?(.*)"))
-@bot.on(sudo_cmd(pattern="owo ?(.*)", allow_sudo=True))
 async def faces(owo):
     textx = await owo.get_reply_message()
     message = owo.pattern_match.group(1)
@@ -183,7 +177,6 @@ async def faces(owo):
 
 
 @bot.on(admin_cmd(outgoing=True, pattern="clap(?: |$)(.*)"))
-@bot.on(sudo_cmd(pattern="clap(?: |$)(.*)", allow_sudo=True))
 async def claptext(event):
     textx = await event.get_reply_message()
     if event.pattern_match.group(1):
@@ -200,7 +193,6 @@ async def claptext(event):
 
 
 @bot.on(admin_cmd(outgoing=True, pattern="smk(?: |$)(.*)"))
-@bot.on(sudo_cmd(pattern="smk(?: |$)(.*)", allow_sudo=True))
 async def smrk(smk):
     textx = await smk.get_reply_message()
     if smk.pattern_match.group(1):
@@ -219,7 +211,6 @@ async def smrk(smk):
 
 
 @bot.on(admin_cmd(pattern="ftext (.*)"))
-@bot.on(sudo_cmd(pattern="ftext (.*)", allow_sudo=True))
 async def payf(event):
     paytext = event.pattern_match.group(1)
     pay = "{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}".format(
@@ -240,7 +231,6 @@ async def payf(event):
 
 
 @bot.on(admin_cmd(outgoing=True, pattern="repo$"))
-@bot.on(sudo_cmd(pattern="repo$", allow_sudo=True))
 async def source(e):
     await edit_or_reply(
         e,
@@ -249,56 +239,48 @@ async def source(e):
 
 
 @bot.on(admin_cmd(pattern="congo$"))
-@bot.on(sudo_cmd(pattern="congo$", allow_sudo=True))
 async def _(e):
     txt = random.choice(catmemes.CONGOREACTS)
     await edit_or_reply(e, txt)
 
 
 @bot.on(admin_cmd(outgoing=True, pattern="shg$"))
-@bot.on(sudo_cmd(pattern="shg$", allow_sudo=True))
 async def shrugger(e):
     txt = random.choice(catmemes.SHGS)
     await edit_or_reply(e, txt)
 
 
 @bot.on(admin_cmd(outgoing=True, pattern="runs$"))
-@bot.on(sudo_cmd(pattern="runs$", allow_sudo=True))
 async def runner_lol(e):
     txt = random.choice(catmemes.RUNSREACTS)
     await edit_or_reply(e, txt)
 
 
 @bot.on(admin_cmd(outgoing=True, pattern="noob$"))
-@bot.on(sudo_cmd(pattern="noob$", allow_sudo=True))
 async def metoo(e):
     txt = random.choice(catmemes.NOOBSTR)
     await edit_or_reply(e, txt)
 
 
 @bot.on(admin_cmd(outgoing=True, pattern="insult$"))
-@bot.on(sudo_cmd(pattern="insult$", allow_sudo=True))
 async def insult(e):
     txt = random.choice(catmemes.INSULT_STRINGS)
     await edit_or_reply(e, txt)
 
 
 @bot.on(admin_cmd(outgoing=True, pattern="hey$"))
-@bot.on(sudo_cmd(pattern="hey$", allow_sudo=True))
 async def hoi(e):
     txt = random.choice(catmemes.HELLOSTR)
     await edit_or_reply(e, txt)
 
 
 @bot.on(admin_cmd(outgoing=True, pattern="pro$"))
-@bot.on(sudo_cmd(pattern="pro$", allow_sudo=True))
 async def proo(e):
     txt = random.choice(catmemes.PRO_STRINGS)
     await edit_or_reply(e, txt)
 
 
 @bot.on(admin_cmd(pattern=f"react ?(.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern="react ?(.*)", allow_sudo=True))
 async def _(e):
     input_str = e.pattern_match.group(1)
     if input_str in "happy":
@@ -326,19 +308,16 @@ async def _(e):
 
 
 @bot.on(admin_cmd(outgoing=True, pattern="10iq$"))
-@bot.on(sudo_cmd(pattern="10iq$", allow_sudo=True))
 async def iqless(e):
     await edit_or_reply(e, "♿")
 
 
 @bot.on(admin_cmd(pattern="fp$"))
-@bot.on(sudo_cmd(pattern=f"fp$", allow_sudo=True))
 async def facepalm(e):
     await e.edit("🤦‍♂")
 
 
 @bot.on(admin_cmd(outgoing=True, pattern="bt$"))
-@bot.on(sudo_cmd(pattern="bt$", allow_sudo=True))
 async def bluetext(e):
     """ Believe me, you will find this useful. """
     if e.is_group:
@@ -350,14 +329,12 @@ async def bluetext(e):
 
 
 @bot.on(admin_cmd(pattern="session$"))
-@bot.on(sudo_cmd(pattern="session$", allow_sudo=True))
 async def _(event):
     mentions = "**telethon.errors.rpcerrorlist.AuthKeyDuplicatedError: The authorization key (session file) was used under two different IP addresses simultaneously, and can no longer be used. Use the same session exclusively, or use different sessions (caused by GetMessagesRequest)**"
     await event.edit(mentions)
 
 
 @bot.on(admin_cmd(pattern="lfy ?(.*)"))
-@bot.on(sudo_cmd(pattern="lfy ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -387,7 +364,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern="gbun", outgoing=True))
-@bot.on(sudo_cmd(pattern="gbun", allow_sudo=True))
 async def gbun(event):
     if event.fwd_from:
         return
