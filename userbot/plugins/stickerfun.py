@@ -1,7 +1,3 @@
-# Random RGB Sticklet by @PhycoNinja13b
-# modified by @UniBorg
-# imported from ppe-remix by @heyworld & @DeletedUser420
-# modified by @mrconfused
 
 import io
 import os
@@ -12,14 +8,13 @@ from PIL import Image, ImageDraw, ImageFont
 from telethon.tl.types import InputMessagesFilterDocument
 
 from .. import CMD_HELP, bot
-from ..utils import admin_cmd, edit_or_reply, sudo_cmd
+from ..utils import admin_cmd, edit_or_reply
 from . import deEmojify, waifutxt
 
 # RegEx by https://t.me/c/1220993104/500653 ( @SnapDragon7410 )
 
 
 @bot.on(admin_cmd(outgoing=True, pattern="sttxt(?: |$)(.*)"))
-@bot.on(sudo_cmd(allow_sudo=True, pattern="sttxt(?: |$)(.*)"))
 async def waifu(animu):
     text = animu.pattern_match.group(1)
     reply_to_id = animu.message
@@ -42,7 +37,6 @@ async def waifu(animu):
 
 
 @bot.on(admin_cmd(pattern=r"stcr ?(?:(.*?) \| )?(.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern=r"stcr ?(?:(.*?) \| )?(.*)", allow_sudo=True))
 async def sticklet(event):
     R = random.randint(0, 256)
     G = random.randint(0, 256)
