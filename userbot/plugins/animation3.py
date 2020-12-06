@@ -1,14 +1,13 @@
 import asyncio
 from collections import deque
 
-from ..utils import admin_cmd, edit_or_reply, sudo_cmd
+from ..utils import admin_cmd, edit_or_reply
 from . import ALIVE_NAME
 
-DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "cat"
+DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "legend"
 
 
 @bot.on(admin_cmd(pattern=r"star$", outgoing=True))
-@bot.on(sudo_cmd(pattern=r"star$", allow_sudo=True))
 async def _(event):
     event = await edit_or_reply(event, "`stars.....`")
     deq = deque(list("🦋✨🦋✨🦋✨🦋✨"))
@@ -19,7 +18,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern=r"boxs$", outgoing=True))
-@bot.on(sudo_cmd(pattern=r"boxs$", allow_sudo=True))
 async def _(event):
     event = await edit_or_reply(event, "`boxs...`")
     deq = deque(list("🟥🟧🟨🟩🟦🟪🟫⬛⬜"))
@@ -30,7 +28,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern=r"rain$", outgoing=True))
-@bot.on(sudo_cmd(pattern=r"rain$", allow_sudo=True))
 async def _(event):
     event = await edit_or_reply(event, "`Raining.......`")
     deq = deque(list("🌬☁️🌩🌨🌧🌦🌥⛅🌤"))
@@ -41,7 +38,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern=r"deploy$", outgoing=True))
-@bot.on(sudo_cmd(pattern=r"deploy$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -68,7 +64,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern=r"dump$", outgoing=True))
-@bot.on(sudo_cmd(pattern=r"dump$", allow_sudo=True))
 async def _(message):
     try:
         obj = message.pattern_match.group(1)
@@ -109,7 +104,6 @@ async def _(message):
 
 
 @bot.on(admin_cmd(pattern=r"fleaveme$", outgoing=True))
-@bot.on(sudo_cmd(pattern=r"fleaveme$", allow_sudo=True))
 async def _(event):
     animation_interval = 1
     animation_ttl = range(10)
@@ -135,7 +129,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern=r"loveu$", outgoing=True))
-@bot.on(sudo_cmd(pattern=r"loveu$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -185,7 +178,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern=r"plane$", outgoing=True))
-@bot.on(sudo_cmd(pattern=r"plane$", allow_sudo=True))
 async def _(event):
     event = await edit_or_reply(event, "Wait for plane...")
     await event.edit("✈-------------")
@@ -206,7 +198,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern=r"police$", outgoing=True))
-@bot.on(sudo_cmd(pattern=r"police$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -233,7 +224,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern=r"jio$", outgoing=True))
-@bot.on(sudo_cmd(pattern=r"jio$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -267,7 +257,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern=r"solarsystem$", outgoing=True))
-@bot.on(sudo_cmd(pattern=r"solarsystem$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
