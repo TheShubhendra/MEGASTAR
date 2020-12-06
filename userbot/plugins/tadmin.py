@@ -7,7 +7,7 @@ from telethon.errors.rpcerrorlist import UserIdInvalidError
 from telethon.tl.functions.channels import EditBannedRequest
 from telethon.tl.types import ChatBannedRights, MessageEntityMentionName
 
-from ..utils import admin_cmd, edit_or_reply, errors_handler, sudo_cmd
+from ..utils import admin_cmd, edit_or_reply, errors_handler
 from . import BOTLOG, BOTLOG_CHATID, CMD_HELP, extract_time
 
 # =================== CONSTANT ===================
@@ -16,7 +16,6 @@ NO_PERM = "`I don't have sufficient permissions! This is so sed. Alexa play desp
 
 
 @bot.on(admin_cmd(pattern=r"tmute(?: |$)(.*)"))
-@bot.on(sudo_cmd(pattern=r"tmute(?: |$)(.*)", allow_sudo=True))
 @errors_handler
 async def tmuter(catty):
     chat = await catty.get_chat()
@@ -91,7 +90,6 @@ async def tmuter(catty):
 
 
 @bot.on(admin_cmd(pattern="tban(?: |$)(.*)"))
-@bot.on(sudo_cmd(pattern="tban(?: |$)(.*)", allow_sudo=True))
 @errors_handler
 async def ban(catty):
     chat = await catty.get_chat()
