@@ -4,12 +4,11 @@ from asyncio import sleep
 
 from telethon.errors import rpcbaseerrors
 
-from ..utils import admin_cmd, edit_or_reply, errors_handler, sudo_cmd
+from ..utils import admin_cmd, edit_or_reply, errors_handler
 from . import BOTLOG, BOTLOG_CHATID, CMD_HELP
 
 
 @bot.on(admin_cmd(outgoing=True, pattern="purge$"))
-@bot.on(sudo_cmd(allow_sudo=True, pattern="purge$"))
 @errors_handler
 async def fastpurger(purg):
     # For .purge command, purge all messages starting from the reply.
@@ -50,7 +49,6 @@ async def fastpurger(purg):
 
 
 @bot.on(admin_cmd(outgoing=True, pattern="purgeme"))
-@bot.on(sudo_cmd(allow_sudo=True, pattern="purgeme"))
 @errors_handler
 async def purgeme(delme):
     # For .purgeme, delete x count of your latest message.
@@ -79,7 +77,6 @@ async def purgeme(delme):
 
 
 @bot.on(admin_cmd(outgoing=True, pattern="del$"))
-@bot.on(sudo_cmd(allow_sudo=True, pattern="del$"))
 @errors_handler
 async def delete_it(delme):
     """ For .del command, delete the replied message. """
