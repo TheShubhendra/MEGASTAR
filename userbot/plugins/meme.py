@@ -1,11 +1,10 @@
 import asyncio
 
 from .. import CMD_HELP
-from ..utils import admin_cmd, edit_or_reply, sudo_cmd
+from ..utils import admin_cmd, edit_or_reply
 
 
 @bot.on(admin_cmd(outgoing=True, pattern="^\:/$"))
-@bot.on(sudo_cmd(pattern="^\:/$", allow_sudo=True))
 async def kek(keks):
     keks = await edit_or_reply(keks, ":\\")
     uio = ["/", "\\"]
@@ -16,7 +15,6 @@ async def kek(keks):
 
 
 @bot.on(admin_cmd(outgoing=True, pattern="^\-_-$"))
-@bot.on(sudo_cmd(pattern="^\-_-$", allow_sudo=True))
 async def lol(lel):
     lel = await edit_or_reply(lel, "-__-")
     okay = "-__-"
@@ -27,7 +25,6 @@ async def lol(lel):
 
 
 @bot.on(admin_cmd(outgoing=True, pattern="^\;_;$"))
-@bot.on(sudo_cmd(pattern="^\;_;$", allow_sudo=True))
 async def fun(e):
     e = await edit_or_reply(e, ";__;")
     t = ";__;"
@@ -38,7 +35,6 @@ async def fun(e):
 
 
 @bot.on(admin_cmd(outgoing=True, pattern="oof$"))
-@bot.on(sudo_cmd(pattern="oof$", allow_sudo=True))
 async def Oof(e):
     t = "Oof"
     catevent = await edit_or_reply(e, t)
@@ -49,7 +45,6 @@ async def Oof(e):
 
 
 @bot.on(admin_cmd(outgoing=True, pattern="type (.*)"))
-@bot.on(sudo_cmd(pattern="type (.*)", allow_sudo=True))
 async def typewriter(typew):
     message = typew.pattern_match.group(1)
     sleep_time = 0.2
@@ -67,7 +62,6 @@ async def typewriter(typew):
 
 
 @bot.on(admin_cmd(pattern="repeat (\d*) (.*)", outgoing=True))
-@bot.on(sudo_cmd(pattern="repeat (\d*) (.*)", allow_sudo=True))
 async def _(event):
     cat = ("".join(event.text.split(maxsplit=1)[1:])).split(" ", 1)
     message = cat[1]
@@ -78,7 +72,6 @@ async def _(event):
 
 
 @bot.on(admin_cmd(pattern=f"meme", outgoing=True))
-@bot.on(sudo_cmd(pattern=f"meme", allow_sudo=True))
 async def meme(event):
     memeVar = event.text
     sleepValue = 0.5
@@ -145,7 +138,6 @@ async def meme(event):
 
 
 @bot.on(admin_cmd(pattern=f"give", outgoing=True))
-@bot.on(sudo_cmd(pattern=f"give", allow_sudo=True))
 async def give(event):
     if event.fwd_from:
         return
@@ -192,7 +184,6 @@ async def give(event):
 
 
 @bot.on(admin_cmd(pattern=f"sadmin$", outgoing=True))
-@bot.on(sudo_cmd(pattern=f"sadmin$", allow_sudo=True))
 async def _(event):
     animation_ttl = range(13)
     event = await edit_or_reply(event, "sadmin")
