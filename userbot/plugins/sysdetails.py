@@ -9,7 +9,7 @@ import psutil
 from telethon import __version__
 
 from ..utils import admin_cmd, edit_or_reply
-from . import ALIVE_NAME, CMD_HELP, runcmd
+from . import ALIVE_NAME, CMD_HELP
 
 # ================= CONSTANT =================
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "cat"
