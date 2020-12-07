@@ -8,7 +8,7 @@ from telethon.errors.rpcerrorlist import YouBlockedUserError
 
 from userbot.utils import admin_cmd
 
-from . import CMD_HELP, reply_id
+from . import CMD_HELP
 
 
 @bot.on(admin_cmd(pattern="mash ?(.*)"))
