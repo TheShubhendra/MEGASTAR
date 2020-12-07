@@ -39,7 +39,7 @@ for name in files:
     with open(name) as f:
         path1 = Path(f.name)
         shortname = path1.stem
-        if shortname.replace(".py", "") not in Config.NO_LOAD:
+        if shortname.replace(".py", "") not in config.NO_LOAD:
             load_module(shortname.replace(".py", ""))
 
 LOGS.info("legend is your fellow now.!!!")
