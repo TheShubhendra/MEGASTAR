@@ -1,18 +1,20 @@
-import glob
-from pathlib import Path
+from userbot import ALIVE_PIC
+from userbot import bot
 from sys import argv
-
-import telethon.utils
+import sys
+from telethon.errors.rpcerrorlist import PhoneNumberInvalidError
+import os
 from telethon import TelegramClient
-
-from . import LOGS, bot
-from .config import Config
-from .utils import load_module
-
+from var import Var
+from userbot.utils import load_module
+from userbot import LOAD_PLUG, BOTLOG_CHATID, LOGS
+from pathlib import Path
+import asyncio
+import telethon.utils
 
 async def add_bot(bot_token):
     await bot.start(bot_token)
-    bot.me = await bot.get_me()
+    bot.me = await bot.get_me() 
     bot.uid = telethon.utils.get_peer_id(bot.me)
 
 
@@ -20,36 +22,41 @@ if len(argv) not in (1, 3, 4):
     bot.disconnect()
 else:
     bot.tgbot = None
-    if Config.TG_BOT_USER_NAME_BF_HER is not None:
-        LOGS.info("Initiating Inline Bot")
+    if Var.TG_BOT_USER_NAME_BF_HER is not None:
+        print("Initiating Inline Bot")
         # ForTheGreatrerGood of beautification
         bot.tgbot = TelegramClient(
-            "TG_BOT_TOKEN", api_id=Config.APP_ID, api_hash=Config.API_HASH
-        ).start(bot_token=Config.TG_BOT_TOKEN_BF_HER)
-        LOGS.info("Initialisation finished with no errors")
-        LOGS.info("Starting Userbot")
-        bot.loop.run_until_complete(add_bot(Config.TG_BOT_USER_NAME_BF_HER))
-        LOGS.info("Startup Completed")
+            "TG_BOT_TOKEN",
+            api_id=Var.APP_ID,
+            api_hash=Var.API_HASH
+        ).start(bot_token=Var.TG_BOT_TOKEN_BF_HER)
+        print("Initialisation finished with no errors")
+        print("Starting Userbot")
+        bot.loop.run_until_complete(add_bot(Var.TG_BOT_USER_NAME_BF_HER))
+        print("Startup Completed")
     else:
         bot.start()
-
-path = "userbot/plugins/*.py"
+    
+import glob
+path = 'userbot/plugins/*.py'
 files = glob.glob(path)
 for name in files:
     with open(name) as f:
         path1 = Path(f.name)
         shortname = path1.stem
-        if shortname.replace(".py", "") not in config.NO_LOAD:
-            load_module(shortname.replace(".py", ""))
+        load_module(shortname.replace(".py", ""))
+        
+if ALIVE_PIC is not None:
+    print("###--------------Alive Pic Added Successfully--------------###")
+    
 
-LOGS.info("legend is your fellow now.!!!")
-LOGS.info(
-    "Congratulations, now type .alive to view if the legend is on your service\n"
-    "support and thank @none1p and @YOU_ARE_UNDER_ARREST for this awesome userbot made by them"
-)
+
+import userbot._core
+print("Everything is Alright, Do .alive or .help to Check Online Status of Your Bot !!")
+print(" Your legend is awake now 🥳 thank to @none1p and @YOU_ARE_UNDER_ARREST for this awesome userbot made by them !!")
+
 
 if len(argv) not in (1, 3, 4):
     bot.disconnect()
 else:
-    bot.tgbot = None
     bot.run_until_disconnected()
