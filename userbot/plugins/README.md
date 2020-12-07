@@ -16,5 +16,5 @@ from userbot.utils import admin_cmd
 async def hello_world(event):
     if event.fwd_from:
         return
-    await event.edit("**HELLO WORLD**\n\nThe following is controlling me too!\n" + Var.SUDO_USERS)
+    await event.edit("**HELLO WORLD**\n\nThe following is controlling me too!\n")
 ```
