@@ -42,7 +42,7 @@ for name in files:
         if shortname.replace(".py", "") not in Config.NO_LOAD:
             load_module(shortname.replace(".py", ""))
 
-LOGS.info("kek!! your viper is poisonous now.!!!")
+LOGS.info("legend is your fellow now.!!!")
 LOGS.info(
     "Congratulations, now type .alive to view if the legend is on your service\n"
     "support and thank @none1p and @YOU_ARE_UNDER_ARREST for this awesome userbot made by them"
