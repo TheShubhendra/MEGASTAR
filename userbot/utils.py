@@ -187,7 +187,6 @@ def admin_cmd(pattern=None, command=None, **args):
     # should this command be available for other users?
    
     # error handling condition check
-    elif "incoming" in args and not args["incoming"]:
         args["outgoing"] = True
 
     # add blacklist chats, UB should not respond in these chats
