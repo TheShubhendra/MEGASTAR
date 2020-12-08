@@ -168,9 +168,9 @@ class config(object):
     DEEP_AI = os.environ.get("DEEP_AI", None)
 
 
-class Production(Config):
+class Production(config):
     LOGGER = False
 
 
-class Development(Config):
+class Development(config):
     LOGGER = True
