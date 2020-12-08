@@ -85,7 +85,13 @@ def command(**args):
             return func
 
         return decorator
-
+         
+            # special fix for snip.py
+            args["pattern"] = re.compile(pattern)
+        elif pattern.startswith(r"^"):
+            args["pattern"] = re.compile(pattern)
+            cmd = pattern.replace("$", "").replace("^", "").replace("\\", "")
+            
 
 def load_module(shortname):
     if shortname.startswith("__"):
