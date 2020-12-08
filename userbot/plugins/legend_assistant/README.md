@@ -1,3 +1,0 @@
-# LEGEND USERBOT's assistant...
-# Yupp
-# lol
