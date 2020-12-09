@@ -23,7 +23,7 @@
 
 <p align="centre"><a href="https://repl.it/@aritramandal1/Legenduserbot?template=https://repl.it/@aritramandal1/Legenduserbot#main.py"> <img src="https://telegra.ph/file/b9133ebfd256fb7d2993a.jpg" alt="GET STRING" width="200" height="100.100"/></a></p>
 <p align="centre"><a href="https://repl.it/@bristi648/Legenduserbot?template=https://repl.it/@bristi648/Legenduserbot"> <img src="https://telegra.ph/file/938cab3c80aa99cb2937e.jpg" alt="GET STRING" width="200" height="100.100"/></a></p>
-)
+
 
 
 
