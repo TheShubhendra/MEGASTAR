@@ -9,6 +9,7 @@
 
 [![Build Status](https://travis-ci.com/Bristi-OP/LEGEND.svg?branch=master)](https://travis-ci.com/Bristi-OP/LEGEND) ![Python Version](https://img.shields.io/badge/python-3.8-lightgrey) ![Stars](https://img.shields.io/github/stars/Bristi-OP/LEGEND) ![Forks](https://img.shields.io/github/forks/Bristi-OP/LEGEND) ![Issues Open](https://img.shields.io/github/issues/Bristi-OP/LEGEND) ![Issues Closed](https://img.shields.io/github/issues-closed/Bristi-OP/LEGEND) ![PR Open](https://img.shields.io/github/issues-pr/Bristi-OP/LEGEND) ![PR Closed](https://img.shields.io/github/issues-pr-closed/Bristi-OP/LEGEND) ![Contributors](https://img.shields.io/github/contributors/Bristi-OP/LEGEND) ![Repo Size](https://img.shields.io/github/repo-size/Bristi-OP/LEGEND) ![License](https://img.shields.io/github/license/Bristi-OP/LEGEND) ![Commit Activity](https://img.shields.io/github/commit-activity/m/Bristi-OP/LEGEND) [![Main Repo!](https://img.shields.io/badge/Main%20Repo-!-orange)](https://github.com/Bristi-OP/LEGEND) [![Join Channel!](https://img.shields.io/badge/Join%20Channel-!-red)](https://t.me/legend_userbot_support_channel) 
 
+[![forthebadge made-with-python](https://camo.githubusercontent.com/5392ad6fb7875a2520001270f08309896b6cb25d/687474703a2f2f466f7254686542616467652e636f6d2f696d616765732f6261646765732f6d6164652d776974682d707974686f6e2e737667)](https://www.python.org/)
 
 
 
