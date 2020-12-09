@@ -12,7 +12,6 @@
 
 
 
-### MADE WITH `PYTHON` <img align="left" alt="Python" width="100px" src="https://telegra.ph/file/2ecbe107d65d2b4681e57.png" />
 
 
 
@@ -112,3 +111,4 @@ published by the Free Software Foundation, either version 3 of the License, or
 
 # `If any ban occures due to use of userbot the respective dev will not be responsible..`
 
+### MADE WITH `PYTHON` <img align="left" alt="Python" width="100px" src="https://telegra.ph/file/2ecbe107d65d2b4681e57.png" />
