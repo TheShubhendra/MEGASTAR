@@ -11,8 +11,8 @@
 
 
 
-### MADE WITH `PYTHON` <img align="left" alt="Python" width="50px" src="https://cdn.jsdelivr.net/npm/simple-icons@3.2.0/icons/python.svg" />
-![PYTHONlogo]<img align="left" alt="Python" width="100px" src="https://telegra.ph/file/2ecbe107d65d2b4681e57.png" />
+### MADE WITH `PYTHON`
+<img align="left" alt="Python" width="100px" src="https://telegra.ph/file/2ecbe107d65d2b4681e57.png" />
 
 
 ### STATUS
