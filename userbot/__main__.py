@@ -1,5 +1,6 @@
 from userbot import ALIVE_PIC
 from userbot import bot
+from userbot.utils import load_module
 from sys import argv
 import sys
 from telethon.errors.rpcerrorlist import PhoneNumberInvalidError
