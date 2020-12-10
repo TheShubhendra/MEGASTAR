@@ -110,7 +110,7 @@ def load_module(shortname):
         mod.logger = logging.getLogger(shortname)
         # support for uniborg
         sys.modules["uniborg.util"] = userbot.utils
-        mod.Config = Config
+        mod.config = config
         mod.borg = bot
         mod.userbot = bot
         # auto-load
