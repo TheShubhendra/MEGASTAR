@@ -20,51 +20,51 @@ mention = f"[{DEFAULTUSER}](tg://user?id={USERID})"
 hmention = f"<a href = tg://user?id={USERID}>{DEFAULTUSER}</a>"
 
 
-Heroku = heroku3.from_key(Config.HEROKU_API_KEY)
+Heroku = heroku3.from_key(config.HEROKU_API_KEY)
 heroku_api = "https://api.heroku.com"
-HEROKU_APP_NAME = Config.HEROKU_APP_NAME
-HEROKU_API_KEY = Config.HEROKU_API_KEY
+HEROKU_APP_NAME = config.HEROKU_APP_NAME
+HEROKU_API_KEY = config.HEROKU_API_KEY
 
-thumb_image_path = Config.TMP_DOWNLOAD_DIRECTORY + "thumb_image.jpg"
+thumb_image_path = config.TMP_DOWNLOAD_DIRECTORY + "thumb_image.jpg"
 
 PM_START = []
 
-PMMENU = "pmpermit_menu" not in Config.NO_LOAD
+PMMENU = "pmpermit_menu" not in config.NO_LOAD
 
-if Config.PRIVATE_GROUP_BOT_API_ID is None:
+if config.PRIVATE_GROUP_BOT_API_ID is None:
     BOTLOG = False
     BOTLOG_CHATID = "me"
 else:
     BOTLOG = True
-    BOTLOG_CHATID = Config.PRIVATE_GROUP_BOT_API_ID
+    BOTLOG_CHATID = config.PRIVATE_GROUP_BOT_API_ID
 
 # Gdrive
-G_DRIVE_CLIENT_ID = Config.G_DRIVE_CLIENT_ID
-G_DRIVE_CLIENT_SECRET = Config.G_DRIVE_CLIENT_SECRET
-G_DRIVE_DATA = Config.G_DRIVE_DATA
-G_DRIVE_FOLDER_ID = Config.G_DRIVE_FOLDER_ID
-TMP_DOWNLOAD_DIRECTORY = Config.TMP_DOWNLOAD_DIRECTORY
+G_DRIVE_CLIENT_ID = config.G_DRIVE_CLIENT_ID
+G_DRIVE_CLIENT_SECRET = config.G_DRIVE_CLIENT_SECRET
+G_DRIVE_DATA = config.G_DRIVE_DATA
+G_DRIVE_FOLDER_ID = config.G_DRIVE_FOLDER_ID
+TMP_DOWNLOAD_DIRECTORY = config.TMP_DOWNLOAD_DIRECTORY
 
 # spamwatch support
-if Config.SPAMWATCH_API:
-    token = Config.SPAMWATCH_API
+if config.SPAMWATCH_API:
+    token = config.SPAMWATCH_API
     spamwatch = spam_watch.Client(token)
 else:
     spamwatch = None
 
 # ================================================
 
-if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
-    os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
+if not os.path.isdir(config.TMP_DOWNLOAD_DIRECTORY):
+    os.makedirs(config.TMP_DOWNLOAD_DIRECTORY)
 
 
 # thumb image
-if Config.THUMB_IMAGE != None:
-    check = url(Config.THUMB_IMAGE)
+if config.THUMB_IMAGE != None:
+    check = url(config.THUMB_IMAGE)
     if check:
         try:
             with open(thumb_image_path, "wb") as f:
-                f.write(requests.get(Config.THUMB_IMAGE).content)
+                f.write(requests.get(config.THUMB_IMAGE).content)
         except:
             pass
 
@@ -94,7 +94,7 @@ def check_data_base_heal_th():
     # https://stackoverflow.com/a/41961968
     is_database_working = False
     output = "No Database is set"
-    if not Config.DB_URI:
+    if not config.DB_URI:
         return is_database_working, output
     from userbot.plugins.sql_helper import SESSION
 
