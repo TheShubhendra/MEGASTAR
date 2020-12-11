@@ -159,18 +159,7 @@ def admin_cmd(pattern=None, **args):
     # get the pattern from the decorator
     if pattern is not None:
         if pattern.startswith(r"\#"):
-            # special fix for snip.py
-            args["pattern"] = re.compile(pattern)
-        else:
-            args["pattern"] = re.compile(handler + pattern)
-            cmd = handler + pattern
-            try:
-                CMD_LIST[file_test].append(cmd)
-            except BaseException:
-                CMD_LIST.update({file_test: [cmd]})
-
-    args["outgoing"] = True
-    # should this command be available for other users?
+        # should this command be available for other users?
     if allow_sudo:
         args["from_users"] = list(Var.SUDO_USERS)
         # Mutually exclusive with outgoing (can only set one of either).
@@ -444,3 +433,4 @@ def load_tgbot(shortname):
         spec.loader.exec_module(mod)
         sys.modules["userbot.plugins.legendbot.tgbot." + shortname] = mod
         print("Bot Has imported " + shortname)
+ 
