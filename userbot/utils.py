@@ -337,16 +337,16 @@ async def edit_or_reply(event, text):
         reply_to = await event.get_reply_message()
         if reply_to:
             return await reply_to.reply(text)
-        return await event.reply(text)
-    return await event.edit(text)
+        else:
+            return await reply_to.edit(text)
 
 
 async def eor(event, text):
         reply_to = await event.get_reply_message()
         if reply_to:
             return await reply_to.reply(text)
-        return await event.reply(text)
-    return await event.edit(text)
+        else:
+            return await event.edit(text)
 
 # TGBot
 
