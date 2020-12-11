@@ -23,7 +23,6 @@ def command(**args):
         return print("stupidity at its best🥱")
     else:
         pattern = args.get("pattern", None)
-        allow_sudo = args.get("allow_sudo", None)
         allow_edited_updates = args.get('allow_edited_updates', False)
         args["incoming"] = args.get("incoming", False)
         args["outgoing"] = True
@@ -58,16 +57,8 @@ def command(**args):
             except BaseException:
                 pass
 
-        if allow_sudo:
-            args["from_users"] = list(Var.SUDO_USERS)
-            # Mutually exclusive with outgoing (can only set one of either).
-            args["incoming"] = True
-        del allow_sudo
-        try:
-            del args["allow_sudo"]
-        except BaseException:
-            pass
-
+       
+ 
         if "allow_edited_updates" in args:
             del args['allow_edited_updates']
 
@@ -115,7 +106,6 @@ def load_module(shortname):
         mod.userbot = bot
         # auto-load
         mod.admin_cmd = admin_cmd
-        mod.sudo_cmd = sudo_cmd
         mod.edit_or_reply = edit_or_reply
         mod.eor = eor
         # support for paperplaneextended
@@ -154,18 +144,12 @@ def admin_cmd(pattern=None, **args):
     previous_stack_frame = stack[1]
     file_test = Path(previous_stack_frame.filename)
     file_test = file_test.stem.replace(".py", "")
-    allow_sudo = args.get("allow_sudo", False)
-
+    
     # get the pattern from the decorator
     if pattern is not None:
         if pattern.startswith(r"\#"):
         # should this command be available for other users?
-    if allow_sudo:
-        args["from_users"] = list(Var.SUDO_USERS)
-        # Mutually exclusive with outgoing (can only set one of either).
-        args["incoming"] = True
-        del args["allow_sudo"]
-
+    
     # error handling condition check
     elif "incoming" in args and not args["incoming"]:
         args["outgoing"] = True
@@ -311,36 +295,17 @@ class Loader():
         bot.add_event_handler(func, events.NewMessage(**args))
 
 
-def sudo_cmd(pattern=None, **args):
-    args["func"] = lambda e: e.via_bot_id is None
 
     stack = inspect.stack()
     previous_stack_frame = stack[1]
     file_test = Path(previous_stack_frame.filename)
     file_test = file_test.stem.replace(".py", "")
-    allow_sudo = args.get("allow_sudo", False)
-
+    
     # get the pattern from the decorator
     if pattern is not None:
         if pattern.startswith(r"\#"):
-            # special fix for snip.py
-            args["pattern"] = re.compile(pattern)
-        else:
-            args["pattern"] = re.compile(sudo_hndlr + pattern)
-            cmd = sudo_hndlr + pattern
-            try:
-                CMD_LIST[file_test].append(cmd)
-            except BaseException:
-                CMD_LIST.update({file_test: [cmd]})
-
-    args["outgoing"] = True
-    # should this command be available for other users?
-    if allow_sudo:
-        args["from_users"] = list(Var.SUDO_USERS)
-        # Mutually exclusive with outgoing (can only set one of either).
-        args["incoming"] = True
-        del args["allow_sudo"]
-
+            
+    
     # error handling condition check
     elif "incoming" in args and not args["incoming"]:
         args["outgoing"] = True
@@ -356,7 +321,6 @@ def sudo_cmd(pattern=None, **args):
 
 
 async def edit_or_reply(event, text):
-    if event.sender_id in Config.SUDO_USERS:
         reply_to = await event.get_reply_message()
         if reply_to:
             return await reply_to.reply(text)
@@ -365,7 +329,6 @@ async def edit_or_reply(event, text):
 
 
 async def eor(event, text):
-    if event.sender_id in Config.SUDO_USERS:
         reply_to = await event.get_reply_message()
         if reply_to:
             return await reply_to.reply(text)
