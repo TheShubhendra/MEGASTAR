@@ -346,7 +346,7 @@ async def eor(event, text):
         if reply_to:
             return await reply_to.reply(text)
         else:
-            return await event.edit(text)
+            return await reply_to.edit(text)
 
 # TGBot
 
