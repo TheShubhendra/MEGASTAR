@@ -11,7 +11,6 @@ from gtts import gTTS
 
 from .. import CMD_HELP
 from ..utils import admin_cmd, edit_or_reply
-from . import deEmojify
 
 
 @bot.on(admin_cmd(pattern="tts (.*)"))
