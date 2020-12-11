@@ -333,31 +333,6 @@ class Loader():
         bot.add_event_handler(func, events.NewMessage(**args))
 
 
-
-    stack = inspect.stack()
-    previous_stack_frame = stack[1]
-    file_test = Path(previous_stack_frame.filename)
-    file_test = file_test.stem.replace(".py", "")
-    
-    # get the pattern from the decorator
-    if pattern is not None:
-        if pattern.startswith(r"\#"):
-            
-    
-    # error handling condition check
-    elif "incoming" in args and not args["incoming"]:
-        args["outgoing"] = True
-
-    # add blacklist chats, UB should not respond in these chats
-    if "allow_edited_updates" in args and args["allow_edited_updates"]:
-        args["allow_edited_updates"]
-        del args["allow_edited_updates"]
-
-    # check if the plugin should listen for outgoing 'messages'
-
-    return events.NewMessage(**args)
-
-
 async def edit_or_reply(event, text):
         reply_to = await event.get_reply_message()
         if reply_to:
@@ -425,7 +400,6 @@ def load_tgbot(shortname):
         import importlib
         import sys
         from pathlib import Path
-
         path = Path(f"userbot/plugins/legendbot/tgbot/{shortname}.py")
         name = "userbot.plugins.legendbot.tgbot.{}".format(shortname)
         spec = importlib.util.spec_from_file_location(name, path)
