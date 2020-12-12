@@ -12,11 +12,11 @@ from ..utils import admin_cmd, edit_or_reply
 from . import ALIVE_NAME, CMD_HELP
 
 # ================= CONSTANT =================
-DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "cat"
+DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "legend"
 # ============================================
 
 
-@bot.on(admin_cmd(outgoing=True, pattern=r"spc$"))
+@borg.on(admin_cmd(outgoing=True, pattern=r"spc"))
 async def psu(event):
     uname = platform.uname()
     softw = "**System Information**\n"
@@ -72,7 +72,7 @@ def get_size(bytes, suffix="B"):
         bytes /= factor
 
 
-@bot.on(admin_cmd(pattern="cpu$"))
+@borg.on(admin_cmd(pattern="cpu"))
 async def _(event):
     cmd = "cat /proc/cpuinfo | grep 'model name'"
     o = (await runcmd(cmd))[0]
@@ -81,7 +81,7 @@ async def _(event):
     )
 
 
-@bot.on(admin_cmd(pattern=f"sysd$", outgoing=True))
+@borg.on(admin_cmd(pattern=f"sysd", outgoing=True))
 async def sysdetails(sysd):
     cmd = "git clone https://github.com/dylanaraps/neofetch.git"
     await runcmd(cmd)
