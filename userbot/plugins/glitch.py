@@ -11,10 +11,9 @@ from telethon import functions, types
 
 from .. import CMD_HELP, LOGS
 from ..utils import admin_cmd, edit_or_reply
-from . import runcmd, take_screen_shot
 
 
-@bot.on(admin_cmd(outgoing=True, pattern="(glitch|glitchs)(?: |$)(.*)"))
+@borg.on(admin_cmd(outgoing=True, pattern="(glitch|glitchs)(?: |$)(.*)"))
 async def glitch(cat):
     cmd = cat.pattern_match.group(1)
     catinput = cat.pattern_match.group(2)
