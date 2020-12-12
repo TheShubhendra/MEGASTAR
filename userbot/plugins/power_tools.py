@@ -6,7 +6,7 @@ from ..utils import admin_cmd, edit_or_reply
 from . import BOTLOG, BOTLOG_CHATID, CMD_HELP, bot
 
 
-@bot.on(admin_cmd(pattern="restart$"))
+@bot.on(admin_cmd(pattern="restart", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
