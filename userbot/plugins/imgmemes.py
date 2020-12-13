@@ -9,7 +9,6 @@ import pybase64
 from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 
 from userbot.plugins import (
-    changemymind,
     deEmojify,
     fakegs,
     kannagen,
@@ -22,7 +21,7 @@ from userbot.plugins import (
 from ..utils import admin_cmd, edit_or_reply
 
 
-@bot.on(admin_cmd(outgoing=True, pattern="fakegs(?: |$)(.*)", command="fakegs"))
+@borg.on(admin_cmd(outgoing=True, pattern="fakegs(?: |$)(.*)", command="fakegs"))
 async def nekobot(cat):
     text = cat.pattern_match.group(1)
     reply_to_id = await reply_id(cat)
@@ -51,7 +50,7 @@ async def nekobot(cat):
         os.remove(catfile)
 
 
-@bot.on(admin_cmd(outgoing=True, pattern="trump(?: |$)(.*)", command="trump"))
+@borg.on(admin_cmd(outgoing=True, pattern="trump(?: |$)(.*)", command="trump"))
 async def nekobot(cat):
     text = cat.pattern_match.group(1)
     text = re.sub("&", "", text)
@@ -78,7 +77,7 @@ async def nekobot(cat):
         os.remove(catfile)
 
 
-@bot.on(admin_cmd(outgoing=True, pattern="modi(?: |$)(.*)", command="modi"))
+@borg.on(admin_cmd(outgoing=True, pattern="modi(?: |$)(.*)", command="modi"))
 async def nekobot(cat):
     text = cat.pattern_match.group(1)
     text = re.sub("&", "", text)
@@ -105,7 +104,7 @@ async def nekobot(cat):
         os.remove(catfile)
 
 
-@bot.on(admin_cmd(outgoing=True, pattern="cmm(?: |$)(.*)", command="cmm"))
+@borg.on(admin_cmd(outgoing=True, pattern="cmm(?: |$)(.*)", command="cmm"))
 async def nekobot(cat):
     text = cat.pattern_match.group(1)
     text = re.sub("&", "", text)
@@ -132,7 +131,7 @@ async def nekobot(cat):
         os.remove(catfile)
 
 
-@bot.on(admin_cmd(outgoing=True, pattern="kanna(?: |$)(.*)", command="kanna"))
+@borg.on(admin_cmd(outgoing=True, pattern="kanna(?: |$)(.*)", command="kanna"))
 async def nekobot(cat):
     text = cat.pattern_match.group(1)
     text = re.sub("&", "", text)
@@ -159,7 +158,7 @@ async def nekobot(cat):
         os.remove(catfile)
 
 
-@bot.on(admin_cmd(outgoing=True, pattern="tweet(?: |$)(.*)", command="tweet"))
+@borg.on(admin_cmd(outgoing=True, pattern="tweet(?: |$)(.*)", command="tweet"))
 async def nekobot(cat):
     text = cat.pattern_match.group(1)
     text = re.sub("&", "", text)
