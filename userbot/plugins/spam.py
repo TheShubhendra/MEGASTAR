@@ -9,7 +9,7 @@ from .. import BOTLOG, BOTLOG_CHATID, CMD_HELP
 from ..utils import admin_cmd, edit_or_reply
 
 
-@bot.on(admin_cmd(pattern="spam (.*)"))
+@borg.on(admin_cmd(pattern="spam (.*)"))
 async def spammer(e):
     if e.fwd_from:
         return
@@ -156,7 +156,7 @@ async def spammer(e):
         await edit_or_reply(e, "try again something went wrong or check `.info spam`")
 
 
-@bot.on(admin_cmd(pattern="bigspam (.*)"))
+@borg.on(admin_cmd(pattern="bigspam (.*)"))
 async def spammer(e):
     if e.fwd_from:
         return
@@ -297,7 +297,7 @@ async def spammer(e):
         await edit_or_reply(e, "try again something went wrong or check `.info spam`")
 
 
-@bot.on(admin_cmd("cspam (.*)"))
+@borg.on(admin_cmd("cspam (.*)"))
 async def tmeme(e):
     cspam = str("".join(e.text.split(maxsplit=1)[1:]))
     message = cspam.replace(" ", "")
@@ -319,7 +319,7 @@ async def tmeme(e):
             )
 
 
-@bot.on(admin_cmd("wspam (.*)"))
+@borg.on(admin_cmd("wspam (.*)"))
 async def tmeme(e):
     wspam = str("".join(e.text.split(maxsplit=1)[1:]))
     message = wspam.split()
@@ -341,7 +341,7 @@ async def tmeme(e):
             )
 
 
-@bot.on(admin_cmd("delayspam (.*)"))
+@borg.on(admin_cmd("delayspam (.*)"))
 async def spammer(e):
     if e.fwd_from:
         return
