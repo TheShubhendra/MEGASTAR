@@ -13,7 +13,7 @@ from . import CMD_HELP, COUNTRY, TZ_NUMBER
 
 FONT_FILE_TO_USE = "/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf"
 
-LOCATION = Config.TZ
+LOCATION = config.TZ
 
 
 async def get_tz(con):
@@ -123,9 +123,9 @@ async def _(event):
     elif event.reply_to_msg_id:
         previous_message = await event.get_reply_message()
         reply_msg_id = previous_message.id
-    if not os.path.isdir(Config.TEMP_DIR):
-        os.makedirs(Config.TEMP_DIR)
-    required_file_name = Config.TEMP_DIR + " " + str(dt.now()) + ".webp"
+    if not os.path.isdir(config.TEMP_DIR):
+        os.makedirs(config.TEMP_DIR)
+    required_file_name = config.TEMP_DIR + " " + str(dt.now()) + ".webp"
     img = Image.new("RGBA", (350, 220), color=(0, 0, 0, 115))
     fnt = ImageFont.truetype(FONT_FILE_TO_USE, 30)
     drawn_text = ImageDraw.Draw(img)
