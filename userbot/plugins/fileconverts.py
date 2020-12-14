@@ -19,7 +19,7 @@ if not os.path.isdir("./temp"):
     os.makedirs("./temp")
 
 
-@borg.on(admin_cmd(pattern="stoi$"))
+@borg.on(admin_cmd(pattern="stoi"))
 async def _(cat):
     if cat.fwd_from:
         return
@@ -53,7 +53,7 @@ async def _(cat):
         await event.edit("Syntax : `.stoi` reply to a Telegram normal sticker")
 
 
-@borg.on(admin_cmd(pattern="itos$"))
+@borg.on(admin_cmd(pattern="itos"))
 async def _(cat):
     if cat.fwd_from:
         return
@@ -111,7 +111,7 @@ async def get(event):
         await edit_or_reply(event, "reply to text message as `.ttf <file name>`")
 
 
-@borg.on(admin_cmd(pattern="ftoi$"))
+@borg.on(admin_cmd(pattern="ftoi"))
 async def on_file_to_photo(event):
     target = await event.get_reply_message()
     catt = await edit_or_reply(event, "Converting.....")
@@ -144,7 +144,7 @@ async def on_file_to_photo(event):
     await catt.delete()
 
 
-@borg.on(admin_cmd(pattern="gif$"))
+@borg.on(admin_cmd(pattern="gif"))
 async def _(event):
     catreply = await event.get_reply_message()
     if not catreply or not catreply.media or not catreply.media.document:
