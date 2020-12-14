@@ -1,4 +1,4 @@
-# Heroku manager for your catuserbot
+# Heroku manager for your legend userbot
 
 # CC- @refundisillegal\nSyntax:-\n.get var NAME\n.del var NAME\n.set var NAME
 
@@ -19,16 +19,16 @@ from ..utils import admin_cmd, edit_or_reply
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 # =================
 
-Heroku = heroku3.from_key(Config.HEROKU_API_KEY)
+Heroku = heroku3.from_key(config.HEROKU_API_KEY)
 heroku_api = "https://api.heroku.com"
-HEROKU_APP_NAME = Config.HEROKU_APP_NAME
-HEROKU_API_KEY = Config.HEROKU_API_KEY
+HEROKU_APP_NAME = config.HEROKU_APP_NAME
+HEROKU_API_KEY = config.HEROKU_API_KEY
 
 
-@bot.on(admin_cmd(pattern=r"(set|get|del) var (.*)", outgoing=True))
+@borg.on(admin_cmd(pattern=r"(set|get|del) var (.*)", outgoing=True))
 async def variable(var):
     """
-    Manage most of ConfigVars setting, set new var, get current var,
+    Manage most of configVars setting, set new var, get current var,
     or delete var...
     """
     if Var.HEROKU_APP_NAME is not None:
@@ -46,10 +46,10 @@ async def variable(var):
             variable = var.pattern_match.group(2).split()[0]
             if variable in heroku_var:
                 return await cat.edit(
-                    "**ConfigVars**:" f"\n\n`{variable} = {heroku_var[variable]}`\n"
+                    "**configVars**:" f"\n\n`{variable} = {heroku_var[variable]}`\n"
                 )
             return await cat.edit(
-                "**ConfigVars**:" f"\n\n`Error:\n-> {variable} don't exists`"
+                "**configVars**:" f"\n\n`Error:\n-> {variable} don't exists`"
             )
         except IndexError:
             configs = prettyjson(heroku_var.to_dict(), indent=2)
@@ -66,7 +66,7 @@ async def variable(var):
                     )
                 else:
                     await cat.edit(
-                        "`[HEROKU]` ConfigVars:\n\n"
+                        "`[HEROKU]` configVars:\n\n"
                         "================================"
                         f"\n```{result}```\n"
                         "================================"
@@ -77,11 +77,11 @@ async def variable(var):
         variable = "".join(var.text.split(maxsplit=2)[2:])
         cat = await edit_or_reply(var, "`Setting information...`")
         if not variable:
-            return await cat.edit("`.set var <ConfigVars-name> <value>`")
+            return await cat.edit("`.set var <configVars-name> <value>`")
         value = "".join(variable.split(maxsplit=1)[1:])
         variable = "".join(variable.split(maxsplit=1)[0])
         if not value:
-            return await cat.edit("`.set var <ConfigVars-name> <value>`")
+            return await cat.edit("`.set var <configVars-name> <value>`")
         await asyncio.sleep(1.5)
         if variable in heroku_var:
             await cat.edit(f"`{variable}` **successfully changed to  ->  **`{value}`")
@@ -95,7 +95,7 @@ async def variable(var):
         try:
             variable = var.pattern_match.group(2).split()[0]
         except IndexError:
-            return await cat.edit("`Please specify ConfigVars you want to delete`")
+            return await cat.edit("`Please specify configVars you want to delete`")
         await asyncio.sleep(1.5)
         if variable in heroku_var:
             await cat.edit(f"`{variable}`  **successfully deleted**")
@@ -104,7 +104,7 @@ async def variable(var):
             return await cat.edit(f"`{variable}`**  is not exists**")
 
 
-@bot.on(admin_cmd(pattern="usage$", outgoing=True))
+@borg.on(admin_cmd(pattern="usage$", outgoing=True))
 async def dyno_usage(dyno):
     """
     Get your account Dyno Usage
@@ -162,7 +162,7 @@ async def dyno_usage(dyno):
     )
 
 
-@bot.on(admin_cmd(pattern="herokulogs$", outgoing=True))
+@borg.on(admin_cmd(pattern="herokulogs$", outgoing=True))
 async def _(dyno):
     try:
         Heroku = heroku3.from_key(HEROKU_API_KEY)
