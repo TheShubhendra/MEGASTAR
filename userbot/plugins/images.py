@@ -8,11 +8,11 @@ import os
 import shutil
 
 from .. import CMD_HELP
-from ..helpers.google_image_download import googleimagesdownload
+from ..helpers.google_image_download import googleimagedownload
 from ..utils import admin_cmd, edit_or_reply
 
 
-@bot.on(admin_cmd(pattern=r"img(?: |$)(\d*)? ?(.*)"))
+@borg.on(admin_cmd(pattern=r"img(?: |$)(\d*)? ?(.*)"))
 async def img_sampler(event):
     reply_to_id = event.message.id
     if event.reply_to_msg_id:
@@ -26,7 +26,7 @@ async def img_sampler(event):
         return await edit_or_reply(
             event, "Reply to a message or pass a query to search!"
         )
-    cat = await edit_or_reply(event, "`Processing...`")
+    pagal = await edit_or_reply(event, "`Processing...`")
     if event.pattern_match.group(1) != "":
         lim = int(event.pattern_match.group(1))
         if lim > 10:
@@ -47,13 +47,13 @@ async def img_sampler(event):
     try:
         paths = response.download(arguments)
     except Exception as e:
-        return await cat.edit(f"Error: \n`{e}`")
+        return await pagal.edit(f"Error: \n`{e}`")
     lst = paths[0][query]
     await bot.send_file(
         await bot.get_input_entity(event.chat_id), lst, reply_to=reply_to_id
     )
     shutil.rmtree(os.path.dirname(os.path.abspath(lst[0])))
-    await cat.delete()
+    await pagal.delete()
 
 
 CMD_HELP.update(
