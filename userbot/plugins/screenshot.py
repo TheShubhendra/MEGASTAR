@@ -14,7 +14,7 @@ from ..utils import admin_cmd, edit_or_reply
 from . import CMD_HELP
 
 
-@bot.on(admin_cmd(pattern="ss (.*)"))
+@borg.on(admin_cmd(pattern="ss (.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -80,7 +80,7 @@ async def _(event):
         await catevent.edit(f"`{traceback.format_exc()}`")
 
 
-@bot.on(admin_cmd(pattern="scapture (.*)"))
+@borg.on(admin_cmd(pattern="scapture (.*)"))
 async def _(event):
     if event.fwd_from:
         return
