@@ -4,7 +4,7 @@ from ..utils import admin_cmd, edit_or_reply
 from . import CMD_HELP
 
 
-@bot.on(admin_cmd(pattern="(get_id|id)( (.*)|$)"))
+@borg.on(admin_cmd(pattern="(get_id|id)( (.*)|$)"))
 async def _(event):
     if event.fwd_from:
         return
