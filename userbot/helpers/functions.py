@@ -11,7 +11,7 @@ from PIL import Image, ImageDraw, ImageFont
 from telethon.tl.types import Channel, PollAnswer
 from validators.url import url
 
-from .resources.states import states
+from userbot.helpers.resources.states import states
 
 
 async def get_readable_time(seconds: int) -> str:
@@ -39,27 +39,27 @@ async def get_readable_time(seconds: int) -> str:
 # gban
 
 
-async def admin_groups(cat):
-    catgroups = []
-    async for dialog in cat.client.iter_dialogs():
+async def admin_groups(pagal):
+    pagalgroups = []
+    async for dialog in pagal.client.iter_dialogs():
         entity = dialog.entity
         if (
             isinstance(entity, Channel)
             and entity.megagroup
             and (entity.creator or entity.admin_rights)
         ):
-            catgroups.append(entity.id)
-    return catgroups
+            pagalgroups.append(entity.id)
+    return pagalgroups
 
 
 # for getmusic
 
 
-async def yt_search(cat):
+async def yt_search(pagal):
     try:
-        cat = urllib.parse.quote(cat)
+        pagal = urllib.parse.quote(pagal)
         html = urllib.request.urlopen(
-            "https://www.youtube.com/results?search_query=" + cat
+            "https://www.youtube.com/results?search_query=" + pagal
         )
         user_data = re.findall(r"watch\?v=(\S{11})", html.read().decode())
         video_link = None
@@ -97,12 +97,12 @@ async def unzip(downloaded_file_name):
 # https://github.com/pokurt/LyndaRobot/blob/7556ca0efafd357008131fa88401a8bb8057006f/lynda/modules/helper_funcs/string_handling.py#L238
 
 
-async def extract_time(cat, time_val):
+async def extract_time(pagal, time_val):
     if any(time_val.endswith(unit) for unit in ("m", "h", "d", "w")):
         unit = time_val[-1]
         time_num = time_val[:-1]  # type: str
         if not time_num.isdigit():
-            cat.edit("Invalid time amount specified.")
+            pagal.edit("Invalid time amount specified.")
             return ""
         if unit == "m":
             bantime = int(time.time() + int(time_num) * 60)
@@ -116,7 +116,7 @@ async def extract_time(cat, time_val):
             # how even...?
             return ""
         return bantime
-    cat.edit(
+    pagal.edit(
         "Invalid time type specified. Expected m , h , d or w but got: {}".format(
             time_val[-1]
         )
@@ -214,8 +214,8 @@ async def trumptweet(text):
         f"https://nekobot.xyz/api/imagegen?type=trumptweet&text={text}"
     ).json()
     sandy = r.get("message")
-    caturl = url(sandy)
-    if not caturl:
+    pagalurl = url(sandy)
+    if not pagalurl:
         return "check syntax once more"
     with open("temp.png", "wb") as f:
         f.write(requests.get(sandy).content)
@@ -229,8 +229,8 @@ async def changemymind(text):
         f"https://nekobot.xyz/api/imagegen?type=changemymind&text={text}"
     ).json()
     sandy = r.get("message")
-    caturl = url(sandy)
-    if not caturl:
+    pagalurl = url(sandy)
+    if not pagalurl:
         return "check syntax once more"
     with open("temp.png", "wb") as f:
         f.write(requests.get(sandy).content)
@@ -244,8 +244,8 @@ async def kannagen(text):
         f"https://nekobot.xyz/api/imagegen?type=kannagen&text={text}"
     ).json()
     sandy = r.get("message")
-    caturl = url(sandy)
-    if not caturl:
+    pagalurl = url(sandy)
+    if not pagalurl:
         return "check syntax once more"
     with open("temp.png", "wb") as f:
         f.write(requests.get(sandy).content)
@@ -259,8 +259,8 @@ async def moditweet(text):
         f"https://nekobot.xyz/api/imagegen?type=tweet&text={text}&username=narendramodi"
     ).json()
     sandy = r.get("message")
-    caturl = url(sandy)
-    if not caturl:
+    pagalurl = url(sandy)
+    if not pagalurl:
         return "check syntax once more"
     with open("temp.png", "wb") as f:
         f.write(requests.get(sandy).content)
@@ -274,8 +274,8 @@ async def tweets(text1, text2):
         f"https://nekobot.xyz/api/imagegen?type=tweet&text={text1}&username={text2}"
     ).json()
     sandy = r.get("message")
-    caturl = url(sandy)
-    if not caturl:
+    pagalurl = url(sandy)
+    if not pagalurl:
         return "check syntax once more"
     with open("temp.png", "wb") as f:
         f.write(requests.get(sandy).content)
@@ -287,8 +287,8 @@ async def tweets(text1, text2):
 async def iphonex(text):
     r = requests.get(f"https://nekobot.xyz/api/imagegen?type=iphonex&url={text}").json()
     sandy = r.get("message")
-    caturl = url(sandy)
-    if not caturl:
+    pagalurl = url(sandy)
+    if not pagalurl:
         return "check syntax once more"
     with open("temp.png", "wb") as f:
         f.write(requests.get(sandy).content)
@@ -302,8 +302,8 @@ async def baguette(text):
         f"https://nekobot.xyz/api/imagegen?type=baguette&url={text}"
     ).json()
     sandy = r.get("message")
-    caturl = url(sandy)
-    if not caturl:
+    pagalurl = url(sandy)
+    if not pagalurl:
         return "check syntax once more"
     with open("temp.png", "wb") as f:
         f.write(requests.get(sandy).content)
@@ -315,8 +315,8 @@ async def baguette(text):
 async def threats(text):
     r = requests.get(f"https://nekobot.xyz/api/imagegen?type=threats&url={text}").json()
     sandy = r.get("message")
-    caturl = url(sandy)
-    if not caturl:
+    pagalurl = url(sandy)
+    if not pagalurl:
         return "check syntax once more"
     with open("temp.png", "wb") as f:
         f.write(requests.get(sandy).content)
@@ -330,8 +330,8 @@ async def threats(text):
 async def lolice(text):
     r = requests.get(f"https://nekobot.xyz/api/imagegen?type=lolice&url={text}").json()
     sandy = r.get("message")
-    caturl = url(sandy)
-    if not caturl:
+    pagalurl = url(sandy)
+    if not pagalurl:
         return "check syntax once more"
     with open("temp.png", "wb") as f:
         f.write(requests.get(sandy).content)
@@ -345,8 +345,8 @@ async def lolice(text):
 async def trash(text):
     r = requests.get(f"https://nekobot.xyz/api/imagegen?type=trash&url={text}").json()
     sandy = r.get("message")
-    caturl = url(sandy)
-    if not caturl:
+    pagalurl = url(sandy)
+    if not pagalurl:
         return "check syntax once more"
     with open("temp.png", "wb") as f:
         f.write(requests.get(sandy).content)
@@ -360,8 +360,8 @@ async def trash(text):
 async def awooify(text):
     r = requests.get(f"https://nekobot.xyz/api/imagegen?type=awooify&url={text}").json()
     sandy = r.get("message")
-    caturl = url(sandy)
-    if not caturl:
+    pagalurl = url(sandy)
+    if not pagalurl:
         return "check syntax once more"
     with open("temp.png", "wb") as f:
         f.write(requests.get(sandy).content)
@@ -377,8 +377,8 @@ async def trap(text1, text2, text3):
         f"https://nekobot.xyz/api/imagegen?type=trap&name={text1}&author={text2}&image={text3}"
     ).json()
     sandy = r.get("message")
-    caturl = url(sandy)
-    if not caturl:
+    pagalurl = url(sandy)
+    if not pagalurl:
         return "check syntax once more"
     with open("temp.png", "wb") as f:
         f.write(requests.get(sandy).content)
@@ -394,8 +394,8 @@ async def phcomment(text1, text2, text3):
         f"https://nekobot.xyz/api/imagegen?type=phcomment&image={text1}&text={text2}&username={text3}"
     ).json()
     sandy = r.get("message")
-    caturl = url(sandy)
-    if not caturl:
+    pagalurl = url(sandy)
+    if not pagalurl:
         return "check syntax once more"
     with open("temp.png", "wb") as f:
         f.write(requests.get(sandy).content)
@@ -489,7 +489,7 @@ async def waifutxt(text, chat_id, reply_to_id, bot, borg):
         63,
     ]
     sticcers = await bot.inline_query("stickerizerbot", f"#{choice(animus)}{text}")
-    cat = await sticcers[0].click("me", hide_via=True)
-    if cat:
-        await bot.send_file(int(chat_id), cat, reply_to=reply_to_id)
-        await cat.delete()
+    pagal = await sticcers[0].click("me", hide_via=True)
+    if pagal:
+        await bot.send_file(int(chat_id), pagal, reply_to=reply_to_id)
+        await pagal.delete()
