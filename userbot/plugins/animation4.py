@@ -6,7 +6,7 @@ from . import ALIVE_NAME
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "cat"
 
 
-@bot.on(admin_cmd(outgoing=True, pattern="kilr( (.*)|$)"))
+@borg.on(admin_cmd(outgoing=True, pattern="kilr( (.*)|$)"))
 async def _(event):
     name = event.pattern_match.group(1)
     if not name:
@@ -31,7 +31,7 @@ async def _(event):
         await event.edit(animation_chars[i % 8])
 
 
-@bot.on(admin_cmd(pattern="eye$"))
+@borg.on(admin_cmd(pattern="eye$"))
 async def _(event):
     if event.fwd_from:
         return
@@ -57,7 +57,7 @@ async def _(event):
     await event.delete()
 
 
-@bot.on(admin_cmd(pattern="thinking$"))
+@borg.on(admin_cmd(pattern="thinking$"))
 async def _(event):
     if event.fwd_from:
         return
@@ -107,7 +107,7 @@ async def _(event):
         await event.edit(animation_chars[i % 36])
 
 
-@bot.on(admin_cmd(pattern=f"snake$", outgoing=True))
+@borg.on(admin_cmd(pattern=f"snake$", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -148,7 +148,7 @@ async def _(event):
         await event.edit(animation_chars[i % 27])
 
 
-@bot.on(admin_cmd(pattern=f"human$", outgoing=True))
+@borg.on(admin_cmd(pattern=f"human$", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -178,7 +178,7 @@ async def _(event):
         await event.edit(animation_chars[i % 16])
 
 
-@bot.on(admin_cmd(pattern=f"mc$", outgoing=True))
+@borg.on(admin_cmd(pattern=f"mc$", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -220,7 +220,7 @@ async def _(event):
         await event.edit(animation_chars[i % 28])
 
 
-@bot.on(admin_cmd(pattern="virus$"))
+@borg.on(admin_cmd(pattern="virus$"))
 async def _(event):
     if event.fwd_from:
         return
@@ -264,7 +264,7 @@ async def _(event):
         await event.edit(animation_chars[i % 30])
 
 
-@bot.on(admin_cmd(pattern=r"repe$", outgoing=True))
+@borg.on(admin_cmd(pattern=r"repe$", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -308,7 +308,7 @@ async def _(event):
         await event.edit(animation_chars[i % 30])
 
 
-@bot.on(admin_cmd(pattern=f"nikal$", outgoing=True))
+@borg.on(admin_cmd(pattern=f"nikal$", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -328,7 +328,7 @@ async def _(event):
         await event.edit(animation_chars[i % 6])
 
 
-@bot.on(admin_cmd(pattern=f"music$", outgoing=True))
+@borg.on(admin_cmd(pattern=f"music$", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -353,7 +353,7 @@ async def _(event):
         await event.edit(animation_chars[i % 11])
 
 
-@bot.on(admin_cmd(pattern=f"squ$", outgoing=True))
+@borg.on(admin_cmd(pattern=f"squ$", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
