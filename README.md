@@ -2,11 +2,7 @@
 
 # 𝕀𝔻𝔼𝔸𝕃 𝕌𝕊𝔼ℝ𝔹𝕆𝕋 𝔹𝕐 𝔸 𝔹𝔼𝕊𝕋 𝕋𝔼𝔸𝕄
   - `𝚃𝙴𝙰𝙼 𝙼𝙴𝙼𝙱𝙴𝚁𝚂`
-    [`ARITRA`](https://github.com/aritramandal)
-    [`BRISTI`](https://github.com/Bristi-OP)   
-    [`KRISHAN`](https://github.com/krishan442)
-    [`AARYAN`](https://github.com/Hellboy-Aaryan)
-    [`AMIT`](https://github.com/buddhhu)
+    [`ARITRA`](https://github.com/aritramandal) [`BRISTI`](https://github.com/Bristi-OP) [`KRISHAN`](https://github.com/krishan442) [`AARYAN`](https://github.com/Hellboy-Aaryan) [`AMIT`](https://github.com/buddhhu)
 
 ![LEGENDlogo](https://telegra.ph/file/ee654dc022141d6a4b608.jpg)
 ### STATUS
