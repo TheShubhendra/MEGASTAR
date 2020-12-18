@@ -9,7 +9,7 @@ from ..utils import admin_cmd, edit_or_reply
 from . import CMD_HELP
 
 
-@bot.on(admin_cmd(pattern="firmware(?: |$)(.*)"))
+@borg.on(admin_cmd(pattern="firmware(?: |$)(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -32,7 +32,7 @@ async def _(event):
             await event.client.forward_messages(event.chat_id, respond.message)
 
 
-@bot.on(admin_cmd(pattern="vendor(?: |$)(.*)"))
+@borg.on(admin_cmd(pattern="vendor(?: |$)(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -55,7 +55,7 @@ async def _(event):
             await event.client.forward_messages(event.chat_id, respond.message)
 
 
-@bot.on(admin_cmd(pattern="specs(?: |$)(.*)"))
+@borg.on(admin_cmd(pattern="specs(?: |$)(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -78,7 +78,7 @@ async def _(event):
             await event.client.forward_messages(event.chat_id, respond.message)
 
 
-@bot.on(admin_cmd(pattern="fastboot(?: |$)(.*)"))
+@borg.on(admin_cmd(pattern="fastboot(?: |$)(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -101,7 +101,7 @@ async def _(event):
             await event.client.forward_messages(event.chat_id, respond.message)
 
 
-@bot.on(admin_cmd(pattern="recovery(?: |$)(.*)"))
+@borg.on(admin_cmd(pattern="recovery(?: |$)(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -124,7 +124,7 @@ async def _(event):
             await event.client.forward_messages(event.chat_id, respond.message)
 
 
-@bot.on(admin_cmd(pattern="pb(?: |$)(.*)"))
+@borg.on(admin_cmd(pattern="pb(?: |$)(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -147,7 +147,7 @@ async def _(event):
             await event.client.forward_messages(event.chat_id, respond.message)
 
 
-@bot.on(admin_cmd(pattern="of(?: |$)(.*)"))
+@borg.on(admin_cmd(pattern="of(?: |$)(.*)"))
 async def _(event):
     if event.fwd_from:
         return
