@@ -26,7 +26,7 @@ from ..utils import admin_cmd, edit_or_reply
 from . import CMD_HELP
 
 
-@bot.on(admin_cmd(pattern="yt(a|v) (.*)", outgoing=True))
+@borg.on(admin_cmd(pattern="yt(a|v) (.*)", outgoing=True))
 async def download_video(v_url):
     """ For .ytdl command, download media from YouTube and many other sites. """
     url = v_url.pattern_match.group(2)
@@ -162,7 +162,7 @@ async def download_video(v_url):
         await v_url.delete()
 
 
-@bot.on(admin_cmd(pattern="yts (.*)"))
+@borg.on(admin_cmd(pattern="yts (.*)"))
 async def yt_search(video_q):
     """ For .yts command, do a YouTube search from Telegram. """
     query = video_q.pattern_match.group(1)
@@ -222,7 +222,7 @@ async def youtube_search(
         return (nexttok, videos)
 
 
-@bot.on(admin_cmd(pattern="insta (.*)"))
+@borg.on(admin_cmd(pattern="insta (.*)"))
 async def kakashi(event):
     if event.fwd_from:
         return
