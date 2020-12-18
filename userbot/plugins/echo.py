@@ -16,7 +16,7 @@ from ..utils import admin_cmd, edit_or_reply
 from .sql_helper.echo_sql import addecho, get_all_echos, is_echo, remove_echo
 
 
-@bot.on(admin_cmd(pattern="addecho$"))
+@borg.on(admin_cmd(pattern="addecho$"))
 async def echo(cat):
     if cat.fwd_from:
         return
@@ -39,7 +39,7 @@ async def echo(cat):
         await edit_or_reply(cat, "Reply to a User's message to echo his messages")
 
 
-@bot.on(admin_cmd(pattern="rmecho$"))
+@borg.on(admin_cmd(pattern="rmecho$"))
 async def echo(cat):
     if cat.fwd_from:
         return
@@ -62,7 +62,7 @@ async def echo(cat):
         await edit_or_reply(cat, "Reply to a User's message to echo his messages")
 
 
-@bot.on(admin_cmd(pattern="listecho$"))
+@borg.on(admin_cmd(pattern="listecho$"))
 async def echo(cat):
     if cat.fwd_from:
         return
@@ -91,7 +91,7 @@ async def echo(cat):
         await edit_or_reply(cat, output_str)
 
 
-@bot.on(events.NewMessage(incoming=True))
+@borg.on(events.NewMessage(incoming=True))
 async def samereply(cat):
     if cat.chat_id in Config.UB_BLACK_LIST_CHAT:
         return
