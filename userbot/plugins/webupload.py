@@ -17,7 +17,7 @@ link_regex = re.compile(
 )
 
 
-@bot.on(admin_cmd(pattern="labstack( (.*)|$)"))
+@borg.on(admin_cmd(pattern="labstack( (.*)|$)"))
 async def labstack(event):
     if event.fwd_from:
         return
@@ -76,7 +76,7 @@ async def labstack(event):
     )
 
 
-@bot.on(
+@borg.on(
     admin_cmd(
         pattern="webupload ?(.+?|) --(fileio|oload|anonfiles|transfer|filebin|anonymousfiles|vshare|bayfiles)"
     )
