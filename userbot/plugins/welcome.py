@@ -13,7 +13,7 @@ from .. import BOTLOG_CHATID, CMD_HELP, LOGS, bot
 from ..utils import admin_cmd, edit_or_reply
 
 
-@bot.on(events.ChatAction)
+@borg.on(events.ChatAction)
 async def _(event):
     cws = get_current_welcome_settings(event.chat_id)
     if (
@@ -78,7 +78,7 @@ async def _(event):
         update_previous_welcome(event.chat_id, current_message.id)
 
 
-@bot.on(admin_cmd(pattern=r"savewelcome ?(.*)"))
+@borg.on(admin_cmd(pattern=r"savewelcome ?(.*)"))
 async def save_welcome(event):
     msg = await event.get_reply_message()
     string = "".join(event.text.split(maxsplit=1)[1:])
@@ -113,7 +113,7 @@ async def save_welcome(event):
     await edit_or_reply("Error while setting welcome in this group")
 
 
-@bot.on(admin_cmd(pattern="clearwelcome$"))
+@borg.on(admin_cmd(pattern="clearwelcome$"))
 async def del_welcome(event):
     if rm_welcome_setting(event.chat_id) is True:
         await edit_or_reply(event, "`Welcome note deleted for this chat.`")
@@ -121,7 +121,7 @@ async def del_welcome(event):
         await edit_or_reply(event, "`Do I have a welcome note here ?`")
 
 
-@bot.on(admin_cmd(pattern="listwelcome$"))
+@borg.on(admin_cmd(pattern="listwelcome$"))
 async def show_welcome(event):
     cws = get_current_welcome_settings(event.chat_id)
     if not cws:
