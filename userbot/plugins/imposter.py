@@ -11,7 +11,7 @@ from . import ALIVE_NAME, CMD_HELP
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "legend"
 
 
-@bot.on(admin_cmd(pattern="imp(|n) (.*)", outgoing=True))
+@borg.on(admin_cmd(pattern="imp(|n) (.*)", outgoing=True))
 async def _(event):
     hmm = bot.uid
     USERNAME = f"tg://user?id={hmm}"
@@ -95,7 +95,7 @@ async def _(event):
         await event.client.send_file(event.chat_id, "Tobw7BkaeSFbwMqbkIhKiw")
 
 
-@bot.on(admin_cmd(pattern="timp(|n) (.*)", outgoing=True))
+@borg.on(admin_cmd(pattern="timp(|n) (.*)", outgoing=True))
 async def _(event):
     name = event.pattern_match.group(2)
     cmd = event.pattern_match.group(1).lower()
