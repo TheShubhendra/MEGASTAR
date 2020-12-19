@@ -9,7 +9,7 @@ from . import CMD_HELP
 thumb_image_path = Config.TMP_DOWNLOAD_DIRECTORY + "thumb_image.jpg"
 
 
-@bot.on(admin_cmd(pattern="rename (.*)"))
+@borg.on(admin_cmd(pattern="rename (.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -48,7 +48,7 @@ async def _(event):
         )
 
 
-@bot.on(admin_cmd(pattern="rnup (.*)"))
+@borg.on(admin_cmd(pattern="rnup (.*)"))
 async def _(event):
     if event.fwd_from:
         return
