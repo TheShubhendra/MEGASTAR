@@ -41,7 +41,7 @@ async def get_tz(con):
         return
 
 
-@bot.on(admin_cmd(outgoing=True, pattern="climate( (.*)|$)"))
+@borg.on(admin_cmd(outgoing=True, pattern="climate( (.*)|$)"))
 @errors_handler
 async def get_weather(weather):
     """ For .weather command, gets the current weather of a city. """
@@ -139,7 +139,7 @@ async def get_weather(weather):
     )
 
 
-@bot.on(admin_cmd(outgoing=True, pattern="setcity(?: |$)(.*)"))
+@borg.on(admin_cmd(outgoing=True, pattern="setcity(?: |$)(.*)"))
 @errors_handler
 async def set_default_city(city):
     """ For .ctime command, change the default userbot country for date and time commands. """
@@ -187,7 +187,7 @@ async def set_default_city(city):
     await edit_or_reply(city, f"`Set default city as {cityname}, {fullc_n}.`")
 
 
-@bot.on(admin_cmd(pattern="wttr ?(.*)"))
+@borg.on(admin_cmd(pattern="wttr ?(.*)"))
 async def _(event):
     global DEFCITY
     reply_to_id = None
