@@ -15,7 +15,7 @@ NO_ADMIN = "`I am not an admin nub nibba!`"
 NO_PERM = "`I don't have sufficient permissions! This is so sed. Alexa play despacito`"
 
 
-@bot.on(admin_cmd(pattern=r"tmute(?: |$)(.*)"))
+@borg.on(admin_cmd(pattern=r"tmute(?: |$)(.*)"))
 @errors_handler
 async def tmuter(catty):
     chat = await catty.get_chat()
@@ -89,7 +89,7 @@ async def tmuter(catty):
         return await catevent.edit("`Uh oh my mute logic broke!`")
 
 
-@bot.on(admin_cmd(pattern="tban(?: |$)(.*)"))
+@borg.on(admin_cmd(pattern="tban(?: |$)(.*)"))
 @errors_handler
 async def ban(catty):
     chat = await catty.get_chat()
