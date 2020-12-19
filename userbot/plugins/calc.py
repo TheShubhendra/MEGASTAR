@@ -7,7 +7,7 @@ from .. import CMD_HELP
 from ..utils import admin_cmd, edit_or_reply
 
 
-@bot.on(admin_cmd(pattern="calc (.*)"))
+@borg.on(admin_cmd(pattern="calc (.*)"))
 async def _(car):
     cmd = car.text.split(" ", maxsplit=1)[1]
     event = await edit_or_reply(car, "Calculating ...")
