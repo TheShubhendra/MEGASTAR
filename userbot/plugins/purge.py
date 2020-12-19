@@ -8,7 +8,7 @@ from ..utils import admin_cmd, edit_or_reply, errors_handler
 from . import BOTLOG, BOTLOG_CHATID, CMD_HELP
 
 
-@bot.on(admin_cmd(outgoing=True, pattern="purge$"))
+@borg.on(admin_cmd(outgoing=True, pattern="purge$"))
 @errors_handler
 async def fastpurger(purg):
     # For .purge command, purge all messages starting from the reply.
@@ -48,7 +48,7 @@ async def fastpurger(purg):
     await done.delete()
 
 
-@bot.on(admin_cmd(outgoing=True, pattern="purgeme"))
+@borg.on(admin_cmd(outgoing=True, pattern="purgeme"))
 @errors_handler
 async def purgeme(delme):
     # For .purgeme, delete x count of your latest message.
@@ -76,7 +76,7 @@ async def purgeme(delme):
     await smsg.delete()
 
 
-@bot.on(admin_cmd(outgoing=True, pattern="del$"))
+@borg.on(admin_cmd(outgoing=True, pattern="del$"))
 @errors_handler
 async def delete_it(delme):
     """ For .del command, delete the replied message. """
