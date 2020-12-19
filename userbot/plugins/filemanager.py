@@ -11,7 +11,7 @@ from ..utils import admin_cmd, edit_or_reply, humanbytes
 from . import CMD_HELP
 
 
-@bot.on(admin_cmd(pattern="ls ?(.*)"))
+@borg.on(admin_cmd(pattern="ls ?(.*)"))
 async def lst(event):
     cat = "".join(event.text.split(maxsplit=1)[1:])
     path = cat or os.getcwd()
@@ -91,7 +91,7 @@ async def lst(event):
         await edit_or_reply(event, msg)
 
 
-@bot.on(admin_cmd(pattern="rem (.*)"))
+@borg.on(admin_cmd(pattern="rem (.*)"))
 async def lst(event):
     cat = event.pattern_match.group(1)
     if cat:
