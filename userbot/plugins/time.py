@@ -40,7 +40,7 @@ async def get_tz(con):
         return
 
 
-@bot.on(admin_cmd(outgoing=True, pattern="ctime(?: |$)(.*)(?<![0-9])(?: |$)([0-9]+)?"))
+@borg.on(admin_cmd(outgoing=True, pattern="ctime(?: |$)(.*)(?<![0-9])(?: |$)([0-9]+)?"))
 async def time_func(tdata):
     """For .time command, return the time of
     1. The country passed as an argument,
@@ -107,7 +107,7 @@ async def time_func(tdata):
         return
 
 
-@bot.on(admin_cmd(pattern="time ?(.*)"))
+@borg.on(admin_cmd(pattern="time ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
