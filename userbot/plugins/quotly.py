@@ -12,7 +12,7 @@ from .. import CMD_HELP, process
 from ..utils import admin_cmd, edit_or_reply
 
 
-@bot.on(admin_cmd(pattern="q(?: |$)(.*)", outgoing=True))
+@borg.on(admin_cmd(pattern="q(?: |$)(.*)", outgoing=True))
 async def stickerchat(quotes):
     if quotes.fwd_from:
         return
@@ -44,7 +44,7 @@ async def stickerchat(quotes):
     os.remove("./temp/sticker.webp")
 
 
-@bot.on(admin_cmd(pattern="qbot(?: |$)(.*)", outgoing=True))
+@borg.on(admin_cmd(pattern="qbot(?: |$)(.*)", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
