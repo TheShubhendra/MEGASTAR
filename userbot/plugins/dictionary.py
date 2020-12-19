@@ -10,7 +10,7 @@ from .. import CMD_HELP
 from ..utils import admin_cmd, edit_or_reply
 
 
-@bot.on(admin_cmd(pattern="ud (.*)"))
+@borg.on(admin_cmd(pattern="ud (.*)"))
 async def _(event):
     word = event.pattern_match.group(1)
     urban = asyncurban.UrbanDictionary()
@@ -26,7 +26,7 @@ async def _(event):
         await edit_or_reply(event, "No result found for **" + word + "**")
 
 
-@bot.on(admin_cmd(pattern="meaning (.*)"))
+@borg.on(admin_cmd(pattern="meaning (.*)"))
 async def _(event):
     word = event.pattern_match.group(1)
     dictionary = PyDictionary()
