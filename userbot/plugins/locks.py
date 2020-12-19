@@ -7,7 +7,7 @@ from . import CMD_HELP
 from .sql_helper.locks_sql import get_locks, is_locked, update_lock
 
 
-@bot.on(admin_cmd(pattern=r"lock( (?P<target>\S+)|$)"))
+@borg.on(admin_cmd(pattern=r"lock( (?P<target>\S+)|$)"))
 async def _(event):
     # Space weirdness in regex required because argument is optional and other
     # commands start with ".lock"
@@ -107,7 +107,7 @@ async def _(event):
             )
 
 
-@bot.on(admin_cmd(pattern="unlock (.*)"))
+@borg.on(admin_cmd(pattern="unlock (.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -205,7 +205,7 @@ async def _(event):
             )
 
 
-@bot.on(admin_cmd(pattern="locks$"))
+@borg.on(admin_cmd(pattern="locks$"))
 async def _(event):
     if event.fwd_from:
         return
@@ -240,8 +240,8 @@ async def _(event):
     await edit_or_reply(event, res)
 
 
-@bot.on(events.MessageEdited())
-@bot.on(events.NewMessage())
+@borg.on(events.MessageEdited())
+@borg.on(events.NewMessage())
 async def check_incoming_messages(event):
     # TODO: exempt admins from locks
     peer_id = event.chat_id
@@ -302,7 +302,7 @@ async def check_incoming_messages(event):
                 update_lock(peer_id, "url", False)
 
 
-@bot.on(events.ChatAction())  # pylint:disable=E0602
+@borg.on(events.ChatAction())  # pylint:disable=E0602
 async def _(event):
     # TODO: exempt admins from locks
     # check for "lock" "bots"
