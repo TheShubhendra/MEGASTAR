@@ -5,7 +5,7 @@ from telethon.tl.types import ChannelParticipantsAdmins
 from ..utils import admin_cmd, edit_or_reply
 
 
-@bot.on(admin_cmd(pattern="tagall$"))
+@borg.on(admin_cmd(pattern="tagall$"))
 async def _(event):
     if event.fwd_from:
         return
@@ -20,7 +20,7 @@ async def _(event):
     await event.delete()
 
 
-@bot.on(admin_cmd(pattern="all (.*)"))
+@borg.on(admin_cmd(pattern="all (.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -40,7 +40,7 @@ async def _(event):
     await event.delete()
 
 
-@bot.on(admin_cmd(pattern="report$"))
+@borg.on(admin_cmd(pattern="report$"))
 async def _(event):
     if event.fwd_from:
         return
@@ -59,7 +59,7 @@ async def _(event):
     await event.delete()
 
 
-@bot.on(admin_cmd(pattern="men (.*)"))
+@borg.on(admin_cmd(pattern="men (.*)"))
 async def _(event):
     input_str = event.pattern_match.group(1)
     if event.reply_to_msg_id:
