@@ -8,7 +8,7 @@ from ..utils import admin_cmd, edit_or_reply
 from . import CMD_HELP
 
 
-@bot.on(admin_cmd(pattern="stt (.*)"))
+@borg.on(admin_cmd(pattern="stt (.*)"))
 async def _(event):
     if event.fwd_from:
         return
