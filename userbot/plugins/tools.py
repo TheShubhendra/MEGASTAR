@@ -18,7 +18,7 @@ from ..utils import admin_cmd, edit_or_reply
 from . import CMD_HELP
 
 
-@bot.on(admin_cmd(pattern="scan ?(.*)"))
+@borg.on(admin_cmd(pattern="scan ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -59,7 +59,7 @@ async def _(event):
                 )
 
 
-@bot.on(admin_cmd(pattern=r"decode$", outgoing=True))
+@borg.on(admin_cmd(pattern=r"decode$", outgoing=True))
 async def parseqr(qr_e):
     if not os.path.isdir(Config.TEMP_DIR):
         os.makedirs(Config.TEMP_DIR)
@@ -95,7 +95,7 @@ async def parseqr(qr_e):
         os.remove(downloaded_file_name)
 
 
-@bot.on(admin_cmd(pattern="barcode ?(.*)"))
+@borg.on(admin_cmd(pattern="barcode ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -146,7 +146,7 @@ async def _(event):
     await catevent.delete()
 
 
-@bot.on(admin_cmd(pattern=r"makeqr(?: |$)([\s\S]*)", outgoing=True))
+@borg.on(admin_cmd(pattern=r"makeqr(?: |$)([\s\S]*)", outgoing=True))
 async def make_qr(makeqr):
     #  .makeqr command, make a QR Code containing the given content.
     input_str = makeqr.pattern_match.group(1)
@@ -185,7 +185,7 @@ async def make_qr(makeqr):
     await makeqr.delete()
 
 
-@bot.on(admin_cmd(pattern="cal (.*)"))
+@borg.on(admin_cmd(pattern="cal (.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -203,7 +203,7 @@ async def _(event):
         await edit_delete(event, "**Syntax : **`.cal year ; month `", 5)
 
 
-@bot.on(admin_cmd(pattern="currency (.*)"))
+@borg.on(admin_cmd(pattern="currency (.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -239,7 +239,7 @@ async def _(event):
         )
 
 
-@bot.on(admin_cmd(pattern="currencies$"))
+@borg.on(admin_cmd(pattern="currencies$"))
 async def currencylist(ups):
     if ups.fwd_from:
         return
@@ -252,7 +252,7 @@ async def currencylist(ups):
     await edit_or_reply(ups, f"**List of some currencies:**\n{hmm}\n")
 
 
-@bot.on(admin_cmd(pattern="ifsc (.*)"))
+@borg.on(admin_cmd(pattern="ifsc (.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -268,7 +268,7 @@ async def _(event):
         await edit_or_reply(event, "`{}`: {}".format(input_str, r.text))
 
 
-@bot.on(admin_cmd(pattern="color (.*)"))
+@borg.on(admin_cmd(pattern="color (.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -303,7 +303,7 @@ async def _(event):
         )
 
 
-@bot.on(admin_cmd(pattern="xkcd ?(.*)"))
+@borg.on(admin_cmd(pattern="xkcd ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
