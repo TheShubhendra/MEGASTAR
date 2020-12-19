@@ -10,7 +10,7 @@ from .sql_helper.welcomesql import (
 )
 
 
-@bot.on(events.ChatAction)
+@borg.on(events.ChatAction)
 async def _(event):
     cws = getcurrent_welcome_settings(event.chat_id)
     if (
@@ -72,7 +72,7 @@ async def _(event):
         )
 
 
-@bot.on(admin_cmd(pattern=r"savepwel ?(.*)"))
+@borg.on(admin_cmd(pattern=r"savepwel ?(.*)"))
 async def save_welcome(event):
     msg = await event.get_reply_message()
     string = "".join(event.text.split(maxsplit=1)[1:])
@@ -107,7 +107,7 @@ async def save_welcome(event):
     await edit_or_reply("Error while setting welcome in this group")
 
 
-@bot.on(admin_cmd(pattern="clearpwel$"))
+@borg.on(admin_cmd(pattern="clearpwel$"))
 async def del_welcome(event):
     if rmwelcome_setting(event.chat_id) is True:
         await edit_or_reply(event, "`Welcome note deleted for this chat.`")
@@ -115,7 +115,7 @@ async def del_welcome(event):
         await edit_or_reply(event, "`Do I have a welcome note here ?`")
 
 
-@bot.on(admin_cmd(pattern="listpwel$"))
+@borg.on(admin_cmd(pattern="listpwel$"))
 async def show_welcome(event):
     cws = getcurrent_welcome_settings(event.chat_id)
     if not cws:
