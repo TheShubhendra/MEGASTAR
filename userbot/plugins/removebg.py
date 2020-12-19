@@ -21,7 +21,7 @@ from ..utils import admin_cmd, edit_or_reply
 from . import CMD_HELP, convert_toimage
 
 
-@bot.on(admin_cmd(pattern="(rmbg|srmbg) ?(.*)"))
+@borg.on(admin_cmd(pattern="(rmbg|srmbg) ?(.*)"))
 async def remove_background(event):
     if event.fwd_from:
         return
