@@ -7,7 +7,7 @@ from .. import CMD_HELP
 from ..utils import admin_cmd, edit_or_reply
 
 
-@bot.on(admin_cmd(pattern="create (b|g|c) (.*)"))  # pylint:disable=E0602
+@borg.on(admin_cmd(pattern="create (b|g|c) (.*)"))  # pylint:disable=E0602
 async def _(event):
     if event.fwd_from:
         return
