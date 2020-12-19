@@ -22,7 +22,7 @@ def progress(current, total):
 DOGBIN_URL = "https://del.dog/"
 
 
-@bot.on(admin_cmd(pattern="paste( (.*)|$)", outgoing=True))
+@borg.on(admin_cmd(pattern="paste( (.*)|$)", outgoing=True))
 async def _(event):
     event = await edit_or_reply(event, "`pasting to del dog.....`")
     input_str = "".join(event.text.split(maxsplit=1)[1:])
@@ -64,7 +64,7 @@ async def _(event):
         )
 
 
-@bot.on(admin_cmd(pattern="neko( (.*)|$)", outgoing=True))
+@borg.on(admin_cmd(pattern="neko( (.*)|$)", outgoing=True))
 async def _(event):
     event = await edit_or_reply(event, "`pasting to neko bin.....`")
     input_str = "".join(event.text.split(maxsplit=1)[1:])
@@ -119,7 +119,7 @@ async def _(event):
     await event.edit(reply_text)
 
 
-@bot.on(admin_cmd(pattern="iffuci( (.*)|$)", outgoing=True))
+@borg.on(admin_cmd(pattern="iffuci( (.*)|$)", outgoing=True))
 async def _(event):
     event = await edit_or_reply(event, "`pasting to del dog.....`")
     input_str = "".join(event.text.split(maxsplit=1)[1:])
@@ -158,7 +158,7 @@ async def _(event):
         await event.edit("code is pasted to {}".format(url))
 
 
-@bot.on(admin_cmd(outgoing=True, pattern="getpaste( (.*)|$)"))
+@borg.on(admin_cmd(outgoing=True, pattern="getpaste( (.*)|$)"))
 async def get_dogbin_content(dog_url):
     textx = await dog_url.get_reply_message()
     message = dog_url.pattern_match.group(1)
@@ -198,7 +198,7 @@ async def get_dogbin_content(dog_url):
     await event.edit(reply_text)
 
 
-@bot.on(admin_cmd(pattern="paster( (.*)|$)", outgoing=True))
+@borg.on(admin_cmd(pattern="paster( (.*)|$)", outgoing=True))
 async def _(event):
     event = await edit_or_reply(event, "`pasting to del dog.....`")
     input_str = "".join(event.text.split(maxsplit=1)[1:])
