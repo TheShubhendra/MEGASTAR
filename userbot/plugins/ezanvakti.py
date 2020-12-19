@@ -8,7 +8,7 @@ from ..utils import admin_cmd
 from . import CMD_HELP
 
 
-@bot.on(admin_cmd(pattern="ezanvakti (.*)", outgoing=True))
+@borg.on(admin_cmd(pattern="ezanvakti (.*)", outgoing=True))
 async def get_adzan(adzan):
     LOKASI = adzan.pattern_match.group(1)
     url = f"https://api.pray.zone/v2/times/today.json?city={LOKASI}"
