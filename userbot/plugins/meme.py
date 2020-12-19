@@ -4,7 +4,7 @@ from .. import CMD_HELP
 from ..utils import admin_cmd, edit_or_reply
 
 
-@bot.on(admin_cmd(outgoing=True, pattern="^\:/$"))
+@borg.on(admin_cmd(outgoing=True, pattern="^\:/$"))
 async def kek(keks):
     keks = await edit_or_reply(keks, ":\\")
     uio = ["/", "\\"]
@@ -14,7 +14,7 @@ async def kek(keks):
         await keks.edit(txt)
 
 
-@bot.on(admin_cmd(outgoing=True, pattern="^\-_-$"))
+@borg.on(admin_cmd(outgoing=True, pattern="^\-_-$"))
 async def lol(lel):
     lel = await edit_or_reply(lel, "-__-")
     okay = "-__-"
@@ -24,7 +24,7 @@ async def lol(lel):
         await lel.edit(okay)
 
 
-@bot.on(admin_cmd(outgoing=True, pattern="^\;_;$"))
+@borg.on(admin_cmd(outgoing=True, pattern="^\;_;$"))
 async def fun(e):
     e = await edit_or_reply(e, ";__;")
     t = ";__;"
@@ -34,7 +34,7 @@ async def fun(e):
         await e.edit(t)
 
 
-@bot.on(admin_cmd(outgoing=True, pattern="oof$"))
+@borg.on(admin_cmd(outgoing=True, pattern="oof$"))
 async def Oof(e):
     t = "Oof"
     catevent = await edit_or_reply(e, t)
@@ -44,7 +44,7 @@ async def Oof(e):
         await catevent.edit(t)
 
 
-@bot.on(admin_cmd(outgoing=True, pattern="type (.*)"))
+@borg.on(admin_cmd(outgoing=True, pattern="type (.*)"))
 async def typewriter(typew):
     message = typew.pattern_match.group(1)
     sleep_time = 0.2
@@ -61,7 +61,7 @@ async def typewriter(typew):
         await asyncio.sleep(sleep_time)
 
 
-@bot.on(admin_cmd(pattern="repeat (\d*) (.*)", outgoing=True))
+@borg.on(admin_cmd(pattern="repeat (\d*) (.*)", outgoing=True))
 async def _(event):
     cat = ("".join(event.text.split(maxsplit=1)[1:])).split(" ", 1)
     message = cat[1]
@@ -71,7 +71,7 @@ async def _(event):
     await event.delete()
 
 
-@bot.on(admin_cmd(pattern=f"meme", outgoing=True))
+@borg.on(admin_cmd(pattern=f"meme", outgoing=True))
 async def meme(event):
     memeVar = event.text
     sleepValue = 0.5
@@ -137,7 +137,7 @@ async def meme(event):
     await event.edit(memeVar)
 
 
-@bot.on(admin_cmd(pattern=f"give", outgoing=True))
+@borg.on(admin_cmd(pattern=f"give", outgoing=True))
 async def give(event):
     if event.fwd_from:
         return
@@ -183,7 +183,7 @@ async def give(event):
     await event.edit(lp + lp + lp + lp + lp + lp + lp + lp + lp)
 
 
-@bot.on(admin_cmd(pattern=f"sadmin$", outgoing=True))
+@borg.on(admin_cmd(pattern=f"sadmin$", outgoing=True))
 async def _(event):
     animation_ttl = range(13)
     event = await edit_or_reply(event, "sadmin")
