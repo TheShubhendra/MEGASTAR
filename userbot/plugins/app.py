@@ -12,7 +12,7 @@ from ..utils import admin_cmd, edit_or_reply
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "cat"
 
 
-@bot.on(admin_cmd(pattern="app (.*)"))
+@borg.on(admin_cmd(pattern="app (.*)"))
 async def apk(event):
     app_name = event.pattern_match.group(1)
     event = await edit_or_reply(event, "Searching!")
@@ -81,7 +81,7 @@ async def apk(event):
         await event.edit("Exception Occured:- " + str(err))
 
 
-@bot.on(admin_cmd(pattern="appr (.*)"))
+@borg.on(admin_cmd(pattern="appr (.*)"))
 async def apkr(event):
     app_name = event.pattern_match.group(1)
     event = await edit_or_reply(event, "searching!")
