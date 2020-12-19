@@ -32,7 +32,7 @@ from ..utils import admin_cmd, edit_or_reply
 name = "Profile Photos"
 
 
-@bot.on(admin_cmd(pattern="poto ?(.*)", outgoing=True))
+@borg.on(admin_cmd(pattern="poto ?(.*)", outgoing=True))
 async def potocmd(event):
     """Gets the profile photos of replied users, channels or chats"""
     uid = "".join(event.raw_text.split(maxsplit=1)[1:])
