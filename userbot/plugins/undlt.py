@@ -4,14 +4,14 @@ from .. import CMD_HELP
 from ..utils import admin_cmd, edit_or_reply
 
 
-@bot.on(admin_cmd(pattern="undlt ?(.*)"))
+@borg.on(admin_cmd(pattern="undlt ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
     if event.pattern_match.group(1):
         try:
-            cat = int(event.pattern_match.group(1))
-            input_str = cat
+            pagal = int(event.pattern_match.group(1))
+            input_str = pagal
         except:
             input_str = 5
     else:
