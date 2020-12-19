@@ -16,7 +16,7 @@ CARBONLANG = "auto"
 LANG = "en"
 
 
-@bot.on(admin_cmd(outgoing=True, pattern="carbon(?: |$)(.*)"))
+@borg.on(admin_cmd(outgoing=True, pattern="carbon(?: |$)(.*)"))
 async def carbon_api(e):
     """ A Wrapper for carbon.now.sh """
     await e.edit("`Processing..`")
@@ -75,7 +75,7 @@ async def carbon_api(e):
     await cat.delete()
 
 
-@bot.on(admin_cmd(outgoing=True, pattern="krb"))
+@borg.on(admin_cmd(outgoing=True, pattern="krb"))
 async def carbon_api(e):
     cat = await edit_or_reply(e, "`Processing....`")
     CARBON = "https://carbon.now.sh/?l={lang}&code={code}"
@@ -154,7 +154,7 @@ async def carbon_api(e):
     await cat.delete()
 
 
-@bot.on(admin_cmd(pattern=f"kar1(?: |$)(.*)", outgoing=True))
+@borg.on(admin_cmd(pattern=f"kar1(?: |$)(.*)", outgoing=True))
 async def carbon_api(e):
     """ A Wrapper for carbon.now.sh """
     cat = await edit_or_reply(e, "🔲🔲🔲🔲🔲")
@@ -212,7 +212,7 @@ async def carbon_api(e):
     await cat.delete()  # Deleting msg
 
 
-@bot.on(admin_cmd(pattern=f"kar2(?: |$)(.*)", outgoing=True))
+@borg.on(admin_cmd(pattern=f"kar2(?: |$)(.*)", outgoing=True))
 async def carbon_api(e):
     """ A Wrapper for carbon.now.sh """
     cat = await edit_or_reply(e, "📛📛📛📛📛")
@@ -270,7 +270,7 @@ async def carbon_api(e):
     await cat.delete()  # Deleting msg
 
 
-@bot.on(admin_cmd(pattern=f"kar3(?: |$)(.*)", outgoing=True))
+@borg.on(admin_cmd(pattern=f"kar3(?: |$)(.*)", outgoing=True))
 async def carbon_api(e):
     """ A Wrapper for carbon.now.sh """
     cat = await edit_or_reply(e, "🎛🎛🎛🎛🎛")
@@ -332,7 +332,7 @@ async def carbon_api(e):
     await cat.delete()  # Deleting msg
 
 
-@bot.on(admin_cmd(pattern=f"kar4(?: |$)(.*)", outgoing=True))
+@borg.on(admin_cmd(pattern=f"kar4(?: |$)(.*)", outgoing=True))
 async def carbon_api(e):
     """ A Wrapper for carbon.now.sh """
     cat = await edit_or_reply(e, "🌚🌚🌚🌚🌚")
@@ -394,7 +394,7 @@ async def carbon_api(e):
     await cat.delete()  # Deleting msg
 
 
-@bot.on(admin_cmd(pattern=f"rgbk2(?: |$)(.*)", outgoing=True))
+@borg.on(admin_cmd(pattern=f"rgbk2(?: |$)(.*)", outgoing=True))
 async def carbon_api(e):
     RED = random.randint(0, 256)
     GREEN = random.randint(0, 256)
@@ -460,7 +460,7 @@ async def carbon_api(e):
     await cat.delete()  # Deleting msg
 
 
-@bot.on(admin_cmd(pattern=f"kargb(?: |$)(.*)", outgoing=True))
+@borg.on(admin_cmd(pattern=f"kargb(?: |$)(.*)", outgoing=True))
 async def carbon_api(e):
     RED = random.randint(0, 256)
     GREEN = random.randint(0, 256)
