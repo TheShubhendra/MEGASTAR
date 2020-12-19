@@ -44,7 +44,7 @@ UNBAN_RIGHTS = ChatBannedRights(
 )
 
 
-@bot.on(admin_cmd(pattern=r"gban(?: |$)(.*)"))
+@borg.on(admin_cmd(pattern=r"gban(?: |$)(.*)"))
 async def catgban(cat):
     cate = await edit_or_reply(cat, "gbanning.......")
     start = datetime.now()
@@ -115,7 +115,7 @@ async def catgban(cat):
         )
 
 
-@bot.on(admin_cmd(pattern=r"ungban(?: |$)(.*)"))
+@borg.on(admin_cmd(pattern=r"ungban(?: |$)(.*)"))
 async def catgban(cat):
     cate = await edit_or_reply(cat, "ungbaning.....")
     start = datetime.now()
@@ -168,7 +168,7 @@ async def catgban(cat):
         )
 
 
-@bot.on(admin_cmd(pattern="listgban$"))
+@borg.on(admin_cmd(pattern="listgban$"))
 async def gablist(event):
     if event.fwd_from:
         return
@@ -200,7 +200,7 @@ async def gablist(event):
         await edit_or_reply(event, GBANNED_LIST)
 
 
-@bot.on(admin_cmd(outgoing=True, pattern=r"gmute ?(\d+)?"))
+@borg.on(admin_cmd(outgoing=True, pattern=r"gmute ?(\d+)?"))
 async def startgmute(event):
     private = False
     if event.fwd_from:
@@ -240,7 +240,7 @@ async def startgmute(event):
         )
 
 
-@bot.on(admin_cmd(outgoing=True, pattern=r"ungmute ?(\d+)?"))
+@borg.on(admin_cmd(outgoing=True, pattern=r"ungmute ?(\d+)?"))
 async def endgmute(event):
     private = False
     if event.fwd_from:
