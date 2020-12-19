@@ -15,7 +15,7 @@ DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Legend"
 PREV_REPLY_MESSAGE = {}
 
 
-@bot.on(events.NewMessage(pattern=r"\/start", incoming=True))
+@borg.on(events.NewMessage(pattern=r"\/start", incoming=True))
 async def _(event):
     chat_id = event.sender_id
     if not pmpermit_sql.is_approved(chat_id):
