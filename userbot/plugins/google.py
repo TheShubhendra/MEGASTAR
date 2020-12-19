@@ -18,7 +18,7 @@ useragent = "Mozilla/5.0 (Linux; Android 9; SM-G960F Build/PPR1.180610.011; wv) 
 opener.addheaders = [("User-agent", useragent)]
 
 
-@bot.on(admin_cmd(outgoing=True, pattern=r"gs (.*)"))
+@borg.on(admin_cmd(outgoing=True, pattern=r"gs (.*)"))
 async def gsearch(q_event):
     catevent = await edit_or_reply(q_event, "`searching........`")
     match = q_event.pattern_match.group(1)
@@ -51,7 +51,7 @@ async def gsearch(q_event):
         )
 
 
-@bot.on(admin_cmd(pattern="grs$"))
+@borg.on(admin_cmd(pattern="grs$"))
 async def _(event):
     if event.fwd_from:
         return
@@ -111,7 +111,7 @@ async def _(event):
     await catevent.edit(OUTPUT_STR, parse_mode="HTML", link_preview=False)
 
 
-@bot.on(admin_cmd(pattern=r"reverse(?: |$)(\d*)", outgoing=True))
+@borg.on(admin_cmd(pattern=r"reverse(?: |$)(\d*)", outgoing=True))
 @errors_handler
 async def _(img):
     if os.path.isfile("okgoogle.png"):
