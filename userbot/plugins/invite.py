@@ -6,7 +6,7 @@ from telethon import functions
 from ..utils import admin_cmd
 
 
-@bot.on(admin_cmd(pattern="invite ?(.*)"))
+@borg.on(admin_cmd(pattern="invite ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
