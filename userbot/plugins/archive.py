@@ -24,7 +24,7 @@ from ..utils import admin_cmd, edit_or_reply, progress
 thumb_image_path = Config.TMP_DOWNLOAD_DIRECTORY + "/thumb_image.jpg"
 
 
-@bot.on(admin_cmd(pattern=("zip ?(.*)")))
+@borg.on(admin_cmd(pattern=("zip ?(.*)")))
 async def _(event):
     if event.fwd_from:
         return
@@ -67,7 +67,7 @@ async def _(event):
         await mone.edit("Local file compressed to `{}`".format(input_str + ".zip"))
 
 
-@bot.on(admin_cmd(pattern="unzip ?(.*)"))
+@borg.on(admin_cmd(pattern="unzip ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -139,7 +139,7 @@ def zipdir(dirName):
     return filePaths
 
 
-@bot.on(admin_cmd(pattern=("rar ?(.*)")))
+@borg.on(admin_cmd(pattern=("rar ?(.*)")))
 async def _(event):
     if event.fwd_from:
         return
@@ -186,7 +186,7 @@ async def _(event):
         await mone.edit("Local file compressed to `{}`".format(directory_name + ".rar"))
 
 
-@bot.on(admin_cmd(pattern=("tar ?(.*)")))
+@borg.on(admin_cmd(pattern=("tar ?(.*)")))
 async def _(event):
     if event.fwd_from:
         return
@@ -266,7 +266,7 @@ async def create_archive(input_directory):
     return return_name
 
 
-@bot.on(admin_cmd(pattern="unrar"))
+@borg.on(admin_cmd(pattern="unrar"))
 async def _(event):
     if event.fwd_from:
         return
@@ -354,7 +354,7 @@ async def _(event):
         await mone.delete()
 
 
-@bot.on(admin_cmd(pattern="untar"))
+@borg.on(admin_cmd(pattern="untar"))
 async def _(event):
     if event.fwd_from:
         return
