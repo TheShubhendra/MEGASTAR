@@ -3,7 +3,7 @@ import nekos
 from ..utils import admin_cmd, edit_or_reply
 
 
-@bot.on(admin_cmd(pattern="tcat$"))
+@borg.on(admin_cmd(pattern="tcat$"))
 async def hmm(cat):
     if cat.fwd_from:
         return
@@ -11,7 +11,7 @@ async def hmm(cat):
     await edit_or_reply(cat, reactcat)
 
 
-@bot.on(admin_cmd(pattern="why$"))
+@borg.on(admin_cmd(pattern="why$"))
 async def hmm(cat):
     if cat.fwd_from:
         return
@@ -19,7 +19,7 @@ async def hmm(cat):
     await edit_or_reply(cat, whycat)
 
 
-@bot.on(admin_cmd(pattern="fact$"))
+@borg.on(admin_cmd(pattern="fact$"))
 async def hmm(cat):
     if cat.fwd_from:
         return
