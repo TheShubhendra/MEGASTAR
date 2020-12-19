@@ -14,7 +14,7 @@ from ..utils import admin_cmd, edit_or_reply
 from . import CMD_HELP, awooify, baguette, iphonex, lolice
 
 
-@bot.on(admin_cmd("mask$", outgoing=True))
+@borg.on(admin_cmd("mask$", outgoing=True))
 async def _(catbot):
     reply_message = await catbot.get_reply_message()
     if not reply_message.media or not reply_message:
@@ -44,7 +44,7 @@ async def _(catbot):
             await event.delete()
 
 
-@bot.on(admin_cmd(pattern="awooify$"))
+@borg.on(admin_cmd(pattern="awooify$"))
 async def catbot(catmemes):
     replied = await catmemes.get_reply_message()
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
@@ -94,7 +94,7 @@ async def catbot(catmemes):
     await catmemes.client.send_file(catmemes.chat_id, cat, reply_to=replied)
 
 
-@bot.on(admin_cmd(pattern="lolice$"))
+@borg.on(admin_cmd(pattern="lolice$"))
 async def catbot(catmemes):
     replied = await catmemes.get_reply_message()
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
@@ -144,7 +144,7 @@ async def catbot(catmemes):
     await catmemes.client.send_file(catmemes.chat_id, cat, reply_to=replied)
 
 
-@bot.on(admin_cmd(pattern="bun$"))
+@borg.on(admin_cmd(pattern="bun$"))
 async def catbot(catmemes):
     replied = await catmemes.get_reply_message()
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
@@ -194,7 +194,7 @@ async def catbot(catmemes):
     await catmemes.client.send_file(catmemes.chat_id, cat, reply_to=replied)
 
 
-@bot.on(admin_cmd(pattern="iphx$"))
+@borg.on(admin_cmd(pattern="iphx$"))
 async def catbot(catmemes):
     replied = await catmemes.get_reply_message()
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
