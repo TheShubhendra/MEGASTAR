@@ -2,7 +2,7 @@ from ..utils import admin_cmd, edit_or_reply
 from . import fonts
 
 
-@bot.on(admin_cmd(pattern="fmusical(?: |$)(.*)", command="fmusical"))
+@borg.on(admin_cmd(pattern="fmusical(?: |$)(.*)", command="fmusical"))
 async def stylish_generator(event):
     args = event.pattern_match.group(1)
     if not args:
@@ -21,7 +21,7 @@ async def stylish_generator(event):
     await edit_or_reply(event, string)
 
 
-@bot.on(admin_cmd(pattern="ancient(?: |$)(.*)", command="ancient"))
+@borg.on(admin_cmd(pattern="ancient(?: |$)(.*)", command="ancient"))
 async def stylish_generator(event):
     args = event.pattern_match.group(1)
     if not args:
@@ -40,7 +40,7 @@ async def stylish_generator(event):
     await edit_or_reply(event, string)
 
 
-@bot.on(admin_cmd(pattern="vapor(?: |$)(.*)", command="vapor"))
+@borg.on(admin_cmd(pattern="vapor(?: |$)(.*)", command="vapor"))
 async def vapor(vpr):
     reply_text = []
     textx = await vpr.get_reply_message()
@@ -64,7 +64,7 @@ async def vapor(vpr):
     await edit_or_reply(vpr, "".join(reply_text))
 
 
-@bot.on(admin_cmd(pattern="smallcaps(?: |$)(.*)", command="smallcaps"))
+@borg.on(admin_cmd(pattern="smallcaps(?: |$)(.*)", command="smallcaps"))
 async def stylish_generator(event):
     args = event.pattern_match.group(1)
     if not args:
@@ -83,7 +83,7 @@ async def stylish_generator(event):
     await edit_or_reply(event, string)
 
 
-@bot.on(admin_cmd(pattern="blackbf(?: |$)(.*)", command="blackbf"))
+@borg.on(admin_cmd(pattern="blackbf(?: |$)(.*)", command="blackbf"))
 async def stylish_generator(event):
     args = event.pattern_match.group(1)
     if not args:
@@ -102,7 +102,7 @@ async def stylish_generator(event):
     await edit_or_reply(event, string)
 
 
-@bot.on(admin_cmd(pattern="bubbles(?: |$)(.*)", command="bubbles"))
+@borg.on(admin_cmd(pattern="bubbles(?: |$)(.*)", command="bubbles"))
 async def stylish_generator(event):
     args = event.pattern_match.group(1)
     if not args:
@@ -121,7 +121,7 @@ async def stylish_generator(event):
     await edit_or_reply(event, string)
 
 
-@bot.on(admin_cmd(pattern="tanf(?: |$)(.*)", command="tanf"))
+@borg.on(admin_cmd(pattern="tanf(?: |$)(.*)", command="tanf"))
 async def stylish_generator(event):
     args = event.pattern_match.group(1)
     if not args:
@@ -140,7 +140,7 @@ async def stylish_generator(event):
     await edit_or_reply(event, string)
 
 
-@bot.on(admin_cmd(pattern="boxf(?: |$)(.*)", command="boxf"))
+@borg.on(admin_cmd(pattern="boxf(?: |$)(.*)", command="boxf"))
 async def stylish_generator(event):
     args = event.pattern_match.group(1)
     if not args:
@@ -159,7 +159,7 @@ async def stylish_generator(event):
     await edit_or_reply(event, string)
 
 
-@bot.on(admin_cmd(pattern="smothtext(?: |$)(.*)", command="smothtext"))
+@borg.on(admin_cmd(pattern="smothtext(?: |$)(.*)", command="smothtext"))
 async def stylish_generator(event):
     args = event.pattern_match.group(1)
     if not args:
