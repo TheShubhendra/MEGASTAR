@@ -4,7 +4,7 @@ from ..utils import admin_cmd
 from . import CMD_HELP
 
 
-@bot.on(admin_cmd(pattern="sdm (\d*) (.*)", outgoing=True))
+@borg.on(admin_cmd(pattern="sdm (\d*) (.*)", outgoing=True))
 async def selfdestruct(destroy):
     cat = ("".join(destroy.text.split(maxsplit=1)[1:])).split(" ", 1)
     message = cat[1]
@@ -18,7 +18,7 @@ async def selfdestruct(destroy):
     await smsg.delete()
 
 
-@bot.on(admin_cmd(pattern="selfdm (\d*) (.*)", outgoing=True))
+@borg.on(admin_cmd(pattern="selfdm (\d*) (.*)", outgoing=True))
 async def selfdestruct(destroy):
     cat = ("".join(destroy.text.split(maxsplit=1)[1:])).split(" ", 1)
     message = cat[1]
