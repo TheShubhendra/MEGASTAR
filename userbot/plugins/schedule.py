@@ -4,7 +4,7 @@ from .. import CMD_HELP
 from ..utils import admin_cmd
 
 
-@bot.on(admin_cmd(pattern="schd (\d*) (.*)", outgoing=True))
+@borg.on(admin_cmd(pattern="schd (\d*) (.*)", outgoing=True))
 async def _(event):
     lub = ("".join(event.text.split(maxsplit=1)[1:])).split(" ", 1)
     message = lub[1]
