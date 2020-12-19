@@ -40,7 +40,7 @@ KANGING_STR = [
 combot_stickers_url = "https://combot.org/telegram/stickers?q="
 
 
-@bot.on(admin_cmd(outgoing=True, pattern="kang ?(.*)"))
+@borg.on(admin_cmd(outgoing=True, pattern="kang ?(.*)"))
 async def kang(args):
     """ For .kang command, kangs stickers or creates new ones. """
     user = await bot.get_me()
@@ -285,7 +285,7 @@ async def kang(args):
         )
 
 
-@bot.on(admin_cmd(pattern="stkrinfo$", outgoing=True))
+@borg.on(admin_cmd(pattern="stkrinfo$", outgoing=True))
 async def get_pack_info(event):
     if not event.is_reply:
         await edit_or_reply(event, "`I can't fetch info from nothing, can I ?!`")
@@ -328,7 +328,7 @@ async def get_pack_info(event):
     await catevent.edit(OUTPUT)
 
 
-@bot.on(admin_cmd(pattern="stickers ?(.*)", outgoing=True))
+@borg.on(admin_cmd(pattern="stickers ?(.*)", outgoing=True))
 async def cb_sticker(event):
     split = event.pattern_match.group(1)
     if not split:
