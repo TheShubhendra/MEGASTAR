@@ -44,7 +44,7 @@ async def ocr_space_file(
     return r.json()
 
 
-@bot.on(admin_cmd(pattern="ocr(?: |$)(.*)", outgoing=True))
+@borg.on(admin_cmd(pattern="ocr(?: |$)(.*)", outgoing=True))
 async def ocr(event):
     event = await edit_or_reply(event, "`Reading...`")
     if not os.path.isdir(Config.TEMP_DIR):
