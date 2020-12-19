@@ -11,7 +11,7 @@ from . import CMD_HELP
 GIT_TEMP_DIR = "./temp/"
 
 
-@bot.on(admin_cmd(pattern="github (.*)", outgoing=True))
+@borg.on(admin_cmd(pattern="github (.*)", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -50,7 +50,7 @@ async def _(event):
         await edit_or_reply(event, "`{}`: {}".format(input_str, r.text))
 
 
-@bot.on(admin_cmd(pattern="commit$", outgoing=True))
+@borg.on(admin_cmd(pattern="commit$", outgoing=True))
 async def download(event):
     if event.fwd_from:
         return
