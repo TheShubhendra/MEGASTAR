@@ -13,7 +13,7 @@ from .sql_helper.filter_sql import (
 )
 
 
-@bot.on(events.NewMessage(incoming=True))
+@borg.on(events.NewMessage(incoming=True))
 async def filter_incoming_handler(handler):
     try:
         if not (await handler.get_sender()).bot:
@@ -35,7 +35,7 @@ async def filter_incoming_handler(handler):
         pass
 
 
-@bot.on(admin_cmd(pattern="filter (.*)"))
+@borg.on(admin_cmd(pattern="filter (.*)"))
 async def add_new_filter(new_handler):
     keyword = new_handler.pattern_match.group(1)
     string = new_handler.text.partition(keyword)[2]
@@ -75,7 +75,7 @@ async def add_new_filter(new_handler):
     await edit_or_reply(new_handler, f"Error while setting filter for {keyword}")
 
 
-@bot.on(admin_cmd(pattern="filters$"))
+@borg.on(admin_cmd(pattern="filters$"))
 async def on_snip_list(event):
     OUT_STR = "There are no filters in this chat."
     filters = get_filters(event.chat_id)
@@ -99,7 +99,7 @@ async def on_snip_list(event):
         await edit_or_reply(event, OUT_STR)
 
 
-@bot.on(admin_cmd(pattern="stop (.*)"))
+@borg.on(admin_cmd(pattern="stop (.*)"))
 async def remove_a_filter(r_handler):
     filt = r_handler.pattern_match.group(1)
     if not remove_filter(r_handler.chat_id, filt):
@@ -108,7 +108,7 @@ async def remove_a_filter(r_handler):
         await r_handler.edit("Filter `{} `was deleted successfully".format(filt))
 
 
-@bot.on(admin_cmd(pattern="rmfilters$"))
+@borg.on(admin_cmd(pattern="rmfilters$"))
 async def on_all_snip_delete(event):
     filters = get_filters(event.chat_id)
     if filters:
