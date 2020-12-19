@@ -36,7 +36,7 @@ def random_color():
     ]
 
 
-@bot.on(admin_cmd(outgoing=True, pattern="(mmf|mms) ?(.*)"))
+@borg.on(admin_cmd(outgoing=True, pattern="(mmf|mms) ?(.*)"))
 async def memes(cat):
     cmd = cat.pattern_match.group(1)
     catinput = cat.pattern_match.group(2)
@@ -129,7 +129,7 @@ async def memes(cat):
             os.remove(files)
 
 
-@bot.on(admin_cmd(outgoing=True, pattern="ascii ?(.*)"))
+@borg.on(admin_cmd(outgoing=True, pattern="ascii ?(.*)"))
 async def memes(cat):
     catinput = cat.pattern_match.group(1)
     reply = await cat.get_reply_message()
@@ -203,7 +203,7 @@ async def memes(cat):
             os.remove(files)
 
 
-@bot.on(admin_cmd(pattern="invert$", outgoing=True))
+@borg.on(admin_cmd(pattern="invert$", outgoing=True))
 async def memes(cat):
     reply = await cat.get_reply_message()
     if not (reply and (reply.media)):
@@ -284,7 +284,7 @@ async def memes(cat):
             os.remove(files)
 
 
-@bot.on(admin_cmd(outgoing=True, pattern="solarize$"))
+@borg.on(admin_cmd(outgoing=True, pattern="solarize$"))
 async def memes(cat):
     reply = await cat.get_reply_message()
     if not (reply and (reply.media)):
@@ -365,7 +365,7 @@ async def memes(cat):
             os.remove(files)
 
 
-@bot.on(admin_cmd(outgoing=True, pattern="mirror$"))
+@borg.on(admin_cmd(outgoing=True, pattern="mirror$"))
 async def memes(cat):
     reply = await cat.get_reply_message()
     if not (reply and (reply.media)):
@@ -446,7 +446,7 @@ async def memes(cat):
             os.remove(files)
 
 
-@bot.on(admin_cmd(outgoing=True, pattern="flip$"))
+@borg.on(admin_cmd(outgoing=True, pattern="flip$"))
 async def memes(cat):
     reply = await cat.get_reply_message()
     if not (reply and (reply.media)):
@@ -527,7 +527,7 @@ async def memes(cat):
             os.remove(files)
 
 
-@bot.on(admin_cmd(outgoing=True, pattern="gray$"))
+@borg.on(admin_cmd(outgoing=True, pattern="gray$"))
 async def memes(cat):
     reply = await cat.get_reply_message()
     if not (reply and (reply.media)):
@@ -608,7 +608,7 @@ async def memes(cat):
             os.remove(files)
 
 
-@bot.on(admin_cmd(outgoing=True, pattern="zoom ?(.*)"))
+@borg.on(admin_cmd(outgoing=True, pattern="zoom ?(.*)"))
 async def memes(cat):
     reply = await cat.get_reply_message()
     if not (reply and (reply.media)):
@@ -696,7 +696,7 @@ async def memes(cat):
             os.remove(files)
 
 
-@bot.on(admin_cmd(outgoing=True, pattern="frame ?(.*)"))
+@borg.on(admin_cmd(outgoing=True, pattern="frame ?(.*)"))
 async def memes(cat):
     reply = await cat.get_reply_message()
     if not (reply and (reply.media)):
