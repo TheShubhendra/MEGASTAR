@@ -13,7 +13,7 @@ from .sql_helper.gban_sql_helper import get_gbanuser, is_gbanned
 
 if Config.ANTISPAMBOT_BAN:
 
-    @bot.on(events.ChatAction())
+    @borg.on(events.ChatAction())
     async def anti_spambot(event):
         if not event.user_joined and not event.user_added:
             return
@@ -93,8 +93,8 @@ if Config.ANTISPAMBOT_BAN:
             )
 
 
-@bot.on(admin_cmd(pattern="cascheck$"))
-@bot.on(sudo_cmd(pattern="cascheck$", allow_sudo=True))
+@borg.on(admin_cmd(pattern="cascheck$"))
+@borg.on(sudo_cmd(pattern="cascheck$", allow_sudo=True))
 async def caschecker(cas):
     catevent = await edit_or_reply(
         cas,
@@ -133,8 +133,8 @@ async def caschecker(cas):
     await catevent.edit(text)
 
 
-@bot.on(admin_cmd(pattern="spamcheck$"))
-@bot.on(sudo_cmd(pattern="spamcheck$", allow_sudo=True))
+@borg.on(admin_cmd(pattern="spamcheck$"))
+@borg.on(sudo_cmd(pattern="spamcheck$", allow_sudo=True))
 async def caschecker(cas):
     text = ""
     chat = cas.chat_id
