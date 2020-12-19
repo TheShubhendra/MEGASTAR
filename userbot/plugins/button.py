@@ -14,7 +14,7 @@ from ..utils import admin_cmd, edit_or_reply
 BTN_URL_REGEX = re.compile(r"(\[([^\[]+?)\]\<buttonurl:(?:/{0,2})(.+?)(:same)?\>)")
 
 
-@bot.on(admin_cmd(pattern=r"cbutton(?: |$)(.*)", outgoing=True))
+@borg.on(admin_cmd(pattern=r"cbutton(?: |$)(.*)", outgoing=True))
 async def _(event):
     chat = event.chat_id
     reply_message = await event.get_reply_message()
@@ -66,7 +66,7 @@ async def _(event):
 # Helpers
 
 
-@bot.on(admin_cmd(pattern=r"ibutton( (.*)|$)", outgoing=True))
+@borg.on(admin_cmd(pattern=r"ibutton( (.*)|$)", outgoing=True))
 async def _(event):
     reply_to_id = None
     catinput = "".join(event.text.split(maxsplit=1)[1:])
