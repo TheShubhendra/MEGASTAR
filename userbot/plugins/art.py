@@ -5,7 +5,7 @@ from ..utils import admin_cmd, edit_or_reply, sudo_cmd
 DEF = str(ALIVE_NAME) if ALIVE_NAME else "cat"
 
 
-@bot.on(admin_cmd(pattern="ded (.*)"))
+@borg.on(admin_cmd(pattern="ded (.*)"))
 async def kakashi(ded):
     name = ded.pattern_match.group(1)
     await edit_or_reply(
@@ -27,7 +27,7 @@ async def kakashi(ded):
     )
 
 
-@bot.on(admin_cmd(pattern="killer (.*)"))
+@borg.on(admin_cmd(pattern="killer (.*)"))
 async def kakashi(killer):
     name = killer.pattern_match.group(1)
     await edit_or_reply(
@@ -317,71 +317,71 @@ R = (
 )
 
 
-@bot.on(admin_cmd(pattern=r"monster$"))
+@borg.on(admin_cmd(pattern=r"monster$"))
 async def bluedevilmonster(monster):
     await edit_or_reply(monster, A)
 
 
-@bot.on(admin_cmd(pattern=r"pig$"))
+@borg.on(admin_cmd(pattern=r"pig$"))
 async def bluedevilpig(pig):
     await edit_or_reply(pig, B)
 
 
-@bot.on(admin_cmd(pattern=r"gun$"))
+@borg.on(admin_cmd(pattern=r"gun$"))
 async def bluedevilgun(gun):
     await edit_or_reply(gun, D)
 
 
-@bot.on(admin_cmd(pattern=r"dog$"))
+@borg.on(admin_cmd(pattern=r"dog$"))
 async def bluedevildog(dog):
     await edit_or_reply(dog, E)
 
 
-@bot.on(admin_cmd(pattern=r"hello$"))
+@borg.on(admin_cmd(pattern=r"hello$"))
 async def bluedevilhello(hello):
     await edit_or_reply(hello, F)
 
 
-@bot.on(admin_cmd(pattern=r"hmf$"))
+@borg.on(admin_cmd(pattern=r"hmf$"))
 async def bluedevilhmf(hmf):
     await edit_or_reply(hmf, G)
 
 
-@bot.on(admin_cmd(pattern=r"couple$"))
+@borg.on(admin_cmd(pattern=r"couple$"))
 async def bluedevilcouple(couple):
     await edit_or_reply(couple, H)
 
 
-@bot.on(admin_cmd(pattern=r"sup$"))
+@borg.on(admin_cmd(pattern=r"sup$"))
 async def bluedevilsupreme(supreme):
     await edit_or_reply(supreme, I)
 
 
-@bot.on(admin_cmd(pattern=r"india$"))
+@borg.on(admin_cmd(pattern=r"india$"))
 async def bluedevilindia(india):
     await edit_or_reply(india, J)
 
 
-@bot.on(admin_cmd(pattern=r"wc$"))
+@borg.on(admin_cmd(pattern=r"wc$"))
 async def bluedevilwelcome(welcome):
     await edit_or_reply(welcome, K)
 
 
-@bot.on(admin_cmd(pattern=r"snk$"))
+@borg.on(admin_cmd(pattern=r"snk$"))
 async def bluedevilsnake(snake):
     await edit_or_reply(snake, L)
 
 
-@bot.on(admin_cmd(pattern=r"bye$"))
+@borg.on(admin_cmd(pattern=r"bye$"))
 async def bluedevilbye(bye):
     await edit_or_reply(bye, O)
 
 
-@bot.on(admin_cmd(pattern=r"shitos$"))
+@borg.on(admin_cmd(pattern=r"shitos$"))
 async def bluedevilshitos(shitos):
     await edit_or_reply(shitos, P)
 
 
-@bot.on(admin_cmd(pattern=r"dislike$"))
+@borg.on(admin_cmd(pattern=r"dislike$"))
 async def bluedevildislike(dislike):
     await edit_or_reply(dislike, R)
