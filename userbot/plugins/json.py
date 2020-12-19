@@ -5,7 +5,7 @@ from ..utils import admin_cmd, edit_or_reply
 from . import yaml_format
 
 
-@bot.on(admin_cmd(pattern="json$"))
+@borg.on(admin_cmd(pattern="json$"))
 async def _(event):
     if event.fwd_from:
         return
@@ -33,7 +33,7 @@ async def _(event):
         await edit_or_reply(event, "`{}`".format(the_real_message))
 
 
-@bot.on(admin_cmd(pattern="yaml$"))
+@borg.on(admin_cmd(pattern="yaml$"))
 async def _(event):
     if event.fwd_from:
         return
