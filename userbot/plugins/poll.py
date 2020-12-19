@@ -9,7 +9,7 @@ from ..utils import admin_cmd, edit_or_reply
 from . import Build_Poll
 
 
-@bot.on(admin_cmd(pattern="poll( (.*)|$)"))
+@borg.on(admin_cmd(pattern="poll( (.*)|$)"))
 async def pollcreator(catpoll):
     reply_to_id = None
     if catpoll.reply_to_msg_id:
