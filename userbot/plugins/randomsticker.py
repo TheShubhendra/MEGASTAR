@@ -14,7 +14,7 @@ BASE_URL = "https://headp.at/pats/{}"
 PAT_IMAGE = "pat.webp"
 
 
-@bot.on(admin_cmd(pattern="cat$"))
+@borg.on(admin_cmd(pattern="cat$"))
 async def _(event):
     try:
         await event.delete()
@@ -37,7 +37,7 @@ async def _(event):
 # credit to @r4v4n4
 
 
-@bot.on(admin_cmd(pattern="dab$", outgoing=True))
+@borg.on(admin_cmd(pattern="dab$", outgoing=True))
 async def handler(event):
     blacklist = {
         1653974154589768377,
@@ -73,7 +73,7 @@ async def handler(event):
     await event.respond(file=random.choice(docs))
 
 
-@bot.on(admin_cmd(pattern="brain$", outgoing=True))
+@borg.on(admin_cmd(pattern="brain$", outgoing=True))
 async def handler(event):
     blacklist = {}
     try:
@@ -99,7 +99,7 @@ async def handler(event):
 # By:- git: jaskaranSM tg: @Zero_cool7870
 
 
-@bot.on(admin_cmd(pattern="pat$", outgoing=True))
+@borg.on(admin_cmd(pattern="pat$", outgoing=True))
 async def lastfm(event):
     try:
         await event.delete()
