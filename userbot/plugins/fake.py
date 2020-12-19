@@ -14,7 +14,7 @@ logging.basicConfig(
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "cat"
 
 
-@bot.on(admin_cmd(pattern="scam ?(.*)"))
+@borg.on(admin_cmd(pattern="scam ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -30,7 +30,7 @@ async def _(event):
         await asyncio.sleep(86400)  # type for 10 seconds
 
 
-@bot.on(admin_cmd(pattern="prankpromote ?(.*)"))
+@borg.on(admin_cmd(pattern="prankpromote ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -52,7 +52,7 @@ async def _(event):
         await edit_or_reply(event, "Successfully Promoted")
 
 
-@bot.on(admin_cmd(pattern=f"padmin$", outgoing=True))
+@borg.on(admin_cmd(pattern=f"padmin$", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
