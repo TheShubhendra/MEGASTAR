@@ -17,7 +17,7 @@ USER_BOT_WARN_ZERO = "You were spamming my peru master's inbox, henceforth you a
 
 if Config.PRIVATE_GROUP_ID is not None:
 
-    @bot.on(admin_cmd(pattern="approve ?(.*)"))
+    @borg.on(admin_cmd(pattern="approve ?(.*)"))
     async def approve_p_m(event):
         if event.fwd_from:
             return
@@ -74,7 +74,7 @@ if Config.PRIVATE_GROUP_ID is not None:
             await asyncio.sleep(3)
             await event.delete()
 
-    @bot.on(events.NewMessage(outgoing=True))
+    @borg.on(events.NewMessage(outgoing=True))
     async def you_dm_niqq(event):
         if event.fwd_from:
             return
@@ -88,7 +88,7 @@ if Config.PRIVATE_GROUP_ID is not None:
         ):
             pmpermit_sql.approve(chat.id, "outgoing")
 
-    @bot.on(admin_cmd(pattern="disapprove ?(.*)"))
+    @borg.on(admin_cmd(pattern="disapprove ?(.*)"))
     async def disapprove_p_m(event):
         if event.fwd_from:
             return
@@ -128,7 +128,7 @@ if Config.PRIVATE_GROUP_ID is not None:
                     )
                 )
 
-    @bot.on(admin_cmd(pattern="block$"))
+    @borg.on(admin_cmd(pattern="block$"))
     async def block_p_m(event):
         if event.fwd_from:
             return
@@ -158,7 +158,7 @@ if Config.PRIVATE_GROUP_ID is not None:
             )
             await event.client(functions.contacts.BlockRequest(chat.id))
 
-    @bot.on(admin_cmd(pattern="unblock$"))
+    @borg.on(admin_cmd(pattern="unblock$"))
     async def unblock_pm(event):
         if event.reply_to_msg_id:
             reply = await event.get_reply_message()
@@ -171,7 +171,7 @@ if Config.PRIVATE_GROUP_ID is not None:
                 )
             )
 
-    @bot.on(admin_cmd(pattern="listapproved$"))
+    @borg.on(admin_cmd(pattern="listapproved$"))
     async def approve_p_m(event):
         if event.fwd_from:
             return
@@ -204,7 +204,7 @@ if Config.PRIVATE_GROUP_ID is not None:
 
     if PMMENU:
 
-        @bot.on(events.NewMessage(incoming=True))
+        @borg.on(events.NewMessage(incoming=True))
         async def on_new_private_message(event):
             if event.sender_id == event.client.uid:
                 return
@@ -307,7 +307,7 @@ if Config.PRIVATE_GROUP_ID is not None:
 
     else:
 
-        @bot.on(events.NewMessage(incoming=True))
+        @borg.on(events.NewMessage(incoming=True))
         async def on_new_private_message(event):
             if event.sender_id == event.client.uid:
                 return
