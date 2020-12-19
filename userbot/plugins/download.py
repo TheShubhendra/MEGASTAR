@@ -20,7 +20,7 @@ from ..utils import admin_cmd, edit_or_reply, humanbytes, progress
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "legend"
 
 
-@bot.on(admin_cmd(pattern="download(?: |$)(.*)", outgoing=True))
+@borg.on(admin_cmd(pattern="download(?: |$)(.*)", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
