@@ -31,8 +31,8 @@ pm_caption += "➾ **ꜱᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ** ☞ [ᴊᴏɪɴ](https
 pm_caption += "➾ **ʟɪᴄᴇɴꜱᴇ**  ☞ [𝚃𝙴𝙰𝙼 𝙻𝙴𝙶𝙴𝙽𝙳](https://github.com/aritramandal)\n"
 pm_caption += "➾ **ᴄᴏᴘʏʀɪɢʜᴛ ʙʏ** ☞ [🄻🄴🄶🄴🄽🄳](https://github.com/Bristi-OP/LEGEND)\n\n"
 pm_caption += f"➾ **ᴍʏ ᴍᴀsᴛᴇʀ** ☞ [{DEFAULTUSER}](tg://user?id={legend})\n"
-
-@borg.on(admin_cmd(pattern=r"alive"))
+        
+@borg.on(admin_cmd(pattern="alive"))
 
 async def amireallyalive(yes):
     chat = await yes.get_chat()
