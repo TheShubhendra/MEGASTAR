@@ -7,7 +7,7 @@ from ..utils import admin_cmd
 from . import CMD_HELP
 
 
-@bot.on(admin_cmd(pattern="quote ?(.*)", outgoing=True))
+@borg.on(admin_cmd(pattern="quote ?(.*)", outgoing=True))
 async def quote_search(event):
     if event.fwd_from:
         return
