@@ -18,7 +18,7 @@ from telethon.utils import get_inner_text
 from userbot.utils import admin_cmd
 
 
-logger.info(Config.OPEN_LOAD_LOGIN)
+logger.info(config.OPEN_LOAD_LOGIN)
 # https://t.me/RoseSupport/33801
 
 
@@ -84,7 +84,7 @@ async def get_direct_ip_specific_link(link: str):
         async with aiohttp.ClientSession() as session:
             openload_id = re.search(OPEN_LOAD_VALID_URL, link).group("id")
             step_one_url = "https://api.openload.co/1/file/dlticket?file={}&login={}&key={}".format(
-                openload_id, Config.OPEN_LOAD_LOGIN, Config.OPEN_LOAD_KEY)
+                openload_id, config.OPEN_LOAD_LOGIN, config.OPEN_LOAD_KEY)
             http_response = await session.get(step_one_url)
             http_response_text = await http_response.text()
             http_response_json = json.loads(http_response_text)
