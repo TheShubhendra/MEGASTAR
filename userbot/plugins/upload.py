@@ -129,7 +129,7 @@ async def upload(path, event, udir_event):
         uploaded += 1
 
 
-@bot.on(admin_cmd(pattern="upload (.*)", outgoing=True))
+@borg.on(admin_cmd(pattern="upload (.*)", outgoing=True))
 async def uploadir(event):
     global uploaded
     input_str = "".join(event.text.split(maxsplit=1)[1:])
@@ -164,7 +164,7 @@ async def uploadir(event):
     await udir_event.delete()
 
 
-@bot.on(admin_cmd(pattern="circle ?(.*)", outgoing=True))
+@borg.on(admin_cmd(pattern="circle ?(.*)", outgoing=True))
 async def video_catfile(event):
     reply = await event.get_reply_message()
     input_str = "".join(event.text.split(maxsplit=1)[1:])
