@@ -2,18 +2,18 @@ from telethon import custom, events
 from telethon.tl.types import Channel
 from telethon.utils import get_display_name
 
-from userbot.uniborgConfig import config
+from userbot.config import config
      
-NEEDLOG = int(Config.TAG_LOG)
-if Config.TAG_LOG:
-    NEEDTOLOG = int(Config.TAG_LOG)
+NEEDLOG = int(config.TAG_LOG)
+if config.TAG_LOG:
+    NEEDTOLOG = int(config.TAG_LOG)
     
 if Config.TAG_LOG:
 
     @borg.on(
         events.NewMessage(
             incoming=True,
-            blacklist_chats=Config.UB_BLACK_LIST_CHAT,
+            blacklist_chats=config.UB_BLACK_LIST_CHAT,
             func=lambda e: (e.mentioned),
         )
     )
