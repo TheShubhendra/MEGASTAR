@@ -18,7 +18,7 @@ from ..utils import admin_cmd, edit_or_reply
 from . import CMD_HELP
 
 
-@bot.on(admin_cmd(outgoing=True, pattern=r"direct(?: |$)([\s\S]*)"))
+@borg.on(admin_cmd(outgoing=True, pattern=r"direct(?: |$)([\s\S]*)"))
 async def direct_link_generator(request):
     """ direct links generator """
     event = await edit_or_reply(request, "`Processing...`")
