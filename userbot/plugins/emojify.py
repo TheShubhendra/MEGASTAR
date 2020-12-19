@@ -10,7 +10,7 @@ from . import CMD_HELP
 from . import fonts as emojify
 
 
-@bot.on(admin_cmd(pattern="emoji(?: |$)(.*)"))
+@borg.on(admin_cmd(pattern="emoji(?: |$)(.*)"))
 async def itachi(event):
     args = event.pattern_match.group(1)
     if not args:
@@ -32,7 +32,7 @@ async def itachi(event):
     await edit_or_reply(event, result)
 
 
-@bot.on(admin_cmd(pattern="cmoji(?: |$)(.*)"))
+@borg.on(admin_cmd(pattern="cmoji(?: |$)(.*)"))
 async def itachi(event):
     args = event.pattern_match.group(1)
     if not args:
