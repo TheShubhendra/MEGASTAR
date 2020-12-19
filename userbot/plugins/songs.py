@@ -23,7 +23,7 @@ SONGBOT_BLOCKED_STRING = "<code>Please unblock @songdl_bot and try again</code>"
 # =========================================================== #
 
 
-@bot.on(admin_cmd(pattern="(song|song320)($| (.*))"))
+@borg.on(admin_cmd(pattern="(song|song320)($| (.*))"))
 async def _(event):
     reply_to_id = await reply_id(event)
     reply = await event.get_reply_message()
@@ -101,7 +101,7 @@ async def delete_messages(event, chat, from_message):
     await event.client.send_read_acknowledge(chat)
 
 
-@bot.on(admin_cmd(pattern="vsong( (.*)|$)"))
+@borg.on(admin_cmd(pattern="vsong( (.*)|$)"))
 async def _(event):
     reply_to_id = await reply_id(event)
     reply = await event.get_reply_message()
@@ -166,7 +166,7 @@ async def _(event):
             os.remove(files)
 
 
-@bot.on(admin_cmd(pattern="song2 (.*)"))
+@borg.on(admin_cmd(pattern="song2 (.*)"))
 async def cat_song_fetcer(event):
     if event.fwd_from:
         return
