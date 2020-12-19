@@ -19,7 +19,7 @@ if Var.LYDIA_API_KEY:
     lydia = LydiaAI(coffeehouse_api)
 
 
-@bot.on(admin_cmd(pattern="(en|re|li)ai$", outgoing=True))
+@borg.on(admin_cmd(pattern="(en|re|li)ai$", outgoing=True))
 async def lydia_disable_enable(event):
     if event.fwd_from:
         return
@@ -100,7 +100,7 @@ async def lydia_disable_enable(event):
             )
 
 
-@bot.on(admin_cmd(incoming=True))
+@borg.on(admin_cmd(incoming=True))
 async def on_new_message(event):
     if event.chat_id in Config.UB_BLACK_LIST_CHAT:
         return
