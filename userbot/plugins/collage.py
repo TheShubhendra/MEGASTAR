@@ -10,7 +10,7 @@ from ..utils import admin_cmd, edit_or_reply
 from . import CMD_HELP, make_gif, runcmd
 
 
-@bot.on(admin_cmd(pattern="collage(?: |$)(.*)", outgoing=True))
+@borg.on(admin_cmd(pattern="collage(?: |$)(.*)", outgoing=True))
 async def collage(cat):
     catinput = cat.pattern_match.group(1)
     reply = await cat.get_reply_message()
