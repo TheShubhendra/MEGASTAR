@@ -52,7 +52,7 @@ async def get_user(event):
     return replied_user
 
 
-@bot.on(admin_cmd(outgoing=True, pattern=r"(\w+)say (.*)"))
+@borg.on(admin_cmd(outgoing=True, pattern=r"(\w+)say (.*)"))
 async def univsaye(cowmsg):
     arg = cowmsg.pattern_match.group(1).lower()
     text = cowmsg.pattern_match.group(2)
@@ -65,7 +65,7 @@ async def univsaye(cowmsg):
     await edit_or_reply(cowmsg, f"`{cheese.milk(text).replace('`', '´')}`")
 
 
-@bot.on(admin_cmd(pattern="coin ?(.*)", outgoing=True))
+@borg.on(admin_cmd(pattern="coin ?(.*)", outgoing=True))
 async def _(event):
     r = random.randint(1, 100)
     input_str = event.pattern_match.group(1)
@@ -99,7 +99,7 @@ async def _(event):
         await edit_or_reply(event, r"¯\_(ツ)_/¯")
 
 
-@bot.on(admin_cmd(pattern=r"slap(?: |$)(.*)", outgoing=True))
+@borg.on(admin_cmd(pattern=r"slap(?: |$)(.*)", outgoing=True))
 async def who(event):
     replied_user = await get_user(event)
     caption = await catmemes.slap(replied_user, event, DEFAULTUSER)
@@ -114,7 +114,7 @@ async def who(event):
         )
 
 
-@bot.on(admin_cmd(outgoing=True, pattern="(yes|no|maybe|decide)$"))
+@borg.on(admin_cmd(outgoing=True, pattern="(yes|no|maybe|decide)$"))
 async def decide(event):
     decision = event.pattern_match.group(1).lower()
     message_id = event.reply_to_msg_id or None
@@ -138,7 +138,7 @@ async def decide(event):
     )
 
 
-@bot.on(admin_cmd(pattern=f"shout", outgoing=True))
+@borg.on(admin_cmd(pattern=f"shout", outgoing=True))
 async def shout(args):
     msg = "```"
     messagestr = args.text
@@ -155,7 +155,7 @@ async def shout(args):
     await edit_or_reply(args, "`" + msg + "`")
 
 
-@bot.on(admin_cmd(outgoing=True, pattern="owo ?(.*)"))
+@borg.on(admin_cmd(outgoing=True, pattern="owo ?(.*)"))
 async def faces(owo):
     textx = await owo.get_reply_message()
     message = owo.pattern_match.group(1)
@@ -176,7 +176,7 @@ async def faces(owo):
     await edit_or_reply(owo, reply_text)
 
 
-@bot.on(admin_cmd(outgoing=True, pattern="clap(?: |$)(.*)"))
+@borg.on(admin_cmd(outgoing=True, pattern="clap(?: |$)(.*)"))
 async def claptext(event):
     textx = await event.get_reply_message()
     if event.pattern_match.group(1):
@@ -192,7 +192,7 @@ async def claptext(event):
     await edit_or_reply(event, reply_text)
 
 
-@bot.on(admin_cmd(outgoing=True, pattern="smk(?: |$)(.*)"))
+@borg.on(admin_cmd(outgoing=True, pattern="smk(?: |$)(.*)"))
 async def smrk(smk):
     textx = await smk.get_reply_message()
     if smk.pattern_match.group(1):
@@ -210,7 +210,7 @@ async def smrk(smk):
         await edit_or_reply(smk, reply_text)
 
 
-@bot.on(admin_cmd(pattern="ftext (.*)"))
+@borg.on(admin_cmd(pattern="ftext (.*)"))
 async def payf(event):
     paytext = event.pattern_match.group(1)
     pay = "{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}\n{}".format(
@@ -230,7 +230,7 @@ async def payf(event):
     await edit_or_reply(event, pay)
 
 
-@bot.on(admin_cmd(outgoing=True, pattern="repo$"))
+@borg.on(admin_cmd(outgoing=True, pattern="repo$"))
 async def source(e):
     await edit_or_reply(
         e,
@@ -238,49 +238,49 @@ async def source(e):
     )
 
 
-@bot.on(admin_cmd(pattern="congo$"))
+@borg.on(admin_cmd(pattern="congo$"))
 async def _(e):
     txt = random.choice(catmemes.CONGOREACTS)
     await edit_or_reply(e, txt)
 
 
-@bot.on(admin_cmd(outgoing=True, pattern="shg$"))
+@borg.on(admin_cmd(outgoing=True, pattern="shg$"))
 async def shrugger(e):
     txt = random.choice(catmemes.SHGS)
     await edit_or_reply(e, txt)
 
 
-@bot.on(admin_cmd(outgoing=True, pattern="runs$"))
+@borg.on(admin_cmd(outgoing=True, pattern="runs$"))
 async def runner_lol(e):
     txt = random.choice(catmemes.RUNSREACTS)
     await edit_or_reply(e, txt)
 
 
-@bot.on(admin_cmd(outgoing=True, pattern="noob$"))
+@borg.on(admin_cmd(outgoing=True, pattern="noob$"))
 async def metoo(e):
     txt = random.choice(catmemes.NOOBSTR)
     await edit_or_reply(e, txt)
 
 
-@bot.on(admin_cmd(outgoing=True, pattern="insult$"))
+@borg.on(admin_cmd(outgoing=True, pattern="insult$"))
 async def insult(e):
     txt = random.choice(catmemes.INSULT_STRINGS)
     await edit_or_reply(e, txt)
 
 
-@bot.on(admin_cmd(outgoing=True, pattern="hey$"))
+@borg.on(admin_cmd(outgoing=True, pattern="hey$"))
 async def hoi(e):
     txt = random.choice(catmemes.HELLOSTR)
     await edit_or_reply(e, txt)
 
 
-@bot.on(admin_cmd(outgoing=True, pattern="pro$"))
+@borg.on(admin_cmd(outgoing=True, pattern="pro$"))
 async def proo(e):
     txt = random.choice(catmemes.PRO_STRINGS)
     await edit_or_reply(e, txt)
 
 
-@bot.on(admin_cmd(pattern=f"react ?(.*)", outgoing=True))
+@borg.on(admin_cmd(pattern=f"react ?(.*)", outgoing=True))
 async def _(e):
     input_str = e.pattern_match.group(1)
     if input_str in "happy":
@@ -307,17 +307,17 @@ async def _(e):
     await edit_or_reply(e, txt)
 
 
-@bot.on(admin_cmd(outgoing=True, pattern="10iq$"))
+@borg.on(admin_cmd(outgoing=True, pattern="10iq$"))
 async def iqless(e):
     await edit_or_reply(e, "♿")
 
 
-@bot.on(admin_cmd(pattern="fp$"))
+@borg.on(admin_cmd(pattern="fp$"))
 async def facepalm(e):
     await e.edit("🤦‍♂")
 
 
-@bot.on(admin_cmd(outgoing=True, pattern="bt$"))
+@borg.on(admin_cmd(outgoing=True, pattern="bt$"))
 async def bluetext(e):
     """ Believe me, you will find this useful. """
     if e.is_group:
@@ -328,13 +328,13 @@ async def bluetext(e):
         )
 
 
-@bot.on(admin_cmd(pattern="session$"))
+@borg.on(admin_cmd(pattern="session$"))
 async def _(event):
     mentions = "**telethon.errors.rpcerrorlist.AuthKeyDuplicatedError: The authorization key (session file) was used under two different IP addresses simultaneously, and can no longer be used. Use the same session exclusively, or use different sessions (caused by GetMessagesRequest)**"
     await event.edit(mentions)
 
 
-@bot.on(admin_cmd(pattern="lfy ?(.*)"))
+@borg.on(admin_cmd(pattern="lfy ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -363,7 +363,7 @@ async def _(event):
         )
 
 
-@bot.on(admin_cmd(pattern="gbun", outgoing=True))
+@borg.on(admin_cmd(pattern="gbun", outgoing=True))
 async def gbun(event):
     if event.fwd_from:
         return
