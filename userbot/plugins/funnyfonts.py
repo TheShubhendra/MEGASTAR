@@ -6,7 +6,7 @@ from ..utils import admin_cmd, edit_or_reply
 from . import CMD_HELP, fonts
 
 
-@bot.on(admin_cmd(pattern="str(?: |$)(.*)"))
+@borg.on(admin_cmd(pattern="str(?: |$)(.*)"))
 async def stretch(stret):
     textx = await stret.get_reply_message()
     message = stret.text
@@ -24,7 +24,7 @@ async def stretch(stret):
     await edit_or_reply(stret, reply_text)
 
 
-@bot.on(admin_cmd(pattern="zal(?: |$)(.*)"))
+@borg.on(admin_cmd(pattern="zal(?: |$)(.*)"))
 async def zal(zgfy):
     reply_text = list()
     textx = await zgfy.get_reply_message()
@@ -59,7 +59,7 @@ async def zal(zgfy):
     await edit_or_reply(zgfy, "".join(reply_text))
 
 
-@bot.on(admin_cmd(pattern="cp(?: |$)(.*)"))
+@borg.on(admin_cmd(pattern="cp(?: |$)(.*)"))
 async def copypasta(cp_e):
     textx = await cp_e.get_reply_message()
     message = cp_e.pattern_match.group(1)
@@ -92,7 +92,7 @@ async def copypasta(cp_e):
     await edit_or_reply(cp_e, reply_text)
 
 
-@bot.on(admin_cmd(pattern="weeb(?: |$)(.*)"))
+@borg.on(admin_cmd(pattern="weeb(?: |$)(.*)"))
 async def weebify(event):
     args = event.pattern_match.group(1)
     if not args:
@@ -109,7 +109,7 @@ async def weebify(event):
     await edit_or_reply(event, string)
 
 
-@bot.on(admin_cmd(pattern="downside(?: |$)(.*)"))
+@borg.on(admin_cmd(pattern="downside(?: |$)(.*)"))
 async def stylish_generator(event):
     args = event.pattern_match.group(1)
     if not args:
@@ -128,7 +128,7 @@ async def stylish_generator(event):
     await edit_or_reply(event, string)
 
 
-@bot.on(admin_cmd(pattern="subscript(?: |$)(.*)"))
+@borg.on(admin_cmd(pattern="subscript(?: |$)(.*)"))
 async def stylish_generator(event):
     args = event.pattern_match.group(1)
     if not args:
@@ -147,7 +147,7 @@ async def stylish_generator(event):
     await edit_or_reply(event, string)
 
 
-@bot.on(admin_cmd(pattern="superscript(?: |$)(.*)"))
+@borg.on(admin_cmd(pattern="superscript(?: |$)(.*)"))
 async def stylish_generator(event):
     args = event.pattern_match.group(1)
     if not args:
