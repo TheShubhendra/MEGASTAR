@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 from ..utils import admin_cmd, edit_or_reply
 
 
-@bot.on(admin_cmd(pattern="filext (.*)"))
+@borg.on(admin_cmd(pattern="filext (.*)"))
 async def _(event):
     if event.fwd_from:
         return
