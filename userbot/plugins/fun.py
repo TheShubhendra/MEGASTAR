@@ -3,8 +3,8 @@ from telethon.tl.types import ChannelParticipantsAdmins
 from ..utils import admin_cmd, sudo_cmd
 
 
-@bot.on(admin_cmd(pattern="join$"))
-@bot.on(sudo_cmd(pattern="join$", allow_sudo=True))
+@borg.on(admin_cmd(pattern="join$"))
+@borg.on(sudo_cmd(pattern="join$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -23,8 +23,8 @@ async def _(event):
     await event.delete()
 
 
-@bot.on(admin_cmd(pattern="climb$"))
-@bot.on(sudo_cmd(pattern="climb$", allow_sudo=True))
+@borg.on(admin_cmd(pattern="climb$"))
+@borg.on(sudo_cmd(pattern="climb$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -43,8 +43,8 @@ async def _(event):
     await event.delete()
 
 
-@bot.on(admin_cmd(pattern="aag$"))
-@bot.on(sudo_cmd(pattern="aag$", allow_sudo=True))
+@borg.on(admin_cmd(pattern="aag$"))
+@borg.on(sudo_cmd(pattern="aag$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -63,8 +63,8 @@ async def _(event):
     await event.delete()
 
 
-@bot.on(admin_cmd(pattern="push$"))
-@bot.on(sudo_cmd(pattern="push$", allow_sudo=True))
+@borg.on(admin_cmd(pattern="push$"))
+@borg.on(sudo_cmd(pattern="push$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -83,8 +83,8 @@ async def _(event):
     await event.delete()
 
 
-@bot.on(admin_cmd(pattern="work$"))
-@bot.on(sudo_cmd(pattern="work$", allow_sudo=True))
+@borg.on(admin_cmd(pattern="work$"))
+@borg.on(sudo_cmd(pattern="work$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
