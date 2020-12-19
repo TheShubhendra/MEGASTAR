@@ -36,13 +36,13 @@ from .. import BOTLOG, BOTLOG_CHATID, CMD_HELP
 from ..utils import admin_cmd, edit_or_reply
 
 
-@bot.on(admin_cmd(outgoing=True, pattern="kickme$"))
+@borg.on(admin_cmd(outgoing=True, pattern="kickme$"))
 async def kickme(leave):
     await leave.edit("Nope, no, no, I go away")
     await leave.client.kick_participant(leave.chat_id, "me")
 
 
-@bot.on(admin_cmd(pattern="admins ?(.*)"))
+@borg.on(admin_cmd(pattern="admins ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -94,7 +94,7 @@ async def _(event):
     await event.delete()
 
 
-@bot.on(admin_cmd(pattern="bots ?(.*)", outgoing=True))
+@borg.on(admin_cmd(pattern="bots ?(.*)", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -128,7 +128,7 @@ async def _(event):
     await edit_or_reply(event, mentions)
 
 
-@bot.on(admin_cmd(pattern=r"users ?(.*)", outgoing=True))
+@borg.on(admin_cmd(pattern=r"users ?(.*)", outgoing=True))
 async def get_users(show):
     if show.fwd_from:
         return
@@ -185,7 +185,7 @@ async def get_users(show):
         await catevent.edit(mentions)
 
 
-@bot.on(admin_cmd(pattern="chatinfo(?: |$)(.*)", outgoing=True))
+@borg.on(admin_cmd(pattern="chatinfo(?: |$)(.*)", outgoing=True))
 async def info(event):
     catevent = await edit_or_reply(event, "`Analysing the chat...`")
     chat = await get_chatinfo(event, catevent)
@@ -200,7 +200,7 @@ async def info(event):
         await catevent.edit("`An unexpected error has occurred.`")
 
 
-@bot.on(admin_cmd(pattern="unbanall ?(.*)"))
+@borg.on(admin_cmd(pattern="unbanall ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -230,7 +230,7 @@ async def _(event):
         await et.edit("{}: {} unbanned".format(event.chat_id, p))
 
 
-@bot.on(admin_cmd(pattern="ikuck ?(.*)", outgoing=True))
+@borg.on(admin_cmd(pattern="ikuck ?(.*)", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -372,7 +372,7 @@ None: {}""".format(
 
 
 # Ported by ©[NIKITA](t.me/kirito6969) and ©[EYEPATCH](t.me/NeoMatrix90)
-@bot.on(admin_cmd(pattern=f"zombies ?(.*)"))
+@borg.on(admin_cmd(pattern=f"zombies ?(.*)"))
 async def rm_deletedacc(show):
     con = show.pattern_match.group(1).lower()
     del_u = 0
