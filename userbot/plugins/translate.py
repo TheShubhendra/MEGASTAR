@@ -6,7 +6,7 @@ from . import BOTLOG, BOTLOG_CHATID, CMD_HELP, deEmojify
 TRT_LANG = "en"
 
 
-@bot.on(admin_cmd(pattern="tl (.*)"))
+@borg.on(admin_cmd(pattern="tl (.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -36,7 +36,7 @@ async def _(event):
         await edit_delete(event, str(exc), time=5)
 
 
-@bot.on(admin_cmd(outgoing=True, pattern=r"trt(?: |$)([\s\S]*)"))
+@borg.on(admin_cmd(outgoing=True, pattern=r"trt(?: |$)([\s\S]*)"))
 async def translateme(trans):
     """ For .trt command, translate the given text using Google Translate. """
     translator = Translator()
@@ -66,7 +66,7 @@ async def translateme(trans):
         )
 
 
-@bot.on(admin_cmd(pattern="lang trt (.*)", outgoing=True))
+@borg.on(admin_cmd(pattern="lang trt (.*)", outgoing=True))
 async def lang(value):
     # For .lang command, change the default langauge of userbot scrapers.
     scraper = "Translator"
@@ -87,7 +87,7 @@ async def lang(value):
             BOTLOG_CHATID, f"`Language for {scraper} changed to {LANG.title()}.`"
         )
 
-@bot.on(admin_cmd(pattern="tr (.*)"))
+@borg.on(admin_cmd(pattern="tr (.*)"))
 async def _(event):
     if event.fwd_from:
         return
