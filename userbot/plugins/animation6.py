@@ -129,7 +129,7 @@ CMD_HELP.update(
 
 
 
-@bot.on(admin_cmd(pattern="unoob$"))
+@borg.on(admin_cmd(pattern="unoob$"))
 async def _(event):
     if event.fwd_from:
         return
@@ -152,7 +152,7 @@ async def _(event):
         await asyncio.sleep(animation_interval)
 
 
-@bot.on(admin_cmd(pattern="menoob$"))
+@borg.on(admin_cmd(pattern="menoob$"))
 async def _(event):
     if event.fwd_from:
         return
@@ -175,7 +175,7 @@ async def _(event):
         await asyncio.sleep(animation_interval)
 
 
-@bot.on(admin_cmd(pattern="upro$"))
+@borg.on(admin_cmd(pattern="upro$"))
 async def _(event):
     if event.fwd_from:
         return
@@ -197,7 +197,7 @@ async def _(event):
         await asyncio.sleep(animation_interval)
 
 
-@bot.on(admin_cmd(pattern="mepro$"))
+@borg.on(admin_cmd(pattern="mepro$"))
 async def _(event):
     if event.fwd_from:
         return
@@ -219,7 +219,7 @@ async def _(event):
         await asyncio.sleep(animation_interval)
 
 
-@bot.on(admin_cmd(pattern=f"quickheal$", outgoing=True))
+@borg.on(admin_cmd(pattern=f"quickheal$", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -244,7 +244,7 @@ async def _(event):
         await event.edit(animation_chars[i % 11])
 
 
-@bot.on(admin_cmd(pattern=f"sqh$", outgoing=True))
+@borg.on(admin_cmd(pattern=f"sqh$", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -269,7 +269,7 @@ async def _(event):
         await event.edit(animation_chars[i % 11])
 
 
-@bot.on(admin_cmd(pattern=f"vquickheal$", outgoing=True))
+@borg.on(admin_cmd(pattern=f"vquickheal$", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -294,7 +294,7 @@ async def _(event):
         await event.edit(animation_chars[i % 11])
 
 
-@bot.on(admin_cmd(pattern=f"macos$", outgoing=True))
+@borg.on(admin_cmd(pattern=f"macos$", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -319,7 +319,7 @@ async def _(event):
         await event.edit(animation_chars[i % 11])
 
 
-@bot.on(admin_cmd(pattern=f"windows$", outgoing=True))
+@borg.on(admin_cmd(pattern=f"windows$", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -344,7 +344,7 @@ async def _(event):
         await event.edit(animation_chars[i % 11])
 
 
-@bot.on(admin_cmd(pattern=f"linux$", outgoing=True))
+@borg.on(admin_cmd(pattern=f"linux$", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -369,7 +369,7 @@ async def _(event):
         await event.edit(animation_chars[i % 11])
 
 
-@bot.on(admin_cmd(pattern=f"stock$", outgoing=True))
+@borg.on(admin_cmd(pattern=f"stock$", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -394,7 +394,7 @@ async def _(event):
         await event.edit(animation_chars[i % 11])
 
 
-@bot.on(admin_cmd(pattern=f"os$", outgoing=True))
+@borg.on(admin_cmd(pattern=f"os$", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
