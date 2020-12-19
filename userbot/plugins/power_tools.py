@@ -6,7 +6,7 @@ from ..utils import admin_cmd, edit_or_reply
 from . import BOTLOG, BOTLOG_CHATID, CMD_HELP, bot
 
 
-@bot.on(admin_cmd(pattern="restart", outgoing=True))
+@borg.on(admin_cmd(pattern="restart", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -20,7 +20,7 @@ async def _(event):
     execl(sys.executable, sys.executable, *sys.argv)
 
 
-@bot.on(admin_cmd(pattern="shutdown$"))
+@borg.on(admin_cmd(pattern="shutdown$"))
 async def _(event):
     if event.fwd_from:
         return
@@ -30,7 +30,7 @@ async def _(event):
     await bot.disconnect()
 
 
-@bot.on(admin_cmd(pattern="sleep( [0-9]+)?$"))
+@borg.on(admin_cmd(pattern="sleep( [0-9]+)?$"))
 async def _(event):
     if " " not in event.pattern_match.group(1):
         return await edit_or_reply(event, "Syntax: `.sleep time`")
