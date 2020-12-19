@@ -3,7 +3,7 @@ import random
 from ..utils import admin_cmd, edit_or_reply
 
 
-@bot.on(admin_cmd(pattern="gnt$"))
+@borg.on(admin_cmd(pattern="gnt$"))
 async def gn(event):
     await edit_or_reply(
         event,
@@ -11,7 +11,7 @@ async def gn(event):
     )
 
 
-@bot.on(admin_cmd(pattern="gmg$"))
+@borg.on(admin_cmd(pattern="gmg$"))
 async def gm(event):
     await edit_or_reply(
         event,
@@ -20,7 +20,7 @@ async def gm(event):
 
 
 # by  @Halto_Tha
-@bot.on(admin_cmd(pattern=r"lmoon$"))
+@borg.on(admin_cmd(pattern=r"lmoon$"))
 async def test(event):
     if event.fwd_from:
         return
@@ -30,7 +30,7 @@ async def test(event):
     )
 
 
-@bot.on(admin_cmd(pattern=r"city$"))
+@borg.on(admin_cmd(pattern=r"city$"))
 async def test(event):
     if event.fwd_from:
         return
@@ -49,7 +49,7 @@ async def test(event):
 
 # @PhycoNinja13b 's Part begin from here
 
-@bot.on(admin_cmd(pattern=r"hi ?(.*)"))
+@borg.on(admin_cmd(pattern=r"hi ?(.*)"))
 async def hi(event):
     giveVar = event.text
     lub = giveVar[4:5]
@@ -62,7 +62,7 @@ async def hi(event):
 
 
 
-@bot.on(admin_cmd(pattern=r"cheer$"))
+@borg.on(admin_cmd(pattern=r"cheer$"))
 async def cheer(event):
     if event.fwd_from:
         return
@@ -72,7 +72,7 @@ async def cheer(event):
     )
 
 
-@bot.on(admin_cmd(pattern=r"getwell$"))
+@borg.on(admin_cmd(pattern=r"getwell$"))
 async def getwell(event):
     if event.fwd_from:
         return
@@ -81,7 +81,7 @@ async def getwell(event):
     )
 
 
-@bot.on(admin_cmd(pattern=r"luck$"))
+@borg.on(admin_cmd(pattern=r"luck$"))
 async def luck(event):
     if event.fwd_from:
         return
@@ -90,7 +90,7 @@ async def luck(event):
     )
 
 
-@bot.on(admin_cmd(pattern=r"sprinkle$"))
+@borg.on(admin_cmd(pattern=r"sprinkle$"))
 async def sprinkle(event):
     if event.fwd_from:
         return
