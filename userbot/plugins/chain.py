@@ -7,7 +7,7 @@ from .. import CMD_HELP
 from ..utils import admin_cmd
 
 
-@bot.on(admin_cmd(pattern="chain$"))
+@borg.on(admin_cmd(pattern="chain$"))
 async def _(event):
     await event.edit("Counting...")
     count = -1
