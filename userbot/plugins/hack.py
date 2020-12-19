@@ -10,7 +10,7 @@ from . import ALIVE_NAME, CMD_HELP
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "cat"
 
 
-@bot.on(admin_cmd(pattern=r"hack$", outgoing=True))
+@borg.on(admin_cmd(pattern=r"hack$", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -46,7 +46,7 @@ async def _(event):
         await edit_or_reply(event, "No User is Defined\n Can't hack account")
 
 
-@bot.on(admin_cmd(pattern=f"thack$", outgoing=True))
+@borg.on(admin_cmd(pattern=f"thack$", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -71,7 +71,7 @@ async def _(event):
         await event.edit(animation_chars[i % 11])
 
 
-@bot.on(admin_cmd(pattern=f"wahack$", outgoing=True))
+@borg.on(admin_cmd(pattern=f"wahack$", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
