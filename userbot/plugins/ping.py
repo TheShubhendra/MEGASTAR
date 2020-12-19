@@ -5,7 +5,7 @@ from .. import CMD_HELP
 from ..utils import admin_cmd, edit_or_reply
 
 
-@bot.on(admin_cmd(pattern="ping$"))
+@borg.on(admin_cmd(pattern="ping$"))
 async def _(event):
     if event.fwd_from:
         return
@@ -16,7 +16,7 @@ async def _(event):
     await event.edit("Pong!\n`{}`".format(ms))
 
 
-@bot.on(admin_cmd(pattern=f"fping$", outgoing=True))
+@borg.on(admin_cmd(pattern=f"fping$", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
