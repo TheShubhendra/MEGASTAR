@@ -11,7 +11,7 @@ from . import CMD_HELP
 GENIUS = os.environ.get("GENIUS_API_TOKEN", None)
 
 
-@bot.on(admin_cmd(outgoing=True, pattern="lyrics ?(.*)"))
+@borg.on(admin_cmd(outgoing=True, pattern="lyrics ?(.*)"))
 async def _(event):
     catevent = await edit_or_reply(event, "wi8..! I am searching your lyrics....`")
     reply_to_id = event.message.id
@@ -50,7 +50,7 @@ async def _(event):
         await catevent.edit(reply)
 
 
-@bot.on(admin_cmd(outgoing=True, pattern="glyrics ?(.*)"))
+@borg.on(admin_cmd(outgoing=True, pattern="glyrics ?(.*)"))
 async def lyrics(lyric):
     if lyric.pattern_match.group(1):
         query = lyric.pattern_match.group(1)
