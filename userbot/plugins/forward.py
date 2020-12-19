@@ -6,7 +6,7 @@ from . import CMD_HELP
 msg_cache = {}
 
 
-@bot.on(admin_cmd(pattern="frwd$"))
+@borg.on(admin_cmd(pattern="frwd$"))
 async def _(event):
     if event.fwd_from:
         return
@@ -28,7 +28,7 @@ async def _(event):
         await event.delete()
 
 
-@bot.on(admin_cmd(pattern="resend$"))
+@borg.on(admin_cmd(pattern="resend$"))
 async def _(event):
     try:
         await event.delete()
@@ -40,7 +40,7 @@ async def _(event):
     await event.respond(m)
 
 
-@bot.on(admin_cmd(pattern=r"fpost\s+(.*)"))
+@borg.on(admin_cmd(pattern=r"fpost\s+(.*)"))
 async def _(event):
     await event.delete()
     text = event.pattern_match.group(1)
