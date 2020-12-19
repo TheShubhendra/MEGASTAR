@@ -31,7 +31,7 @@ def get_readable_time(seconds: int) -> str:
     return ping_time
 
 
-@friday.on(friday_on_cmd(pattern="ping$"))
+@borg.on(admin_cmd(pattern="ping$"))
 async def _(event):
     starkislub = await edit_or_reply(event, "`Ping ! Pong ! \n Ping ! Pong Ping ! Pong ! \n Ping ! Pong Ping ! Pong ! \n Ping ! Pong Ping ! Pong ! \n Ping ! Pong Ping ! Pong ! \n Ping ! Pong Ping ! Pong ! \n Ping ! Pong Ping ! Pong ! \n Ping ! Pong Ping ! Pong ! \n Ping ! Pong Ping ! Pong ! \n Ping ! Pong Ping ! Pong ! \n Ping ! Pong Ping ! Pong ! \n Ping ! Pong Ping ! Pong ! \n Ping ! Pong Ping ! Pong ! \n Ping ! Pong Ping ! Pong ! \n Ping ! Pong Ping ! Pong ! \n Ping ! Pong Ping ! Pong ! \n Ping ! Pong Ping ! Pong ! \n Ping ! Pong `")
     if event.fwd_from:
