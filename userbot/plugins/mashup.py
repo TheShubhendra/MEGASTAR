@@ -11,7 +11,7 @@ from userbot.utils import admin_cmd
 from . import CMD_HELP
 
 
-@bot.on(admin_cmd(pattern="mash ?(.*)"))
+@borg.on(admin_cmd(pattern="mash ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
