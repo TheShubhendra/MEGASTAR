@@ -18,14 +18,14 @@ import os
 import requests
 
 from ..utils import admin_cmd, edit_or_reply
-from . import CMD_HELP, convert_toimage
+from . import CMD_HELP
 
 
 @borg.on(admin_cmd(pattern="(rmbg|srmbg) ?(.*)"))
 async def remove_background(event):
     if event.fwd_from:
         return
-    if Config.REM_BG_API_KEY is None:
+    if config.REM_BG_API_KEY is None:
         return await edit_or_reply(
             event, "`You need API token from remove.bg to use this plugin.`"
         )
@@ -38,9 +38,9 @@ async def remove_background(event):
         # check if media message
         event = await edit_or_reply(event, "Ooh Analysing dis pic...")
         file_name = "rmbg.png"
-        if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
-            os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
-        to_download_directory = Config.TMP_DOWNLOAD_DIRECTORY
+        if not os.path.isdir(config.TMP_DOWNLOAD_DIRECTORY):
+            os.makedirs(config.TMP_DOWNLOAD_DIRECTORY)
+        to_download_directory = config.TMP_DOWNLOAD_DIRECTORY
         downloaded_file_name = os.path.join(to_download_directory, file_name)
         try:
             downloaded_file_name = await bot.download_media(
@@ -94,7 +94,7 @@ async def remove_background(event):
 # with the name provided.
 def ReTrieveFile(input_file_name):
     headers = {
-        "X-API-Key": Config.REM_BG_API_KEY,
+        "X-API-Key": config.REM_BG_API_KEY,
     }
     files = {
         "image_file": (input_file_name, open(input_file_name, "rb")),
@@ -110,7 +110,7 @@ def ReTrieveFile(input_file_name):
 
 def ReTrieveURL(input_url):
     headers = {
-        "X-API-Key": Config.REM_BG_API_KEY,
+        "X-API-Key": config.REM_BG_API_KEY,
     }
     data = {"image_url": input_url}
     return requests.post(
