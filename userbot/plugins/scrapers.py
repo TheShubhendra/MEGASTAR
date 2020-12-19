@@ -15,7 +15,7 @@ from ..utils import admin_cmd, edit_or_reply
 from . import BOTLOG, BOTLOG_CHATID
 
 
-@bot.on(admin_cmd(outgoing=True, pattern=r"wiki (.*)"))
+@borg.on(admin_cmd(outgoing=True, pattern=r"wiki (.*)"))
 async def wiki(wiki_q):
     """ For .wiki command, fetch content from Wikipedia. """
     match = wiki_q.pattern_match.group(1)
@@ -50,7 +50,7 @@ async def wiki(wiki_q):
         )
 
 
-@bot.on(admin_cmd(pattern="imdb (.*)", outgoing=True))
+@borg.on(admin_cmd(pattern="imdb (.*)", outgoing=True))
 async def imdb(e):
     event = await edit_or_reply(e, "`searching........")
     try:
