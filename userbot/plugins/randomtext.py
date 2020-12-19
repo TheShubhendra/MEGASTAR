@@ -14,7 +14,7 @@ from asyncio import sleep
 from ..utils import admin_cmd, edit_or_reply
 
 
-@bot.on(admin_cmd(pattern=r"sing$", outgoing=True))
+@borg.on(admin_cmd(pattern=r"sing$", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -153,7 +153,7 @@ async def _(event):
         await event.edit("Not in a mood to sing. Sorry!")
 
 
-@bot.on(admin_cmd(pattern=f"hps$", outgoing=True))
+@borg.on(admin_cmd(pattern=f"hps$", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -242,7 +242,7 @@ async def _(event):
         await event.edit("**Wingardium Leviosa**")
 
 
-@bot.on(admin_cmd(pattern=f"gott$", outgoing=True))
+@borg.on(admin_cmd(pattern=f"gott$", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -391,7 +391,7 @@ async def _(event):
         )
 
 
-@bot.on(admin_cmd(pattern=f"gotm$", outgoing=True))
+@borg.on(admin_cmd(pattern=f"gotm$", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -550,7 +550,7 @@ async def _(event):
         )
 
 
-@bot.on(admin_cmd(pattern="bello$", outgoing=True))
+@borg.on(admin_cmd(pattern="bello$", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -935,7 +935,7 @@ async def _(event):
         )
 
 
-@bot.on(admin_cmd(pattern=r"tip$", outgoing=True))
+@borg.on(admin_cmd(pattern=r"tip$", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -1296,7 +1296,7 @@ async def _(event):
         )
 
 
-@bot.on(admin_cmd(pattern=r"qt$"))
+@borg.on(admin_cmd(pattern=r"qt$"))
 async def _(event):
     if event.fwd_from:
         return
@@ -1483,7 +1483,7 @@ async def _(event):
         )
 
 
-@bot.on(admin_cmd(pattern=f"logic$", outgoing=True))
+@borg.on(admin_cmd(pattern=f"logic$", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
