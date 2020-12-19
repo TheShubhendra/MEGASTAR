@@ -4,7 +4,7 @@ from ..utils import admin_cmd, edit_or_reply
 from . import CMD_HELP, fonts
 
 
-@bot.on(admin_cmd(pattern="egyptf(?: |$)(.*)"))
+@borg.on(admin_cmd(pattern="egyptf(?: |$)(.*)"))
 async def stylish_generator(event):
     args = event.pattern_match.group(1)
     if not args:
@@ -23,7 +23,7 @@ async def stylish_generator(event):
     await edit_or_reply(event, string)
 
 
-@bot.on(admin_cmd(pattern="maref(?: |$)(.*)"))
+@borg.on(admin_cmd(pattern="maref(?: |$)(.*)"))
 async def stylish_generator(event):
     args = event.pattern_match.group(1)
     if not args:
@@ -42,7 +42,7 @@ async def stylish_generator(event):
     await edit_or_reply(event, string)
 
 
-@bot.on(admin_cmd(pattern="handcf(?: |$)(.*)"))
+@borg.on(admin_cmd(pattern="handcf(?: |$)(.*)"))
 async def stylish_generator(event):
     args = event.pattern_match.group(1)
     if not args:
@@ -61,7 +61,7 @@ async def stylish_generator(event):
     await edit_or_reply(event, string)
 
 
-@bot.on(admin_cmd(pattern="doublef(?: |$)(.*)"))
+@borg.on(admin_cmd(pattern="doublef(?: |$)(.*)"))
 async def stylish_generator(event):
     args = event.pattern_match.group(1)
     if not args:
@@ -80,7 +80,7 @@ async def stylish_generator(event):
     await edit_or_reply(event, string)
 
 
-@bot.on(admin_cmd(pattern="mock(?: |$)(.*)"))
+@borg.on(admin_cmd(pattern="mock(?: |$)(.*)"))
 async def spongemocktext(mock):
     reply_text = []
     textx = await mock.get_reply_message()
@@ -103,7 +103,7 @@ async def spongemocktext(mock):
     await edit_or_reply(mock, "".join(reply_text))
 
 
-@bot.on(admin_cmd(pattern="ghostf(?: |$)(.*)"))
+@borg.on(admin_cmd(pattern="ghostf(?: |$)(.*)"))
 async def stylish_generator(event):
     args = event.pattern_match.group(1)
     if not args:
@@ -122,7 +122,7 @@ async def stylish_generator(event):
     await edit_or_reply(event, string)
 
 
-@bot.on(admin_cmd(pattern="handsf(?: |$)(.*)"))
+@borg.on(admin_cmd(pattern="handsf(?: |$)(.*)"))
 async def stylish_generator(event):
     args = event.pattern_match.group(1)
     if not args:
