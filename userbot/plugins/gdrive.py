@@ -93,7 +93,7 @@ GDRIVE_ID = re.compile(
 )
 
 
-@bot.on(admin_cmd(pattern="gauth$", command="gauth", outgoing=True))
+@borg.on(admin_cmd(pattern="gauth$", command="gauth", outgoing=True))
 async def generate_credentials(gdrive):
     """ - Only generate once for long run - """
     hmm = bot.uid
@@ -179,7 +179,7 @@ async def create_app(gdrive):
     return build("drive", "v3", credentials=creds, cache_discovery=False)
 
 
-@bot.on(admin_cmd(pattern="greset$", command="greset", outgoing=True))
+@borg.on(admin_cmd(pattern="greset$", command="greset", outgoing=True))
 async def reset_credentials(gdrive):
     """ - Reset credentials or change account - """
     hmm = bot.uid
@@ -745,7 +745,7 @@ async def lists(gdrive):
     return
 
 
-@bot.on(
+@borg.on(
     admin_cmd(
         pattern=r"glist(?: |$)(-l \d+)?(?: |$)?(.*)?(?: |$)",
         command="glist",
@@ -756,7 +756,7 @@ async def catlists(gdrive):
     await lists(gdrive)
 
 
-@bot.on(
+@borg.on(
     admin_cmd(
         pattern="gdf (mkdir|rm|chck) (.*)", command="gdf (mkdir|rm|chck)", outgoing=True
     )
@@ -916,7 +916,7 @@ async def google_drive_managers(gdrive):
     await gdrive.edit(reply)
 
 
-@bot.on(admin_cmd(pattern="gabort$", command="gabort", outgoing=True))
+@borg.on(admin_cmd(pattern="gabort$", command="gabort", outgoing=True))
 async def cancel_process(gdrive):
     """
     Abort process for download and upload
@@ -932,7 +932,7 @@ async def cancel_process(gdrive):
     await gdrive.delete()
 
 
-@bot.on(admin_cmd(pattern="ugd(?: |$)(.*)", command="ugd", outgoing=True))
+@borg.on(admin_cmd(pattern="ugd(?: |$)(.*)", command="ugd", outgoing=True))
 async def google_drive(gdrive):
     reply = ""
     """ - Parsing all google drive function - """
@@ -1103,7 +1103,7 @@ async def google_drive(gdrive):
     return
 
 
-@bot.on(
+@borg.on(
     admin_cmd(
         pattern="(gdfset|gdfclear)(?: |$)(.*)",
         command="(gdfset|gdfclear)",
@@ -1323,7 +1323,7 @@ async def get_file_name(content):
     return file_name
 
 
-@bot.on(admin_cmd(pattern="gdl ?(-u)? (.*)", command="(gdl|gdl -u)", outgoing=True))
+@borg.on(admin_cmd(pattern="gdl ?(-u)? (.*)", command="(gdl|gdl -u)", outgoing=True))
 async def g_download(event):
     if event.fwd_from:
         return
