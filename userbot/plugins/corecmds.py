@@ -11,7 +11,7 @@ thumb_image_path = config.TMP_DOWNLOAD_DIRECTORY + "/thumb_image.jpg"
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "LEGEND"
 
 
-@bot.on(admin_cmd(pattern="install$"))
+@borg.on(admin_cmd(pattern="install$"))
 async def install(event):
     if event.fwd_from:
         return
@@ -45,7 +45,7 @@ async def install(event):
     await event.delete()
 
 
-@bot.on(admin_cmd(pattern=r"send (?P<shortname>\w+)$", outgoing=True))
+@borg.on(admin_cmd(pattern=r"send (?P<shortname>\w+)$", outgoing=True))
 async def send(event):
     if event.fwd_from:
         return
@@ -77,7 +77,7 @@ async def send(event):
         await edit_or_reply(event, "404: File Not Found")
 
 
-@bot.on(admin_cmd(pattern=r"unload (?P<shortname>\w+)$", outgoing=True))
+@borg.on(admin_cmd(pattern=r"unload (?P<shortname>\w+)$", outgoing=True))
 async def unload(event):
     if event.fwd_from:
         return
@@ -91,7 +91,7 @@ async def unload(event):
         )
 
 
-@bot.on(sudo_cmd(pattern=r"load (?P<shortname>\w+)$", allow_sudo=True))
+@borg.on(sudo_cmd(pattern=r"load (?P<shortname>\w+)$", allow_sudo=True))
 async def load(event):
     if event.fwd_from:
         return
