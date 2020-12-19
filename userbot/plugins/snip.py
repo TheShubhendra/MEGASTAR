@@ -9,7 +9,7 @@ from .sql_helper.snip_sql import add_note, get_note, get_notes, rm_note
 
 
 
-@bot.on(admin_cmd(pattern=r"snips (\w*)"))
+@borg.on(admin_cmd(pattern=r"snips (\w*)"))
 async def add_snip(fltr):
     keyword = fltr.pattern_match.group(1)
     string = fltr.text.partition(keyword)[2]
@@ -47,7 +47,7 @@ async def add_snip(fltr):
     return await edit_or_reply(fltr, success.format("added", keyword))
 
 
-@bot.on(admin_cmd(pattern="snipl$"))
+@borg.on(admin_cmd(pattern="snipl$"))
 async def on_snip_list(event):
     message = "There are no saved notes in this chat"
     notes = get_notes()
@@ -71,7 +71,7 @@ async def on_snip_list(event):
         await edit_or_reply(event, message)
 
 
-@bot.on(admin_cmd(pattern=r"snipd (\S+)"))
+@borg.on(admin_cmd(pattern=r"snipd (\S+)"))
 async def on_snip_delete(event):
     name = event.pattern_match.group(1)
     snip = get_note(name)
