@@ -13,7 +13,7 @@ NEWPM = None
 COUNT = 0
 
 
-@bot.on(events.NewMessage(incoming=True, func=lambda e: e.is_private))
+@borg.on(events.NewMessage(incoming=True, func=lambda e: e.is_private))
 async def monito_p_m_s(event):
     global RECENT_USER
     global NEWPM
@@ -50,7 +50,7 @@ async def monito_p_m_s(event):
                 LOGS.warn(str(e))
 
 
-@bot.on(events.NewMessage(incoming=True, func=lambda e: e.mentioned))
+@borg.on(events.NewMessage(incoming=True, func=lambda e: e.mentioned))
 async def log_tagged_messages(event):
     hmm = await event.get_chat()
     if no_log_pms_sql.is_approved(hmm.id):
@@ -77,7 +77,7 @@ async def log_tagged_messages(event):
         )
 
 
-@bot.on(admin_cmd(outgoing=True, pattern=r"save(?: |$)(.*)"))
+@borg.on(admin_cmd(outgoing=True, pattern=r"save(?: |$)(.*)"))
 async def log(log_text):
     if BOTLOG:
         if log_text.reply_to_msg_id:
@@ -97,7 +97,7 @@ async def log(log_text):
     await log_text.delete()
 
 
-@bot.on(admin_cmd(pattern="log$"))
+@borg.on(admin_cmd(pattern="log$"))
 async def set_no_log_p_m(event):
     if Config.PM_LOGGR_BOT_API_ID is not None:
         chat = await event.get_chat()
@@ -108,7 +108,7 @@ async def set_no_log_p_m(event):
             )
 
 
-@bot.on(admin_cmd(pattern="nolog$"))
+@borg.on(admin_cmd(pattern="nolog$"))
 async def set_no_log_p_m(event):
     if Config.PM_LOGGR_BOT_API_ID is not None:
         chat = await event.get_chat()
