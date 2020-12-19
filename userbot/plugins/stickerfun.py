@@ -13,7 +13,7 @@ from ..utils import admin_cmd, edit_or_reply
 # RegEx by https://t.me/c/1220993104/500653 ( @SnapDragon7410 )
 
 
-@bot.on(admin_cmd(outgoing=True, pattern="sttxt(?: |$)(.*)"))
+@borg.on(admin_cmd(outgoing=True, pattern="sttxt(?: |$)(.*)"))
 async def waifu(animu):
     text = animu.pattern_match.group(1)
     reply_to_id = animu.message
@@ -35,7 +35,7 @@ async def waifu(animu):
 # 12 21 28 30
 
 
-@bot.on(admin_cmd(pattern=r"stcr ?(?:(.*?) \| )?(.*)", outgoing=True))
+@borg.on(admin_cmd(pattern=r"stcr ?(?:(.*?) \| )?(.*)", outgoing=True))
 async def sticklet(event):
     R = random.randint(0, 256)
     G = random.randint(0, 256)
