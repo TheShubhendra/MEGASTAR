@@ -13,7 +13,7 @@ from . import CMD_HELP, take_screen_shot
 thumb_image_path = Config.TMP_DOWNLOAD_DIRECTORY + "/thumb_image.jpg"
 
 
-@bot.on(admin_cmd(pattern="savethumb$"))
+@borg.on(admin_cmd(pattern="savethumb$"))
 async def _(event):
     if event.fwd_from:
         return
@@ -42,7 +42,7 @@ async def _(event):
         await catevent.edit("Reply to a photo to save custom thumbnail")
 
 
-@bot.on(admin_cmd(pattern="clearthumb$"))
+@borg.on(admin_cmd(pattern="clearthumb$"))
 async def _(event):
     if event.fwd_from:
         return
@@ -53,7 +53,7 @@ async def _(event):
     await edit_or_reply(event, "✅ Custom thumbnail cleared succesfully.")
 
 
-@bot.on(admin_cmd(pattern="getthumb$"))
+@borg.on(admin_cmd(pattern="getthumb$"))
 async def _(event):
     if event.fwd_from:
         return
