@@ -60,7 +60,7 @@ async def file_data(reply):
     return hmm
 
 
-@bot.on(admin_cmd(pattern="minfo$"))
+@borg.on(admin_cmd(pattern="minfo$"))
 async def mediainfo(event):
     X_MEDIA = None
     reply = await event.get_reply_message()
