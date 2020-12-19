@@ -9,7 +9,7 @@ from .. import CMD_HELP
 from ..utils import admin_cmd, edit_or_reply
 
 
-@bot.on(admin_cmd(pattern="bash (.*)"))
+@borg.on(admin_cmd(pattern="bash (.*)"))
 async def _(event):
     if event.fwd_from or event.via_bot_id:
         return
@@ -38,7 +38,7 @@ async def _(event):
         await edit_or_reply(event, OUTPUT)
 
 
-@bot.on(admin_cmd(pattern="exec (.*)"))
+@borg.on(admin_cmd(pattern="exec (.*)"))
 async def _(event):
     if event.fwd_from or event.via_bot_id:
         return
@@ -76,7 +76,7 @@ async def _(event):
         await edit_or_reply(event, OUTPUT)
 
 
-@bot.on(admin_cmd(pattern="eval (.*)"))
+@borg.on(admin_cmd(pattern="eval (.*)"))
 async def _(event):
     if event.fwd_from or event.via_bot_id:
         return
