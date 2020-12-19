@@ -5,7 +5,7 @@ import requests
 from ..utils import admin_cmd, edit_or_reply
 
 
-@bot.on(admin_cmd(pattern="lmg (.*)"))
+@borg.on(admin_cmd(pattern="lmg (.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -26,7 +26,7 @@ async def _(event):
         await event.edit("Something went wrong. Please try again later.")
 
 
-@bot.on(admin_cmd(pattern="lmy (.*)"))
+@borg.on(admin_cmd(pattern="lmy (.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -49,7 +49,7 @@ async def _(event):
         await event.edit("Something went wrong. Please try again later.")
 
 
-@bot.on(admin_cmd(pattern="ddg (.*)"))
+@borg.on(admin_cmd(pattern="ddg (.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -72,7 +72,7 @@ async def _(event):
         await event.edit("Something went wrong. Please try again later.")
 
 
-@bot.on(admin_cmd(pattern="lmalt (.*)"))
+@borg.on(admin_cmd(pattern="lmalt (.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -93,7 +93,7 @@ async def _(event):
         await event.edit("Something went wrong. Please try again later.")
 
 
-@bot.on(admin_cmd(pattern="lmvar (.*)"))
+@borg.on(admin_cmd(pattern="lmvar (.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -116,7 +116,7 @@ async def _(event):
         await event.edit("Something went wrong. Please try again later.")
 
 
-@bot.on(admin_cmd(pattern="lmlog (.*)"))
+@borg.on(admin_cmd(pattern="lmlog (.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -137,7 +137,7 @@ async def _(event):
         await event.edit("Something went wrong. Please try again later.")
 
 
-@bot.on(admin_cmd(pattern="dyno (.*)"))
+@borg.on(admin_cmd(pattern="dyno (.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -158,7 +158,7 @@ async def _(event):
         await event.edit("Something went wrong. Please try again later.")
 
 
-@bot.on(admin_cmd(pattern="lmkp (.*)"))
+@borg.on(admin_cmd(pattern="lmkp (.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -179,7 +179,7 @@ async def _(event):
         await event.edit("Something went wrong. Please try again later.")
 
 
-@bot.on(admin_cmd(pattern="gem (.*)"))
+@borg.on(admin_cmd(pattern="gem (.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -200,7 +200,7 @@ async def _(event):
         await event.edit("Something went wrong. Please try again later.")
 
 
-@bot.on(admin_cmd(pattern="archive (.*)"))
+@borg.on(admin_cmd(pattern="archive (.*)"))
 async def _(event):
     if event.fwd_from:
         return
