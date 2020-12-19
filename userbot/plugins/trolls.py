@@ -24,7 +24,7 @@ from ..utils import admin_cmd, edit_or_reply
 from . import *
 
 
-@bot.on(admin_cmd(pattern="threats(?: |$)(.*)"))
+@borg.on(admin_cmd(pattern="threats(?: |$)(.*)"))
 async def catbot(catmemes):
     replied = await catmemes.get_reply_message()
     if not os.path.isdir("./temp/"):
@@ -72,7 +72,7 @@ async def catbot(catmemes):
     await catmemes.client.send_file(catmemes.chat_id, cat, reply_to=replied)
 
 
-@bot.on(admin_cmd(pattern="trash(?: |$)(.*)"))
+@borg.on(admin_cmd(pattern="trash(?: |$)(.*)"))
 async def catbot(catmemes):
     replied = await catmemes.get_reply_message()
     if not os.path.isdir("./temp/"):
@@ -120,7 +120,7 @@ async def catbot(catmemes):
     await catmemes.client.send_file(catmemes.chat_id, cat, reply_to=replied)
 
 
-@bot.on(admin_cmd(pattern="trap(?: |$)(.*)"))
+@borg.on(admin_cmd(pattern="trap(?: |$)(.*)"))
 async def catbot(catmemes):
     input_str = catmemes.pattern_match.group(1)
     input_str = deEmojify(input_str)
@@ -178,7 +178,7 @@ async def catbot(catmemes):
     await catmemes.client.send_file(catmemes.chat_id, cat, reply_to=replied)
 
 
-@bot.on(admin_cmd(pattern="phub(?: |$)(.*)"))
+@borg.on(admin_cmd(pattern="phub(?: |$)(.*)"))
 async def catbot(catmemes):
     input_str = catmemes.pattern_match.group(1)
     input_str = deEmojify(input_str)
