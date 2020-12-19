@@ -11,7 +11,7 @@ from .. import CMD_HELP
 from ..utils import admin_cmd, edit_or_reply
 
 
-@bot.on(admin_cmd(pattern=r"getc(?: |$)(.*)"))
+@borg.on(admin_cmd(pattern=r"getc(?: |$)(.*)"))
 async def get_media(event):
     if event.fwd_from:
         return
@@ -44,7 +44,7 @@ async def get_media(event):
     await event.edit("Downloaded " + output + " files.")
 
 
-@bot.on(admin_cmd(pattern="geta(?: |$)(.*)"))
+@borg.on(admin_cmd(pattern="geta(?: |$)(.*)"))
 async def get_media(event):
     if event.fwd_from:
         return
