@@ -1,5 +1,5 @@
 from ..utils import admin_cmd, edit_or_reply
-from . import fonts
+from . import Fonts
 
 
 @borg.on(admin_cmd(pattern="fmusical(?: |$)(.*)", command="fmusical"))
