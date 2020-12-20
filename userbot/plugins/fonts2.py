@@ -1,7 +1,7 @@
 import random
 
 from ..utils import admin_cmd, edit_or_reply
-from . import CMD_HELP, fonts
+from . import CMD_HELP, Fonts
 
 
 @borg.on(admin_cmd(pattern="egyptf(?: |$)(.*)"))
