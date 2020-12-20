@@ -137,7 +137,7 @@ def remove_plugin(shortname):
         raise ValueError
 
 
-def admin_cmd(pattern=None, **args):
+def utils.admin_cmd(pattern=None, **args):
     args["func"] = lambda e: e.via_bot_id is None
 
     stack = inspect.stack()
@@ -159,12 +159,12 @@ def admin_cmd(pattern=None, **args):
                 CMD_LIST.update({file_test: [cmd]})
         else:
             if len(config.COMMAND_HAND_LER) == 2:
-                catreg = "^" + config.COMMAND_HAND_LER
+                pglreg = "^" + config.COMMAND_HAND_LER
                 reg = config.COMMAND_HAND_LER[1]
             elif len(config.COMMAND_HAND_LER) == 1:
-                catreg = "^\\" + config.COMMAND_HAND_LER
+                pglreg = "^\\" + config.COMMAND_HAND_LER
                 reg = config.COMMAND_HAND_LER
-            args["pattern"] = re.compile(catreg + pattern)
+            args["pattern"] = re.compile(pglreg + pattern)
             if command is not None:
                 cmd = reg + command
             else:
