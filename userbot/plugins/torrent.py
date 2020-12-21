@@ -12,8 +12,7 @@ from ..utils import admin_cmd, humanbytes
 from . import (
     CMD_HELP,
     LOGS,
-    TMP_DOWNLOAD_DIRECTORY,
-    aria2,
+    TMP_DOWNLOAD_DIRECTORY,   
     bot,
     check_metadata,
     subprocess_run,
