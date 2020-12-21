@@ -147,35 +147,16 @@ def admin_cmd(pattern=None, **args):
     
     # get the pattern from the decorator
     if pattern is not None:
-        if pattern.startswith(r"\#"):
-            # special fix for snip.py
+    	if pattern.startswith("\#"):
             args["pattern"] = re.compile(pattern)
-        elif pattern.startswith(r"^"):
-            args["pattern"] = re.compile(pattern)
-            cmd = pattern.replace("$", "").replace("^", "").replace("\\", "")
+    	else:
+    	    args["pattern"] = re.compile(config.COMMAND_HAND_LER + pattern)
+            cmd = config.COMMAND_HAND_LER + pattern
             try:
                 CMD_LIST[file_test].append(cmd)
             except BaseException:
                 CMD_LIST.update({file_test: [cmd]})
-        else:
-            if len(config.COMMAND_HAND_LER) == 2:
-                pglreg = "^" + config.COMMAND_HAND_LER
-                reg = config.COMMAND_HAND_LER[1]
-            elif len(config.COMMAND_HAND_LER) == 1:
-                pglreg = "^\\" + config.COMMAND_HAND_LER
-                reg = config.COMMAND_HAND_LER
-            args["pattern"] = re.compile(pglreg + pattern)
-            if command is not None:
-                cmd = reg + command
-            else:
-                cmd = (
-                    (reg + pattern).replace("$", "").replace("\\", "").replace("^", "")
-                )
-            try:
-                CMD_LIST[file_test].append(cmd)
-            except BaseException:
-                CMD_LIST.update({file_test: [cmd]})
-
+        
     args["outgoing"] = True
     # should this command be available for other users?
     if allow_sudo:
