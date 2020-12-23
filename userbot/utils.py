@@ -138,12 +138,13 @@ def remove_plugin(shortname):
 
 def admin_cmd(pattern=None, **args):
     args['func'] = lambda e: e.via_bot_id is None
-
+    
     stack = inspect.stack()
+    allow_sudo = args.get('allow_sudo', False)
     previous_stack_frame = stack[1]
     file_test = Path(previous_stack_frame.filename)
     file_test = file_test.stem.replace('.py', '')
-
+    
     # get the pattern from the decorator
 
     if pattern is not None:
@@ -169,6 +170,7 @@ def admin_cmd(pattern=None, **args):
 
         args['incoming'] = True
         del args['allow_sudo']
+
     elif 'incoming' in args and not args['incoming']:
 
     # error handling condition check
