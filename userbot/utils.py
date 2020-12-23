@@ -136,52 +136,61 @@ def remove_plugin(shortname):
     except BaseException:
         raise ValueError
 
-
 def admin_cmd(pattern=None, **args):
-    args["func"] = lambda e: e.via_bot_id is None
+    args['func'] = lambda e: e.via_bot_id is None
 
     stack = inspect.stack()
     previous_stack_frame = stack[1]
     file_test = Path(previous_stack_frame.filename)
-    file_test = file_test.stem.replace(".py", "")
-    
+    file_test = file_test.stem.replace('.py', '')
+
     # get the pattern from the decorator
+
     if pattern is not None:
-    	if pattern.startswith("\#"):
-            args["pattern"] = re.compile(pattern)
-    	else:
-    	    args["pattern"] = re.compile(config.COMMAND_HAND_LER + pattern)
+        if pattern.startswith("\#"):
+            args['pattern'] = re.compile(pattern)
+        else:
+            args['pattern'] = re.compile(config.COMMAND_HAND_LER
+                    + pattern)
             cmd = config.COMMAND_HAND_LER + pattern
             try:
                 CMD_LIST[file_test].append(cmd)
             except BaseException:
                 CMD_LIST.update({file_test: [cmd]})
-        
-    args["outgoing"] = True
+
+    args['outgoing'] = True
+
     # should this command be available for other users?
+
     if allow_sudo:
-        args["from_users"] = list(config.SUDO_USERS)
+        args['from_users'] = list(config.SUDO_USERS)
+
         # Mutually exclusive with outgoing (can only set one of either).
-        args["incoming"] = True
-        del args["allow_sudo"]
+
+        args['incoming'] = True
+        del args['allow_sudo']
+    elif 'incoming' in args and not args['incoming']:
 
     # error handling condition check
-    elif "incoming" in args and not args["incoming"]:
-        args["outgoing"] = True
+
+        args['outgoing'] = True
 
     # add blacklist chats, UB should not respond in these chats
-    args["blacklist_chats"] = True
+
+    args['blacklist_chats'] = True
     black_list_chats = list(config.UB_BLACK_LIST_CHAT)
     if len(black_list_chats) > 0:
-        args["chats"] = black_list_chats
+        args['chats'] = black_list_chats
 
     # add blacklist chats, UB should not respond in these chats
-    if "allow_edited_updates" in args and args["allow_edited_updates"]:
-        del args["allow_edited_updates"]
+
+    if 'allow_edited_updates' in args and args['allow_edited_updates']:
+        del args['allow_edited_updates']
 
     # check if the plugin should listen for outgoing 'messages'
 
     return events.NewMessage(**args)
+
 
 """ Userbot module for managing events.
  One of the main components of the userbot. """
