@@ -144,7 +144,6 @@ async def _(event):
         await event.edit(animation_chars[i % 10])
 
 
-@borg.on(admin_cmd(pattern=f"hand$", outgoing=True))
 from telethon import events
 import asyncio
 from userbot.utils import admin_cmd
