@@ -1,15 +1,12 @@
 from telethon import custom, events
 from telethon.tl.types import Channel
 from telethon.utils import get_display_name
-
+import os
 from userbot.config import config
 
-NEEDLOG = int(config.TAG_LOG)
-if config.TAG_LOG:
-    NEEDTOLOG = int(config.TAG_LOG)
-
-if Config.TAG_LOG:
-
+taglog = os.environ.get("TAG_LOG", None)
+if taglog:
+    NEEDTOLOG = int(tag_log)
     @borg.on(
         events.NewMessage(
             incoming=True,
