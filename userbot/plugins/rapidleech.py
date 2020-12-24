@@ -71,7 +71,7 @@ async def get_direct_ip_specific_link(link: str):
             for script in scripts:
                 if "getElementById('dlbutton')" in script.text:
                     regex_search_exp = re.search(
-                        '= (?P<url>".+" \+ (?P<math>\(.+\)) .+);', script.text
+                        r'= (?P<url>".+" \+ (?P<math>\(.+\)) .+);', script.text
                     )
                     url_raw = regex_search_exp.group("url")
                     math = regex_search_exp.group("math")
