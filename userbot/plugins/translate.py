@@ -87,6 +87,7 @@ async def lang(value):
             BOTLOG_CHATID, f"`Language for {scraper} changed to {LANG.title()}.`"
         )
 
+
 @borg.on(admin_cmd(pattern="tr (.*)"))
 async def _(event):
     if event.fwd_from:
@@ -115,8 +116,6 @@ async def _(event):
         await edit_or_reply(event, output_str)
     except Exception as exc:
         await edit_delete(event, str(exc), time=5)
-
-
 
 
 CMD_HELP.update(

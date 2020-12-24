@@ -121,7 +121,7 @@ async def _(event):
                     reply_to=reply_to_id,
                 )
                 await event.delete()
-            except:
+            except BaseException:
                 await event.client.send_file(
                     event.chat_id,
                     out_file,

@@ -59,13 +59,13 @@ if not os.path.isdir(config.TMP_DOWNLOAD_DIRECTORY):
 
 
 # thumb image
-if config.THUMB_IMAGE != None:
+if config.THUMB_IMAGE is not None:
     check = url(config.THUMB_IMAGE)
     if check:
         try:
             with open(thumb_image_path, "wb") as f:
                 f.write(requests.get(config.THUMB_IMAGE).content)
-        except:
+        except BaseException:
             pass
 
 
@@ -74,7 +74,7 @@ def check(cat):
         return True
     try:
         hi = re.search(cat.lower(), "(a|b|c|d)", flags=re.IGNORECASE)
-    except:
+    except BaseException:
         hi = False
     return bool(hi)
 
@@ -108,5 +108,3 @@ def check_data_base_heal_th():
         output = "Functioning"
         is_database_working = True
     return is_database_working, output
-
-

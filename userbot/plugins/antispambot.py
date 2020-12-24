@@ -1,6 +1,7 @@
 #    Copyright (C) 2020  sandeep.n(π.$)
 # baning spmmers plugin for catuserbot by @sandy1709 and @mrconfused
-# included both cas(combot antispam service) and spamwatch (need to add more feaututres)
+# included both cas(combot antispam service) and spamwatch (need to add
+# more feaututres)
 
 from requests import get
 from telethon import events

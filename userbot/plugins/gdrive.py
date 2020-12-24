@@ -1,7 +1,8 @@
 # ported from ProjectBish by @sandy1709
 # Copyright (C) 2020 Adek Maulana
 
-# Catuserbot Google Drive managers  ported from Projectbish and added extra things by @mrconfused
+# Catuserbot Google Drive managers  ported from Projectbish and added
+# extra things by @mrconfused
 import asyncio
 import base64
 import json

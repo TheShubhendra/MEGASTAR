@@ -9,14 +9,7 @@ import math
 from asyncio import sleep
 
 from ..utils import admin_cmd, humanbytes
-from . import (
-    CMD_HELP,
-    LOGS,
-    TMP_DOWNLOAD_DIRECTORY,   
-    bot,
-    check_metadata,
-    subprocess_run,
-)
+from . import CMD_HELP, LOGS, TMP_DOWNLOAD_DIRECTORY, check_metadata, subprocess_run
 
 EDIT_SLEEP_TIME_OUT = 5
 

@@ -55,4 +55,3 @@ def all_users():
     legend = SESSION.query(Users).all()
     SESSION.close()
     return legend
-

@@ -1,4 +1,3 @@
-
 # Copyright (C) 2020 Alfiananda P.A
 
 # Licensed under the Raphielscape Public License, Version 1.d (the "License");

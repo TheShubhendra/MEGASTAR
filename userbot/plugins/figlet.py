@@ -3,7 +3,7 @@ import pyfiglet
 from .. import CMD_HELP
 from ..utils import admin_cmd, edit_or_reply
 
-    
+
 @borg.on(admin_cmd(pattern="figlet ?(.*)", outgoing=True))
 async def figlet(event):
     if event.fwd_from:

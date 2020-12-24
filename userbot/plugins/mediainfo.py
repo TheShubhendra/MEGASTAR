@@ -55,7 +55,7 @@ async def file_data(reply):
         if reply.media.document.thumbs:
             hmm += f"Thumb  :\
                 \n {yaml_format(reply.media.document.thumbs[-1])}<br>"
-    except:
+    except BaseException:
         pass
     return hmm
 
@@ -86,7 +86,7 @@ async def mediainfo(event):
 </code>
 <h2>DETAILS</h2>
 <code>
-{out} 
+{out}
 </code>"""
     link = await post_to_telegraph(f"{X_MEDIA}", body_text)
     await event.edit(

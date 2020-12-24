@@ -130,7 +130,8 @@ def parse(message, old_entities=None):
 
             text, entity = parser(match)
 
-            # Shift old entities after our current position (so they stay in place)
+            # Shift old entities after our current position (so they stay in
+            # place)
             shift = len(text) - len(match[0])
             if shift:
                 for e in old_entities[after:]:
@@ -147,7 +148,7 @@ def parse(message, old_entities=None):
             i += len(text)
 
         return del_surrogate(message), entities + old_entities
-    except:
+    except BaseException:
         pass
 
 

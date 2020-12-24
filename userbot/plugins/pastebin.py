@@ -42,7 +42,7 @@ async def _(event):
             try:
                 for m in m_list:
                     message += m.decode("UTF-8")
-            except:
+            except BaseException:
                 message = "Usage : .paste <long text to include/reply to text file>"
             os.remove(downloaded_file_name)
         else:
@@ -85,7 +85,7 @@ async def _(event):
             try:
                 for m in m_list:
                     message += m.decode("UTF-8")
-            except:
+            except BaseException:
                 message = (
                     "**Usage : **`.neko <long text to include/reply to text file>`"
                 )
@@ -139,7 +139,7 @@ async def _(event):
             try:
                 for m in m_list:
                     message += m.decode("UTF-8")
-            except:
+            except BaseException:
                 message = "Usage : .paste <long text to include/reply to text file>"
             os.remove(downloaded_file_name)
         else:
@@ -219,7 +219,7 @@ async def _(event):
             try:
                 for m in m_list:
                     message += m.decode("UTF-8")
-            except:
+            except BaseException:
                 message = "Usage : .paste <long text to include/reply to text file>"
             os.remove(downloaded_file_name)
         else:

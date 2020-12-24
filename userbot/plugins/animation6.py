@@ -33,7 +33,10 @@ def get_readable_time(seconds: int) -> str:
 
 @borg.on(admin_cmd(pattern="ping$"))
 async def _(event):
-    starkislub = await edit_or_reply(event, "`Ping ! Pong ! \n Ping ! Pong Ping ! Pong ! \n Ping ! Pong Ping ! Pong ! \n Ping ! Pong Ping ! Pong ! \n Ping ! Pong Ping ! Pong ! \n Ping ! Pong Ping ! Pong ! \n Ping ! Pong Ping ! Pong ! \n Ping ! Pong Ping ! Pong ! \n Ping ! Pong Ping ! Pong ! \n Ping ! Pong Ping ! Pong ! \n Ping ! Pong Ping ! Pong ! \n Ping ! Pong Ping ! Pong ! \n Ping ! Pong Ping ! Pong ! \n Ping ! Pong Ping ! Pong ! \n Ping ! Pong Ping ! Pong ! \n Ping ! Pong Ping ! Pong ! \n Ping ! Pong Ping ! Pong ! \n Ping ! Pong `")
+    starkislub = await edit_or_reply(
+        event,
+        "`Ping ! Pong ! \n Ping ! Pong Ping ! Pong ! \n Ping ! Pong Ping ! Pong ! \n Ping ! Pong Ping ! Pong ! \n Ping ! Pong Ping ! Pong ! \n Ping ! Pong Ping ! Pong ! \n Ping ! Pong Ping ! Pong ! \n Ping ! Pong Ping ! Pong ! \n Ping ! Pong Ping ! Pong ! \n Ping ! Pong Ping ! Pong ! \n Ping ! Pong Ping ! Pong ! \n Ping ! Pong Ping ! Pong ! \n Ping ! Pong Ping ! Pong ! \n Ping ! Pong Ping ! Pong ! \n Ping ! Pong Ping ! Pong ! \n Ping ! Pong Ping ! Pong ! \n Ping ! Pong Ping ! Pong ! \n Ping ! Pong `",
+    )
     if event.fwd_from:
         return
     start = datetime.now()
@@ -63,7 +66,9 @@ async def _(event):
     start = datetime.now()
     animation_interval = 0.2
     animation_ttl = range(0, 26)
-    await event.edit("pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n ")
+    await event.edit(
+        "pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n pingy pongy pingy pongy \n "
+    )
     animation_chars = [
         "⬛⬛⬛⬛⬛⬛⬛⬛⬛",
         "⬛⬛⬛⬛⬛⬛⬛⬛⬛ \n⬛‎📶‎📶‎📶‎📶‎📶‎📶‎📶⬛",
@@ -126,7 +131,6 @@ CMD_HELP.update(
     \n**USAGE   ★  **Shows you the ping speed of server"
     }
 )
-
 
 
 @borg.on(admin_cmd(pattern="unoob$"))

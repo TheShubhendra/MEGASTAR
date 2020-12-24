@@ -39,7 +39,7 @@ async def _(event):
     common_chats = replied_user.common_chats_count
     try:
         dc_id, location = get_input_location(replied_user.profile_photo)
-    except:
+    except BaseException:
         dc_id = "Couldn't fetch DC ID!"
     if spamwatch:
         ban = spamwatch.get_ban(user_id)
@@ -88,7 +88,7 @@ async def get_full_user(event):
         try:
             try:
                 input_str = int(input_str)
-            except:
+            except BaseException:
                 pass
             user_object = await event.client.get_entity(input_str)
             user_id = user_object.id
@@ -197,7 +197,7 @@ async def fetch_info(replied_user, event):
     last_name = replied_user.user.last_name
     try:
         dc_id, location = get_input_location(replied_user.profile_photo)
-    except:
+    except BaseException:
         dc_id = "Couldn't fetch DC ID!"
     common_chat = replied_user.common_chats_count
     username = replied_user.user.username

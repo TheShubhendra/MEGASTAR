@@ -48,7 +48,6 @@ async def gps(event):
         await event.edit("i coudn't find it")
 
 
-
 CMD_HELP.update(
     {
         "gps": "`.gps` <location name> :\

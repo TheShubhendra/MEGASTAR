@@ -2,7 +2,7 @@
 import re
 
 from telethon import events
-    
+
 from .. import BOTLOG_CHATID, CMD_HELP, bot
 from ..utils import admin_cmd, edit_or_reply
 from .sql_helper.filter_sql import (
@@ -133,4 +133,3 @@ CMD_HELP.update(
     \n**Usage: **Removes all filters of your userbot in the chat."
     }
 )
-   

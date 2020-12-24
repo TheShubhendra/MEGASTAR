@@ -102,7 +102,7 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             secret = os.path.join("./userbot", "secrets.txt")
             try:
                 jsondata = json.load(open(secret))
-            except:
+            except BaseException:
                 jsondata = False
             try:
                 # if u is user id
@@ -127,7 +127,7 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
                 else:
                     sandy = f"[{u.first_name}](tg://user?id={u.id})"
                 u = int(u.id)
-            except:
+            except BaseException:
                 return
             timestamp = int(time.time() * 2)
             newsecret = {str(timestamp): {"userid": u, "text": txct}}
@@ -199,11 +199,7 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             reply_pop_up_alert = "This message no longer exists "
         await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
-    @tgbot.on(
-        events.callbackquery.CallbackQuery(  
-            data=re.compile(b"us_plugin_(.*)")
-        )
-    )
+    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"us_plugin_(.*)")))
     async def on_plug_in_callback_query_handler(event):
         if event.query.user_id == bot.uid:
             plugin_name = event.data_match.group(1).decode("UTF-8")

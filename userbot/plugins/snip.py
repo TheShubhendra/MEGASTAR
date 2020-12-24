@@ -1,12 +1,9 @@
 # ported from paperplaneExtended by avinashreddy3108 for media support
 
-from telethon import events
 
 from ..utils import admin_cmd, edit_or_reply
 from . import BOTLOG_CHATID, CMD_HELP
 from .sql_helper.snip_sql import add_note, get_note, get_notes, rm_note
-
-
 
 
 @borg.on(admin_cmd(pattern=r"snips (\w*)"))

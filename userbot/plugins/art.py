@@ -1,6 +1,6 @@
 # Edit credit @Sur_vivor & @jisan7509
 from .. import ALIVE_NAME
-from ..utils import admin_cmd, edit_or_reply, sudo_cmd
+from ..utils import admin_cmd, edit_or_reply
 
 DEF = str(ALIVE_NAME) if ALIVE_NAME else "cat"
 
@@ -33,10 +33,10 @@ async def kakashi(killer):
     await edit_or_reply(
         killer,
         f"__**Commando **__{DEF}          \n\n"
-        "_/﹋\_\n"
+        r"_/﹋\_\n"
         "(҂`_´)\n"
         f"<,︻╦╤─ ҉ - - - {name}\n"
-        "_/﹋\_\n",
+        r"_/﹋\_\n",
     )
 
 

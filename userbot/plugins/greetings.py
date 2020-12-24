@@ -1,5 +1,3 @@
-import random
-
 from ..utils import admin_cmd, edit_or_reply
 
 
@@ -49,6 +47,7 @@ async def test(event):
 
 # @PhycoNinja13b 's Part begin from here
 
+
 @borg.on(admin_cmd(pattern=r"hi ?(.*)"))
 async def hi(event):
     giveVar = event.text
@@ -59,7 +58,6 @@ async def hi(event):
         event,
         f"{lub}✨✨{lub}✨{lub}{lub}{lub}\n{lub}✨✨{lub}✨✨{lub}✨\n{lub}{lub}{lub}{lub}✨✨{lub}✨\n{lub}✨✨{lub}✨✨{lub}✨\n{lub}✨✨{lub}✨{lub}{lub}{lub}\n☁☁☁☁☁☁☁☁",
     )
-
 
 
 @borg.on(admin_cmd(pattern=r"cheer$"))

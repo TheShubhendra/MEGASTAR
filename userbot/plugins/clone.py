@@ -13,11 +13,7 @@ from .. import ALIVE_NAME, AUTONAME, CMD_HELP, DEFAULT_BIO
 from ..utils import admin_cmd
 
 DEFAULTUSER = str(AUTONAME) if AUTONAME else str(ALIVE_NAME)
-DEFAULTUSERBIO = (
-    str(DEFAULT_BIO)
-    if DEFAULT_BIO
-    else "LEGEND USERBOT IS BEST ❤️"
-)
+DEFAULTUSERBIO = str(DEFAULT_BIO) if DEFAULT_BIO else "LEGEND USERBOT IS BEST ❤️"
 if Config.PRIVATE_GROUP_BOT_API_ID is None:
     BOTLOG = False
 else:

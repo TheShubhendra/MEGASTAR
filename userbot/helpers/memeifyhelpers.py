@@ -10,7 +10,7 @@ import numpy as np
 
 try:
     from colour import Color as asciiColor
-except:
+except BaseException:
     os.system("pip install colour")
 from PIL import Image, ImageDraw, ImageFont
 from telethon.errors.rpcerrorlist import YouBlockedUserError
@@ -37,7 +37,8 @@ def asciiart(in_f, SC, GCF, out_f, color1, color2, bgcolor="black"):
     img = np.sum(np.asarray(img), axis=2)
     img -= img.min()
     img = (1.0 - img / img.max()) ** GCF * (chars.size - 1)
-    lines = ("\n".join(("".join(r) for r in chars[img.astype(int)]))).split("\n")
+    lines = ("\n".join(("".join(r)
+                        for r in chars[img.astype(int)]))).split("\n")
     nbins = len(lines)
     colorRange = list(asciiColor(color1).range_to(asciiColor(color2), nbins))
     newImg_width = letter_width * widthByLetter
@@ -67,9 +68,11 @@ async def viper_meme(topString, bottomString, filename, endname):
     font = ImageFont.truetype("userbot/helpers/styles/impact.ttf", fontSize)
     topTextSize = font.getsize(topString)
     bottomTextSize = font.getsize(bottomString)
-    while topTextSize[0] > imageSize[0] - 20 or bottomTextSize[0] > imageSize[0] - 20:
+    while topTextSize[0] > imageSize[0] - \
+            20 or bottomTextSize[0] > imageSize[0] - 20:
         fontSize -= 1
-        font = ImageFont.truetype("userbot/helpers/styles/impact.ttf", fontSize)
+        font = ImageFont.truetype(
+            "userbot/helpers/styles/impact.ttf", fontSize)
         topTextSize = font.getsize(topString)
         bottomTextSize = font.getsize(bottomString)
 
@@ -107,11 +110,18 @@ async def viper_meme(topString, bottomString, filename, endname):
 
 async def viper_meeme(upper_text, lower_text, picture_name, endname):
     main_image = catimage(filename=picture_name)
-    main_image.resize(
-        1024, int(((main_image.height * 1.0) / (main_image.width * 1.0)) * 1024.0)
-    )
-    upper_text = "\n".join(wrap(upper_text, get_warp_length(main_image.width))).upper()
-    lower_text = "\n".join(wrap(lower_text, get_warp_length(main_image.width))).upper()
+    main_image.resize(1024, int(
+        ((main_image.height * 1.0) / (main_image.width * 1.0)) * 1024.0))
+    upper_text = "\n".join(
+        wrap(
+            upper_text,
+            get_warp_length(
+                main_image.width))).upper()
+    lower_text = "\n".join(
+        wrap(
+            lower_text,
+            get_warp_length(
+                main_image.width))).upper()
     lower_margin = MARGINS[lower_text.count("\n")]
     text_draw = Drawing()
     text_draw.font = join(getcwd(), "userbot/helpers/styles/impact.ttf")
@@ -124,8 +134,9 @@ async def viper_meeme(upper_text, lower_text, picture_name, endname):
         text_draw.text((main_image.width) // 2, 80, upper_text)
     if lower_text:
         text_draw.text(
-            (main_image.width) // 2, main_image.height - lower_margin, lower_text
-        )
+            (main_image.width) // 2,
+            main_image.height - lower_margin,
+            lower_text)
     text_draw(main_image)
     main_image.save(filename=endname)
 
@@ -160,7 +171,8 @@ async def take_screen_shot(
         duration,
     )
     ttl = duration // 2
-    thumb_image_path = path or os.path.join("./temp/", f"{basename(video_file)}.jpg")
+    thumb_image_path = path or os.path.join(
+        "./temp/", f"{basename(video_file)}.jpg")
     command = f"ffmpeg -ss {ttl} -i '{video_file}' -vframes 1 '{thumb_image_path}'"
     err = (await runcmd(command))[1]
     if err:
@@ -179,7 +191,7 @@ async def make_gif(event, file):
             if response.text.startswith("Send me an animated sticker!"):
                 return "`This file is not supported`"
             response = response if response.media else await conv.get_response()
-            viperresponse = response if response.media else await conv.get_response()
+            response if response.media else await conv.get_response()
             await event.client.send_read_acknowledge(conv.chat_id)
             catfile = await event.client.download_media(catresponse, "./temp")
             return await unzip(catfile)

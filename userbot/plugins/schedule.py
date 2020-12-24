@@ -4,14 +4,14 @@ from .. import CMD_HELP
 from ..utils import admin_cmd
 
 
-@borg.on(admin_cmd(pattern="schd (\d*) (.*)", outgoing=True))
+@borg.on(admin_cmd(pattern=r"schd (\d*) (.*)", outgoing=True))
 async def _(event):
     lub = ("".join(event.text.split(maxsplit=1)[1:])).split(" ", 1)
     message = lub[1]
     ttl = int(lub[0])
     try:
         await event.delete()
-    except:
+    except BaseException:
         pass
     await sleep(ttl)
     await event.respond(message)

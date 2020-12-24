@@ -1,4 +1,10 @@
-  
+
+from requests import get
+from pySmartDL import SmartDL
+import pylast
+import asyncio
+from distutils.util import strtobool as sb
+from logging import basicConfig, getLogger, INFO, DEBUG
 import os
 import sys
 from telethon.sessions import StringSession
@@ -28,19 +34,16 @@ CAT_ID = ["1317466348", "1454961271"]
 
 """ PPE initialization. """
 
-from logging import basicConfig, getLogger, INFO, DEBUG
-from distutils.util import strtobool as sb
-import asyncio
-import pylast
-from pySmartDL import SmartDL
-from requests import get
 
 # Alive PIC
-ALIVE_PIC = os.environ.get("ALIVE_PIC" , None)
+ALIVE_PIC = os.environ.get("ALIVE_PIC", None)
 
 # Bot Logs setup:
 if bool(ENV):
-    CONSOLE_LOGGER_VERBOSE = sb(os.environ.get("CONSOLE_LOGGER_VERBOSE", "False"))
+    CONSOLE_LOGGER_VERBOSE = sb(
+        os.environ.get(
+            "CONSOLE_LOGGER_VERBOSE",
+            "False"))
 
     if CONSOLE_LOGGER_VERBOSE:
         basicConfig(
@@ -48,8 +51,9 @@ if bool(ENV):
             level=DEBUG,
         )
     else:
-        basicConfig(format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
-                    level=INFO)
+        basicConfig(
+            format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+            level=INFO)
     LOGS = getLogger(__name__)
 
     # Check if the config was edited by using the already used variable.
@@ -67,18 +71,21 @@ if bool(ENV):
     BOTLOG_CHATID = os.environ.get("BOTLOG_CHATID", None)
     try:
         BOTLOG_CHATID = int(BOTLOG_CHATID)
-    except:
+    except BaseException:
         pass
 
     # Userbot logging feature switch.
     BOTLOG = sb(os.environ.get("BOTLOG", "False"))
     LOGSPAMMER = sb(os.environ.get("LOGSPAMMER", "False"))
-    
+
     # Bleep Blop, this is a bot ;)
     PM_AUTO_BAN = sb(os.environ.get("PM_AUTO_BAN", "False"))
 
     # Console verbose logging
-    CONSOLE_LOGGER_VERBOSE = sb(os.environ.get("CONSOLE_LOGGER_VERBOSE", "False"))
+    CONSOLE_LOGGER_VERBOSE = sb(
+        os.environ.get(
+            "CONSOLE_LOGGER_VERBOSE",
+            "False"))
 
     # SQL Database URI
     DB_URI = os.environ.get("DATABASE_URL", None)
@@ -109,7 +116,6 @@ if bool(ENV):
     HEROKU_APP_NAME = os.environ.get("HEROKU_APP_NAME", None)
     HEROKU_API_KEY = os.environ.get("HEROKU_API_KEY", None)
 
-   
     # Youtube API key
     YOUTUBE_API_KEY = os.environ.get("YOUTUBE_API_KEY", None)
 
@@ -125,14 +131,14 @@ if bool(ENV):
 
     # Clean Welcome
     CLEAN_WELCOME = sb(os.environ.get("CLEAN_WELCOME", "True"))
-    
+
     # Custom Module
     CUSTOM_PMPERMIT = os.environ.get("CUSTOM_PMPERMIT", None)
-    
+
     # Upstream Repo
     UPSTREAM_REPO_URL = os.environ.get(
-    "UPSTREAM_REPO_URL",
-    "https://github.com/Marshmellow098/MY-THINGS.git")
+        "UPSTREAM_REPO_URL",
+        "https://github.com/Marshmellow098/MY-THINGS.git")
 
     # Last.fm Module
     BIO_PREFIX = os.environ.get("BIO_PREFIX", None)
@@ -157,7 +163,7 @@ if bool(ENV):
     G_DRIVE_AUTH_TOKEN_DATA = os.environ.get("G_DRIVE_AUTH_TOKEN_DATA", None)
     GDRIVE_FOLDER_ID = os.environ.get("GDRIVE_FOLDER_ID", None)
     TEMP_DOWNLOAD_DIRECTORY = os.environ.get("TEMP_DOWNLOAD_DIRECTORY",
-                                         "./downloads")
+                                             "./downloads")
 else:
     # Put your ppe vars here if you are using local hosting
     PLACEHOLDER = None
@@ -187,5 +193,3 @@ LASTMSG = {}
 CMD_HELP = {}
 ISAFK = False
 AFKREASON = None
-
-

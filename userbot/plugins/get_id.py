@@ -19,13 +19,13 @@ async def _(event):
                 return await edit_or_reply(
                     event, f"The id of the user `{input_str}` is `{p.id}`"
                 )
-        except:
+        except BaseException:
             try:
                 if p.title:
                     return await edit_or_reply(
                         event, f"The id of the chat/channel `{p.title}` is `{p.id}`"
                     )
-            except:
+            except BaseException:
                 pass
         await edit_or_reply(event, "`Either give input as username or reply to user`")
     elif event.reply_to_msg_id:

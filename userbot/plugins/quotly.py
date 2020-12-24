@@ -18,9 +18,7 @@ async def stickerchat(quotes):
         return
     reply = await quotes.get_reply_message()
     if not reply:
-        await edit_or_reply(
-            quotes, "`I cant quote the message . reply to a message`"
-        )
+        await edit_or_reply(quotes, "`I cant quote the message . reply to a message`")
         return
     fetchmsg = reply.message
     repliedreply = await reply.get_reply_message()
@@ -37,9 +35,7 @@ async def stickerchat(quotes):
     if not res:
         return
     msg.save("./temp/sticker.webp")
-    await quotes.client.send_file(
-        quotes.chat_id, "./temp/sticker.webp", reply_to=reply
-    )
+    await quotes.client.send_file(quotes.chat_id, "./temp/sticker.webp", reply_to=reply)
     await event.delete()
     os.remove("./temp/sticker.webp")
 

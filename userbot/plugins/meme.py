@@ -4,7 +4,7 @@ from .. import CMD_HELP
 from ..utils import admin_cmd, edit_or_reply
 
 
-@borg.on(admin_cmd(outgoing=True, pattern="^\:/$"))
+@borg.on(admin_cmd(outgoing=True, pattern=r"^\:/$"))
 async def kek(keks):
     keks = await edit_or_reply(keks, ":\\")
     uio = ["/", "\\"]
@@ -14,7 +14,7 @@ async def kek(keks):
         await keks.edit(txt)
 
 
-@borg.on(admin_cmd(outgoing=True, pattern="^\-_-$"))
+@borg.on(admin_cmd(outgoing=True, pattern=r"^\-_-$"))
 async def lol(lel):
     lel = await edit_or_reply(lel, "-__-")
     okay = "-__-"
@@ -24,7 +24,7 @@ async def lol(lel):
         await lel.edit(okay)
 
 
-@borg.on(admin_cmd(outgoing=True, pattern="^\;_;$"))
+@borg.on(admin_cmd(outgoing=True, pattern=r"^\;_;$"))
 async def fun(e):
     e = await edit_or_reply(e, ";__;")
     t = ";__;"
@@ -61,7 +61,7 @@ async def typewriter(typew):
         await asyncio.sleep(sleep_time)
 
 
-@borg.on(admin_cmd(pattern="repeat (\d*) (.*)", outgoing=True))
+@borg.on(admin_cmd(pattern=r"repeat (\d*) (.*)", outgoing=True))
 async def _(event):
     cat = ("".join(event.text.split(maxsplit=1)[1:])).split(" ", 1)
     message = cat[1]

@@ -13,7 +13,7 @@ from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.functions.messages import SendMediaRequest
 
 from ..utils import admin_cmd, edit_or_reply, progress
-from . import CMD_HELP 
+from . import CMD_HELP
 
 if not os.path.isdir("./temp"):
     os.makedirs("./temp")

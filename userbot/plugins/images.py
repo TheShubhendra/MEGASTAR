@@ -8,7 +8,6 @@ import os
 import shutil
 
 from .. import CMD_HELP
-from ..helpers.google_image_download import googleimagedownload
 from ..utils import admin_cmd, edit_or_reply
 
 

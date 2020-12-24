@@ -8,7 +8,6 @@ import os
 import requests
 from userbot.plugins.legendbot.sql.blacklist_sql import all_bl_users
 from userbot.plugins.mybot.sql.users_sql import all_users
-from userbot.plugins import TELE_NAME
 from userbot.plugins.legendbot.sql.userbase_sql import add_to_userbase, present_in_userbase, full_userbase
 from datetime import datetime
 from telethon import events

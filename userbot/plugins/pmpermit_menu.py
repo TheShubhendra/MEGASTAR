@@ -132,5 +132,5 @@ async def _(event):
                             await event.client.send_message(chat, TWO)
                             await asyncio.sleep(3)
                             await event.client(functions.contacts.BlockRequest(chat_id))
-        except:
+        except BaseException:
             pass

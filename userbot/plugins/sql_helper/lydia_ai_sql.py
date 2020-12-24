@@ -17,11 +17,11 @@ class LydiaAI(BASE):
         self.session_id = session_id
         self.session_expires = session_expires
 
-       
+
 LydiaAI.__table__.create(checkfirst=True)
 
 
-def get_s(user_id, chat_id): 
+def get_s(user_id, chat_id):
     try:
         return SESSION.query(LydiaAI).get((user_id, chat_id))
     except BaseException:

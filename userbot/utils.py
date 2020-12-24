@@ -57,8 +57,6 @@ def command(**args):
             except BaseException:
                 pass
 
-       
- 
         if "allow_edited_updates" in args:
             del args['allow_edited_updates']
 
@@ -73,7 +71,7 @@ def command(**args):
             return func
 
         return decorator
-         
+
 
 def load_module(shortname):
     if shortname.startswith("__"):
@@ -136,23 +134,24 @@ def remove_plugin(shortname):
     except BaseException:
         raise ValueError
 
+
 def admin_cmd(pattern=None, **args):
     args['func'] = lambda e: e.via_bot_id is None
-    
+
     stack = inspect.stack()
     allow_sudo = args.get('allow_sudo', False)
     previous_stack_frame = stack[1]
     file_test = Path(previous_stack_frame.filename)
     file_test = file_test.stem.replace('.py', '')
-    
+
     # get the pattern from the decorator
 
     if pattern is not None:
-        if pattern.startswith("\#"):
+        if pattern.startswith(r"\#"):
             args['pattern'] = re.compile(pattern)
         else:
             args['pattern'] = re.compile(config.COMMAND_HAND_LER
-                    + pattern)
+                                         + pattern)
             cmd = config.COMMAND_HAND_LER + pattern
             try:
                 CMD_LIST[file_test].append(cmd)
@@ -173,7 +172,7 @@ def admin_cmd(pattern=None, **args):
 
     elif 'incoming' in args and not args['incoming']:
 
-    # error handling condition check
+        # error handling condition check
 
         args['outgoing'] = True
 
@@ -326,19 +325,19 @@ class Loader():
 
 
 async def edit_or_reply(event, text):
-        reply_to = await event.get_reply_message()
-        if reply_to:
-            return await reply_to.reply(text)
-        else:
-            return await reply_to.edit(text)
+    reply_to = await event.get_reply_message()
+    if reply_to:
+        return await reply_to.reply(text)
+    else:
+        return await reply_to.edit(text)
 
 
 async def eor(event, text):
-        reply_to = await event.get_reply_message()
-        if reply_to:
-            return await reply_to.reply(text)
-        else:
-            return await reply_to.edit(text)
+    reply_to = await event.get_reply_message()
+    if reply_to:
+        return await reply_to.reply(text)
+    else:
+        return await reply_to.edit(text)
 
 # TGBot
 
@@ -400,4 +399,3 @@ def load_tgbot(shortname):
         spec.loader.exec_module(mod)
         sys.modules["userbot.plugins.legendbot.tgbot." + shortname] = mod
         print("Bot Has imported " + shortname)
- 

@@ -20,27 +20,21 @@ async def _(event):
     text1 = await edit_or_reply(event, "Uhmm... Something is wrong here!!")
     await asyncio.sleep(2)
     await text1.delete()
-    stcr1 = await event.client.send_file(
-        event.chat_id, "Tobw7BkaeSFbwMqbkIhKiw"
-    )
+    stcr1 = await event.client.send_file(event.chat_id, "Tobw7BkaeSFbwMqbkIhKiw")
     text2 = await event.reply(
         f"**[{DEFAULTUSER}]({USERNAME}) :** I have to call discussion"
     )
     await asyncio.sleep(3)
     await stcr1.delete()
     await text2.delete()
-    stcr2 = await event.client.send_file(
-        event.chat_id, "Tobw7BkaeSFbwMqbkIhKiw"
-    )
+    stcr2 = await event.client.send_file(event.chat_id, "Tobw7BkaeSFbwMqbkIhKiw")
     text3 = await event.reply(
         f"**[{DEFAULTUSER}]({USERNAME}) :** We have to eject the imposter or will lose "
     )
     await asyncio.sleep(3)
     await stcr2.delete()
     await text3.delete()
-    stcr3 = await event.client.send_file(
-        event.chat_id, "Tobw7BkaeSFbwMqbkIhKiw"
-    )
+    stcr3 = await event.client.send_file(event.chat_id, "Tobw7BkaeSFbwMqbkIhKiw")
     text4 = await event.reply(f"**Others :** Where??? ")
     await asyncio.sleep(2)
     await text4.edit(f"**Others :** Who?? ")
@@ -53,9 +47,7 @@ async def _(event):
     await asyncio.sleep(2)
     await stcr3.delete()
     await text4.delete()
-    stcr4 = await event.client.send_file(
-        event.chat_id, "Tobw7BkaeSFbwMqbkIhKiw"
-    )
+    stcr4 = await event.client.send_file(event.chat_id, "Tobw7BkaeSFbwMqbkIhKiw")
     legendevent = await event.reply(f"{name} is ejected.......")
     await asyncio.sleep(2)
     await legendevent.edit("ඞㅤㅤㅤㅤ ㅤㅤㅤㅤ")

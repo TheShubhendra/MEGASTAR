@@ -27,7 +27,7 @@ from telethon.tl.types import (
     MessageMediaPhoto,
 )
 
-from ..utils import admin_cmd, edit_or_reply, errors_handler, sudo_cmd
+from ..utils import admin_cmd, edit_or_reply, errors_handler
 from . import BOTLOG, BOTLOG_CHATID, CMD_HELP, LOGS
 from .sql_helper.mute_sql import is_muted, mute, unmute
 
@@ -322,7 +322,7 @@ async def startmute(event):
                         event,
                         "This user is already muted in this chat ~~lmfao sed rip~~",
                     )
-            except:
+            except BaseException:
                 pass
             await event.client(EditBannedRequest(event.chat_id, user.id, MUTE_RIGHTS))
         except UserAdminInvalidError:
@@ -405,7 +405,7 @@ async def endmute(event):
                         await event.client(
                             EditBannedRequest(event.chat_id, user.id, UNBAN_RIGHTS)
                         )
-                except:
+                except BaseException:
                     return await edit_or_reply(
                         event,
                         "This user can already speak freely in this chat ~~lmfao sed rip~~",
@@ -459,7 +459,7 @@ async def pin(msg):
     await sleep(3)
     try:
         await hmm.delete()
-    except:
+    except BaseException:
         pass
 
 
@@ -518,7 +518,7 @@ async def _(event):
         await sleep(3)
         try:
             await event.delete()
-        except:
+        except BaseException:
             pass
 
 

@@ -3,11 +3,11 @@ from telethon.tl.types import Channel
 from telethon.utils import get_display_name
 
 from userbot.config import config
-     
+
 NEEDLOG = int(config.TAG_LOG)
 if config.TAG_LOG:
     NEEDTOLOG = int(config.TAG_LOG)
-    
+
 if Config.TAG_LOG:
 
     @borg.on(
@@ -22,19 +22,17 @@ if Config.TAG_LOG:
         # appropriate PM
         await event.forward_to(NEEDLOG)
 
-
         # construct message
         # the message format is stolen from @MasterTagAlertBot
 
         ammoca_message = ""
-
 
         who_ = await event.client.get_entity(event.sender_id)
         if who_.bot or who_.verified or who_.support:
             return
 
         who_m = f"[{get_display_name(who_)}](tg://user?id={who_.id})"
-        
+
         where_ = await event.client.get_entity(event.chat_id)
 
         where_m = get_display_name(where_)

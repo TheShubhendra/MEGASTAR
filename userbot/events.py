@@ -67,13 +67,13 @@ def register(**args):
             try:
                 await func(check)
 
-          
             # Raise StopPropagation to Raise StopPropagation
             # This needed for AFK to working properly
 
             except events.StopPropagation:
                 raise events.StopPropagation
-            # This is a gay exception and must be passed out. So that it doesnt spam chats
+            # This is a gay exception and must be passed out. So that it doesnt
+            # spam chats
             except KeyboardInterrupt:
                 pass
             except BaseException:

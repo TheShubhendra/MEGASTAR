@@ -78,7 +78,7 @@ async def spammer(e):
                             unsave=True,
                         )
                     )
-                except:
+                except BaseException:
                     pass
                 await asyncio.sleep(0.5)
             if BOTLOG:
@@ -102,7 +102,7 @@ async def spammer(e):
                                 unsave=True,
                             )
                         )
-                    except:
+                    except BaseException:
                         pass
                     os.remove(downloaded_file_name)
                 else:
@@ -125,7 +125,7 @@ async def spammer(e):
                                 unsave=True,
                             )
                         )
-                    except:
+                    except BaseException:
                         pass
                     os.remove(downloaded_file_nam)
     elif reply_to_id.text and e.reply_to_msg_id:
@@ -219,7 +219,7 @@ async def spammer(e):
                             unsave=True,
                         )
                     )
-                except:
+                except BaseException:
                     pass
                 await asyncio.sleep(1)
             if BOTLOG:
@@ -243,7 +243,7 @@ async def spammer(e):
                                 unsave=True,
                             )
                         )
-                    except:
+                    except BaseException:
                         pass
                     os.remove(downloaded_file_name)
                 else:
@@ -266,7 +266,7 @@ async def spammer(e):
                                 unsave=True,
                             )
                         )
-                    except:
+                    except BaseException:
                         pass
                     os.remove(downloaded_file_nam)
     elif reply_to_id.text and e.reply_to_msg_id:

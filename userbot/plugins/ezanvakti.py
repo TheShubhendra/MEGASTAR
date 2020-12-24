@@ -1,7 +1,7 @@
 # ported from uniborg
 # https://github.com/muhammedfurkan/UniBorg/blob/master/stdplugins/ezanvakti.py
 import json
-  
+
 import requests
 
 from ..utils import admin_cmd

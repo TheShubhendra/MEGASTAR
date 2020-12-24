@@ -13,6 +13,7 @@ import pybase64
 from .. import CMD_HELP
 from ..utils import admin_cmd, edit_or_reply, errors_handler
 
+
 @borg.on(admin_cmd(outgoing=True, pattern="hash (.*)"))
 @errors_handler
 async def gethash(hash_q):

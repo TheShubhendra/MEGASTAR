@@ -7,6 +7,7 @@ import speedtest
 
 from ..utils import admin_cmd, edit_or_reply
 
+
 @borg.on(admin_cmd(pattern="speedtest ?(.*)"))
 async def _(event):
     if event.fwd_from:

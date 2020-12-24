@@ -12,7 +12,7 @@ async def _(event):
         try:
             pagal = int(event.pattern_match.group(1))
             input_str = pagal
-        except:
+        except BaseException:
             input_str = 5
     else:
         input_str = 5

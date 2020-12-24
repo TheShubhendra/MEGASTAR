@@ -7,7 +7,7 @@ import userbot.plugins.sql_helper.no_log_pms_sql as no_log_pms_sql
 
 from ..utils import admin_cmd
 from . import BOTLOG, BOTLOG_CHATID, CMD_HELP, LOGS, mentionuser
-  
+
 RECENT_USER = None
 NEWPM = None
 COUNT = 0
@@ -64,7 +64,7 @@ async def log_tagged_messages(event):
     try:
         if (await event.get_sender()).bot:
             return
-    except:
+    except BaseException:
         pass
     await asyncio.sleep(5)
     if not event.is_private:
