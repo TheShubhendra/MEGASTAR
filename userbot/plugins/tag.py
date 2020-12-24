@@ -8,7 +8,7 @@ from userbot.config import config
 
 taglog = os.environ.get("TAG_LOG", None)
 if taglog:
-    NEEDTOLOG = int(tag_log)
+    NEEDTOLOG = int(taglog)
 
     @borg.on(
         events.NewMessage(
