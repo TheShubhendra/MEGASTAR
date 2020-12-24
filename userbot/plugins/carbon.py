@@ -571,3 +571,4 @@ CMD_HELP.update(
     \n__Carbon generators, each command has one style of carbon (krb ,kargb shows random carbons, remaining all are fixed)__\
     "
     }
+)
