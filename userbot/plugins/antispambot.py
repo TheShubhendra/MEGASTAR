@@ -8,11 +8,11 @@ from telethon import events
 from telethon.errors import ChatAdminRequiredError
 from telethon.tl.types import ChannelParticipantsAdmins
 
-from ..utils import admin_cmd, edit_or_reply, is_admin, sudo_cmd
+from ..utils import admin_cmd, edit_or_reply
 from . import BOTLOG, BOTLOG_CHATID, CMD_HELP, LOGS, spamwatch
-from .sql_helper.gban_sql_helper import get_gbanuser, is_gbanned
+from .sql_helper.gban_sql_helper import get_gbanuser
 
-if Config.ANTISPAMBOT_BAN:
+if config.ANTISPAMBOT_BAN:
 
     @borg.on(events.ChatAction())
     async def anti_spambot(event):
@@ -95,7 +95,6 @@ if Config.ANTISPAMBOT_BAN:
 
 
 @borg.on(admin_cmd(pattern="cascheck$"))
-@borg.on(sudo_cmd(pattern="cascheck$", allow_sudo=True))
 async def caschecker(cas):
     catevent = await edit_or_reply(
         cas,
@@ -135,7 +134,6 @@ async def caschecker(cas):
 
 
 @borg.on(admin_cmd(pattern="spamcheck$"))
-@borg.on(sudo_cmd(pattern="spamcheck$", allow_sudo=True))
 async def caschecker(cas):
     text = ""
     chat = cas.chat_id
