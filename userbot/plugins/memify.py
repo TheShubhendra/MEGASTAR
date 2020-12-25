@@ -11,8 +11,6 @@ from . import (
     CMD_HELP,
     LOGS,
     asciiart,
-    cat_meeme,
-    cat_meme,
     convert_toimage,
     convert_tosticker,
     crop,
@@ -21,7 +19,6 @@ from . import (
     invert_colors,
     mirror_file,
     reply_id,
-    runcmd,
     solarize,
     take_screen_shot,
 )
