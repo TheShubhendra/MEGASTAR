@@ -5,12 +5,11 @@ plugin for Cat_Userbot
 
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
-from ..utils import admin_cmd, edit_or_reply, sudo_cmd
+from ..utils import admin_cmd, edit_or_reply
 from . import CMD_HELP
 
 
 @borg.on(admin_cmd(pattern=r"score$"))
-@borg.on(sudo_cmd(pattern=r"score$", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -40,7 +39,6 @@ async def _(event):
 
 
 @borg.on(admin_cmd(pattern=r"cric (.*)"))
-@borg.on(sudo_cmd(pattern=r"cric (.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
