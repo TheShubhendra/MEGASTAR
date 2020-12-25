@@ -11,11 +11,11 @@ from .sql_helper import pmpermit_sql as pmpermit_sql
 PM_WARNS = {}
 PREV_REPLY_MESSAGE = {}
 CACHE = {}
-PMPERMIT_PIC = Config.PMPERMIT_PIC
+PMPERMIT_PIC = config.PMPERMIT_PIC
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "cat"
 USER_BOT_WARN_ZERO = "You were spamming my peru master's inbox, henceforth you are blocked by my master's userbot. **Now GTFO, i'm playing minecraft** "
 
-if Config.PRIVATE_GROUP_ID is not None:
+if config.PRIVATE_GROUP_ID is not None:
 
     @borg.on(admin_cmd(pattern="approve ?(.*)"))
     async def approve_p_m(event):
@@ -208,7 +208,7 @@ if Config.PRIVATE_GROUP_ID is not None:
         async def on_new_private_message(event):
             if event.sender_id == event.client.uid:
                 return
-            if Config.PRIVATE_GROUP_ID is None:
+            if config.PRIVATE_GROUP_ID is None:
                 return
             if not event.is_private:
                 return
@@ -249,7 +249,7 @@ if Config.PRIVATE_GROUP_ID is not None:
         async def do_pm_permit_action(chat_id, event):
             if chat_id not in PM_WARNS:
                 PM_WARNS.update({chat_id: 0})
-            if PM_WARNS[chat_id] == Config.MAX_FLOOD_IN_P_M_s:
+            if PM_WARNS[chat_id] == config.MAX_FLOOD_IN_P_M_s:
                 r = await event.reply(USER_BOT_WARN_ZERO)
                 await asyncio.sleep(1)
                 await event.client(functions.contacts.BlockRequest(chat_id))
@@ -264,7 +264,7 @@ if Config.PRIVATE_GROUP_ID is not None:
                 the_message += f"Message Count: {PM_WARNS[chat_id]}\n"
                 try:
                     await event.client.send_message(
-                        entity=Config.PRIVATE_GROUP_ID,
+                        entity=config.PRIVATE_GROUP_ID,
                         message=the_message,
                     )
                     return
@@ -272,9 +272,9 @@ if Config.PRIVATE_GROUP_ID is not None:
                     return
             catid = chat_id
             if PMPERMIT_PIC:
-                if Config.CUSTOM_PMPERMIT_TEXT:
+                if config.CUSTOM_PMPERMIT_TEXT:
                     USER_BOT_NO_WARN = (
-                        Config.CUSTOM_PMPERMIT_TEXT
+                        config.CUSTOM_PMPERMIT_TEXT
                         + "\n\n"
                         + "**Send** `/start` ** so that my master can decide why you're here.**"
                     )
@@ -286,9 +286,9 @@ if Config.PRIVATE_GROUP_ID is not None:
                     )
                 r = await event.reply(USER_BOT_NO_WARN, file=PMPERMIT_PIC)
             else:
-                if Config.CUSTOM_PMPERMIT_TEXT:
+                if config.CUSTOM_PMPERMIT_TEXT:
                     USER_BOT_NO_WARN = (
-                        Config.CUSTOM_PMPERMIT_TEXT
+                        config.CUSTOM_PMPERMIT_TEXT
                         + "\n\n"
                         + "**Send** `/start` ** so that my master can decide why you're here.**"
                     )
@@ -311,7 +311,7 @@ if Config.PRIVATE_GROUP_ID is not None:
         async def on_new_private_message(event):
             if event.sender_id == event.client.uid:
                 return
-            if Config.PRIVATE_GROUP_ID is None:
+            if config.PRIVATE_GROUP_ID is None:
                 return
             if not event.is_private:
                 return
@@ -344,7 +344,7 @@ if Config.PRIVATE_GROUP_ID is not None:
         async def do_pm_permit_action(chat_id, event):
             if chat_id not in PM_WARNS:
                 PM_WARNS.update({chat_id: 0})
-            if PM_WARNS[chat_id] == Config.MAX_FLOOD_IN_P_M_s:
+            if PM_WARNS[chat_id] == config.MAX_FLOOD_IN_P_M_s:
                 r = await event.reply(USER_BOT_WARN_ZERO)
                 await asyncio.sleep(1)
                 await event.client(functions.contacts.BlockRequest(chat_id))
@@ -359,7 +359,7 @@ if Config.PRIVATE_GROUP_ID is not None:
                 the_message += f"Message Count: {PM_WARNS[chat_id]}\n"
                 try:
                     await event.client.send_message(
-                        entity=Config.PRIVATE_GROUP_ID,
+                        entity=config.PRIVATE_GROUP_ID,
                         message=the_message,
                     )
                     return
@@ -367,8 +367,8 @@ if Config.PRIVATE_GROUP_ID is not None:
                     return
             catid = chat_id
             if PMPERMIT_PIC:
-                if Config.CUSTOM_PMPERMIT_TEXT:
-                    USER_BOT_NO_WARN = Config.CUSTOM_PMPERMIT_TEXT
+                if config.CUSTOM_PMPERMIT_TEXT:
+                    USER_BOT_NO_WARN = config.CUSTOM_PMPERMIT_TEXT
                 else:
                     USER_BOT_NO_WARN = (
                         f"My master {DEFAULTUSER} haven't approved you yet. Don't spam his inbox "
@@ -376,8 +376,8 @@ if Config.PRIVATE_GROUP_ID is not None:
                     )
                 r = await event.reply(USER_BOT_NO_WARN, file=PMPERMIT_PIC)
             else:
-                if Config.CUSTOM_PMPERMIT_TEXT:
-                    USER_BOT_NO_WARN = Config.CUSTOM_PMPERMIT_TEXT
+                if config.CUSTOM_PMPERMIT_TEXT:
+                    USER_BOT_NO_WARN = config.CUSTOM_PMPERMIT_TEXT
                 else:
                     USER_BOT_NO_WARN = (
                         f"[──▄█▀█▄─────────██ \n▄████████▄───▄▀█▄▄▄▄ \n██▀▼▼▼▼▼─▄▀──█▄▄ \n█████▄▲▲▲─▄▄▄▀───▀▄ \n██████▀▀▀▀─▀────────▀▀](tg://user?id={catid})\n\n"
