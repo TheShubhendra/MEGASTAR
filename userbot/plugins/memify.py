@@ -10,7 +10,6 @@ from ..utils import admin_cmd
 from . import (
     CMD_HELP,
     LOGS,
-    add_frame,
     asciiart,
     cat_meeme,
     cat_meme,
