@@ -12,13 +12,13 @@ from pymediainfo import MediaInfo
 from telethon.tl.types import DocumentAttributeVideo
 
 from ..utils import admin_cmd, edit_or_reply
-from . import CMD_HELP, make_gif, progress, runcmd, thumb_from_audio
+from . import CMD_HELP
 
 PATH = os.path.join("./temp", "temp_vid.mp4")
-thumb_image_path = Config.TMP_DOWNLOAD_DIRECTORY + "/thumb_image.jpg"
+thumb_image_path = config.TMP_DOWNLOAD_DIRECTORY + "/thumb_image.jpg"
 
 
-async def catlst_of_files(path):
+async def pgllst_of_files(path):
     files = []
     for dirname, dirnames, filenames in os.walk(path):
         # print path to all filenames.
@@ -53,17 +53,17 @@ def get_video_thumb(file, output=None, width=320):
 
 
 def sortthings(contents, path):
-    catsort = []
+    pglsort = []
     contents.sort()
     for file in contents:
-        catpath = os.path.join(path, file)
-        if os.path.isfile(catpath):
-            catsort.append(file)
+        pglpath = os.path.join(path, file)
+        if os.path.isfile(pglpath):
+            pglsort.append(file)
     for file in contents:
-        catpath = os.path.join(path, file)
-        if os.path.isdir(catpath):
-            catsort.append(file)
-    return catsort
+        pglpath = os.path.join(path, file)
+        if os.path.isdir(pglpath):
+            pglsort.append(file)
+    return pglsort
 
 
 async def upload(path, event, udir_event):
@@ -76,8 +76,8 @@ async def upload(path, event, udir_event):
         Files = os.listdir(path)
         Files = sortthings(Files, path)
         for file in Files:
-            catpath = os.path.join(path, file)
-            await upload(catpath, event, udir_event)
+            pglpath = os.path.join(path, file)
+            await upload(pglpath, event, udir_event)
     elif os.path.isfile(path):
         caption_rts = os.path.basename(path)
         c_time = time.time()
@@ -165,7 +165,7 @@ async def uploadir(event):
 
 
 @borg.on(admin_cmd(pattern="circle ?(.*)", outgoing=True))
-async def video_catfile(event):
+async def video_pglfile(event):
     reply = await event.get_reply_message()
     input_str = "".join(event.text.split(maxsplit=1)[1:])
     if input_str:
@@ -176,10 +176,10 @@ async def video_catfile(event):
                 f"`there is no such directory/file with the name {path} to upload`",
             )
             return
-        catevent = await edit_or_reply(event, "`Converting to video note..........`")
+        pglevent = await edit_or_reply(event, "`Converting to video note..........`")
         filename = os.path.basename(path)
-        catfile = os.path.join("./temp", filename)
-        copyfile(path, catfile)
+        pglfile = os.path.join("./temp", filename)
+        copyfile(path, pglfile)
     else:
         if not reply:
             await edit_delete(event, "`Reply to supported media`", 5)
@@ -187,21 +187,21 @@ async def video_catfile(event):
         if not (reply and (reply.media)):
             await edit_delete(event, "`Reply to supported Media...`", 5)
             return
-        catevent = await edit_or_reply(event, "`Converting to video note..........`")
-        catfile = await reply.download_media(file="./temp/")
-    if not catfile.endswith((".mp4", ".tgs", ".mp3", ".mov", ".gif", ".opus")):
-        os.remove(catfile)
-        await edit_delete(catevent, "```Supported Media not found...```", 5)
+        pglevent = await edit_or_reply(event, "`Converting to video note..........`")
+        pglfile = await reply.download_media(file="./temp/")
+    if not pglfile.endswith((".mp4", ".tgs", ".mp3", ".mov", ".gif", ".opus")):
+        os.remove(pglfile)
+        await edit_delete(pglevent, "```Supported Media not found...```", 5)
         return
-    if catfile.endswith((".mp4", ".tgs", ".mov", ".gif")):
-        if catfile.endswith((".tgs")):
-            hmm = await make_gif(catevent, catfile)
+    if pglfile.endswith((".mp4", ".tgs", ".mov", ".gif")):
+        if pglfile.endswith((".tgs")):
+            hmm = await make_gif(pglevent, pglfile)
             if hmm.endswith(("@tgstogifbot")):
-                os.remove(catfile)
-                return await catevent.edit(hmm)
+                os.remove(pglfile)
+                return await pglevent.edit(hmm)
             os.rename(hmm, "./temp/circle.mp4")
-            catfile = "./temp/circle.mp4"
-        media_info = MediaInfo.parse(catfile)
+            pglfile = "./temp/circle.mp4"
+        media_info = MediaInfo.parse(pglfile)
         aspect_ratio = 1
         for track in media_info.tracks:
             if track.track_type == "Video":
@@ -210,47 +210,47 @@ async def video_catfile(event):
                 width = track.width
         if aspect_ratio != 1:
             crop_by = width if (height > width) else height
-            await runcmd(f'ffmpeg -i {catfile} -vf "crop={crop_by}:{crop_by}" {PATH}')
+            await runcmd(f'ffmpeg -i {pglfile} -vf "crop={crop_by}:{crop_by}" {PATH}')
         else:
-            copyfile(catfile, PATH)
-        if str(catfile) != str(PATH):
-            os.remove(catfile)
+            copyfile(pglfile, PATH)
+        if str(pglfile) != str(PATH):
+            os.remove(pglfile)
     else:
-        thumb_loc = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY, "thumb_image.jpg")
-        catthumb = None
+        thumb_loc = os.path.join(config.TMP_DOWNLOAD_DIRECTORY, "thumb_image.jpg")
+        pglthumb = None
         try:
-            catthumb = await reply.download_media(thumb=-1)
+            pglthumb = await reply.download_media(thumb=-1)
         except BaseException:
-            catthumb = os.path.join("./temp", "thumb.jpg")
-            await thumb_from_audio(catfile, catthumb)
-        if catthumb is None:
-            catthumb = os.path.join("./temp", "thumb.jpg")
-            copyfile(thumb_loc, catthumb)
+            pglthumb = os.path.join("./temp", "thumb.jpg")
+            await thumb_from_audio(pglfile, pglthumb)
+        if pglthumb is None:
+            pglthumb = os.path.join("./temp", "thumb.jpg")
+            copyfile(thumb_loc, pglthumb)
         if (
-            catthumb is not None
-            and not os.path.exists(catthumb)
+            pglthumb is not None
+            and not os.path.exists(pglthumb)
             and os.path.exists(thumb_loc)
         ):
-            catthumb = os.path.join("./temp", "thumb.jpg")
-            copyfile(thumb_loc, catthumb)
-        if catthumb is not None and os.path.exists(catthumb):
+            pglthumb = os.path.join("./temp", "thumb.jpg")
+            copyfile(thumb_loc, pglthumb)
+        if pglthumb is not None and os.path.exists(pglthumb):
             await runcmd(
-                f"ffmpeg -loop 1 -i {catthumb} -i {catfile} -c:v libx264 -tune stillimage -c:a aac -b:a 192k -vf \"scale='iw-mod (iw,2)':'ih-mod(ih,2)',format=yuv420p\" -shortest -movflags +faststart {PATH}"
+                f"ffmpeg -loop 1 -i {pglthumb} -i {pglfile} -c:v libx264 -tune stillimage -c:a aac -b:a 192k -vf \"scale='iw-mod (iw,2)':'ih-mod(ih,2)',format=yuv420p\" -shortest -movflags +faststart {PATH}"
             )
-            os.remove(catfile)
+            os.remove(pglfile)
         else:
-            os.remove(catfile)
+            os.remove(pglfile)
             return await edit_delete(
-                catevent, "`No thumb found to make it video note`", 5
+                pglevent, "`No thumb found to make it video note`", 5
             )
     if os.path.exists(PATH):
-        catid = event.reply_to_msg_id
+        pglid = event.reply_to_msg_id
         c_time = time.time()
         await event.client.send_file(
             event.chat_id,
             PATH,
             allow_cache=False,
-            reply_to=catid,
+            reply_to=pglid,
             video_note=True,
             attributes=[
                 DocumentAttributeVideo(
@@ -262,11 +262,11 @@ async def video_catfile(event):
                 )
             ],
             progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                progress(d, t, catevent, c_time, "Uploading...", PATH)
+                progress(d, t, pglevent, c_time, "Uploading...", PATH)
             ),
         )
         os.remove(PATH)
-    await catevent.delete()
+    await pglevent.delete()
 
 
 CMD_HELP.update(
