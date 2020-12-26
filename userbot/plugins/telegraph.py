@@ -8,7 +8,7 @@ from ..utils import admin_cmd, edit_or_reply
 from . import BOTLOG, BOTLOG_CHATID, CMD_HELP
 
 telegraph = Telegraph()
-r = telegraph.create_account(short_name=Config.TELEGRAPH_SHORT_NAME)
+r = telegraph.create_account(short_name=config.TELEGRAPH_SHORT_NAME)
 auth_url = r["auth_url"]
 
 
@@ -17,8 +17,8 @@ async def _(event):
     if event.fwd_from:
         return
     catevent = await edit_or_reply(event, "`processing........`")
-    if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
-        os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
+    if not os.path.isdir(config.TMP_DOWNLOAD_DIRECTORY):
+        os.makedirs(config.TMP_DOWNLOAD_DIRECTORY)
     if BOTLOG:
         await event.client.send_message(
             BOTLOG_CHATID,
@@ -33,7 +33,7 @@ async def _(event):
         input_str = event.pattern_match.group(1)
         if input_str == "media":
             downloaded_file_name = await event.client.download_media(
-                r_message, Config.TMP_DOWNLOAD_DIRECTORY
+                r_message, config.TMP_DOWNLOAD_DIRECTORY
             )
             end = datetime.now()
             ms = (end - start).seconds
@@ -70,7 +70,7 @@ async def _(event):
                 if page_content != "":
                     title_of_page = page_content
                 downloaded_file_name = await event.client.download_media(
-                    r_message, Config.TMP_DOWNLOAD_DIRECTORY
+                    r_message, config.TMP_DOWNLOAD_DIRECTORY
                 )
                 m_list = None
                 with open(downloaded_file_name, "rb") as fd:
@@ -100,7 +100,7 @@ def resize_image(image):
 
 
 telegraph = Telegraph()
-r = telegraph.create_account(short_name=Config.TELEGRAPH_SHORT_NAME)
+r = telegraph.create_account(short_name=config.TELEGRAPH_SHORT_NAME)
 auth_url = r["auth_url"]
 
 
@@ -109,8 +109,8 @@ async def _(event):
     if event.fwd_from:
         return
     catevent = await edit_or_reply(event, "`processing........`")
-    if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
-        os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
+    if not os.path.isdir(config.TMP_DOWNLOAD_DIRECTORY):
+        os.makedirs(config.TMP_DOWNLOAD_DIRECTORY)
     if BOTLOG:
         await event.client.send_message(
             BOTLOG_CHATID,
@@ -125,7 +125,7 @@ async def _(event):
         input_str = event.pattern_match.group(1)
         if input_str == "media":
             downloaded_file_name = await event.client.download_media(
-                r_message, Config.TMP_DOWNLOAD_DIRECTORY
+                r_message, config.TMP_DOWNLOAD_DIRECTORY
             )
             end = datetime.now()
             ms = (end - start).seconds
@@ -162,7 +162,7 @@ async def _(event):
                 if page_content != "":
                     title_of_page = page_content
                 downloaded_file_name = await event.client.download_media(
-                    r_message, Config.TMP_DOWNLOAD_DIRECTORY
+                    r_message, config.TMP_DOWNLOAD_DIRECTORY
                 )
                 m_list = None
                 with open(downloaded_file_name, "rb") as fd:
