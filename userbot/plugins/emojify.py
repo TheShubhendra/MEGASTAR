@@ -1,13 +1,13 @@
 """
 Created by @Jisan7509
 modified by  @mrconfused
-Userbot plugin for CatUserbot
+Userbot plugin for legend userbot
 """
 import emoji
 
 from ..utils import admin_cmd, edit_or_reply
 from . import CMD_HELP
-from . import fonts as emojify
+from . import Fonts as emojify
 
 
 @borg.on(admin_cmd(pattern="emoji(?: |$)(.*)"))
