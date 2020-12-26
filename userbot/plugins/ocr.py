@@ -11,7 +11,7 @@ import requests
 from ..utils import admin_cmd, edit_or_reply
 from . import CMD_HELP
 
-OCR_SPACE_API_KEY = Config.OCR_SPACE_API_KEY
+OCR_SPACE_API_KEY = config.OCR_SPACE_API_KEY
 
 
 async def ocr_space_file(
@@ -47,11 +47,11 @@ async def ocr_space_file(
 @borg.on(admin_cmd(pattern="ocr(?: |$)(.*)", outgoing=True))
 async def ocr(event):
     event = await edit_or_reply(event, "`Reading...`")
-    if not os.path.isdir(Config.TEMP_DIR):
-        os.makedirs(Config.TEMP_DIR)
+    if not os.path.isdir(config.TEMP_DIR):
+        os.makedirs(config.TEMP_DIR)
     lang_code = event.pattern_match.group(1)
     downloaded_file_name = await bot.download_media(
-        await event.get_reply_message(), Config.TEMP_DIR
+        await event.get_reply_message(), config.TEMP_DIR
     )
     test_file = await ocr_space_file(filename=downloaded_file_name, language=lang_code)
     try:
