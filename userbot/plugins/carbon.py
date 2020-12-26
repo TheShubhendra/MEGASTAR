@@ -7,9 +7,9 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
 from ..utils import admin_cmd, edit_or_reply
-from . import ALIVE_NAME, CHROME_DRIVER, CMD_HELP, GOOGLE_CHROME_BIN, deEmojify
+from . import ALIVE_NAME, CHROME_DRIVER, CMD_HELP, GOOGLE_CHROME_BIN
 
-DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "cat"
+DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "LEGEND"
 
 CARBONLANG = "auto"
 LANG = "en"
