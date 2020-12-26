@@ -21,7 +21,7 @@ from telethon.tl.types import DocumentAttributeVideo
 from .. import CMD_HELP
 from ..utils import admin_cmd, edit_or_reply, progress
 
-thumb_image_path = Config.TMP_DOWNLOAD_DIRECTORY + "/thumb_image.jpg"
+thumb_image_path = config.TMP_DOWNLOAD_DIRECTORY + "/thumb_image.jpg"
 
 
 @borg.on(admin_cmd(pattern=("zip ?(.*)")))
@@ -31,14 +31,14 @@ async def _(event):
     input_str = event.pattern_match.group(1)
     mone = await edit_or_reply(event, "Zipping in progress....")
     if event.reply_to_msg_id:
-        if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
-            os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
+        if not os.path.isdir(config.TMP_DOWNLOAD_DIRECTORY):
+            os.makedirs(config.TMP_DOWNLOAD_DIRECTORY)
         reply_message = await event.get_reply_message()
         try:
             c_time = time.time()
             downloaded_file_name = await event.client.download_media(
                 reply_message,
-                Config.TMP_DOWNLOAD_DIRECTORY,
+                config.TMP_DOWNLOAD_DIRECTORY,
                 progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
                     progress(d, t, mone, c_time, "trying to download")
                 ),
@@ -82,7 +82,7 @@ async def _(event):
                     f"`the given file {str(path)} is not zip file to unzip`"
                 )
             destination = os.path.join(
-                Config.TMP_DOWNLOAD_DIRECTORY,
+                config.TMP_DOWNLOAD_DIRECTORY,
                 os.path.splitext(os.path.basename(path))[0],
             )
             with zipfile.ZipFile(path, "r") as zip_ref:
@@ -95,8 +95,8 @@ async def _(event):
         else:
             await mone.edit(f"I can't find that path `{input_str}`")
     else:
-        if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
-            os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
+        if not os.path.isdir(config.TMP_DOWNLOAD_DIRECTORY):
+            os.makedirs(config.TMP_DOWNLOAD_DIRECTORY)
         if event.reply_to_msg_id:
             start = datetime.now()
             reply_message = await event.get_reply_message()
@@ -104,7 +104,7 @@ async def _(event):
                 c_time = time.time()
                 path = await event.client.download_media(
                     reply_message,
-                    Config.TMP_DOWNLOAD_DIRECTORY,
+                    config.TMP_DOWNLOAD_DIRECTORY,
                     progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
                         progress(d, t, mone, c_time, "trying to download")
                     ),
@@ -117,7 +117,7 @@ async def _(event):
                     f"`the given file {str(path)} is not zip file to unzip`"
                 )
             destination = os.path.join(
-                Config.TMP_DOWNLOAD_DIRECTORY,
+                config.TMP_DOWNLOAD_DIRECTORY,
                 os.path.splitext(os.path.basename(path))[0],
             )
             with zipfile.ZipFile(path, "r") as zip_ref:
@@ -145,15 +145,15 @@ async def _(event):
         return
     input_str = event.pattern_match.group(1)
     mone = await edit_or_reply(event, "Processing ...")
-    if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
-        os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
+    if not os.path.isdir(config.TMP_DOWNLOAD_DIRECTORY):
+        os.makedirs(config.TMP_DOWNLOAD_DIRECTORY)
     if event.reply_to_msg_id:
         reply_message = await event.get_reply_message()
         try:
             c_time = time.time()
             downloaded_file_name = await event.client.download_media(
                 reply_message,
-                Config.TMP_DOWNLOAD_DIRECTORY,
+                config.TMP_DOWNLOAD_DIRECTORY,
                 progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
                     progress(d, t, mone, c_time, "trying to download")
                 ),
@@ -161,7 +161,7 @@ async def _(event):
             directory_name = downloaded_file_name
             await mone.edit("creating rar archive, please wait..")
             patoolib.create_archive(
-                directory_name + ".rar", (directory_name, Config.TMP_DOWNLOAD_DIRECTORY)
+                directory_name + ".rar", (directory_name, config.TMP_DOWNLOAD_DIRECTORY)
             )
             await event.client.send_file(
                 event.chat_id,
@@ -192,15 +192,15 @@ async def _(event):
         return
     input_str = event.pattern_match.group(1)
     mone = await edit_or_reply(event, "Processing ...")
-    if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
-        os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
+    if not os.path.isdir(config.TMP_DOWNLOAD_DIRECTORY):
+        os.makedirs(config.TMP_DOWNLOAD_DIRECTORY)
     if event.reply_to_msg_id:
         reply_message = await event.get_reply_message()
         try:
             c_time = time.time()
             downloaded_file_name = await event.client.download_media(
                 reply_message,
-                Config.TMP_DOWNLOAD_DIRECTORY,
+                config.TMP_DOWNLOAD_DIRECTORY,
                 progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
                     progress(d, t, mone, c_time, "trying to download")
                 ),
@@ -271,8 +271,8 @@ async def _(event):
     if event.fwd_from:
         return
     mone = await edit_or_reply(event, "Processing ...")
-    if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
-        os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
+    if not os.path.isdir(config.TMP_DOWNLOAD_DIRECTORY):
+        os.makedirs(config.TMP_DOWNLOAD_DIRECTORY)
     if event.reply_to_msg_id:
         start = datetime.now()
         reply_message = await event.get_reply_message()
@@ -280,7 +280,7 @@ async def _(event):
             c_time = time.time()
             downloaded_file_name = await event.client.download_media(
                 reply_message,
-                Config.TMP_DOWNLOAD_DIRECTORY,
+                config.TMP_DOWNLOAD_DIRECTORY,
                 progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
                     progress(d, t, mone, c_time, "trying to download")
                 ),
@@ -359,9 +359,9 @@ async def _(event):
     if event.fwd_from:
         return
     mone = await edit_or_reply(event, "Processing ...")
-    if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
-        os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
-    extracted = Config.TMP_DOWNLOAD_DIRECTORY + "extracted/"
+    if not os.path.isdir(config.TMP_DOWNLOAD_DIRECTORY):
+        os.makedirs(config.TMP_DOWNLOAD_DIRECTORY)
+    extracted = config.TMP_DOWNLOAD_DIRECTORY + "extracted/"
     if not os.path.isdir(extracted):
         os.makedirs(extracted)
     if event.reply_to_msg_id:
@@ -371,7 +371,7 @@ async def _(event):
             c_time = time.time()
             downloaded_file_name = await event.client.download_media(
                 reply_message,
-                Config.TMP_DOWNLOAD_DIRECTORY,
+                config.TMP_DOWNLOAD_DIRECTORY,
                 progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
                     progress(d, t, mone, c_time, "trying to download")
                 ),
