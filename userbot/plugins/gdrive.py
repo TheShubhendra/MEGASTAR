@@ -755,11 +755,7 @@ async def pgllists(gdrive):
     await lists(gdrive)
 
 
-@borg.on(
-    admin_cmd(
-        pattern="gdf (mkdir|rm|chck) (.*)", outgoing=True
-    )
-)
+@borg.on(admin_cmd(pattern="gdf (mkdir|rm|chck) (.*)", outgoing=True))
 async def google_drive_managers(gdrive):
     """ - Google Drive folder/file management - """
     service = await create_app(gdrive)
