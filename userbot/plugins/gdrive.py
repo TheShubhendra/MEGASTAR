@@ -1,7 +1,7 @@
 # ported from ProjectBish by @sandy1709
 # Copyright (C) 2020 Adek Maulana
 
-# Catuserbot Google Drive managers  ported from Projectbish and added
+# Google Drive managers  ported from Projectbish and added
 # extra things by @mrconfused
 import asyncio
 import base64
@@ -34,7 +34,6 @@ from . import (
     G_DRIVE_FOLDER_ID,
     LOGS,
     TMP_DOWNLOAD_DIRECTORY,
-    CancelProcess,
     bot,
     progress,
 )
@@ -94,7 +93,7 @@ GDRIVE_ID = re.compile(
 )
 
 
-@borg.on(admin_cmd(pattern="gauth$", command="gauth", outgoing=True))
+@borg.on(admin_cmd(pattern="gauth", outgoing=True))
 async def generate_credentials(gdrive):
     """ - Only generate once for long run - """
     hmm = bot.uid
@@ -180,7 +179,7 @@ async def create_app(gdrive):
     return build("drive", "v3", credentials=creds, cache_discovery=False)
 
 
-@borg.on(admin_cmd(pattern="greset$", command="greset", outgoing=True))
+@borg.on(admin_cmd(pattern="greset$", outgoing=True))
 async def reset_credentials(gdrive):
     """ - Reset credentials or change account - """
     hmm = bot.uid
@@ -397,8 +396,8 @@ async def copy_dir(service, file_id, dir_id):
     for file in files:
         if file["mimeType"] == "application/vnd.google-apps.folder":
             folder = await create_dir(service, file["name"], dir_id)
-            catdir_id = folder.get("id")
-            new_id = await copy_dir(service, file["id"], catdir_id)
+            pgldir_id = folder.get("id")
+            new_id = await copy_dir(service, file["id"], pgldir_id)
         else:
             await copy_file(service, file["id"], dir_id)
             await asyncio.sleep(0.5)
@@ -531,7 +530,7 @@ async def upload(gdrive, service, file_path, file_name, mimeType):
         pass
     body = {
         "name": file_name,
-        "description": "Uploaded from Telegram using Catuserbot.",
+        "description": "Uploaded from Telegram using LEGEND USERBOT.",
         "mimeType": mimeType,
     }
     try:
@@ -749,17 +748,16 @@ async def lists(gdrive):
 @borg.on(
     admin_cmd(
         pattern=r"glist(?: |$)(-l \d+)?(?: |$)?(.*)?(?: |$)",
-        command="glist",
         outgoing=True,
     )
 )
-async def catlists(gdrive):
+async def pgllists(gdrive):
     await lists(gdrive)
 
 
 @borg.on(
     admin_cmd(
-        pattern="gdf (mkdir|rm|chck) (.*)", command="gdf (mkdir|rm|chck)", outgoing=True
+        pattern="gdf (mkdir|rm|chck) (.*)", outgoing=True
     )
 )
 async def google_drive_managers(gdrive):
@@ -917,7 +915,7 @@ async def google_drive_managers(gdrive):
     await gdrive.edit(reply)
 
 
-@borg.on(admin_cmd(pattern="gabort$", command="gabort", outgoing=True))
+@borg.on(admin_cmd(pattern="gabort$", outgoing=True))
 async def cancel_process(gdrive):
     """
     Abort process for download and upload
@@ -933,7 +931,7 @@ async def cancel_process(gdrive):
     await gdrive.delete()
 
 
-@borg.on(admin_cmd(pattern="ugd(?: |$)(.*)", command="ugd", outgoing=True))
+@borg.on(admin_cmd(pattern="ugd(?: |$)(.*)", outgoing=True))
 async def google_drive(gdrive):
     reply = ""
     """ - Parsing all google drive function - """
@@ -1107,7 +1105,6 @@ async def google_drive(gdrive):
 @borg.on(
     admin_cmd(
         pattern="(gdfset|gdfclear)(?: |$)(.*)",
-        command="(gdfset|gdfclear)",
         outgoing=True,
     )
 )
@@ -1324,19 +1321,19 @@ async def get_file_name(content):
     return file_name
 
 
-@borg.on(admin_cmd(pattern="gdl ?(-u)? (.*)", command="(gdl|gdl -u)", outgoing=True))
+@borg.on(admin_cmd(pattern="gdl ?(-u)? (.*)", outgoing=True))
 async def g_download(event):
     if event.fwd_from:
         return
     cmd = event.pattern_match.group(1)
     drive_link = event.pattern_match.group(2)
     file_id = await get_id(drive_link)
-    catevent = await edit_or_reply(event, "Downloading Requested File from G-Drive...")
+    pglevent = await edit_or_reply(event, "Downloading Requested File from G-Drive...")
     file_name = await download_file_from_google_drive(file_id)
     if os.path.exists(thumb_image_path):
         thumb = thumb_image_path
     if not cmd:
-        await catevent.edit("**File Downloaded.\nName : **`" + str(file_name) + "`")
+        await pglevent.edit("**File Downloaded.\nName : **`" + str(file_name) + "`")
     else:
         c_time = time.time()
         await event.client.send_file(
@@ -1347,12 +1344,12 @@ async def g_download(event):
             force_document=False,
             supports_streaming=True,
             progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                progress(d, t, catevent, c_time, "Uploading...", file_name)
+                progress(d, t, pglevent, c_time, "Uploading...", file_name)
             ),
         )
         os.remove(file_name)
         await edit_delete(
-            catevent,
+            pglevent,
             "**File Downloaded and uploaded.\nName : **`" + str(file_name) + "`",
             5,
         )
