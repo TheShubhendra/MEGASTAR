@@ -11,7 +11,7 @@ import re
 import requests
 
 from .. import CMD_HELP
-from ..utils import admin_cmd, edit_or_reply, sudo_cmd
+from ..utils import admin_cmd, edit_or_reply
 from ..utils import time_formatter as t
 
 
@@ -197,7 +197,6 @@ url = "https://graphql.anilist.co"
 
 
 @bot.on(admin_cmd(pattern="char (.*)"))
-@bot.on(sudo_cmd(pattern="char (.*)", allow_sudo=True))
 async def anilist(event):
     search = event.pattern_match.group(1)
     reply_to_id = event.message.id
@@ -228,7 +227,6 @@ async def anilist(event):
 
 
 @bot.on(admin_cmd(pattern="airing (.*)"))
-@bot.on(sudo_cmd(pattern="airing (.*)", allow_sudo=True))
 async def anilist(event):
     search = event.pattern_match.group(1)
     variables = {"search": search}
@@ -246,7 +244,6 @@ async def anilist(event):
 
 
 @bot.on(admin_cmd(pattern="manga (.*)"))
-@bot.on(sudo_cmd(pattern="manga (.*)", allow_sudo=True))
 async def anilist(event):
     search = event.pattern_match.group(1)
     reply_to_id = event.message.id
@@ -308,7 +305,6 @@ async def anilist(event):
 
 
 @bot.on(admin_cmd(pattern="anilist (.*)"))
-@bot.on(sudo_cmd(pattern="anilist (.*)", allow_sudo=True))
 async def anilist(event):
     input_str = event.pattern_match.group(1)
     event = await edit_or_reply(event, "Searching...")
