@@ -69,11 +69,11 @@ if config.THUMB_IMAGE is not None:
             pass
 
 
-def check(cat):
-    if "/start" in cat:
+def check(pgl):
+    if "/start" in pgl:
         return True
     try:
-        hi = re.search(cat.lower(), "(a|b|c|d)", flags=re.IGNORECASE)
+        hi = re.search(pgl.lower(), "(a|b|c|d)", flags=re.IGNORECASE)
     except BaseException:
         hi = False
     return bool(hi)
