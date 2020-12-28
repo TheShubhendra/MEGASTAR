@@ -19,9 +19,6 @@ from telethon.utils import get_inner_text
 
 from userbot.utils import admin_cmd
 
-logger.info(config.OPEN_LOAD_LOGIN)
-# https://t.me/RoseSupport/33801
-
 
 @borg.on(admin_cmd(pattern="rl"))
 async def _(event):
