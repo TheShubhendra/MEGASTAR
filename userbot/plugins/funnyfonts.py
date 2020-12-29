@@ -3,7 +3,7 @@ import random
 import re
 
 from ..utils import admin_cmd, edit_or_reply
-from . import CMD_HELP, Fonts
+from . import CMD_HELP
 
 
 @borg.on(admin_cmd(pattern="stcr(?: |$)(.*)"))
