@@ -12,8 +12,8 @@ from asyncio.subprocess import PIPE as asyncPIPE
 from .. import CMD_HELP
 from ..utils import admin_cmd, edit_or_reply
 
-if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
-    os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
+if not os.path.isdir(config.TMP_DOWNLOAD_DIRECTORY):
+    os.makedirs(config.TMP_DOWNLOAD_DIRECTORY)
 
 
 @borg.on(admin_cmd(outgoing=True, pattern="pips (.*)"))
@@ -89,7 +89,7 @@ async def _(event):
     stdout, stderr = await process.communicate()
     o = stdout.decode()
     OUTPUT = f"**[Cat's](tg://need_update_for_some_feature/) PLUGINS:**\n{o}"
-    if len(OUTPUT) > Config.MAX_MESSAGE_SIZE_LIMIT:
+    if len(OUTPUT) > config.MAX_MESSAGE_SIZE_LIMIT:
         with io.BytesIO(str.encode(OUTPUT)) as out_file:
             out_file.name = "env.text"
             await event.client.send_file(
@@ -122,7 +122,7 @@ async def _(event):
     stdout, stderr = await process.communicate()
     o = stdout.decode()
     OUTPUT = f"{o}"
-    if len(OUTPUT) > Config.MAX_MESSAGE_SIZE_LIMIT:
+    if len(OUTPUT) > config.MAX_MESSAGE_SIZE_LIMIT:
         with io.BytesIO(str.encode(OUTPUT)) as out_file:
             out_file.name = "env.text"
             await event.client.send_file(
@@ -158,7 +158,7 @@ async def _(event):
     OUTPUT = (
         f"**[Cat's](tg://need_update_for_some_feature/) Environment Module:**\n\n\n{o}"
     )
-    if len(OUTPUT) > Config.MAX_MESSAGE_SIZE_LIMIT:
+    if len(OUTPUT) > config.MAX_MESSAGE_SIZE_LIMIT:
         with io.BytesIO(str.encode(OUTPUT)) as out_file:
             out_file.name = "env.text"
             await event.client.send_file(
@@ -192,7 +192,7 @@ async def _(event):
     stdout, stderr = await process.communicate()
     o = stdout.decode()
     OUTPUT = f"**[Cat's](tg://need_update_for_some_feature/) , Server Speed Calculated:**\n{o}"
-    if len(OUTPUT) > Config.MAX_MESSAGE_SIZE_LIMIT:
+    if len(OUTPUT) > config.MAX_MESSAGE_SIZE_LIMIT:
         with io.BytesIO(str.encode(OUTPUT)) as out_file:
             out_file.name = "env.text"
             await event.client.send_file(
@@ -222,7 +222,7 @@ async def _(event):
     stdout, stderr = await process.communicate()
     o = stdout.decode()
     OUTPUT = f"{o}"
-    if len(OUTPUT) > Config.MAX_MESSAGE_SIZE_LIMIT:
+    if len(OUTPUT) > config.MAX_MESSAGE_SIZE_LIMIT:
         with io.BytesIO(str.encode(OUTPUT)) as out_file:
             out_file.name = "env.text"
             await event.client.send_file(
@@ -252,7 +252,7 @@ async def _(event):
     stdout, stderr = await process.communicate()
     o = stdout.decode()
     OUTPUT = f"{o}"
-    if len(OUTPUT) > Config.MAX_MESSAGE_SIZE_LIMIT:
+    if len(OUTPUT) > config.MAX_MESSAGE_SIZE_LIMIT:
         with io.BytesIO(str.encode(OUTPUT)) as out_file:
             out_file.name = "env.text"
             await event.client.send_file(
@@ -282,7 +282,7 @@ async def _(event):
     stdout, stderr = await process.communicate()
     o = stdout.decode()
     OUTPUT = f"{o}"
-    if len(OUTPUT) > Config.MAX_MESSAGE_SIZE_LIMIT:
+    if len(OUTPUT) > config.MAX_MESSAGE_SIZE_LIMIT:
         with io.BytesIO(str.encode(OUTPUT)) as out_file:
             out_file.name = "env.text"
             await event.client.send_file(
@@ -312,7 +312,7 @@ async def _(event):
     stdout, stderr = await process.communicate()
     o = stdout.decode()
     OUTPUT = f"{o}"
-    if len(OUTPUT) > Config.MAX_MESSAGE_SIZE_LIMIT:
+    if len(OUTPUT) > config.MAX_MESSAGE_SIZE_LIMIT:
         with io.BytesIO(str.encode(OUTPUT)) as out_file:
             out_file.name = "kwot.text"
             await event.client.send_file(
@@ -342,7 +342,7 @@ async def _(event):
     stdout, stderr = await process.communicate()
     o = stdout.decode()
     OUTPUT = f"{o}"
-    if len(OUTPUT) > Config.MAX_MESSAGE_SIZE_LIMIT:
+    if len(OUTPUT) > config.MAX_MESSAGE_SIZE_LIMIT:
         with io.BytesIO(str.encode(OUTPUT)) as out_file:
             out_file.name = "env.text"
             await event.client.send_file(
