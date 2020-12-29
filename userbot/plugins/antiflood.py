@@ -57,7 +57,6 @@ because he reached the defined flood limit.""".format(
 
 
 @borg.on(admin_cmd(pattern="setflood(?: |$)(.*)"))
-@borg.on(sudo_cmd(pattern="setflood(?: |$)(.*)", allow_sudo=True))
 async def _(event):
     input_str = event.pattern_match.group(1)
     event = await edit_or_reply(event, "updating flood settings!")
