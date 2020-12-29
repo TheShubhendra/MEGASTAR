@@ -8,21 +8,21 @@ from hachoir.parser import createParser
 from PIL import Image
 
 from ..utils import admin_cmd, edit_or_reply
-from . import CMD_HELP, take_screen_shot
+from . import CMD_HELP
 
-thumb_image_path = Config.TMP_DOWNLOAD_DIRECTORY + "/thumb_image.jpg"
+thumb_image_path = config.TMP_DOWNLOAD_DIRECTORY + "/thumb_image.jpg"
 
 
 @borg.on(admin_cmd(pattern="savethumb$"))
 async def _(event):
     if event.fwd_from:
         return
-    catevent = await edit_or_reply(event, "Processing ...")
-    if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
-        os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
+    event = await edit_or_reply(event, "Processing ...")
+    if not os.path.isdir(config.TMP_DOWNLOAD_DIRECTORY):
+        os.makedirs(config.TMP_DOWNLOAD_DIRECTORY)
     if event.reply_to_msg_id:
         downloaded_file_name = await event.client.download_media(
-            await event.get_reply_message(), Config.TMP_DOWNLOAD_DIRECTORY
+            await event.get_reply_message(), config.TMP_DOWNLOAD_DIRECTORY
         )
         if downloaded_file_name.endswith(".mp4"):
             metadata = extractMetadata(createParser(downloaded_file_name))
@@ -35,11 +35,11 @@ async def _(event):
         Image.open(downloaded_file_name).convert("RGB").save(thumb_image_path, "JPEG")
         # https://pillow.readthedocs.io/en/3.1.x/reference/Image.html#create-thumbnails
         os.remove(downloaded_file_name)
-        await catevent.edit(
+        await event.edit(
             "Custom video/file thumbnail saved. This image will be used in the upload, till `.clearthumb`."
         )
     else:
-        await catevent.edit("Reply to a photo to save custom thumbnail")
+        await event.edit("Reply to a photo to save custom thumbnail")
 
 
 @borg.on(admin_cmd(pattern="clearthumb$"))
