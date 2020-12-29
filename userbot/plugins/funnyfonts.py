@@ -3,10 +3,10 @@ import random
 import re
 
 from ..utils import admin_cmd, edit_or_reply
-from . import CMD_HELP, fonts
+from . import CMD_HELP, Fonts
 
 
-@borg.on(admin_cmd(pattern="str(?: |$)(.*)"))
+@borg.on(admin_cmd(pattern="stcr(?: |$)(.*)"))
 async def stretch(stret):
     textx = await stret.get_reply_message()
     message = stret.text
