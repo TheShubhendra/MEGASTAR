@@ -6,23 +6,9 @@ import asyncio
 import os
 import random
 
+from PIL import Image, ImageFont, ImageDraw
 from ..utils import admin_cmd
-from . import (
-    CMD_HELP,
-    LOGS,
-    asciiart,
-    convert_toimage,
-    convert_tosticker,
-    crop,
-    flip_image,
-    grayscale,
-    invert_colors,
-    mirror_file,
-    reply_id,
-    solarize,
-    take_screen_shot,
-)
-
+import textwrap, os
 
 def random_color():
     number_of_colors = 2
