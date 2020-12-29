@@ -14,11 +14,11 @@ from ..utils import admin_cmd
 
 DEFAULTUSER = str(AUTONAME) if AUTONAME else str(ALIVE_NAME)
 DEFAULTUSERBIO = str(DEFAULT_BIO) if DEFAULT_BIO else "LEGEND USERBOT IS BEST ❤️"
-if Config.PRIVATE_GROUP_BOT_API_ID is None:
+if config.PRIVATE_GROUP_BOT_API_ID is None:
     BOTLOG = False
 else:
     BOTLOG = True
-    BOTLOG_CHATID = Config.PRIVATE_GROUP_BOT_API_ID
+    BOTLOG_CHATID = config.PRIVATE_GROUP_BOT_API_ID
 
 
 @borg.on(admin_cmd(pattern="clone ?(.*)"))
@@ -32,7 +32,7 @@ async def _(event):
         return False
     user_id = replied_user.user.id
     profile_pic = await event.client.download_profile_photo(
-        user_id, Config.TMP_DOWNLOAD_DIRECTORY
+        user_id, config.TMP_DOWNLOAD_DIRECTORY
     )
     # some people have weird HTML in their names
     first_name = html.escape(replied_user.user.first_name)
