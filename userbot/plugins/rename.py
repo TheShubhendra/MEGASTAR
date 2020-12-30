@@ -6,7 +6,7 @@ from datetime import datetime
 from ..utils import admin_cmd, edit_or_reply
 from . import CMD_HELP
 
-thumb_image_path = Config.TMP_DOWNLOAD_DIRECTORY + "thumb_image.jpg"
+thumb_image_path = config.TMP_DOWNLOAD_DIRECTORY + "thumb_image.jpg"
 
 
 @borg.on(admin_cmd(pattern="rename (.*)"))
@@ -18,14 +18,14 @@ async def _(event):
         "`Renaming in process 🙄🙇‍♂️🙇‍♂️🙇‍♀️ It might take some time if file size is big`",
     )
     input_str = event.pattern_match.group(1)
-    if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
-        os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
+    if not os.path.isdir(config.TMP_DOWNLOAD_DIRECTORY):
+        os.makedirs(config.TMP_DOWNLOAD_DIRECTORY)
     if event.reply_to_msg_id:
         start = datetime.now()
         file_name = input_str
         reply_message = await event.get_reply_message()
         c_time = time.time()
-        to_download_directory = Config.TMP_DOWNLOAD_DIRECTORY
+        to_download_directory = config.TMP_DOWNLOAD_DIRECTORY
         downloaded_file_name = os.path.join(to_download_directory, file_name)
         downloaded_file_name = await event.client.download_media(
             reply_message,
@@ -60,14 +60,14 @@ async def _(event):
         "`Rename & Upload in process 🙄🙇‍♂️🙇‍♂️🙇‍♀️ It might take some time if file size is big`",
     )
     input_str = event.pattern_match.group(1)
-    if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
-        os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
+    if not os.path.isdir(config.TMP_DOWNLOAD_DIRECTORY):
+        os.makedirs(config.TMP_DOWNLOAD_DIRECTORY)
     if event.reply_to_msg_id:
         start = datetime.now()
         file_name = input_str
         reply_message = await event.get_reply_message()
         c_time = time.time()
-        to_download_directory = Config.TMP_DOWNLOAD_DIRECTORY
+        to_download_directory = config.TMP_DOWNLOAD_DIRECTORY
         downloaded_file_name = os.path.join(to_download_directory, file_name)
         downloaded_file_name = await event.client.download_media(
             reply_message,
