@@ -35,7 +35,6 @@ from . import (
     LOGS,
     TMP_DOWNLOAD_DIRECTORY,
     bot,
-    progress,
 )
 from .sql_helper import google_drive_sql as helper
 
@@ -84,7 +83,7 @@ if __ is not None:
 logger = logging.getLogger("googleapiclient.discovery")
 logger.setLevel(logging.ERROR)
 
-thumb_image_path = Config.TMP_DOWNLOAD_DIRECTORY + "/thumb_image.jpg"
+thumb_image_path = config.TMP_DOWNLOAD_DIRECTORY + "/thumb_image.jpg"
 # =========================================================== #
 #                                                             #
 # =========================================================== #
@@ -1258,7 +1257,7 @@ async def download_file_from_google_drive(gid):
     headers = response.headers
     content = headers["Content-Disposition"]
     destination = await get_file_name(content)
-    destination = os.path.join(Config.TMP_DOWNLOAD_DIRECTORY, destination)
+    destination = os.path.join(config.TMP_DOWNLOAD_DIRECTORY, destination)
     file_name = await save_response_content(response, destination)
     return file_name
 
