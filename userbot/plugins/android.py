@@ -20,7 +20,7 @@ DEVICES_DATA = (
 )
 
 
-@bot.on(admin_cmd(pattern=r"magisk"))
+@borg.on(admin_cmd(pattern=r"magisk"))
 async def kakashi(magisk):
     """magisk latest releases"""
     releases = (
@@ -32,7 +32,7 @@ async def kakashi(magisk):
     await edit_or_reply(magisk, releases)
 
 
-@bot.on(admin_cmd(outgoing=True, pattern=r"device(?: |$)(\S*)"))
+@borg.on(admin_cmd(outgoing=True, pattern=r"device(?: |$)(\S*)"))
 async def device_info(request):
     """ get android device basic info from its codename """
     textx = await request.get_reply_message()
@@ -64,7 +64,7 @@ async def device_info(request):
     await edit_or_reply(request, reply)
 
 
-@bot.on(admin_cmd(outgoing=True, pattern=r"codename(?: |)([\S]*)(?: |)([\s\S]*)"))
+@borg.on(admin_cmd(outgoing=True, pattern=r"codename(?: |)([\S]*)(?: |)([\s\S]*)"))
 async def codename_info(request):
     """ search for android codename """
     textx = await request.get_reply_message()
@@ -108,7 +108,7 @@ async def codename_info(request):
     await edit_or_reply(request, reply)
 
 
-@bot.on(admin_cmd(outgoing=True, pattern=r"specs(?: |)([\S]*)(?: |)([\s\S]*)"))
+@borg.on(admin_cmd(outgoing=True, pattern=r"specs(?: |)([\S]*)(?: |)([\s\S]*)"))
 async def devices_specifications(request):
     """ Mobile devices specifications """
     textx = await request.get_reply_message()
@@ -170,7 +170,7 @@ async def devices_specifications(request):
     await edit_or_reply(request, reply)
 
 
-@bot.on(admin_cmd(outgoing=True, pattern=r"twrp(?: |$)(\S*)"))
+@borg.on(admin_cmd(outgoing=True, pattern=r"twrp(?: |$)(\S*)"))
 async def twrp(request):
     """ get android device twrp """
     textx = await request.get_reply_message()
