@@ -9,6 +9,7 @@ import random
 from ..utils import admin_cmd
 from . import CMD_HELP
 
+
 def random_color():
     number_of_colors = 2
     return [
