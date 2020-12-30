@@ -1,4 +1,4 @@
-# pm and tagged messages logger for catuserbot by @mrconfused (@sandy1709)
+# pm and tagged messages logger for legend userbot by @mrconfused (@sandy1709)
 import asyncio
 
 from telethon import events
@@ -18,10 +18,10 @@ async def monito_p_m_s(event):
     global RECENT_USER
     global NEWPM
     global COUNT
-    if not Config.PM_LOGGR_BOT_API_ID:
+    if not config.PM_LOGGR_BOT_API_ID:
         return
     sender = await event.get_sender()
-    if Config.NO_LOG_P_M_S and not sender.bot:
+    if config.NO_LOG_P_M_S and not sender.bot:
         chat = await event.get_chat()
         if not no_log_pms_sql.is_approved(chat.id) and chat.id != 777000:
             if RECENT_USER != chat.id:
@@ -37,13 +37,13 @@ async def monito_p_m_s(event):
                         )
                     COUNT = 0
                 NEWPM = await event.client.send_message(
-                    Config.PM_LOGGR_BOT_API_ID,
+                    config.PM_LOGGR_BOT_API_ID,
                     f"👤{mentionuser(sender.first_name , sender.id)} has sent a new message \nId : `{chat.id}`",
                 )
             try:
                 if event.message:
                     await event.client.forward_messages(
-                        Config.PM_LOGGR_BOT_API_ID, event.message, silent=True
+                        config.PM_LOGGR_BOT_API_ID, event.message, silent=True
                     )
                 COUNT += 1
             except Exception as e:
@@ -55,7 +55,7 @@ async def log_tagged_messages(event):
     hmm = await event.get_chat()
     if no_log_pms_sql.is_approved(hmm.id):
         return
-    if not Config.PM_LOGGR_BOT_API_ID:
+    if not config.PM_LOGGR_BOT_API_ID:
         return
     from .afk import USERAFK_ON
 
@@ -69,7 +69,7 @@ async def log_tagged_messages(event):
     await asyncio.sleep(5)
     if not event.is_private:
         await event.client.send_message(
-            Config.PM_LOGGR_BOT_API_ID,
+            config.PM_LOGGR_BOT_API_ID,
             f"#TAGS \n<b>Group : </b><code>{hmm.title}</code>\
                         \n<b>Message : </b><a href = 'https://t.me/c/{hmm.id}/{event.message.id}'> link</a>",
             parse_mode="html",
@@ -99,7 +99,7 @@ async def log(log_text):
 
 @borg.on(admin_cmd(pattern="log$"))
 async def set_no_log_p_m(event):
-    if Config.PM_LOGGR_BOT_API_ID is not None:
+    if config.PM_LOGGR_BOT_API_ID is not None:
         chat = await event.get_chat()
         if no_log_pms_sql.is_approved(chat.id):
             no_log_pms_sql.disapprove(chat.id)
@@ -110,7 +110,7 @@ async def set_no_log_p_m(event):
 
 @borg.on(admin_cmd(pattern="nolog$"))
 async def set_no_log_p_m(event):
-    if Config.PM_LOGGR_BOT_API_ID is not None:
+    if config.PM_LOGGR_BOT_API_ID is not None:
         chat = await event.get_chat()
         if not no_log_pms_sql.is_approved(chat.id):
             no_log_pms_sql.approve(chat.id)
