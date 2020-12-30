@@ -1,7 +1,7 @@
 from googletrans import LANGUAGES, Translator
 
 from ..utils import admin_cmd, edit_or_reply
-from . import BOTLOG, BOTLOG_CHATID, CMD_HELP, deEmojify
+from . import BOTLOG, BOTLOG_CHATID, CMD_HELP
 
 TRT_LANG = "en"
 
