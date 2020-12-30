@@ -68,7 +68,9 @@ async def set_not_afk(event):
             )
 
 
-@borg.on(events.NewMessage(incoming=True, func=lambda e: bool(e.mentioned or e.is_private)))
+@borg.on(
+    events.NewMessage(incoming=True, func=lambda e: bool(e.mentioned or e.is_private))
+)
 async def on_afk(event):
     if event.fwd_from:
         return
