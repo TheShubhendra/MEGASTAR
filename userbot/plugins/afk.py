@@ -1,4 +1,4 @@
-# Afk plugin from catuserbot ported from uniborg
+# Afk plugin from LEGEND USERBOT ported from uniborg
 import asyncio
 from datetime import datetime
 
@@ -19,9 +19,9 @@ last_afk_message = {}
 afk_start = {}
 
 
-@bot.on(events.NewMessage(outgoing=True))
+@borg.on(events.NewMessage(outgoing=True))
 async def set_not_afk(event):
-    if event.chat_id in Config.UB_BLACK_LIST_CHAT:
+    if event.chat_id in config.UB_BLACK_LIST_CHAT:
         return
     global USERAFK_ON
     global afk_time
@@ -68,9 +68,7 @@ async def set_not_afk(event):
             )
 
 
-@bot.on(
-    events.NewMessage(incoming=True, func=lambda e: bool(e.mentioned or e.is_private))
-)
+@borg.on(events.NewMessage(incoming=True, func=lambda e: bool(e.mentioned or e.is_private)))
 async def on_afk(event):
     if event.fwd_from:
         return
@@ -117,17 +115,17 @@ async def on_afk(event):
             message_to_reply = (
                 f"`I am AFK .\n\nAFK Since {endtime}\nReason : Not Mentioned ( ಠ ʖ̯ ಠ)`"
             )
-        if event.chat_id not in Config.UB_BLACK_LIST_CHAT:
+        if event.chat_id not in config.UB_BLACK_LIST_CHAT:
             msg = await event.reply(message_to_reply)
         if event.chat_id in last_afk_message:
             await last_afk_message[event.chat_id].delete()
         last_afk_message[event.chat_id] = msg
         hmm = await event.get_chat()
-        if Config.PM_LOGGR_BOT_API_ID:
+        if config.PM_LOGGR_BOT_API_ID:
             await asyncio.sleep(5)
             if not event.is_private:
                 await event.client.send_message(
-                    Config.PM_LOGGR_BOT_API_ID,
+                    config.PM_LOGGR_BOT_API_ID,
                     f"#AFK_TAGS \n<b>Group : </b><code>{hmm.title}</code>\
                             \n<b>Message : </b><a href = 'https://t.me/c/{hmm.id}/{event.message.id}'> link</a>",
                     parse_mode="html",
@@ -135,7 +133,7 @@ async def on_afk(event):
                 )
 
 
-@bot.on(admin_cmd(pattern=r"afk ?(.*)", outgoing=True))
+@borg.on(admin_cmd(pattern=r"afk ?(.*)", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
