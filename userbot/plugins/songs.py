@@ -8,7 +8,7 @@ from telethon.tl.functions.messages import ImportChatInviteRequest as Get
 from validators.url import url
 
 from ..utils import admin_cmd, edit_or_reply
-from . import CMD_HELP, reply_id, song_dl, video_dl, yt_search
+from . import CMD_HELP
 
 # =========================================================== #
 #                           STRINGS                           #
@@ -34,11 +34,11 @@ async def _(event):
     else:
         await edit_or_reply(event, "`What I am Supposed to find `")
         return
-    cat = pybase64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
-    catevent = await edit_or_reply(event, "`wi8..! I am finding your song....`")
+    pgl = pybase64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
+    pglevent = await edit_or_reply(event, "`wi8..! I am finding your song....`")
     video_link = await yt_search(str(query))
     if not url(video_link):
-        return await catevent.edit(
+        return await pglevent.edit(
             f"Sorry!. I can't find any related video/audio for `{query}`"
         )
     cmd = event.pattern_match.group(1)
@@ -50,43 +50,43 @@ async def _(event):
     # thumb_cmd = thumb_dl.format(video_link=video_link)
     name_cmd = name_dl.format(video_link=video_link)
     try:
-        cat = Get(cat)
-        await event.client(cat)
+        pgl = Get(pgl)
+        await event.client(pgl)
     except BaseException:
         pass
     stderr = (await runcmd(song_cmd))[1]
     if stderr:
-        return await catevent.edit(f"**Error :** `{stderr}`")
-    catname, stderr = (await runcmd(name_cmd))[:2]
+        return await pglevent.edit(f"**Error :** `{stderr}`")
+    pglname, stderr = (await runcmd(name_cmd))[:2]
     if stderr:
-        return await catevent.edit(f"**Error :** `{stderr}`")
+        return await pglevent.edit(f"**Error :** `{stderr}`")
     # stderr = (await runcmd(thumb_cmd))[1]
-    catname = os.path.splitext(catname)[0]
+    pglname = os.path.splitext(pglname)[0]
     # if stderr:
-    #    return await catevent.edit(f"**Error :** `{stderr}`")
-    song_file = Path(f"{catname}.mp3")
+    #    return await pglevent.edit(f"**Error :** `{stderr}`")
+    song_file = Path(f"{pglname}.mp3")
     if not os.path.exists(song_file):
-        return await catevent.edit(
+        return await pglevent.edit(
             f"Sorry!. I can't find any related video/audio for `{query}`"
         )
-    await catevent.edit("`yeah..! i found something wi8..🥰`")
-    catthumb = Path(f"{catname}.jpg")
-    if not os.path.exists(catthumb):
-        catthumb = Path(f"{catname}.webp")
-    elif not os.path.exists(catthumb):
-        catthumb = None
+    await pglevent.edit("`yeah..! i found something wi8..🥰`")
+    pglthumb = Path(f"{pglname}.jpg")
+    if not os.path.exists(pglthumb):
+        pglthumb = Path(f"{pglname}.webp")
+    elif not os.path.exists(pglthumb):
+        pglthumb = None
 
     await event.client.send_file(
         event.chat_id,
         song_file,
         force_document=False,
         caption=query,
-        thumb=catthumb,
+        thumb=pglthumb,
         supports_streaming=True,
         reply_to=reply_to_id,
     )
-    await catevent.delete()
-    for files in (catthumb, song_file):
+    await pglevent.delete()
+    for files in (pglthumb, song_file):
         if files and os.path.exists(files):
             os.remove(files)
 
@@ -112,11 +112,11 @@ async def _(event):
     else:
         event = await edit_or_reply(event, "What I am Supposed to find")
         return
-    cat = pybase64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
-    catevent = await edit_or_reply(event, "`wi8..! I am finding your song....`")
+    pgl = pybase64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
+    pglevent = await edit_or_reply(event, "`wi8..! I am finding your song....`")
     video_link = await yt_search(str(query))
     if not url(video_link):
-        return await catevent.edit(
+        return await pglevent.edit(
             f"Sorry!. I can't find any related video/audio for `{query}`"
         )
     # thumb_cmd = thumb_dl.format(video_link=video_link)
@@ -124,55 +124,55 @@ async def _(event):
     video_cmd = video_dl.format(video_link=video_link)
     stderr = (await runcmd(video_cmd))[1]
     if stderr:
-        return await catevent.edit(f"**Error :** `{stderr}`")
-    catname, stderr = (await runcmd(name_cmd))[:2]
+        return await pglevent.edit(f"**Error :** `{stderr}`")
+    pglname, stderr = (await runcmd(name_cmd))[:2]
     if stderr:
-        return await catevent.edit(f"**Error :** `{stderr}`")
+        return await pglevent.edit(f"**Error :** `{stderr}`")
     # stderr = (await runcmd(thumb_cmd))[1]
     try:
-        cat = Get(cat)
-        await event.client(cat)
+        pgl = Get(pgl)
+        await event.client(pgl)
     except BaseException:
         pass
     # if stderr:
-    #    return await catevent.edit(f"**Error :** `{stderr}`")
-    catname = os.path.splitext(catname)[0]
-    vsong_file = Path(f"{catname}.mp4")
+    #    return await pglevent.edit(f"**Error :** `{stderr}`")
+    pglname = os.path.splitext(pglname)[0]
+    vsong_file = Path(f"{pglname}.mp4")
     if not os.path.exists(vsong_file):
-        vsong_file = Path(f"{catname}.mkv")
+        vsong_file = Path(f"{pglname}.mkv")
     elif not os.path.exists(vsong_file):
-        return await catevent.edit(
+        return await pglevent.edit(
             f"Sorry!. I can't find any related video/audio for `{query}`"
         )
-    await catevent.edit("`yeah..! i found something wi8..🥰`")
-    catthumb = Path(f"{catname}.jpg")
-    if not os.path.exists(catthumb):
-        catthumb = Path(f"{catname}.webp")
-    elif not os.path.exists(catthumb):
-        catthumb = None
+    await pglevent.edit("`yeah..! i found something wi8..🥰`")
+    pglthumb = Path(f"{pglname}.jpg")
+    if not os.path.exists(pglthumb):
+        pglthumb = Path(f"{pglname}.webp")
+    elif not os.path.exists(pglthumb):
+        pglthumb = None
     await event.client.send_file(
         event.chat_id,
         vsong_file,
         force_document=False,
         caption=query,
-        thumb=catthumb,
+        thumb=pglthumb,
         supports_streaming=True,
         reply_to=reply_to_id,
     )
-    await catevent.delete()
-    for files in (catthumb, vsong_file):
+    await pglevent.delete()
+    for files in (pglthumb, vsong_file):
         if files and os.path.exists(files):
             os.remove(files)
 
 
 @borg.on(admin_cmd(pattern="song2 (.*)"))
-async def cat_song_fetcer(event):
+async def pgl_song_fetcer(event):
     if event.fwd_from:
         return
     song = event.pattern_match.group(1)
     chat = "@songdl_bot"
     reply_id_ = await reply_id(event)
-    catevent = await edit_or_reply(event, SONG_SEARCH_STRING, parse_mode="html")
+    pglevent = await edit_or_reply(event, SONG_SEARCH_STRING, parse_mode="html")
     async with event.client.conversation(chat) as conv:
         try:
             purgeflag = await conv.send_message("/start")
@@ -188,14 +188,14 @@ async def cat_song_fetcer(event):
             ):
                 await delete_messages(event, chat, purgeflag)
                 return await edit_delete(
-                    catevent, SONG_NOT_FOUND, parse_mode="html", time=5
+                    pglevent, SONG_NOT_FOUND, parse_mode="html", time=5
                 )
-            await catevent.edit(SONG_SENDING_STRING, parse_mode="html")
+            await pglevent.edit(SONG_SENDING_STRING, parse_mode="html")
             await baka[0].click(0)
             music = await conv.get_response()
             await event.client.send_read_acknowledge(conv.chat_id)
         except YouBlockedUserError:
-            await catevent.edit(SONGBOT_BLOCKED_STRING, parse_mode="html")
+            await pglevent.edit(SONGBOT_BLOCKED_STRING, parse_mode="html")
             return
         await event.client.send_file(
             event.chat_id,
@@ -204,7 +204,7 @@ async def cat_song_fetcer(event):
             parse_mode="html",
             reply_to=reply_id_,
         )
-        await catevent.delete()
+        await pglevent.delete()
         await delete_messages(event, chat, purgeflag)
 
 
