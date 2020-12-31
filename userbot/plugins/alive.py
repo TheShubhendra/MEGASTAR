@@ -66,9 +66,8 @@ async def amireallyalive(yes):
     """ For .alive command, check if the bot is running.  """
 
 
-PM_IMG = os.environ.get("PMPERMIT_PIC", None)
 
-await borg.send_file(yes.chat_id, PM_IMG, caption=pm_caption)
+await borg.send_file(yes.chat_id, caption=pm_caption)
 await yes.delete()
 
 
