@@ -31,7 +31,8 @@ async def pollcreator(krishanpoll):
             await krishanpoll.delete()
         except PollOptionInvalidError:
             await edit_or_reply(
-                krishanpoll, "`A poll option used invalid data (the data may be too long).`"
+                krishanpoll,
+                "`A poll option used invalid data (the data may be too long).`",
             )
         except ForbiddenError:
             await edit_or_reply(krishanpoll, "`This chat has forbidden the polls`")
