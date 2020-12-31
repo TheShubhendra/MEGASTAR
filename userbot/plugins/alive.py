@@ -27,7 +27,7 @@ pm_caption += (
 pm_caption += "✘ About My System ✘\n\n"
 pm_caption += "➾ **ᴛᴇʟᴇᴛʜᴏɴ ᴠᴇʀꜱɪᴏɴ** ☞ 1.17.5\n"
 pm_caption += "➾ **ꜱᴜᴘᴘᴏʀᴛ ᴄʜᴀɴɴᴇʟ** ☞ [ᴊᴏɪɴ](https://t.me/legend_userbot)\n"
-pm_caption += "➾ **ꜱᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ** ☞ [ᴊᴏɪɴ](https://t.me/legend_userbot_support)"
+pm_caption += "➾ **ꜱᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ** ☞ [ᴊᴏɪɴ](https://t.me/legend_userbot_support)\n"
 pm_caption += "➾ **ʟɪᴄᴇɴꜱᴇ**  ☞ [𝚃𝙴𝙰𝙼 𝙻𝙴𝙶𝙴𝙽𝙳](https://github.com/aritramandal)\n"
 pm_caption += "➾ **ᴄᴏᴘʏʀɪɢʜᴛ ʙʏ** ☞ [🄻🄴🄶🄴🄽🄳](https://github.com/Bristi-OP/LEGEND)\n\n"
 pm_caption += f"➾ **ᴍʏ ᴍᴀsᴛᴇʀ** ☞ [{DEFAULTUSER}](tg://user?id={legend})\n"
@@ -64,6 +64,8 @@ async def amireallyalive(yes):
     await yes.delete()
 
     """ For .alive command, check if the bot is running.  """
+PM_IMG = os.environ.get("PMPERMIT_PIC", None)
+   
     await borg.send_file(yes.chat_id, PM_IMG, caption=pm_caption)
     await yes.delete()
 
