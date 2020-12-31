@@ -26,7 +26,7 @@ async def lydia_disable_enable(event):
     if Var.LYDIA_API_KEY is None:
         await edit_delete(event, "`Please add required LYDIA_API_KEY env var`", 10)
         return
-    catevent = await edit_or_reply(event, "`.....`")
+    pglevent = await edit_or_reply(event, "`.....`")
     input_str = event.pattern_match.group(1)
     if event.reply_to_msg_id is not None:
         reply_msg = await event.get_reply_message()
@@ -45,10 +45,10 @@ async def lydia_disable_enable(event):
                     ",
                 )
             add_s(user_id, chat_id, session.id, session.expires)
-            await catevent.edit(f"Hello")
+            await pglevent.edit(f"Hello")
         elif input_str == "re":
             remove_s(user_id, chat_id)
-            await catevent.edit(f"__[signal lost](tg://user?id={user_id})__")
+            await pglevent.edit(f"__[signal lost](tg://user?id={user_id})__")
         else:
             lsts = get_all_s()
             if len(lsts) > 0:
@@ -57,7 +57,7 @@ async def lydia_disable_enable(event):
                     output_str += f"[User](tg://user?id={lydia_ai.user_id}) in chat `{lydia_ai.chat_id}`\n"
             else:
                 output_str = "No Lydia AI enabled users / chats. Start by replying `.enai` to any user in any chat!"
-            if len(output_str) > Config.MAX_MESSAGE_SIZE_LIMIT:
+            if len(output_str) > config.MAX_MESSAGE_SIZE_LIMIT:
                 with io.BytesIO(str.encode(output_str)) as out_file:
                     out_file.name = "lydia_ai.text"
                     await event.client.send_file(
@@ -69,7 +69,7 @@ async def lydia_disable_enable(event):
                         reply_to=event,
                     )
             else:
-                await catevent.edit(output_str)
+                await pglevent.edit(output_str)
     else:
         if input_str == "li":
             lsts = get_all_s()
@@ -79,7 +79,7 @@ async def lydia_disable_enable(event):
                     output_str += f"[User](tg://user?id={lydia_ai.user_id}) in chat `{lydia_ai.chat_id}`\n"
             else:
                 output_str = "No Lydia AI enabled users / chats. Start by replying `.enai` to any user in any chat!"
-            if len(output_str) > Config.MAX_MESSAGE_SIZE_LIMIT:
+            if len(output_str) > config.MAX_MESSAGE_SIZE_LIMIT:
                 with io.BytesIO(str.encode(output_str)) as out_file:
                     out_file.name = "lydia_ai.text"
                     await event.client.send_file(
@@ -91,10 +91,10 @@ async def lydia_disable_enable(event):
                         reply_to=event,
                     )
             else:
-                await catevent.edit(output_str)
+                await pglevent.edit(output_str)
         else:
             await edit_delete(
-                catevent,
+                pglevent,
                 "`Reply To A User's Message to Add / Remove them from Lydia Auto-Chat.`",
                 5,
             )
@@ -102,7 +102,7 @@ async def lydia_disable_enable(event):
 
 @borg.on(admin_cmd(incoming=True))
 async def on_new_message(event):
-    if event.chat_id in Config.UB_BLACK_LIST_CHAT:
+    if event.chat_id in config.UB_BLACK_LIST_CHAT:
         return
     if Var.LYDIA_API_KEY is None:
         return
@@ -129,7 +129,7 @@ async def on_new_message(event):
                 logger.info(add_s(user_id, chat_id, session_id, session_expires))
             # Try to think a thought.
             try:
-                async with event.client.action(event.chat_id, "location"):
+                async with event.client.action(event.chat_id, "lopglion"):
                     await asyncio.sleep(2)
                     output = lydia.think_thought(session_id, query)
                     await event.reply(output)
