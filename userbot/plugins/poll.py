@@ -6,20 +6,19 @@ from telethon.tl.types import InputMediaPoll, Poll
 
 from .. import CMD_HELP
 from ..utils import admin_cmd, edit_or_reply
-from . import Build_Poll
 
 
 @borg.on(admin_cmd(pattern="poll( (.*)|$)"))
-async def pollcreator(catpoll):
+async def pollcreator(krishanpoll):
     reply_to_id = None
-    if catpoll.reply_to_msg_id:
-        reply_to_id = catpoll.reply_to_msg_id
-    string = "".join(catpoll.text.split(maxsplit=1)[1:])
+    if krishanpoll.reply_to_msg_id:
+        reply_to_id = krishanpoll.reply_to_msg_id
+    string = "".join(krishanpoll.text.split(maxsplit=1)[1:])
     if not string:
         options = Build_Poll(["Yah sure 😊✌️", "Nah 😏😕", "Whatever die sur 🥱🙄"])
         try:
             await bot.send_message(
-                catpoll.chat_id,
+                krishanpoll.chat_id,
                 file=InputMediaPoll(
                     poll=Poll(
                         id=random.getrandbits(32),
@@ -29,44 +28,44 @@ async def pollcreator(catpoll):
                 ),
                 reply_to=reply_to_id,
             )
-            await catpoll.delete()
+            await krishanpoll.delete()
         except PollOptionInvalidError:
             await edit_or_reply(
-                catpoll, "`A poll option used invalid data (the data may be too long).`"
+                krishanpoll, "`A poll option used invalid data (the data may be too long).`"
             )
         except ForbiddenError:
-            await edit_or_reply(catpoll, "`This chat has forbidden the polls`")
+            await edit_or_reply(krishanpoll, "`This chat has forbidden the polls`")
         except exception as e:
-            await edit_or_reply(catpoll, str(e))
+            await edit_or_reply(krishanpoll, str(e))
     else:
-        catinput = string.split(";")
-        if len(catinput) > 2 and len(catinput) < 12:
-            options = Build_Poll(catinput[1:])
+        krishaninput = string.split(";")
+        if len(krishaninput) > 2 and len(krishaninput) < 12:
+            options = Build_Poll(krishaninput[1:])
             try:
                 await bot.send_message(
-                    catpoll.chat_id,
+                    krishanpoll.chat_id,
                     file=InputMediaPoll(
                         poll=Poll(
                             id=random.getrandbits(32),
-                            question=catinput[0],
+                            question=krishaninput[0],
                             answers=options,
                         )
                     ),
                     reply_to=reply_to_id,
                 )
-                await catpoll.delete()
+                await krishanpoll.delete()
             except PollOptionInvalidError:
                 await edit_or_reply(
-                    catpoll,
+                    krishanpoll,
                     "`A poll option used invalid data (the data may be too long).`",
                 )
             except ForbiddenError:
-                await edit_or_reply(catpoll, "`This chat has forbidden the polls`")
+                await edit_or_reply(krishanpoll, "`This chat has forbidden the polls`")
             except exception as e:
-                await edit_or_reply(catpoll, str(e))
+                await edit_or_reply(krishanpoll, str(e))
         else:
             await edit_or_reply(
-                catpoll,
+                krishanpoll,
                 "Make sure that you used Correct syntax `.poll question ; option1 ; option2`",
             )
 
