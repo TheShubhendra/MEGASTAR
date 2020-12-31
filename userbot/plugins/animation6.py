@@ -1,5 +1,5 @@
 import asyncio
-
+import os
 from ..utils import admin_cmd, edit_or_reply
 from . import CMD_HELP
 
@@ -34,7 +34,7 @@ def get_readable_time(seconds: int) -> str:
 
 @borg.on(admin_cmd(pattern="ping$"))
 async def _(event):
-    starkislub = await edit_or_reply(
+    lub = await edit_or_reply(
         event,
         "`Ping ! Pong ! \n Ping ! Pong Ping ! Pong ! \n Ping ! Pong Ping ! Pong ! \n Ping ! Pong Ping ! Pong ! \n Ping ! Pong Ping ! Pong ! \n Ping ! Pong Ping ! Pong ! \n Ping ! Pong Ping ! Pong ! \n Ping ! Pong Ping ! Pong ! \n Ping ! Pong Ping ! Pong ! \n Ping ! Pong Ping ! Pong ! \n Ping ! Pong Ping ! Pong ! \n Ping ! Pong Ping ! Pong ! \n Ping ! Pong Ping ! Pong ! \n Ping ! Pong Ping ! Pong ! \n Ping ! Pong Ping ! Pong ! \n Ping ! Pong Ping ! Pong ! \n Ping ! Pong Ping ! Pong ! \n Ping ! Pong `",
     )
@@ -44,7 +44,7 @@ async def _(event):
     end = datetime.now()
     ms = (end - start).microseconds / 1000
     uptime = get_readable_time((time.time() - Lastupdate))
-    await starkislub.edit(
+    await lub.edit(
         f"**█▀█ █▀█ █▄░█ █▀▀ █ \n█▀▀ █▄█ █░▀█ █▄█ ▄**\n ➲ `{ms}` \n ➲ `{uptime}` \n ➥  "
     )
 
@@ -56,7 +56,7 @@ CMD_HELP.update(
 \n**Usage :** Get uptime and speed of your bot."
     }
 )
-
+ALIVE_NAME = os.environ.get("ALIVE_NAME", None)
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "LEGEND USERBOT"
 
 
