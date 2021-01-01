@@ -11,7 +11,7 @@ DELETE_TIMEOUT = 5
 
 thumb_image_path = "./Resources/Screenshot_2021-01-01-12-55-35-65.jpg"
 
-DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Marshadmin"
+DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "MEGASTAR"
 
 
 @borg.on(admin_cmd(pattern=r"send (?P<shortname>\w+)", outgoing=True))
