@@ -2,13 +2,11 @@ import asyncio
 import os
 from datetime import datetime
 from pathlib import Path
-from telethon.tl.types import InputMessagesFilterDocument
 from userbot.utils import admin_cmd, load_module, remove_plugin
 from userbot import ALIVE_NAME
 from userbot import bot
 
 DELETE_TIMEOUT = 5
-
 
 
 thumb_image_path = "./Resources/Screenshot_2021-01-01-12-55-35-65.jpg"
@@ -111,4 +109,3 @@ async def load(event):
         await event.edit(
             f"Sorry,{shortname} can not be loaded\nbecause of the following error.\n{str(e)}"
         )
-
