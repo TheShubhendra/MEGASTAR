@@ -29,7 +29,9 @@ pm_caption += "➾ **ᴛᴇʟᴇᴛʜᴏɴ ᴠᴇʀꜱɪᴏɴ** ☞ 1.17.5\n"
 pm_caption += "➾ **ꜱᴜᴘᴘᴏʀᴛ ᴄʜᴀɴɴᴇʟ** ☞ [ᴊᴏɪɴ](https://t.me/MEGASTAR_USERBOT)\n"
 pm_caption += "➾ **ꜱᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ** ☞ [ᴊᴏɪɴ](https://t.me/MEGASTAR_SUPPORT)\n"
 pm_caption += "➾ **ʟɪᴄᴇɴꜱᴇ**  ☞ [𝚃𝙴𝙰𝙼 𝙼𝙴𝙶𝙰𝚂𝚃𝙰𝚁](https://github.com/BRISTI-OP)\n"
-pm_caption += "➾ **ᴄᴏᴘʏʀɪɢʜᴛ ʙʏ** ☞ [🄼🄴🄶🄰🅂🅃🄰🅁](https://github.com/Bristi-OP/MEGASTAR)\n\n"
+pm_caption += (
+    "➾ **ᴄᴏᴘʏʀɪɢʜᴛ ʙʏ** ☞ [🄼🄴🄶🄰🅂🅃🄰🅁](https://github.com/Bristi-OP/MEGASTAR)\n\n"
+)
 pm_caption += f"➾ **ᴍʏ ᴍᴀsᴛᴇʀ** ☞ [{DEFAULTUSER}](tg://user?id={megastar})\n"
 
 
@@ -106,7 +108,9 @@ async def amireallyalive(alive):
         pm_caption += f"**𝕄𝕪 𝔹𝕠𝕤𝕤**            : {DEFAULTUSER}\n"
         pm_caption += "𝚃𝙴𝙻𝙴𝚃𝙷𝙾𝙽 𝚅𝙴𝚁𝚂𝙸𝙾𝙽        : 1.17.5\n"
         pm_caption += "𝙿𝚈𝚃𝙷𝙾𝙽 𝚅𝙴𝚁𝚂𝙸𝙾𝙽          : 3.9.1\n"
-        pm_caption += "𝚂𝚄𝙿𝙿𝙾𝚁𝚃 𝙲𝙷𝙰𝙽𝙽𝙴𝙻         : [ᴊᴏɪɴ](https://t.me/MEGASTAR_USERBOT)\n"
+        pm_caption += (
+            "𝚂𝚄𝙿𝙿𝙾𝚁𝚃 𝙲𝙷𝙰𝙽𝙽𝙴𝙻         : [ᴊᴏɪɴ](https://t.me/MEGASTAR_USERBOT)\n"
+        )
         pm_caption += (
             "𝚂𝚄𝙿𝙿𝙾𝚁𝚃 𝙶𝚁𝙾𝚄𝙿           : [ᴊᴏɪɴ](https://t.me/MEGASTAR_SUPPORT)\n"
         )
