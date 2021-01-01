@@ -1,4 +1,4 @@
-# made for legend userbot
+# made for MEGASTAR userbot
 
 #!/usr/bin/env python
 # In[ ]:
