@@ -1,6 +1,6 @@
-"""Update UserBot Code (FOR LEGEND UB)
+"""Update UserBot Code (FOR MEGASTAR UB)
 Syntax: .update
-\nAll Credits goes to © LEGEND UB
+\nAll Credits goes to © MEGASTAR UB
 \nFor this awasome plugin.\nPorted from PpaperPlane Extended"""
 import asyncio
 import sys
@@ -12,7 +12,7 @@ from git.exc import GitCommandError, InvalidGitRepositoryError, NoSuchPathError
 from userbot import CMD_HELP
 from userbot.utils import admin_cmd
 
-UPSTREAM_REPO_URL = "https://github.com/Bristi-OP/LEGEND"
+UPSTREAM_REPO_URL = "https://github.com/Bristi-OP/MEGASTAR"
 HEROKU_API_KEY = Var.HEROKU_API_KEY
 HEROKU_APP_NAME = Var.HEROKU_APP_NAME
 
@@ -67,7 +67,7 @@ async def upstream(ups):
     except InvalidGitRepositoryError:
         if conf != "now":
             await ups.edit(
-                f"**Hey 𝗕𝗢𝗦𝗦!!!**😉😉\n__To get the Latest update of__ \nLEGEND UB\n\n do |`.update now`| 😎😎 "
+                f"**Hey 𝗕𝗢𝗦𝗦!!!**😉😉\n__To get the Latest update of__ \nMEGASTAR UB\n\n do |`.update now`| 😎😎 "
             )
             return
         repo = Repo.init()
@@ -168,7 +168,7 @@ async def upstream(ups):
             await ups.edit("`⬛⬛⬛⬛ \n⬛❇️❇️⬛ \n⬛❇️❇️⬛ \n⬛⬛⬛⬛`")
             await asyncio.sleep(1)
         await ups.edit(
-            "**⚜️Updating Legend ub ⚜️\n\nYou are the 👑KING👑 Boss!!\n\nPlease wait 5 minutes 😁😁\nThen try ** `.alive` **to check if I'm tuned.. 😎😎\n\nPowered by :-\n[© LEGEND UB](https://t.me/LEGEND_USERBOT_SUPPORT)**"
+            "**⚜️Updating MEGASTAR ub ⚜️\n\nYou are the 👑KING👑 Boss!!\n\nPlease wait 5 minutes 😁😁\nThen try ** `.alive` **to check if I'm tuned.. 😎😎\n\nPowered by :-\n[© MEGASTAR UB](https://t.me/MEGASTAR_SUPPORT)**"
         )
         remote.push(refspec="HEAD:refs/heads/master", force=True)
     else:
