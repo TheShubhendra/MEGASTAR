@@ -19,7 +19,7 @@ import os
 from pySmartDL import SmartDL
 
 
-thumb_image_path = Config.TMP_DOWNLOAD_DIRECTORY + "thumb_image.jpg"
+thumb_image_path = config.TMP_DOWNLOAD_DIRECTORY + "thumb_image.jpg"
 
 
 def get_video_thumb(file, output=None, width=90):
@@ -41,14 +41,14 @@ async def _(event):
         return
     await event.edit("Renaming in process 🙄🙇‍♂️🙇‍♂️🙇‍♀️ It might take some time if file size is big")
     input_str = event.pattern_match.group(1)
-    if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
-        os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
+    if not os.path.isdir(config.TMP_DOWNLOAD_DIRECTORY):
+        os.makedirs(config.TMP_DOWNLOAD_DIRECTORY)
     if event.reply_to_msg_id:
         start = datetime.now()
         file_name = input_str
         reply_message = await event.get_reply_message()
         c_time = time.time()
-        to_download_directory = Config.TMP_DOWNLOAD_DIRECTORY
+        to_download_directory = config.TMP_DOWNLOAD_DIRECTORY
         downloaded_file_name = os.path.join(to_download_directory, file_name)
         downloaded_file_name = await borg.download_media(
             reply_message,
@@ -76,14 +76,14 @@ async def _(event):
         thumb = thumb_image_path
     await event.edit("Rename & Upload in process 🙄🙇‍♂️🙇‍♂️🙇‍♀️ It might take some time if file size is big")
     input_str = event.pattern_match.group(1)
-    if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
-        os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
+    if not os.path.isdir(config.TMP_DOWNLOAD_DIRECTORY):
+        os.makedirs(config.TMP_DOWNLOAD_DIRECTORY)
     if event.reply_to_msg_id:
         start = datetime.now()
         file_name = input_str
         reply_message = await event.get_reply_message()
         c_time = time.time()
-        to_download_directory = Config.TMP_DOWNLOAD_DIRECTORY
+        to_download_directory = config.TMP_DOWNLOAD_DIRECTORY
         downloaded_file_name = os.path.join(to_download_directory, file_name)
         downloaded_file_name = await borg.download_media(
             reply_message,
@@ -126,14 +126,14 @@ async def _(event):
         return
     await event.edit("Rename & Upload as Streamable in process 🙄🙇‍♂️🙇‍♂️🙇‍♀️ It might take some time if file size is big")
     input_str = event.pattern_match.group(1)
-    if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
-        os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
+    if not os.path.isdir(config.TMP_DOWNLOAD_DIRECTORY):
+        os.makedirs(config.TMP_DOWNLOAD_DIRECTORY)
     if event.reply_to_msg_id:
         start = datetime.now()
         file_name = input_str
         reply_message = await event.get_reply_message()
         c_time = time.time()
-        to_download_directory = Config.TMP_DOWNLOAD_DIRECTORY
+        to_download_directory = config.TMP_DOWNLOAD_DIRECTORY
         downloaded_file_name = os.path.join(to_download_directory, file_name)
         downloaded_file_name = await borg.download_media(
             reply_message,
@@ -176,7 +176,7 @@ async def _(event):
                     event.chat_id,
                     downloaded_file_name,
                     thumb=thumb,
-                    caption="reuploaded by cat",
+                    caption="reuploaded by MEGASTAR",
                     force_document=False,
                     allow_cache=False,
                     reply_to=event.message.id,
@@ -207,8 +207,8 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
-    if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
-        os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
+    if not os.path.isdir(config.TMP_DOWNLOAD_DIRECTORY):
+        os.makedirs(config.TMP_DOWNLOAD_DIRECTORY)
     thumb = None
     if os.path.exists(thumb_image_path):
         thumb = thumb_image_path
@@ -216,7 +216,7 @@ async def _(event):
     input_str = event.pattern_match.group(1)
     url = input_str
     file_name = os.path.basename(url)
-    to_download_directory = Config.TMP_DOWNLOAD_DIRECTORY
+    to_download_directory = config.TMP_DOWNLOAD_DIRECTORY
     if "|" in input_str:
         url, file_name = input_str.split("|")
     url = url.strip()
