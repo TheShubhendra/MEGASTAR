@@ -1,4 +1,4 @@
-# pm and tagged messages logger for legend userbot by @mrconfused (@sandy1709)
+# pm and tagged messages logger for megastar  USERBOT
 import asyncio
 
 from telethon import events
@@ -11,6 +11,9 @@ from . import BOTLOG, BOTLOG_CHATID, CMD_HELP, LOGS
 RECENT_USER = None
 NEWPM = None
 COUNT = 0
+
+def mentionuser(name, userid):
+    return f"[{name}](tg://user?id={userid})"
 
 
 @borg.on(events.NewMessage(incoming=True, func=lambda e: e.is_private))
