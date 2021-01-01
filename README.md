@@ -40,7 +40,7 @@
 
 
 
-<p align="centre"><a href="https://t.me/MEGASTAR_USERBOT?template=https://t.me/MEGASTAR_USERBOT"> <img src="https://telegra.ph/file/6b2aeeccbbf98a3e64f01.jpg" alt="JOIN NOW " width="200" height="200.200"/></a></p>
+<p align="centre"><a href="https://t.me/MEGASTAR_USERBOT?template=https://t.me/MEGASTAR_USERBOT"> <img src="https://telegra.ph/file/f335f085c7ff834f6e816.jpg" alt="JOIN NOW " width="200" height="200.200"/></a></p>
 
 
 
@@ -53,7 +53,7 @@
 
 
 
-<p align="centre"><a href="https://t.me/MEGASTAR_SUPPORT?template=https://t.me/MEGASTAR_SUPPORT"> <img src="https://telegra.ph/file/9ff92c38775ab62acf606.jpg" alt="JOIN NOW " width="200" height="200.200"/></a></p>
+<p align="centre"><a href="https://t.me/MEGASTAR_SUPPORT?template=https://t.me/MEGASTAR_SUPPORT"> <img src="https://telegra.ph/file/ec75e2ab9c17417c965b7.jpg" alt="JOIN NOW " width="200" height="200.200"/></a></p>
 
 
 
