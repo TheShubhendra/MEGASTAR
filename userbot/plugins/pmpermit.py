@@ -30,7 +30,7 @@ USER_BOT_NO_WARN = ("`Hello Sir/mam ! This is` **MEGASTAR Userbot**\n"
 
 
 if Var.PRIVATE_GROUP_ID is not None:
-    @borg.on(pattern="^.av ?(.*)")
+    @borg.on(admin_cmd(pattern="av ?(.*)"))
     async def approve_p_m(event):
         if event.fwd_from:
            return
@@ -51,7 +51,7 @@ if Var.PRIVATE_GROUP_ID is not None:
                 await event.delete()
 
 
-    @borg.on(pattern="^.block ?(.*)")
+    @borg.on(admin_cmd(pattern=".block ?(.*)"))
     async def approve_p_m(event):
         if event.fwd_from:
             return
@@ -70,7 +70,7 @@ if Var.PRIVATE_GROUP_ID is not None:
                 await asyncio.sleep(3)
                 await event.client(functions.contacts.BlockRequest(chat.id))
 
-    @borg.on(pattern="^.dav ?(.*)")
+    @borg.on(admin_cmd(pattern="dav ?(.*)")(
     async def approve_p_m(event):
         if event.fwd_from:
             return
@@ -89,7 +89,7 @@ if Var.PRIVATE_GROUP_ID is not None:
                 await event.delete()
     
 
-    @borg.on(pattern="^.lav")
+    @borg.on(admin_cmd(pattern="lav ?(.*)"))
     async def approve_p_m(event):
         if event.fwd_from:
             return
