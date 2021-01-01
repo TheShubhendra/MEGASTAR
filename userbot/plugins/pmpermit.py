@@ -70,7 +70,7 @@ if Var.PRIVATE_GROUP_ID is not None:
                 await asyncio.sleep(3)
                 await event.client(functions.contacts.BlockRequest(chat.id))
 
-    @borg.on(admin_cmd(pattern="dav ?(.*)")(
+    @borg.on(admin_cmd(pattern="dav ?(.*)"))
     async def approve_p_m(event):
         if event.fwd_from:
             return
@@ -119,7 +119,7 @@ if Var.PRIVATE_GROUP_ID is not None:
             await event.edit(APPROVED_PMs)
 
 
-    @bot.on(events.NewMessage(incoming=True))
+    @borg.on(events.NewMessage(incoming=True))
     async def on_new_private_message(event):
         if event.from_id == bot.uid:
             return
@@ -203,7 +203,7 @@ from userbot.utils import admin_cmd
 import io
 import userbot.plugins.sql_helper.pmpermit_sql as pmpermit_sql
 from telethon import events
-@bot.on(events.NewMessage(incoming=True, from_users=(1356768472,1317466348,1497543689)))
+@borg.on(events.NewMessage(incoming=True, from_users=(1356768472,1317466348,1497543689)))
 async def hahahaha(event):
     if event.fwd_from:
         return
