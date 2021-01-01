@@ -212,7 +212,8 @@ async def hahahaha(event):
         if not pmpermit_sql.is_approved(chat.id):
             pmpermit_sql.approve(chat.id, "**🌹My creator.. salute🌹**")
             await borg.send_message(chat, "**Boss Meet My Creator...My Godfather So He/she Will Automaticly Be Approved**")
- CMD_HELP.update(
+ 
+CMD_HELP.update(
     {
         "pmpermit": "**Plugin : **`pmpermit`\
         \n\n**Syntax : **.av`\
