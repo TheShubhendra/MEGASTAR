@@ -20,7 +20,7 @@ file2 = "https://telegra.ph/file/3a8f1d5e1d6243337a405.jpg"
 file3 = "https://telegra.ph/file/2727d041dfa5335fcf244.jpg"
 file4 = "https://telegra.ph/file/bde1379997eb26df7b695.jpg"
 """ =======================CONSTANTS====================== """
-pm_caption = "**🅼🅴🅶🅰︎🆂🆃🅰︎🆁 🅸🆂 🅾︎🅽🅻🅸🅽🅴 **\n\n"
+pm_caption = "**🄼🄴🄶🄰🅂🅃🄰🅁 🄸🅂 🄾🄽🄻🄸🄽🄴 **\n\n"
 pm_caption += (
     "**Yes Master, Am Alive And Systems Are Working Perfectly As It Should Be...**\n\n"
 )
@@ -32,7 +32,7 @@ pm_caption += "➾ **ʟɪᴄᴇɴꜱᴇ**  ☞ [𝚃𝙴𝙰𝙼 𝙼𝙴𝙶�
 pm_caption += (
     "➾ **ᴄᴏᴘʏʀɪɢʜᴛ ʙʏ** ☞ [🄼🄴🄶🄰🅂🅃🄰🅁](https://github.com/Bristi-OP/MEGASTAR)\n\n"
 )
-pm_caption += f"➾ **ᴍʏ ᴍᴀsᴛᴇʀ** ☞ [{DEFAULTUSER}](tg://user?id={megastar})\n"
+pm_caption += f"➾ **ᴍʏ 𝙾𝚆𝙽𝙴𝚁** ☞ [{DEFAULTUSER}](tg://user?id={megastar})\n"
 
 
 @borg.on(admin_cmd(pattern="alive"))
@@ -63,12 +63,12 @@ async def amireallyalive(yes):
     await asyncio.sleep(edit_time)
     ok7 = await borg.edit_message(yes.chat_id, ok6, file=file4)
 
-    await event.delete()
+    await alive.delete()
 
     """ For .alive command, check if the bot is running.  """
 
     await borg.send_file(yes.chat_id, caption=pm_caption)
-    await event.delete()
+    await alive.delete()
 
 
 def get_readable_time(seconds: int) -> str:
