@@ -1,6 +1,6 @@
 {
-  "name":"𝕃𝔼𝔾𝔼ℕ𝔻_𝕌𝕊𝔼ℝ𝔹𝕆𝕋",
-  "description": "The best userbot made by @YOU_ARE_UNDER_ARREST and @none1p For Support Join @LEGEND_USERBOT_SUPPORT",
+  "name":"𝕄𝔼𝔾𝔸𝕊𝕋𝔸ℝ 𝕌𝕊𝔼ℝ𝔹𝕆𝕋",
+  "description": "The best userbot made by @YOU_ARE_UNDER_ARREST and @none1p For Support Join @MEGASTAR_SUPPORT",
   "logo": "https://telegra.ph/file/1869e37a3c152e0f959a8.jpg",
     "keywords": [
     "telegram",
@@ -9,9 +9,9 @@
     "modular",
     "productivity"
   ],
-  "repository": "https://github.com/Bristi-OP/LEGEND/",
-  "website": "https://github.com/Bristi-OP/LEGEND/",
-  "success_url": "https://t.me/LEGEND_USERBOT_SUPPORT/",
+  "repository": "https://github.com/Bristi-OP/MEGASTAR/",
+  "website": "https://github.com/Bristi-OP/MEGASTAR/",
+  "success_url": "https://t.me/MEGASTAR_SUPPORT/",
   "env": {
     "ENV": {
       "description": "Setting this to ANYTHING will enable heroku.",
@@ -34,7 +34,7 @@
     },
     "ALIVE_MSG": {
       "description": "Set Custom awake Message When entering .awake command.",
-      "value": "LEGEND USERBOT IS BEST ",
+      "value": "MEGASTAR USERBOT IS BEST ",
       "required": true
     },
     "ALIVE_PIC": {
@@ -44,7 +44,7 @@
     },
     "BIO_MSG": {
       "description": "Put Your Telegram Bio Here Required For Auto Bio.",
-      "value": "LEGEND USERBOT IS BEST ",
+      "value": "MEGASTAR USERBOT IS BEST ",
       "required": false
     },
     "PMPERMIT_PIC": {
@@ -106,7 +106,7 @@
       "required": false
     },
     "GIT_REPO_NAME": {
-      "description": "Your repo name Example: aritramandal/LEGEND , but GITHUB_ACCESS_TOKEN must be setup first.",
+      "description": "Your repo name Example: aritramandal/MEGASTAR , but GITHUB_ACCESS_TOKEN must be setup first.",
       "value": "",
       "required": false
     },
