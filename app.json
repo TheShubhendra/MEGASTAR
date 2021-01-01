@@ -57,6 +57,11 @@
       "value": "",
       "required": false
     },
+    "CUSTOM_PMPERMIT": {
+      "description": "Required for pm security.",
+      "value": "",
+      "required": false
+    },
     "APP_ID": {
       "description": "Get this value from my.telegram.org! Putting Others Value may result In Account Ban.. so don't be stupid.",
       "value": ""
