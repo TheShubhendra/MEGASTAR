@@ -1,7 +1,7 @@
-FROM Bristi-OP/LEGEND:latest
+FROM Bristi-OP/MEGASTAR:latest
 
 #clonning repo 
-RUN git clone https://github.com/Bristi-OP/LEGEND.git/root/userbot
+RUN git clone https://github.com/Bristi-OP/MEGASTAR.git/root/userbot
 #working directory 
 WORKDIR /root/userbot
 
