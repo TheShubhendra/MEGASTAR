@@ -1,3 +1,4 @@
+#for megastar ub
 import asyncio
 import os
 import shlex
