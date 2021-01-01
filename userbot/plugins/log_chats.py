@@ -12,6 +12,7 @@ RECENT_USER = None
 NEWPM = None
 COUNT = 0
 
+
 def mentionuser(name, userid):
     return f"[{name}](tg://user?id={userid})"
 
