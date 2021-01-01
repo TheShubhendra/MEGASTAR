@@ -11,7 +11,7 @@ from userbot.utils import admin_cmd
 PMPERMIT_PIC = os.environ.get("PMPERMIT_PIC", None)
 if PMPERMIT_PIC is None:
   WARN_PIC = "{PMPERMIT_PIC}"
-  else:
+else:
   WARN_PIC = PMPERMIT_PIC
 
 PM_WARNS = {}
