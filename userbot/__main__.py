@@ -43,7 +43,7 @@ for name in files:
         load_module(shortname.replace(".py", ""))
 
 if ALIVE_PIC is not None:
-    print("###--------------Alive Pic Added Successfully--------------###")
+    print("♨︎☞ Alive Pic Added Successfully ☜♨︎")
 
 
 print("Everything is Alright, Do .alive or .help to Check Online Status of Your Bot !!")
