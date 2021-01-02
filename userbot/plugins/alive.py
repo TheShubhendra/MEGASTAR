@@ -30,9 +30,7 @@ pm_caption += "➥ **ꜱᴜᴘᴘᴏʀᴛ ᴄʜᴀɴɴᴇʟ** ☞ [ᴊᴏɪɴ](h
 pm_caption += "➥ **ꜱᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ** ☞ [ᴊᴏɪɴ](https://t.me/MEGASTAR_SUPPORT)\n"
 pm_caption += "➥ **ʟɪᴄᴇɴꜱᴇ**  ☞ [ AGPL-3.0 License](https://github.com/Bristi-OP/MEGASTAR/blob/master/LICENSE)\n"
 pm_caption += "➥ **𝚁𝙴𝙿𝙾𝚂𝙸𝚃𝙾𝚁𝚈** ☞ [Repo](https://github.com/Bristi-OP/MEGASTAR)\n"
-pm_caption += (
-    "➥ **ᴄᴏᴘʏʀɪɢʜᴛ ʙʏ** ☞ [🄼🄴🄶🄰🅂🅃🄰🅁](https://t.me/none1p)\n\n"
-)
+pm_caption += "➥ **ᴄᴏᴘʏʀɪɢʜᴛ ʙʏ** ☞ [🄼🄴🄶🄰🅂🅃🄰🅁](https://t.me/none1p)\n\n"
 pm_caption += f"➥ **ᴍʏ 𝙾𝚆𝙽𝙴𝚁** ☞ [{DEFAULTUSER}](tg://user?id={megastar})\n"
 
 
