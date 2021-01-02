@@ -64,12 +64,12 @@ async def amireallyalive(yes):
     await asyncio.sleep(edit_time)
     ok7 = await borg.edit_message(yes.chat_id, ok6, file=file4)
 
-    await alive.delete()
+    await event.delete()
 
     """ For .alive command, check if the bot is running.  """
 
     await borg.send_file(yes.chat_id, caption=pm_caption)
-    await alive.delete()
+    await event.delete()
 
 
 def get_readable_time(seconds: int) -> str:
@@ -148,4 +148,4 @@ async def amireallyalive(alive):
             "───▄▀▀▀▄▄▄▄▄▄▄▀▀▀▄───\n ───█▒▒░░░░░░░░░▒▒█───\n    ────█░░█░░░░░█░░█────\n   ─▄▄──█░░░▀█▀░░░█──▄▄─\n    █░░█─▀▄░░░░░░░▄▀─█░░█\n    █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█\n    █░░╦─╦╔╗╦─╔╗╔╗╔╦╗╔╗░░█\n    █░░║║║╠─║─║─║║║║║╠─░░█\n   █░░╚╩╝╚╝╚╝╚╝╚╝╩─╩╚╝░░█\n    █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█\n",
             link_preview=False,
         )
-        await alive.delete()
+        await event.delete()
