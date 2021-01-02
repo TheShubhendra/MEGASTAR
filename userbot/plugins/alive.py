@@ -36,7 +36,7 @@ async def amireallyalive(yes):
     global megastar
     megastar = borg.uid
     await yes.delete()
-    on = await borg.send_file(yes.chat_id, file=file1, caption=pm_caption)
+    on = await borg.send(yes.chat_id, file=file1, caption=pm_caption)
 
     await asyncio.sleep(edit_time)
     await on.edit(file=file2)
@@ -61,7 +61,7 @@ async def amireallyalive(yes):
 
     """ For .alive command, check if the bot is running.  """
 
-    await borg.send_file(yes.chat_id, caption=pm_caption)
+    await borg.send(yes.chat_id, caption=pm_caption)
     await yes.delete()
 
 
