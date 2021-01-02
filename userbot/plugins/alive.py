@@ -39,35 +39,35 @@ async def amireallyalive(yes):
     await yes.get_chat()
     global megastar
     megastar = borg.uid
+    await yes.delete()
     on = await borg.send_file(yes.chat_id, file=file1, caption=pm_caption)
 
     await asyncio.sleep(edit_time)
-    ok = await borg.edit_message(yes.chat_id, on, file=file2)
+    await on.edit(file=file2)
 
     await asyncio.sleep(edit_time)
-    ok2 = await borg.edit_message(yes.chat_id, ok, file=file3)
+    await on.edit(file=file3)
 
     await asyncio.sleep(edit_time)
-    ok3 = await borg.edit_message(yes.chat_id, ok2, file=file1)
+    await on.edit(file=file1)
 
     await asyncio.sleep(edit_time)
-    ok4 = await borg.edit_message(yes.chat_id, ok3, file=file3)
+    await on.edit(file=file3)
 
     await asyncio.sleep(edit_time)
-    ok5 = await borg.edit_message(yes.chat_id, ok4, file=file2)
+    await on.edit(file=file2)
 
     await asyncio.sleep(edit_time)
-    ok6 = await borg.edit_message(yes.chat_id, ok5, file=file1)
+    await on.edit(file=file1)
 
     await asyncio.sleep(edit_time)
-    ok7 = await borg.edit_message(yes.chat_id, ok6, file=file4)
+    await on.edit(file=file4)
 
-    await event.delete()
 
     """ For .alive command, check if the bot is running.  """
 
     await borg.send_file(yes.chat_id, caption=pm_caption)
-    await event.delete()
+    await yes.delete()
 
 
 def get_readable_time(seconds: int) -> str:
