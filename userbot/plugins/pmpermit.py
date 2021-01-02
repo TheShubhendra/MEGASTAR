@@ -34,7 +34,7 @@ USER_BOT_NO_WARN = (
     "**Welcome Sir/mam This Is My Master\n"
     f"{DEFAULTUSER}'s Inbox**\n\n"
     f"{CUSTOM_MIDDLE_PMP} 🌹\n\n"
-    "**Welcome To His/her Inbox.. PLease** 🌹 `/start` 🌹 To Continue ****"
+    "**Welcome To His/her Inbox.. PLease** 🌹 `/start` 🌹 To Continue **"
 )
 
 
