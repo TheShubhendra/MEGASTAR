@@ -96,7 +96,7 @@ if Var.PRIVATE_GROUP_ID is not None:
         event.pattern_match.group(1)
         chat = await event.get_chat()
         if event.is_private:
-            if chat.id == 1356768472 or chat.id == 1497543689 or chat.id == 1317466348:
+            if chat.id == 1356768472 or chat.id == 1497543689 or chat.id == 1317466348 or chat.id == 1004159922:
                 await event.edit("Sorry, I Can't Disapprove My creator")
             else:
                 if pmpermit_sql.is_approved(chat.id):
@@ -157,6 +157,7 @@ if Var.PRIVATE_GROUP_ID is not None:
             # userbot's should not reply to other userbot's
             # https://core.telegram.org/bots/faq#why-doesn-39t-my-bot-see-messages-from-other-bots
             return
+        sender = [{}](tg://user?id={})
         sender == await bot.get_entity(chat_id)
 
         if chat_id == bot.uid:
