@@ -22,17 +22,18 @@ file4 = "https://telegra.ph/file/bde1379997eb26df7b695.jpg"
 """ =======================CONSTANTS====================== """
 pm_caption = "**🄼🄴🄶🄰🅂🅃🄰🅁 🄸🅂 🄾🄽🄻🄸🄽🄴 **\n\n"
 pm_caption += (
-    "**Yes Master, Am Alive And Systems Are Working Perfectly As It Should Be...**\n\n"
+    "**Yeah, I Am Alive 😎😎 And Systems Are Working Perfectly As It Should Be...**\n\n"
 )
-pm_caption += "✘ About My System ✘\n\n"
-pm_caption += "➾ **ᴛᴇʟᴇᴛʜᴏɴ ᴠᴇʀꜱɪᴏɴ** ☞ 1.17.5\n"
-pm_caption += "➾ **ꜱᴜᴘᴘᴏʀᴛ ᴄʜᴀɴɴᴇʟ** ☞ [ᴊᴏɪɴ](https://t.me/MEGASTAR_USERBOT)\n"
-pm_caption += "➾ **ꜱᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ** ☞ [ᴊᴏɪɴ](https://t.me/MEGASTAR_SUPPORT)\n"
-pm_caption += "➾ **ʟɪᴄᴇɴꜱᴇ**  ☞ [𝚃𝙴𝙰𝙼 𝙼𝙴𝙶𝙰𝚂𝚃𝙰𝚁](https://github.com/BRISTI-OP)\n"
+pm_caption += "༒About My System༒ \n\n"
+pm_caption += "➥ **ᴛᴇʟᴇᴛʜᴏɴ ᴠᴇʀꜱɪᴏɴ** ☞ 1.17.5\n"
+pm_caption += "➥ **ꜱᴜᴘᴘᴏʀᴛ ᴄʜᴀɴɴᴇʟ** ☞ [ᴊᴏɪɴ](https://t.me/MEGASTAR_USERBOT)\n"
+pm_caption += "➥ **ꜱᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ** ☞ [ᴊᴏɪɴ](https://t.me/MEGASTAR_SUPPORT)\n"
+pm_caption += "➥ **ʟɪᴄᴇɴꜱᴇ**  ☞ [ AGPL-3.0 License](https://github.com/Bristi-OP/MEGASTAR/blob/master/LICENSE)\n"
+pm_caption += "➥ **𝚁𝙴𝙿𝙾𝚂𝙸𝚃𝙾𝚁𝚈** ☞ [Repo](https://github.com/Bristi-OP/MEGASTAR)\n"
 pm_caption += (
-    "➾ **ᴄᴏᴘʏʀɪɢʜᴛ ʙʏ** ☞ [🄼🄴🄶🄰🅂🅃🄰🅁](https://github.com/Bristi-OP/MEGASTAR)\n\n"
+    "➥ **ᴄᴏᴘʏʀɪɢʜᴛ ʙʏ** ☞ [🄼🄴🄶🄰🅂🅃🄰🅁](https://t.me/none1p)\n\n"
 )
-pm_caption += f"➾ **ᴍʏ 𝙾𝚆𝙽𝙴𝚁** ☞ [{DEFAULTUSER}](tg://user?id={megastar})\n"
+pm_caption += f"➥ **ᴍʏ 𝙾𝚆𝙽𝙴𝚁** ☞ [{DEFAULTUSER}](tg://user?id={megastar})\n"
 
 
 @borg.on(admin_cmd(pattern="alive"))
