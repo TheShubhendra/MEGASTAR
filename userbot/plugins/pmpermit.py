@@ -100,7 +100,6 @@ if Var.PRIVATE_GROUP_ID is not None:
                 chat.id == 1356768472
                 or chat.id == 1497543689
                 or chat.id == 1317466348
-                or chat.id == 1004159922
             ):
                 await event.edit("Sorry, I Can't Disapprove My creator")
             else:
