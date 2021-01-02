@@ -63,7 +63,6 @@ async def amireallyalive(yes):
     await asyncio.sleep(edit_time)
     await on.edit(file=file4)
 
-
     """ For .alive command, check if the bot is running.  """
 
     await borg.send_file(yes.chat_id, caption=pm_caption)
