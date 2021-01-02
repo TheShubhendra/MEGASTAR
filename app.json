@@ -1,7 +1,7 @@
 {
   "name":"𝕄𝔼𝔾𝔸𝕊𝕋𝔸ℝ 𝕌𝕊𝔼ℝ𝔹𝕆𝕋",
   "description": "The best userbot made by @YOU_ARE_UNDER_ARREST and @none1p For Support Join @MEGASTAR_SUPPORT",
-  "logo": "https://telegra.ph/file/1869e37a3c152e0f959a8.jpg",
+  "logo": "https://telegra.ph/file/82056687b90c9bdaa21b5.jpg",
     "keywords": [
     "telegram",
     "userbot",
@@ -39,7 +39,7 @@
     },
     "ALIVE_PIC": {
       "description": "put here any telegraph media link for .awake cmd.",
-      "value": "https://telegra.ph/file/5779ad3b39cbb7b0225e1.jpg",
+      "value": "https://telegra.ph/file/1ae50911854f63793d1b6.png",
       "required": true
     },
     "BIO_MSG": {
