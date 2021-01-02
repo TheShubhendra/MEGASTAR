@@ -15,7 +15,12 @@ ALIVE_PIC = os.environ.get("ALIVE_PIC", None)
 
 @borg.on(admin_cmd(outgoing=True, pattern="salive"))
 async def amireallyalive(alive):
-    """ For .alive command, check if the bot is running.  """
+    await alive.get_chat()
+    global megastar
+    megastar = borg.uid
+    await alive.delete()
+
+    """ For .salive command, check if the bot is running.  """
     if ALIVE_PIC:
         pm_caption = "**🄼🄴🄶🄰🅂🅃🄰🅁 🄸🅂 🄾🄽🄻🄸🄽🄴**\n"
         pm_caption += f"**𝕄𝕪 𝔹𝕠𝕤𝕤**            : {DEFAULTUSER}\n"
@@ -31,8 +36,8 @@ async def amireallyalive(alive):
         pm_caption += "𝘾𝙊𝙋𝙔𝙍𝙄𝙂𝙃𝙏 𝘽𝙔            : [ @YOU_ARE_UNDER_ARREST ](https://t.me/YOU_ARE_UNDER_ARREST)\n"
         pm_caption += "───▄▀▀▀▄▄▄▄▄▄▄▀▀▀▄───\n ───█▒▒░░░░░░░░░▒▒█───\n    ────█░░█░░░░░█░░█────\n   ─▄▄──█░░░▀█▀░░░█──▄▄─\n    █░░█─▀▄░░░░░░░▄▀─█░░█\n    █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█\n    █░░╦─╦╔╗╦─╔╗╔╗╔╦╗╔╗░░█\n    █░░║║║╠─║─║─║║║║║╠─░░█\n   █░░╚╩╝╚╝╚╝╚╝╚╝╩─╩╚╝░░█\n    █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█\n"
         await alive.get_chat()
-        await yes.delete()
-        """ For .allive command, check if the bot is running.  """
+        await alive.delete()
+        """ For .salive command, check if the bot is running.  """
         await borg.send_file(
             alive.chat_id, ALIVE_PIC, caption=pm_caption, link_preview=False
         )
