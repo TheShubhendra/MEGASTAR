@@ -15,10 +15,10 @@ global megastar
 megastar = borg.uid
 edit_time = 5
 """ =======================CONSTANTS====================== """
-file1 = "https://telegra.ph/file/ea5c671288eaede7f5407.jpg"
-file2 = "https://telegra.ph/file/3a8f1d5e1d6243337a405.jpg"
-file3 = "https://telegra.ph/file/2727d041dfa5335fcf244.jpg"
-file4 = "https://telegra.ph/file/bde1379997eb26df7b695.jpg"
+file1 = "https://telegra.ph/file/35633762f93bf7e5d79d9.jpg"
+file2 = "https://telegra.ph/file/82056687b90c9bdaa21b5.jpg"
+file3 = "https://telegra.ph/file/1ae50911854f63793d1b6.png"
+file4 = "https://telegra.ph/file/66fc6846b5589d62c9c5a.jpg"
 """ =======================CONSTANTS====================== """
 pm_caption = "**🄼🄴🄶🄰🅂🅃🄰🅁 🄸🅂 🄾🄽🄻🄸🄽🄴 **\n\n"
 pm_caption += (
@@ -97,52 +97,3 @@ def get_readable_time(seconds: int) -> str:
     return ping_time
 
 
-@borg.on(admin_cmd(outgoing=True, pattern="salive"))
-async def amireallyalive(alive):
-    """ For .alive command, check if the bot is running.  """
-    if ALIVE_PHOTTO:
-        pm_caption = "**🄼🄴🄶🄰🅂🅃🄰🅁 🄸🅂 🄾🄽🄻🄸🄽🄴**\n"
-        pm_caption += f"**𝕄𝕪 𝔹𝕠𝕤𝕤**            : {DEFAULTUSER}\n"
-        pm_caption += "𝚃𝙴𝙻𝙴𝚃𝙷𝙾𝙽 𝚅𝙴𝚁𝚂𝙸𝙾𝙽        : 1.17.5\n"
-        pm_caption += "𝙿𝚈𝚃𝙷𝙾𝙽 𝚅𝙴𝚁𝚂𝙸𝙾𝙽          : 3.9.1\n"
-        pm_caption += (
-            "𝚂𝚄𝙿𝙿𝙾𝚁𝚃 𝙲𝙷𝙰𝙽𝙽𝙴𝙻         : [ᴊᴏɪɴ](https://t.me/MEGASTAR_USERBOT)\n"
-        )
-        pm_caption += (
-            "𝚂𝚄𝙿𝙿𝙾𝚁𝚃 𝙶𝚁𝙾𝚄𝙿           : [ᴊᴏɪɴ](https://t.me/MEGASTAR_SUPPORT)\n"
-        )
-        pm_caption += "𝘓𝘐𝘚𝘌𝘕𝘊𝘌                  : [AGPL-3.0  ʟɪᴄᴇɴꜱᴇ](http://www.gnu.org/licenses/gpl-3.0.en.html)\n"
-        pm_caption += "𝘾𝙊𝙋𝙔𝙍𝙄𝙂𝙃𝙏 𝘽𝙔            : [ @YOU_ARE_UNDER_ARREST ](https://t.me/YOU_ARE_UNDER_ARREST)\n"
-        pm_caption += "───▄▀▀▀▄▄▄▄▄▄▄▀▀▀▄───\n ───█▒▒░░░░░░░░░▒▒█───\n    ────█░░█░░░░░█░░█────\n   ─▄▄──█░░░▀█▀░░░█──▄▄─\n    █░░█─▀▄░░░░░░░▄▀─█░░█\n    █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█\n    █░░╦─╦╔╗╦─╔╗╔╗╔╦╗╔╗░░█\n    █░░║║║╠─║─║─║║║║║╠─░░█\n   █░░╚╩╝╚╝╚╝╚╝╚╝╩─╩╚╝░░█\n    █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█\n"
-        await alive.get_chat()
-        await alive.delete()
-        """ For .allive command, check if the bot is running.  """
-        await borg.send_file(
-            alive.chat_id, ALIVE_PIC, caption=pm_caption, link_preview=False
-        )
-        await allive.delete()
-        return
-    req = requests.get("https://telegra.ph/file/a47ec82a3a5c96f4aa5fe.png")
-    req.raise_for_status()
-    file = BytesIO(req.content)
-    file.seek(0)
-    img = Image.open(file)
-    with BytesIO() as sticker:
-        img.save(sticker, "webp")
-        sticker.name = "sticker.webp"
-        sticker.seek(0)
-        await borg.send_file(alive.chat_id, file=sticker)
-        await borg.send_message(
-            alive.chat_id,
-            "**🄼🄴🄶🄰🅂🅃🄰🅁 🄸🅂 🄾🄽🄻🄸🄽🄴**\n"
-            f"**𝕄𝕪 𝔹𝕠𝕤𝕤**            : {DEFAULTUSER}\n"
-            "𝚃𝙴𝙻𝙴𝚃𝙷𝙾𝙽 𝚅𝙴𝚁𝚂𝙸𝙾𝙽        : 1.17.5\n"
-            "𝙿𝚈𝚃𝙷𝙾𝙽 𝚅𝙴𝚁𝚂𝙸𝙾𝙽          : 3.9.0\n"
-            "𝚂𝚄𝙿𝙿𝙾𝚁𝚃 𝙲𝙷𝙰𝙽𝙽𝙴𝙻         : [ᴊᴏɪɴ](https://t.me/MEGASTAR_USERBOT)\n"
-            "𝚂𝚄𝙿𝙿𝙾𝚁𝚃 𝙶𝚁𝙾𝚄𝙿           : [ᴊᴏɪɴ](https://t.me/MEGASTAR_SUPPORT)\n"
-            "𝘓𝘐𝘚𝘌𝘕𝘊𝘌                  : [AGPL-3.0  ʟɪᴄᴇɴꜱᴇ](http://www.gnu.org/licenses/gpl-3.0.en.html)\n"
-            "𝘾𝙊𝙋𝙔𝙍𝙄𝙂𝙃𝙏 𝘽𝙔            : [ @YOU_ARE_UNDER_ARREST ](https://t.me/YOU_ARE_UNDER_ARREST)\n"
-            "───▄▀▀▀▄▄▄▄▄▄▄▀▀▀▄───\n ───█▒▒░░░░░░░░░▒▒█───\n    ────█░░█░░░░░█░░█────\n   ─▄▄──█░░░▀█▀░░░█──▄▄─\n    █░░█─▀▄░░░░░░░▄▀─█░░█\n    █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█\n    █░░╦─╦╔╗╦─╔╗╔╗╔╦╗╔╗░░█\n    █░░║║║╠─║─║─║║║║║╠─░░█\n   █░░╚╩╝╚╝╚╝╚╝╚╝╩─╩╚╝░░█\n    █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█\n",
-            link_preview=False,
-        )
-        await yes.delete()
