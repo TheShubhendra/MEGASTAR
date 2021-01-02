@@ -49,7 +49,7 @@
     },
     "PMPERMIT_PIC": {
       "description": "put here any telegraph media link for pmpermit custom pic.",
-      "value": "https://telegra.ph/file/343c12e6ef8f38bb4d73a.jpg",
+      "value": "https://telegra.ph/file/66fc6846b5589d62c9c5a.jpg",
       "required": true
     },
     "PM_PERMIT_GROUP_ID": {
@@ -102,7 +102,7 @@
        "value": ""
     }, 
     "STRING_SESSION": {
-      "description": "Get this value by running https://repl.it/@bristi648/Legenduserbot/ ",
+      "description": "Get this value by running https://repl.it/@bristi648/megastar/ ",
       "value": ""
     },
     "GITHUB_ACCESS_TOKEN": {
