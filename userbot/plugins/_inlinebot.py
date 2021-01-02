@@ -21,11 +21,11 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
         query = event.text
         hmm = re.compile("secret (.*) (.*)")
         match = re.findall(hmm, query)
-        if query.startswith("**legend userbot") and event.query.user_id == bot.uid:
+        if query.startswith("**megastar userbot") and event.query.user_id == bot.uid:
             buttons = [
                 (
                     custom.Button.inline("Stats", data="stats"),
-                    Button.url("Repo", "https://github.com/suhaash02/viperuserbot"),
+                    Button.url("Repo", "https://github.com/Bristi-OP/MEGASTAR"),
                 )
             ]
             if PGL_IMG and PGL_IMG.endswith((".jpg", ".png")):
@@ -110,12 +110,12 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
                 try:
                     u = await event.client.get_entity(u)
                     if u.username:
-                        sandy = f"@{u.username}"
+                        krishan = f"@{u.username}"
                     else:
-                        sandy = f"[{u.first_name}](tg://user?id={u.id})"
+                        krishan = f"[{u.first_name}](tg://user?id={u.id})"
                 except ValueError:
                     # ValueError: Could not find the input entity
-                    sandy = f"[user](tg://user?id={u})"
+                    krishan = f"[user](tg://user?id={u})"
             except ValueError:
                 # if u is username
                 try:
@@ -123,9 +123,9 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
                 except ValueError:
                     return
                 if u.username:
-                    sandy = f"@{u.username}"
+                    krishan = f"@{u.username}"
                 else:
-                    sandy = f"[{u.first_name}](tg://user?id={u.id})"
+                    krishan = f"[{u.first_name}](tg://user?id={u.id})"
                 u = int(u.id)
             except BaseException:
                 return
@@ -215,7 +215,7 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             else:
                 reply_pop_up_alert = help_string
             reply_pop_up_alert += (
-                "Use .unload {} to remove this plugin \n legend userbot".format(
+                "Use .unload {} to remove this plugin \n megastar userbot".format(
                     plugin_name
                 )
             )
@@ -233,15 +233,15 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
                         caption=plugin_name,
                     )
         else:
-            reply_pop_up_alert = "Please get your own LEGEND userbot, and don't use mine! Join @LEGEND_USERBOT_SUPPORT for help "
+            reply_pop_up_alert = "Please get your own MEGASTAR userbot, and don't use mine! Join @MEGASTAR_SUPPORT for help "
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"close")))
     async def on_plug_in_callback_query_handler(event):
         if event.query.user_id == bot.uid:
-            await event.edit("menu closed")
+            await event.edit("Help .menu closed")
         else:
-            reply_pop_up_alert = "Please get your own legend userbot, and don't use mine! Join @LEGEND_USERBOT_SUPPORT for help "
+            reply_pop_up_alert = "Please get your own MEGASTAR userbot, and don't use mine! Join @MEGASTAR_SUPPORT for help "
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"stats")))
@@ -289,11 +289,11 @@ def paginate_help(page_number, loaded_plugins, prefix):
         ] + [
             (
                 custom.Button.inline(
-                    "⌫", data="{}_prev({})".format(prefix, modulo_page)
+                    "☜", data="{}_prev({})".format(prefix, modulo_page)
                 ),
-                custom.Button.inline("Close", data="close"),
+                custom.Button.inline("⌧", data="close"),
                 custom.Button.inline(
-                    "⌦", data="{}_next({})".format(prefix, modulo_page)
+                    "☞", data="{}_next({})".format(prefix, modulo_page)
                 ),
             )
         ]
