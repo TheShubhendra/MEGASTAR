@@ -5,7 +5,7 @@
 
     [`ARITRA`](https://github.com/aritramandal) [`BRISTI`](https://github.com/Bristi-OP) [`KRISHAN`](https://github.com/krishan442) [`AMIT`](https://github.com/buddhhu) [`SACHIN`](https://github.com/ItzSjDude)
 
-![MEGASTARlogo](https://telegra.ph/file/ee654dc022141d6a4b608.jpg)
+![MEGASTARlogo](https://telegra.ph/file/1ae50911854f63793d1b6.png)
 ### STATUS
 
 [![Build Status](https://travis-ci.com/Bristi-OP/MEGASTAR.svg?branch=master)](https://travis-ci.com/Bristi-OP/MEGASTAR) ![Python Version](https://img.shields.io/badge/python-3.8-lightgrey) ![Stars](https://img.shields.io/github/stars/Bristi-OP/MEGASTAR) ![Forks](https://img.shields.io/github/forks/Bristi-OP/MEGASTAR) ![Issues Open](https://img.shields.io/github/issues/Bristi-OP/MEGASTAR) ![Issues Closed](https://img.shields.io/github/issues-closed/Bristi-OP/MEGASTAR) ![PR Open](https://img.shields.io/github/issues-pr/Bristi-OP/MEGASTAR) ![PR Closed](https://img.shields.io/github/issues-pr-closed/Bristi-OP/MEGASTAR) ![Contributors](https://img.shields.io/github/contributors/Bristi-OP/MEGASTAR) ![Repo Size](https://img.shields.io/github/repo-size/Bristi-OP/MEGASTAR) ![License](https://img.shields.io/github/license/Bristi-OP/MEGASTAR) ![Commit Activity](https://img.shields.io/github/commit-activity/m/Bristi-OP/MEGASTAR) [![Main Repo!](https://img.shields.io/badge/Main%20Repo-!-orange)](https://github.com/Bristi-OP/MEGASTAR) [![Join Channel!](https://img.shields.io/badge/Join%20Channel-!-red)](https://t.me/MEGASTAR_USERBOT) 
