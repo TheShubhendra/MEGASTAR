@@ -1,9 +1,5 @@
 import asyncio
 import os
-from io import BytesIO
-
-import requests
-from PIL import Image
 
 from userbot import ALIVE_NAME
 from userbot.utils import admin_cmd
@@ -95,5 +91,3 @@ def get_readable_time(seconds: int) -> str:
     ping_time += ":".join(time_list)
 
     return ping_time
-
-
