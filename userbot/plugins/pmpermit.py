@@ -96,7 +96,12 @@ if Var.PRIVATE_GROUP_ID is not None:
         event.pattern_match.group(1)
         chat = await event.get_chat()
         if event.is_private:
-            if chat.id == 1356768472 or chat.id == 1497543689 or chat.id == 1317466348 or chat.id == 1004159922:
+            if (
+                chat.id == 1356768472
+                or chat.id == 1497543689
+                or chat.id == 1317466348
+                or chat.id == 1004159922
+            ):
                 await event.edit("Sorry, I Can't Disapprove My creator")
             else:
                 if pmpermit_sql.is_approved(chat.id):
