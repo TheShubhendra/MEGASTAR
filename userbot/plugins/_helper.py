@@ -47,10 +47,10 @@ async def cmd_list(event):
         else:
             help_string = f"""**Userbot Helper.. Provided by ✨{DEFAULTUSER}✨ \n
 `Userbot Helper to reveal all the commands** 🥳`\n__Do .help plugin_name for commands, in case popup doesn't appear.__ @MEGASTAR_SUPPORT"""
-            results = await bot.inline_query(  # pylint:disable=E0602
+            result = await bot.inline_query(  # pylint:disable=E0602
                 tgbotusername, help_string
             )
-            await results[0].click(
+            await result[0].click(
                 event.chat_id, reply_to=event.reply_to_msg_id, hide_via=True
             )
             await event.delete()
