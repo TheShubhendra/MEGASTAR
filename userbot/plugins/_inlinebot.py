@@ -4,10 +4,13 @@ import math
 import os
 import re
 import time
+from userbot import ALIVE_NAME
 
 from telethon import Button, custom, events
 
 from . import CMD_LIST
+
+DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "@MEGASTAR_SUPPORT"
 
 PGL_IMG = config.ALIVE_PIC or None
 BTN_URL_REGEX = re.compile(r"(\[([^\[]+?)\]\<buttonurl:(?:/{0,2})(.+?)(:same)?\>)")
