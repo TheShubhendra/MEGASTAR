@@ -127,22 +127,22 @@ async def on_afk(event):
                minutes = time // 60
                time %= 60
                seconds = time
-             if days == 1:
+          if days == 1:
                afk_since = "**Yesterday**"
-             elif days > 1:
-             if days > 6:
+          elif days > 1:
+          if days > 6:
                date = now + \
                datetime.timedelta(
                days=-days, -hours=-hours, minutes=-minutes)
                afk_since = date.strftime("%A, %Y %B %m, %H:%I")
-             else:
+          else:
                wday = now + datetime.timedelta(days=-days)
                afk_since = wday.strftime('%A')
-             elif hours > 1:
+          elif hours > 1:
                afk_since = f"`{int(hours)}h{int(minutes)}m` **ago**"
-             elif minutes > 0:
+          elif minutes > 0:
                afk_since = f"`{int(minutes)}m{int(seconds)}s` **ago**"
-             else:
+          else:
                afk_since = f"`{int(seconds)}s` **ago**"    
         msg = None
         message_to_reply = (
