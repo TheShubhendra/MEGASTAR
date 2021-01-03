@@ -21,7 +21,7 @@ auth_url = r["auth_url"]
 async def _(event):
     if event.fwd_from:
         return
-    if config.PLUGIN_CHANNEL is None:
+    if config.PRIVATE_GROUP_ID is None:
         await event.edit(
             "Please set the required environment variable `PLUGIN_CHANNEL` for this plugin to work"
         )
@@ -29,7 +29,7 @@ async def _(event):
     if not os.path.isdir(config.TMP_DOWNLOAD_DIRECTORY):
         os.makedirs(config.TMP_DOWNLOAD_DIRECTORY)
     await borg.send_message(
-        config.PLUGIN_CHANNEL,
+        config.PRIVATE_GROUP_ID,
         "Created New Telegraph account {} for the current session. \n**Do not give this url to anyone, even if they say they are from Telegram!**".format(
             auth_url
         ),
