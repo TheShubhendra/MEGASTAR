@@ -143,17 +143,17 @@ async def on_afk(event):
              #  afk_since = f"`{int(minutes)}m{int(seconds)}s` **ago**"
             #   else:
              #  afk_since = f"`{int(seconds)}s` **ago**"    
-        msg = None
-        message_to_reply = (
+    msg = None
+    message_to_reply = (
             f"**My boss is busy right now...\ncommanded me to say it to you that you have to wait till he/she comes back online🥰\n He/She Has Been Gone For** `{total_afk_time}`\n**Where He/She Is**: **It's A Secret 🤫**\n [I won't tell you😁](https://telegra.ph/file/075a26d773e901f7fbb67.jpg) "
             + f"\n\n__ I'll back in a few Light years__\n**REASON**: {reason}"
             if reason
             else f"**Important Notice**\n\n[My Boss died😓🥺...](https://telegra.ph/file/b7834560026a1b2b21678.jpg) "
         )
-        msg = await event.reply(message_to_reply)
-        await asyncio.sleep(5)
+    msg = await event.reply(message_to_reply)
+    await asyncio.sleep(5)
         if event.chat_id in last_afk_message:  # pylint:disable=E0602
-            await last_afk_message[event.chat_id].delete()  # pylint:disable=E0602
+        await last_afk_message[event.chat_id].delete()  # pylint:disable=E0602
         last_afk_message[event.chat_id] = msg  # pylint:disable=E0602
 
 
