@@ -115,13 +115,13 @@ async def on_afk(event):
                     afk_since = date.strftime("%A, %Y %B %m, %H:%I")
                 else:
                     wday = now + datetime.timedelta(days=-days)
-                    afk_since = wday.strftime("%A")
+                    wday.strftime("%A")
             elif hours > 1:
-                afk_since = f"`{int(hours)}h{int(minutes)}m` **ago**"
+                f"`{int(hours)}h{int(minutes)}m` **ago**"
             elif minutes > 0:
-                afk_since = f"`{int(minutes)}m{int(seconds)}s` **ago**"
+                f"`{int(minutes)}m{int(seconds)}s` **ago**"
             else:
-                afk_since = f"`{int(seconds)}s` **ago**"
+                f"`{int(seconds)}s` **ago**"
         msg = None
         message_to_reply = (
             f"My boss is busy right now..commanded me to say it to you that you have to wait till he/she comes back online🥰\n He/She Has Been Gone For {afk_time}\nWhere He/She Is: **It's A Secret 🤫**\n\n[I won't tell you😁](https://telegra.ph/file/075a26d773e901f7fbb67.jpg) "
