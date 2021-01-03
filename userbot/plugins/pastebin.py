@@ -1,14 +1,23 @@
-# pastebin for MEGASTAR USERBOT
+# pastebin for MEGASTAR userbot
+
+import logging
 
 import os
+
+from datetime import datetime
 
 import requests
 from requests import exceptions, get
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
-from ..utils import admin_cmd, edit_or_reply
-from . import CMD_HELP
+from userbot import CMD_HELP
+from userbot.config import config
+from userbot.utils import admin_cmd
+
+logging.basicconfig(
+    format="[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s", level=logging.WARNING
+)
 
 
 def progress(current, total):
@@ -21,150 +30,66 @@ def progress(current, total):
 
 DOGBIN_URL = "https://del.dog/"
 
+BOTLOG_CHATID = config.PRIVATE_GROUP_BOT_API_ID
+BOTLOG = True
 
-@borg.on(admin_cmd(pattern="paste( (.*)|$)", outgoing=True))
+
+@borg.on(admin_cmd(pattern="paste ?(.*)"))
 async def _(event):
-    event = await edit_or_reply(event, "`pasting to del dog.....`")
-    input_str = "".join(event.text.split(maxsplit=1)[1:])
+    if event.fwd_from:
+        return
+    start = datetime.now()
+    if not os.path.isdir(config.TMP_DOWNLOAD_DIRECTORY):
+        os.makedirs(config.TMP_DOWNLOAD_DIRECTORY)
+    input_str = event.pattern_match.group(1)
+    message = "SYNTAX: `.paste <long text to include>`"
     if input_str:
         message = input_str
     elif event.reply_to_msg_id:
         previous_message = await event.get_reply_message()
         if previous_message.media:
-            downloaded_file_name = await event.client.download_media(
+            downloaded_file_name = await borg.download_media(
                 previous_message,
-                Config.TEMP_DIR,
+                config.TMP_DOWNLOAD_DIRECTORY,
+                progress_callback=progress,
             )
             m_list = None
             with open(downloaded_file_name, "rb") as fd:
                 m_list = fd.readlines()
             message = ""
-            try:
-                for m in m_list:
-                    message += m.decode("UTF-8")
-            except BaseException:
-                message = "Usage : .paste <long text to include/reply to text file>"
+            for m in m_list:
+                message += m.decode("UTF-8") + "\r\n"
             os.remove(downloaded_file_name)
         else:
             message = previous_message.message
     else:
-        message = "Usage : .paste <long text to include/reply to text file>"
+        message = "SYNTAX: `.paste <long text to include>`"
     url = "https://del.dog/documents"
     r = requests.post(url, data=message.encode("UTF-8")).json()
     url = f"https://del.dog/{r['key']}"
+    end = datetime.now()
+    ms = (end - start).seconds
     if r["isUrl"]:
         nurl = f"https://del.dog/v/{r['key']}"
-        rawurl = f"https://del.dog/raw/{r['key']}"
         await event.edit(
-            f"**𝙿𝙰𝚂𝚃𝙴𝙳 𝚃𝙾 𝙳𝙾𝙶𝙱𝙸𝙽 : **[dog]({nurl}).\n**Raw url :** [raw link]({rawurl})\n**GoTo Original URL: **[link]({url})\n @megastar_userbot"
-        )
-    else:
-        await event.edit(
-            f"**𝙿𝙰𝚂𝚃𝙴𝙳 𝚃𝙾 𝙳𝙾𝙶𝙱𝙸𝙽 : **[dog]({url})\n**Raw url :** [raw link](https://del.dog/raw/{r['key']})\n @megastar_userbot"
-        )
-
-
-@borg.on(admin_cmd(pattern="neko( (.*)|$)", outgoing=True))
-async def _(event):
-    event = await edit_or_reply(event, "`pasting to neko bin.....`")
-    input_str = "".join(event.text.split(maxsplit=1)[1:])
-    if input_str:
-        message = input_str
-        downloaded_file_name = None
-    elif event.reply_to_msg_id:
-        previous_message = await event.get_reply_message()
-        if previous_message.media:
-            downloaded_file_name = await event.client.download_media(
-                previous_message,
-                Config.TEMP_DIR,
+            "𝙿𝙰𝚂𝚃𝙴𝙳 𝚃𝙾 𝙳𝙾𝙶𝙱𝙸𝙽 : [dog]({}) in {} seconds. GoTo Original URL: [link]({})".format(
+                url, ms, nurl
             )
-            m_list = None
-            with open(downloaded_file_name, "rb") as fd:
-                m_list = fd.readlines()
-            message = ""
-            try:
-                for m in m_list:
-                    message += m.decode("UTF-8")
-            except BaseException:
-                message = (
-                    "**Usage : **`.neko <long text to include/reply to text file>`"
-                )
-            os.remove(downloaded_file_name)
-        else:
-            downloaded_file_name = None
-            message = previous_message.message
-    else:
-        downloaded_file_name = None
-        message = "**Usage : **`.neko <long text to include/reply to text file>`"
-    if downloaded_file_name and downloaded_file_name.endswith(".py"):
-        py_file = ".py"
-        data = message
-        key = (
-            requests.post("https://nekobin.com/api/documents", json={"content": data})
-            .json()
-            .get("result")
-            .get("key")
-        )
-        url = f"https://nekobin.com/{key}{py_file}"
-    else:
-        data = message
-        key = (
-            requests.post("https://nekobin.com/api/documents", json={"content": data})
-            .json()
-            .get("result")
-            .get("key")
-        )
-        url = f"https://nekobin.com/{key}"
-    reply_text = f"**𝙿𝙰𝚂𝚃𝙴𝙳 𝚃𝙾 𝙽𝙴𝙺𝙾𝙱𝙸𝙽 : **[neko]({url})\n**Raw url : **[Raw](https://nekobin.com/raw/{key})\n @megastar_userbot"
-    await event.edit(reply_text)
-
-
-@borg.on(admin_cmd(pattern="iffuci( (.*)|$)", outgoing=True))
-async def _(event):
-    event = await edit_or_reply(event, "`pasting to del dog.....`")
-    input_str = "".join(event.text.split(maxsplit=1)[1:])
-    if input_str:
-        message = input_str
-    elif event.reply_to_msg_id:
-        previous_message = await event.get_reply_message()
-        if previous_message.media:
-            downloaded_file_name = await event.client.download_media(
-                previous_message,
-                Config.TEMP_DIR,
-            )
-            m_list = None
-            with open(downloaded_file_name, "rb") as fd:
-                m_list = fd.readlines()
-            message = ""
-            try:
-                for m in m_list:
-                    message += m.decode("UTF-8")
-            except BaseException:
-                message = "Usage : .paste <long text to include/reply to text file>"
-            os.remove(downloaded_file_name)
-        else:
-            message = previous_message.message
-    else:
-        message = "Usage : .paste <long text to include/reply to text file>"
-    url = "https://www.iffuci.tk/documents"
-    r = requests.post(url, data=message.encode("UTF-8")).json()
-    url = f"https://iffuci.tk/{r['key']}"
-    if r["isUrl"]:
-        nurl = f"https://iffuci.tk/v/{r['key']}"
-        await event.edit(
-            "code is pasted to {}. GoTo Original URL: {}".format(nurl, url)
         )
     else:
-        await event.edit("code is pasted to {}".format(url))
+        await event.edit("𝙿𝙰𝚂𝚃𝙴𝙳 𝚃𝙾 𝙳𝙾𝙶𝙱𝙸𝙽 : [dog]({}) in {} seconds".format(url, ms)\n @MEGASTAR_SUPPORT)
 
 
-@borg.on(admin_cmd(outgoing=True, pattern="getpaste( (.*)|$)"))
+@borg.on(admin_cmd(outgoing=True, pattern="getpaste(?: |$)(.*)"))
 async def get_dogbin_content(dog_url):
+    """ For .getpaste command, fetches the content of a dogbin URL. """
     textx = await dog_url.get_reply_message()
     message = dog_url.pattern_match.group(1)
-    event = await edit_or_reply(dog_url, "`Getting dogbin content...`")
-    if not message and textx:
+    await dog_url.edit("`Getting dogbin content...`")
+
+    if textx:
         message = str(textx.message)
+
     format_normal = f"{DOGBIN_URL}"
     format_view = f"{DOGBIN_URL}v/"
 
@@ -175,77 +100,198 @@ async def get_dogbin_content(dog_url):
     elif message.startswith("del.dog/"):
         message = message[len("del.dog/") :]
     else:
-        await event.edit("`Is that even a dogbin url?`")
+        await dog_url.edit("`Is that even a dogbin url?`")
         return
+
     resp = get(f"{DOGBIN_URL}raw/{message}")
+
     try:
         resp.raise_for_status()
     except exceptions.HTTPError as HTTPErr:
-        await event.edit(
+        await dog_url.edit(
             "Request returned an unsuccessful status code.\n\n" + str(HTTPErr)
         )
         return
     except exceptions.Timeout as TimeoutErr:
-        await event.edit("Request timed out." + str(TimeoutErr))
+        await dog_url.edit("Request timed out." + str(TimeoutErr))
         return
     except exceptions.TooManyRedirects as RedirectsErr:
-        await event.edit(
+        await dog_url.edit(
             "Request exceeded the configured number of maximum redirections."
             + str(RedirectsErr)
         )
         return
+
     reply_text = "`Fetched dogbin URL content successfully!`\n\n`Content:` " + resp.text
-    await event.edit(reply_text)
+
+    await dog_url.edit(reply_text)
+    if BOTLOG:
+        await dog_url.client.send_message(
+            BOTLOG_CHATID,
+            "Get dogbin content query was executed successfully",
+        )
 
 
-@borg.on(admin_cmd(pattern="paster( (.*)|$)", outgoing=True))
+@borg.on(admin_cmd(pattern="neko ?(.*)"))
 async def _(event):
-    event = await edit_or_reply(event, "`pasting to del dog.....`")
-    input_str = "".join(event.text.split(maxsplit=1)[1:])
-    previous_message = None
+    if event.fwd_from:
+        return
+    datetime.now()
+    if not os.path.isdir(config.TMP_DOWNLOAD_DIRECTORY):
+        os.makedirs(config.TMP_DOWNLOAD_DIRECTORY)
+    input_str = event.pattern_match.group(1)
+    message = "SYNTAX: `.neko <long text to include>`"
     if input_str:
         message = input_str
     elif event.reply_to_msg_id:
         previous_message = await event.get_reply_message()
         if previous_message.media:
-            downloaded_file_name = await event.client.download_media(
+            downloaded_file_name = await borg.download_media(
                 previous_message,
-                Config.TEMP_DIR,
+                config.TMP_DOWNLOAD_DIRECTORY,
+                progress_callback=progress,
             )
             m_list = None
             with open(downloaded_file_name, "rb") as fd:
                 m_list = fd.readlines()
             message = ""
-            try:
-                for m in m_list:
-                    message += m.decode("UTF-8")
-            except BaseException:
-                message = "Usage : .paste <long text to include/reply to text file>"
+            for m in m_list:
+                # message += m.decode("UTF-8") + "\r\n"
+                message += m.decode("UTF-8")
             os.remove(downloaded_file_name)
         else:
             message = previous_message.message
     else:
-        message = "Usage : .paste <long text to include/reply to text file>"
+        message = "SYNTAX: `.neko <long text to include>`"
+    py_file = ""
+    if downloaded_file_name.endswith(".py"):
+        py_file += ".py"
+        data = message
+        key = (
+            requests.post("https://nekobin.com/api/documents", json={"content": data})
+            .json()
+            .get("result")
+            .get("key")
+        )
+        url = f"https://nekobin.com/{key}{py_file}"
+        reply_text = f"Pasted to Nekobin : [neko]({url})"
+        await event.edit(reply_text)
+    else:
+        data = message
+        key = (
+            requests.post("https://nekobin.com/api/documents", json={"content": data})
+            .json()
+            .get("result")
+            .get("key")
+        )
+        url = f"https://nekobin.com/{key}"
+        reply_text = f"𝙿𝙰𝚂𝚃𝙴𝙳 𝚃𝙾 𝙽𝙴𝙺𝙾𝙱𝙸𝙽 : [neko]({url})\n @MEGASTAR_SUPPORT"
+        await event.edit(reply_text)
+
+
+@borg.on(admin_cmd(pattern="iffuci ?(.*)"))
+async def _(event):
+    if event.fwd_from:
+        return
+    start = datetime.now()
+    if not os.path.isdir(config.TMP_DOWNLOAD_DIRECTORY):
+        os.makedirs(config.TMP_DOWNLOAD_DIRECTORY)
+    input_str = event.pattern_match.group(1)
+    message = "SYNTAX: `.iffuci <long text to include>`"
+    if input_str:
+        message = input_str
+    elif event.reply_to_msg_id:
+        previous_message = await event.get_reply_message()
+        if previous_message.media:
+            downloaded_file_name = await borg.download_media(
+                previous_message,
+                config.TMP_DOWNLOAD_DIRECTORY,
+                progress_callback=progress,
+            )
+            m_list = None
+            with open(downloaded_file_name, "rb") as fd:
+                m_list = fd.readlines()
+            message = ""
+            for m in m_list:
+                message += m.decode("UTF-8") + "\r\n"
+            os.remove(downloaded_file_name)
+        else:
+            message = previous_message.message
+    else:
+        message = "SYNTAX: `.iffuci <long text to include>`"
+    url = "https://www.iffuci.tk/documents"
+    r = requests.post(url, data=message.encode("UTF-8")).json()
+    url = f"https://iffuci.tk/{r['key']}"
+    end = datetime.now()
+    ms = (end - start).seconds
+    if r["isUrl"]:
+        nurl = f"https://iffuci.tk/v/{r['key']}"
+        await event.edit(
+            "code is pasted to {} in {} seconds. GoTo Original URL: {}".format(
+                url, ms, nurl
+            )
+        )
+    else:
+        await event.edit("code is pasted to {} in {} seconds".format(url, ms))
+
+
+@borg.on(admin_cmd(pattern="paster ?(.*)"))
+async def _(event):
+    if event.fwd_from:
+        return
+    datetime.now()
+    reply_message = await event.get_reply_message()
+    if not os.path.isdir(config.TMP_DOWNLOAD_DIRECTORY):
+        os.makedirs(config.TMP_DOWNLOAD_DIRECTORY)
+    input_str = event.pattern_match.group(1)
+    message = "SYNTAX: `.paste <long text to include>`"
+    if input_str:
+        message = input_str
+    elif event.reply_to_msg_id:
+        previous_message = await event.get_reply_message()
+        if previous_message.media:
+            downloaded_file_name = await borg.download_media(
+                previous_message,
+                config.TMP_DOWNLOAD_DIRECTORY,
+                progress_callback=progress,
+            )
+            m_list = None
+            with open(downloaded_file_name, "rb") as fd:
+                m_list = fd.readlines()
+            message = ""
+            for m in m_list:
+                message += m.decode("UTF-8") + "\r\n"
+            os.remove(downloaded_file_name)
+        else:
+            message = previous_message.message
+    else:
+        message = "SYNTAX: `.paste <long text to include>`"
     url = "https://del.dog/documents"
     r = requests.post(url, data=message.encode("UTF-8")).json()
     url = f"https://del.dog/{r['key']}"
     chat = "@chotamreaderbot"
-    # This module is modded by @ViperAdnan #KeepCredit
-    await event.edit("**Making instant view...**")
-    async with event.client.conversation(chat) as conv:
-        try:
-            response = conv.wait_event(
-                events.NewMessage(incoming=True, from_users=272572121)
-            )
-            await event.client.send_message(chat, url)
-            response = await response
-        except YouBlockedUserError:
-            await event.edit("```Please unblock me (@chotamreaderbot) u Nigga```")
-            return
-        await event.delete()
-        await event.client.send_message(
-            event.chat_id, response.message, reply_to=previous_message
+    if r["isUrl"]:
+        nurl = f"https://del.dog/v/{r['key']}"
+        await event.edit(
+            "Dogged to {} in {} seconds. GoTo Original URL: {}".format(url, ms, nurl)
         )
+    # This module is modded by @ViperAdnan #KeepCredit
+    else:
+        await event.edit("**Making instant view...**")
+        async with event.client.conversation(chat) as conv:
+            try:
+                response = conv.wait_event(
+                    events.NewMessage(incoming=True, from_users=272572121)
+                )
+                await event.client.send_message(chat, url)
+                response = await response
+            except YouBlockedUserError:
+                await event.reply("```Please unblock me (@chotamreaderbot) u Nigga```")
+                return
+            await event.delete()
+            await event.client.send_message(
+                event.chat_id, response.message, reply_to=reply_message
+            )
 
 
 CMD_HELP.update(
