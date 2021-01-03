@@ -61,9 +61,9 @@ async def log_tagged_messages(event):
         return
     if not config.PM_LOGGR_BOT_API_ID:
         return
-    from .afk import USERAFK_ON
+    from .afk import USER_AFK
 
-    if "on" in USERAFK_ON:
+    if "on" in USER_AFK:
         return
     try:
         if (await event.get_sender()).bot:
