@@ -1,5 +1,5 @@
 # By @NOOB_GUY_OP for Dark CObra
-# Now to be used in legend ub
+# Now to be used in megastar ub
 import asyncio
 
 from .. import ALIVE_NAME
