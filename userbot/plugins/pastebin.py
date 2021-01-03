@@ -167,7 +167,7 @@ async def _(event):
             .get("key")
         )
         url = f"https://nekobin.com/{key}{py_file}"
-        reply_text = f"Pasted to Nekobin : [neko]({url})"
+        reply_text = f"𝙿𝙰𝚂𝚃𝙴𝙳 𝚃𝙾 𝙽𝙴𝙺𝙾𝙱𝙸𝙽 : [neko]({url})"
         await event.edit(reply_text)
     else:
         data = message
