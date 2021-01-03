@@ -119,31 +119,30 @@ async def on_afk(event):
             if afk_time:  # pylint:disable=E0602
                now = datetime.datetime.now()
                datime_since_afk = now - afk_time  # pylint:disable=E0602
-               time = float(datime_since_afk.seconds)
-               days = time // (24 * 3600)
-               time = time % (24 * 3600)
-               hours = time // 3600
-               time %= 3600
-               minutes = time // 60
-               time %= 60
-               seconds = time
-               if days == 1:
-               afk_since = "**Yesterday**"
-               elif days > 1:
-               if days > 6:
-               date = now + \
-               datetime.timedelta(
-               days=-days, -hours=-hours, minutes=-minutes)
-               afk_since = date.strftime("%A, %Y %B %m, %H:%I")
-               else:
-               wday = now + datetime.timedelta(days=-days)
-               afk_since = wday.strftime('%A')
-               elif hours > 1:
-               afk_since = f"`{int(hours)}h{int(minutes)}m` **ago**"
-               elif minutes > 0:
-               afk_since = f"`{int(minutes)}m{int(seconds)}s` **ago**"
-               else:
-               afk_since = f"`{int(seconds)}s` **ago**"    
+             #  time = float(datime_since_afk.seconds)
+             #  days = time // (24 * 3600)
+             # time = time % (24 * 3600)
+             # hours = time // 3600
+             #  time %= 3600
+             # minutes = time // 60
+             #  time %= 60
+             #  seconds = time
+             # if days == 1:
+             #  afk_since = "**Yesterday**"
+             #  elif days > 1:
+              # if days > 6:
+             #  date = now + \
+            #   datetime.timedelta(days=-days, hours=-hours, minutes=-minutes)
+             #  afk_since = date.strftime("%A, %Y %B %m, %H:%I")
+             #  else:
+            #   wday = now + datetime.timedelta(days=-days)
+            #   afk_since = wday.strftime('%A')
+             #  elif hours > 1:
+            #   afk_since = f"`{int(hours)}h{int(minutes)}m` **ago**"
+            #   elif minutes > 0:
+             #  afk_since = f"`{int(minutes)}m{int(seconds)}s` **ago**"
+            #   else:
+             #  afk_since = f"`{int(seconds)}s` **ago**"    
         msg = None
         message_to_reply = (
             f"**My boss is busy right now...\ncommanded me to say it to you that you have to wait till he/she comes back online🥰\n He/She Has Been Gone For** `{total_afk_time}`\n**Where He/She Is**: **It's A Secret 🤫**\n [I won't tell you😁](https://telegra.ph/file/075a26d773e901f7fbb67.jpg) "
