@@ -13,11 +13,6 @@ from userbot import CMD_HELP
 from userbot.config import config
 from userbot.utils import admin_cmd
 
-logging.config(
-    format="[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s", level=logging.WARNING
-)
-
-
 def progress(current, total):
     logger.info(
         "Downloaded {} of {}\nCompleted {}".format(
