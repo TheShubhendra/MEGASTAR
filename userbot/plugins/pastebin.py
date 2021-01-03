@@ -13,7 +13,7 @@ from userbot import CMD_HELP
 from userbot.config import config
 from userbot.utils import admin_cmd
 
-logging.basicconfig(
+logging.config(
     format="[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s", level=logging.WARNING
 )
 
