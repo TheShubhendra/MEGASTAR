@@ -68,12 +68,12 @@ async def _(event):
         return
     reply_message = await event.get_reply_message()
     await event.edit("Downloading Profile Picture to my local ...")
-    if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):  # pylint:disable=E0602
-        os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)  # pylint:disable=E0602
+    if not os.path.isdir(config.TMP_DOWNLOAD_DIRECTORY):  # pylint:disable=E0602
+        os.makedirs(config.TMP_DOWNLOAD_DIRECTORY)  # pylint:disable=E0602
     photo = None
     try:
         photo = await event.client.download_media(  # pylint:disable=E0602
-            reply_message, Config.TMP_DOWNLOAD_DIRECTORY  # pylint:disable=E0602
+            reply_message, config.TMP_DOWNLOAD_DIRECTORY  # pylint:disable=E0602
         )
     except Exception as e:  # pylint:disable=C0103,W0703
         await event.edit(str(e))
