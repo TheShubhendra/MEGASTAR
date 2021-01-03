@@ -6,8 +6,6 @@ import datetime
 from telethon import events
 from telethon.tl import functions, types
 
-from userbot.utils import admin_cmd
-
 from . import CMD_HELP
 
 global USER_AFK  # pylint:disable=E0602
@@ -19,7 +17,6 @@ last_afk_message = {}
 
 
 @borg.on(events.NewMessage(outgoing=True))  # pylint:disable=E0602
-
 async def set_not_afk(event):
 
     global USER_AFK  # pylint:disable=E0602
@@ -52,7 +49,9 @@ async def set_not_afk(event):
                 event.chat_id,
                 "Please set `PRIVATE_GROUP_BOT_API_ID` "
                 + "for the proper functioning of afk functionality "
-                + "Ask In @MEGASTAR_SUPPORT Chat grp to get help..\n\n `{}`".format(str(e)),
+                + "Ask In @MEGASTAR_SUPPORT Chat grp to get help..\n\n `{}`".format(
+                    str(e)
+                ),
                 reply_to=event.message.id,
                 silent=True,
             )
@@ -60,6 +59,8 @@ async def set_not_afk(event):
         await shite.delete()
         USER_AFK = {}  # pylint:disable=E0602
         afk_time = None  # pylint:disable=E0602@borg.on(admin_cmd(pattern=r"afk ?(.*)"))
+
+
 async def _(event):
     if event.fwd_from:
         return
@@ -114,7 +115,7 @@ async def on_afk(event):
         # userbot's should not reply to other userbot's
         # https://core.telegram.org/bots/faq#why-doesn-39t-my-bot-see-messages-from-other-bots
         return False
-    if USER_AFK and not (await event.get_sender()).bot:  # pylint:disable=E0602        
+    if USER_AFK and not (await event.get_sender()).bot:  # pylint:disable=E0602
         msg = None
         message_to_reply = (
             f"**My boss is busy right now...\ncommanded me to say it to you that you have to wait till he/she comes back online🥰\n He/She Has Been Gone For** `{total_afk_time}`\n**Where He/She Is**: **It's A Secret 🤫**\n [I won't tell you😁](https://telegra.ph/file/075a26d773e901f7fbb67.jpg) "
