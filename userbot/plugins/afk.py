@@ -104,8 +104,6 @@ async def on_afk(event):
     global last_afk_message  # pylint:disable=E0602
     global afk_start
     global afk_end
-    back_alivee = datetime()
-    afk_end = back_alivee.replace(microsecond=0)
     if afk_start != {}:
         total_afk_time = str((afk_end - afk_start))
     current_message_text = event.message.message.lower()
