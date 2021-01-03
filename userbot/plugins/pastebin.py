@@ -1,4 +1,4 @@
-# pastebin for LEGEND USERBOT
+# pastebin for MEGASTAR USERBOT
 
 import os
 
@@ -56,11 +56,11 @@ async def _(event):
         nurl = f"https://del.dog/v/{r['key']}"
         rawurl = f"https://del.dog/raw/{r['key']}"
         await event.edit(
-            f"**Pasted to dogbin : **[dog]({nurl}).\n**Raw url :** [raw link]({rawurl})\n**GoTo Original URL: **[link]({url}\n @legend_userbot)"
+            f"**𝙿𝙰𝚂𝚃𝙴𝙳 𝚃𝙾 𝙳𝙾𝙶𝙱𝙸𝙽 : **[dog]({nurl}).\n**Raw url :** [raw link]({rawurl})\n**GoTo Original URL: **[link]({url})\n @megastar_userbot"
         )
     else:
         await event.edit(
-            f"**Pasted to dogbin : **[dog]({url})\n**Raw url :** [raw link](https://del.dog/raw/{r['key']}\n @legend_userbot)"
+            f"**𝙿𝙰𝚂𝚃𝙴𝙳 𝚃𝙾 𝙳𝙾𝙶𝙱𝙸𝙽 : **[dog]({url})\n**Raw url :** [raw link](https://del.dog/raw/{r['key']})\n @megastar_userbot"
         )
 
 
@@ -115,7 +115,7 @@ async def _(event):
             .get("key")
         )
         url = f"https://nekobin.com/{key}"
-    reply_text = f"**Pasted to Nekobin : **[neko]({url})\n**Raw url : **[Raw](https://nekobin.com/raw/{key}\n @legend_userbot)"
+    reply_text = f"**𝙿𝙰𝚂𝚃𝙴𝙳 𝚃𝙾 𝙽𝙴𝙺𝙾𝙱𝙸𝙽 : **[neko]({url})\n**Raw url : **[Raw](https://nekobin.com/raw/{key})\n @megastar_userbot"
     await event.edit(reply_text)
 
 
