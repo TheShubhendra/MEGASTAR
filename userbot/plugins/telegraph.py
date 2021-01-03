@@ -1,7 +1,7 @@
 """@telegraph Utilities
 Available Commands:
-.telegraph media as reply to a media
-.telegraph text as reply to a large text"""
+.tele media as reply to a media
+.tele text as reply to a large text"""
 import os
 from datetime import datetime
 
@@ -109,9 +109,9 @@ def resize_image(image):
 CMD_HELP.update(
     {
         "telegraph": "**Plugin :**`telegraph`\
-     \n\n**Syntax :** `.telegraph media`\
+     \n\n**Syntax :** `.tele media`\
      \n**Usage :** Reply to any image or video to upload it to telegraph (video must be less than 5mb)\
-     \n\n**Syntax :** `.telegraph text`\
+     \n\n**Syntax :** `.tele text`\
      \n**Usage :** reply to any text file or any message to paste it to telegraph\
     "
     }
