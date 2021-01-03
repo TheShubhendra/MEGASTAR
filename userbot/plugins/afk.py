@@ -19,31 +19,47 @@ last_afk_message = {}
 
 
 @borg.on(events.NewMessage(outgoing=True))  # pylint:disable=E0602
+
 async def set_not_afk(event):
+
     global USER_AFK  # pylint:disable=E0602
     global afk_time  # pylint:disable=E0602
     global last_afk_message  # pylint:disable=E0602
+    global afk_start
+    global afk_end
+    back_alive = datetime.now()
+    afk_end = back_alive.replace(microsecond=0)
+    if afk_start != {}:
+        total_afk_time = str((afk_end - afk_start))
     current_message = event.message.message
     if ".afk" not in current_message and "yes" in USER_AFK:  # pylint:disable=E0602
+        shite = await borg.send_message(
+            event.chat_id,
+            "__Back alive!__\n**No Longer afk.**\n `Was afk for:``"
+            + total_afk_time
+            + "`",
+        )
         try:
             await borg.send_message(  # pylint:disable=E0602
-                config.PLUGIN_CHANNEL,  # pylint:disable=E0602
-                "My boss is busy right now..commanded me to say it to you that you have to wait till he/she comes back online🥰",
+                Config.PRIVATE_GROUP_BOT_API_ID,  # pylint:disable=E0602
+                "#AFKFALSE \nSet AFK mode to False\n"
+                + "__Back alive!__\n**No Longer afk.**\n `Was afk for:``"
+                + total_afk_time
+                + "`",
             )
         except Exception as e:  # pylint:disable=C0103,W0703
             await borg.send_message(  # pylint:disable=E0602
                 event.chat_id,
-                "Please set `PLUGIN_CHANNEL` "
+                "Please set `PRIVATE_GROUP_BOT_API_ID` "
                 + "for the proper functioning of afk functionality "
-                + "in @MEGASTAR_USERBOT \n\n `{}`".format(str(e)),
+                + "Ask In @MEGASTAR_SUPPORT Chat grp to get help..\n\n `{}`".format(str(e)),
                 reply_to=event.message.id,
                 silent=True,
             )
+        await asyncio.sleep(5)
+        await shite.delete()
         USER_AFK = {}  # pylint:disable=E0602
-        afk_time = None  # pylint:disable=E0602
-
-
-@borg.on(admin_cmd(pattern=r"afk ?(.*)"))
+        afk_time = None  # pylint:disable=E0602@borg.on(admin_cmd(pattern=r"afk ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -87,44 +103,22 @@ async def on_afk(event):
     global USER_AFK  # pylint:disable=E0602
     global afk_time  # pylint:disable=E0602
     global last_afk_message  # pylint:disable=E0602
-    afk_since = "**A while ago**"
+    global afk_start
+    global afk_end
+    back_alivee = datetime.now()
+    afk_end = back_alivee.replace(microsecond=0)
+    if afk_start != {}:
+        total_afk_time = str((afk_end - afk_start))
     current_message_text = event.message.message.lower()
     if "afk" in current_message_text:
         # userbot's should not reply to other userbot's
         # https://core.telegram.org/bots/faq#why-doesn-39t-my-bot-see-messages-from-other-bots
         return False
-    if USER_AFK and not (await event.get_sender()).bot:  # pylint:disable=E0602
-        if afk_time:  # pylint:disable=E0602
-            now = datetime.datetime.now()
-            datime_since_afk = now - afk_time  # pylint:disable=E0602
-            time = float(datime_since_afk.seconds)
-            days = time // (24 * 3600)
-            time = time % (24 * 3600)
-            hours = time // 3600
-            time %= 3600
-            minutes = time // 60
-            time %= 60
-            seconds = time
-            if days == 1:
-                afk_since = "**Yesterday**"
-            elif days > 1:
-                if days > 6:
-                    date = now + datetime.timedelta(
-                        days=-days, hours=-hours, minutes=-minutes
-                    )
-                    afk_since = date.strftime("%A, %Y %B %m, %H:%I")
-                else:
-                    wday = now + datetime.timedelta(days=-days)
-                    wday.strftime("%A")
-            elif hours > 1:
-                f"`{int(hours)}h{int(minutes)}m` **ago**"
-            elif minutes > 0:
-                f"`{int(minutes)}m{int(seconds)}s` **ago**"
-            else:
-                f"`{int(seconds)}s` **ago**"
+    if USER_AFK and not (await event.get_sender()).bot:  # pylint:disable=E0602        
         msg = None
         message_to_reply = (
-            f"My boss is busy right now..commanded me to say it to you that you have to wait till he/she comes back online🥰\n He/She Has Been Gone For {afk_time}\nWhere He/She Is: **It's A Secret 🤫**\n\n[I won't tell you😁](https://telegra.ph/file/075a26d773e901f7fbb67.jpg) "
+            f"**My boss is busy right now...\ncommanded me to say it to you that you have to wait till he/she comes back online🥰\n He/She Has Been Gone For** `{total
+afk_time}`\n**Where He/She Is**: **It's A Secret 🤫**\n [I won't tell you😁](https://telegra.ph/file/075a26d773e901f7fbb67.jpg) "
             + f"\n\n__ I'll back in a few Light years__\n**REASON**: {reason}"
             if reason
             else f"**Important Notice**\n\n[My Boss died😓🥺...](https://telegra.ph/file/b7834560026a1b2b21678.jpg) "
