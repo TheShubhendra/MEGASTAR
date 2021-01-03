@@ -70,10 +70,7 @@ async def _(event):
             )
         )
     else:
-        await event.edit(
-            "𝙿𝙰𝚂𝚃𝙴𝙳 𝚃𝙾 𝙳𝙾𝙶𝙱𝙸𝙽 : [dog]({}) in {} seconds".format(url, ms)
-             \n @MEGASTAR_SUPPORT
-        )
+        await event.edit("𝙿𝙰𝚂𝚃𝙴𝙳 𝚃𝙾 𝙳𝙾𝙶𝙱𝙸𝙽 : [dog]({}) in {} seconds".format(url, ms))
 
 
 @borg.on(admin_cmd(outgoing=True, pattern="getpaste(?: |$)(.*)"))
