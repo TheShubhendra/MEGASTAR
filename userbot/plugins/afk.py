@@ -2,10 +2,14 @@
 Syntax: .afk REASON"""
 import asyncio
 import datetime
+
 from telethon import events
 from telethon.tl import functions, types
+
 from userbot.utils import admin_cmd
+
 from . import CMD_HELP
+
 global USER_AFK  # pylint:disable=E0602
 global afk_time  # pylint:disable=E0602
 global last_afk_message  # pylint:disable=E0602
@@ -24,22 +28,22 @@ async def set_not_afk(event):
         try:
             await borg.send_message(  # pylint:disable=E0602
                 config.PLUGIN_CHANNEL,  # pylint:disable=E0602
-                "My boss is busy right now..commanded me to say it to you that you have to wait till he/she comes back online🥰"
+                "My boss is busy right now..commanded me to say it to you that you have to wait till he/she comes back online🥰",
             )
         except Exception as e:  # pylint:disable=C0103,W0703
             await borg.send_message(  # pylint:disable=E0602
                 event.chat_id,
-                "Please set `PLUGIN_CHANNEL` " + \
-                "for the proper functioning of afk functionality " + \
-                "in @MEGASTAR_USERBOT \n\n `{}`".format(str(e)),
+                "Please set `PLUGIN_CHANNEL` "
+                + "for the proper functioning of afk functionality "
+                + "in @MEGASTAR_USERBOT \n\n `{}`".format(str(e)),
                 reply_to=event.message.id,
-                silent=True
+                silent=True,
             )
         USER_AFK = {}  # pylint:disable=E0602
         afk_time = None  # pylint:disable=E0602
 
-@borg.on(admin_cmd(pattern=r"afk ?(.*)"))
 
+@borg.on(admin_cmd(pattern=r"afk ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -53,9 +57,7 @@ async def _(event):
     reason = event.pattern_match.group(1)
     if not USER_AFK:  # pylint:disable=E0602
         last_seen_status = await borg(  # pylint:disable=E0602
-            functions.account.GetPrivacyRequest(
-                types.InputPrivacyKeyStatusTimestamp()
-            )
+            functions.account.GetPrivacyRequest(types.InputPrivacyKeyStatusTimestamp())
         )
         if isinstance(last_seen_status.rules, types.PrivacyValueAllowAll):
             afk_time = datetime.datetime.now()  # pylint:disable=E0602
@@ -68,17 +70,17 @@ async def _(event):
         await event.delete()
         try:
             await borg.send_message(  # pylint:disable=E0602
-                config.PLUGIN_CHANNEL,  # pylint:disable=E0602
-                f"My Boss Went🥺 {reason}"
+                config.PLUGIN_CHANNEL, f"My Boss Went🥺 {reason}"  # pylint:disable=E0602
             )
         except Exception as e:  # pylint:disable=C0103,W0703
             logger.warn(str(e))  # pylint:disable=E0602
 
 
-@borg.on(events.NewMessage(  # pylint:disable=E0602
-    incoming=True,
-    func=lambda e: bool(e.mentioned or e.is_private)
-))
+@borg.on(
+    events.NewMessage(  # pylint:disable=E0602
+        incoming=True, func=lambda e: bool(e.mentioned or e.is_private)
+    )
+)
 async def on_afk(event):
     if event.fwd_from:
         return
@@ -107,13 +109,13 @@ async def on_afk(event):
                 afk_since = "**Yesterday**"
             elif days > 1:
                 if days > 6:
-                    date = now + \
-                        datetime.timedelta(
-                            days=-days, hours=-hours, minutes=-minutes)
+                    date = now + datetime.timedelta(
+                        days=-days, hours=-hours, minutes=-minutes
+                    )
                     afk_since = date.strftime("%A, %Y %B %m, %H:%I")
                 else:
                     wday = now + datetime.timedelta(days=-days)
-                    afk_since = wday.strftime('%A')
+                    afk_since = wday.strftime("%A")
             elif hours > 1:
                 afk_since = f"`{int(hours)}h{int(minutes)}m` **ago**"
             elif minutes > 0:
@@ -121,15 +123,18 @@ async def on_afk(event):
             else:
                 afk_since = f"`{int(seconds)}s` **ago**"
         msg = None
-        message_to_reply = f"My Boss Has Been Gone For {afk_since}\nWhere He/she Is: **It's A Secret 🤫**\n\n[I won't tell you😁](https://telegra.ph/file/075a26d773e901f7fbb67.jpg) " + \
-            f"\n\n__ I'll back in a few Light years__\n**REASON**: {reason}" \
-            if reason \
+        message_to_reply = (
+            f"My Boss Has Been Gone For {afk_since}\nWhere He/she Is: **It's A Secret 🤫**\n\n[I won't tell you😁](https://telegra.ph/file/075a26d773e901f7fbb67.jpg) "
+            + f"\n\n__ I'll back in a few Light years__\n**REASON**: {reason}"
+            if reason
             else f"**Important Notice**\n\n[My Boss died😓🥺...](https://telegra.ph/file/b7834560026a1b2b21678.jpg) "
+        )
         msg = await event.reply(message_to_reply)
         await asyncio.sleep(5)
         if event.chat_id in last_afk_message:  # pylint:disable=E0602
             await last_afk_message[event.chat_id].delete()  # pylint:disable=E0602
         last_afk_message[event.chat_id] = msg  # pylint:disable=E0602
+
 
 CMD_HELP.update(
     {
