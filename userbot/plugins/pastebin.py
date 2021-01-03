@@ -1,6 +1,5 @@
 # pastebin for MEGASTAR userbot
 
-import logging
 import os
 from datetime import datetime
 
@@ -12,6 +11,7 @@ from telethon.errors.rpcerrorlist import YouBlockedUserError
 from userbot import CMD_HELP
 from userbot.config import config
 from userbot.utils import admin_cmd
+
 
 def progress(current, total):
     logger.info(
