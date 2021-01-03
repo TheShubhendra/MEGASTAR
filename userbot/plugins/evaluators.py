@@ -22,7 +22,7 @@ async def _(event):
     )
     stdout, stderr = await process.communicate()
     OUTPUT = f"`{stdout.decode()}`"
-    if len(OUTPUT) > Config.MAX_MESSAGE_SIZE_LIMIT:
+    if len(OUTPUT) > config.MAX_MESSAGE_SIZE_LIMIT:
         with io.BytesIO(str.encode(OUTPUT)) as out_file:
             out_file.name = "bash.text"
             await event.client.send_file(
@@ -60,7 +60,7 @@ async def _(event):
         _o = o.split("\n")
         o = "`\n".join(_o)
     OUTPUT = f"**QUERY:**\n__Command:__\n`{cmd}` \n__PID:__\n`{process.pid}`\n\n**stderr:** \n`{e}`\n**Output:**\n{o}"
-    if len(OUTPUT) > Config.MAX_MESSAGE_SIZE_LIMIT:
+    if len(OUTPUT) > config.MAX_MESSAGE_SIZE_LIMIT:
         with io.BytesIO(str.encode(OUTPUT)) as out_file:
             out_file.name = "exec.text"
             await event.client.send_file(
@@ -108,7 +108,7 @@ async def _(event):
     else:
         evaluation = "Success"
     final_output = "**EVAL**: `{}` \n\n **OUTPUT**: \n`{}` \n".format(cmd, evaluation)
-    if len(final_output) > Config.MAX_MESSAGE_SIZE_LIMIT:
+    if len(final_output) > config.MAX_MESSAGE_SIZE_LIMIT:
         with io.BytesIO(str.encode(final_output)) as out_file:
             out_file.name = "eval.text"
             try:
