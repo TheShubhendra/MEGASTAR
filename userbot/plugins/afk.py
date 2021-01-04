@@ -2,10 +2,11 @@
 Syntax: .afk REASON"""
 import asyncio
 import datetime
+
 from telethon import events
 from telethon.tl import functions, types
+
 from userbot.utils import admin_cmd
-from . import CMD_HELP
 
 global USER_AFK  # pylint:disable=E0602
 global afk_time  # pylint:disable=E0602
@@ -25,22 +26,22 @@ async def set_not_afk(event):
         try:
             await borg.send_message(  # pylint:disable=E0602
                 config.PRIVATE_GROUP_ID,  # pylint:disable=E0602
-                "Mine Owner has gone for some Important work.."
+                "Mine Owner has gone for some Important work..",
             )
         except Exception as e:  # pylint:disable=C0103,W0703
             await borg.send_message(  # pylint:disable=E0602
                 event.chat_id,
-                "Please set `PRIVATE_GROUP_ID` " + \
-                "for the proper functioning of afk functionality " + \
-                "in @megastar_support \n\n `{}`".format(str(e)),
+                "Please set `PRIVATE_GROUP_ID` "
+                + "for the proper functioning of afk functionality "
+                + "in @megastar_support \n\n `{}`".format(str(e)),
                 reply_to=event.message.id,
-                silent=True
+                silent=True,
             )
         USER_AFK = {}  # pylint:disable=E0602
         afk_time = None  # pylint:disable=E0602
 
-@borg.on(admin_cmd(pattern=r"afk ?(.*)"))
 
+@borg.on(admin_cmd(pattern=r"afk ?(.*)"))
 async def _(event):
     if event.fwd_from:
         return
@@ -54,9 +55,7 @@ async def _(event):
     reason = event.pattern_match.group(1)
     if not USER_AFK:  # pylint:disable=E0602
         last_seen_status = await borg(  # pylint:disable=E0602
-            functions.account.GetPrivacyRequest(
-                types.InputPrivacyKeyStatusTimestamp()
-            )
+            functions.account.GetPrivacyRequest(types.InputPrivacyKeyStatusTimestamp())
         )
         if isinstance(last_seen_status.rules, types.PrivacyValueAllowAll):
             afk_time = datetime.datetime.now()  # pylint:disable=E0602
@@ -70,16 +69,17 @@ async def _(event):
         try:
             await borg.send_message(  # pylint:disable=E0602
                 config.PRIVATE_GROUP_ID,  # pylint:disable=E0602
-                f"My Boss Want {reason}"
+                f"My Boss Want {reason}",
             )
         except Exception as e:  # pylint:disable=C0103,W0703
             logger.warn(str(e))  # pylint:disable=E0602
 
 
-@borg.on(events.NewMessage(  # pylint:disable=E0602
-    incoming=True,
-    func=lambda e: bool(e.mentioned or e.is_private)
-))
+@borg.on(
+    events.NewMessage(  # pylint:disable=E0602
+        incoming=True, func=lambda e: bool(e.mentioned or e.is_private)
+    )
+)
 async def on_afk(event):
     if event.fwd_from:
         return
@@ -108,25 +108,23 @@ async def on_afk(event):
                 afk_since = "**Yesterday**"
             elif days > 1:
                 if days > 6:
-                    date = now + \
-                        datetime.timedelta(
-                            days=-days, hours=-hours, minutes=-minutes)
+                    date = now + datetime.timedelta(
+                        days=-days, hours=-hours, minutes=-minutes
+                    )
                     afk_since = date.strftime("%A, %Y %B %m, %H:%I")
                 else:
                     wday = now + datetime.timedelta(days=-days)
-                    afk_since = wday.strftime('%A')
+                    wday.strftime("%A")
             elif hours > 1:
-                afk_since = f"`{int(hours)}h{int(minutes)}m` **ago**"
+                f"`{int(hours)}h{int(minutes)}m` **ago**"
             elif minutes > 0:
-                afk_since = f"`{int(minutes)}m{int(seconds)}s` **ago**"
+                f"`{int(minutes)}m{int(seconds)}s` **ago**"
             else:
-                afk_since = f"`{int(seconds)}s` **ago**"
+                f"`{int(seconds)}s` **ago**"
         msg = None
         message_to_reply = f"**My boss is busy right now...\ncommanded me to say it to you that you have to wait till he/she comes back online🥰\n He/She Has Been Gone For a light year** \n**Where He/She Is**: **It's A Secret 🤫**\n[I won't tell you😁](https://telegra.ph/file/075a26d773e901f7fbb67.jpg) "
-        + f"\n\n__ I'll back in a few Light years__\n**REASON**: {reason}" \
-        if reason \
-        else f"**Important Notice**\n\n[My Boss died😓🥺...](https://telegra.ph/file/b7834560026a1b2b21678.jpg) "
-   
+        +f"\n\n__ I'll back in a few Light years__\n**REASON**: {reason}" if reason else f"**Important Notice**\n\n[My Boss died😓🥺...](https://telegra.ph/file/b7834560026a1b2b21678.jpg) "
+
         msg = await event.reply(message_to_reply)
         await asyncio.sleep(5)
         if event.chat_id in last_afk_message:  # pylint:disable=E0602
