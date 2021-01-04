@@ -16,7 +16,8 @@ global afk_end  # pylint:disable=E0602
 USER_AFK = {}
 afk_time = None
 last_afk_message = {}
-
+afk_start = {}
+afk_end = {}
 
 @borg.on(events.NewMessage(outgoing=True))  # pylint:disable=E0602
 async def set_not_afk(event):
