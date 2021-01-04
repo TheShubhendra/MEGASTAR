@@ -29,12 +29,12 @@ CUSTOM_MIDDLE_PMP = (
 )
 USER_BOT_WARN_ZERO = "`  You Have Been Blocked Due To Spamming Of My Master's/Mistress's Inbox Now it's his/her wish to unblock you or not.` "
 USER_BOT_NO_WARN = (
-    "`Hello Sir/mam ! This is` **MEGASTAR Userbot**\n"
-    "`🚫Private Messaging Security Protocol 🚫`\n\n"
-    "**Welcome Sir/mam This Is My Master\n"
+    "**Hello Sir/mam ! This is** **𝙼𝙴𝙶𝙰𝚂𝚃𝙰𝚁**\n"
+    "**🚫𝙿𝚁𝙸𝚅𝙰𝚃𝙴 𝙼𝙴𝚂𝚂𝙰𝙶𝙸𝙽𝙶 𝚂𝙴𝙲𝚄𝚁𝙸𝚃𝚈 𝙿𝚁𝙾𝚃𝙾𝙲𝙾𝙻**🚫\n\n"
+    "**Welcome Sir/mam This Is My Boss\n"
     f"{DEFAULTUSER}'s Inbox**\n\n"
-    f"{CUSTOM_MIDDLE_PMP} 🌹\n\n"
-    "**Welcome To His/her Inbox.. PLease** 🌹 `/start` 🌹 To Continue **"
+    f"🌹{CUSTOM_MIDDLE_PMP} 🌹\n\n"
+    "**Welcome To His/her Inbox.... write** `/start` **To Continue **"
 )
 
 
