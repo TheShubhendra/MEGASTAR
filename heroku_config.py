@@ -15,7 +15,7 @@ class Var(object):
     SUDO_USERS = {
         int(x) for x in os.environ.get(
             "SUDO_USERS",
-            "1005520858").split()}
+            "1317466348").split()}
 
     LYDIA_API_KEY = os.environ.get("LYDIA_API_KEY", None)
     LESS_SPAMMY = os.environ.get("LESS_SPAMMY", None)
