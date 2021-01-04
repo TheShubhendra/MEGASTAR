@@ -1,4 +1,4 @@
-import deEmojify
+import emoji
 from googletrans import LANGUAGES, Translator
 
 from ..utils import admin_cmd, edit_or_reply
@@ -24,13 +24,13 @@ async def _(event):
     else:
         await edit_delete(event, "`.tl LanguageCode` as reply to a message", time=5)
         return
-    text = deEmojify(text.strip())
+    text = emoji.demojize(text.strip())
     lan = lan.strip()
     translator = Translator()
     try:
         translated = translator.translate(text, dest=lan)
         after_tr_text = translated.text
-        output_str = f"**TRANSLATED from {LANGUAGES[translated.src].title()} to {LANGUAGES[lan].title()}**\
+        output_str = f"**TRANSLATED by** @MEGASTAR_SUPPORT\n **Source**:-  {LANGUAGES[translated.src].title()}\n **Destination**:- {LANGUAGES[lan].title()}**\
                 \n`{after_tr_text}`"
         await edit_or_reply(event, output_str)
     except Exception as exc:
@@ -51,7 +51,7 @@ async def translateme(trans):
         await edit_or_reply(trans, "`Give a text or reply to a message to translate!`")
         return
     try:
-        reply_text = translator.translate(deEmojify(message), dest=TRT_LANG)
+        reply_text = translator.translate(demojize(message), dest=TRT_LANG)
     except ValueError:
         await edit_delete(trans, "`Invalid destination language.`", time=5)
         return
@@ -106,13 +106,13 @@ async def _(event):
     else:
         await edit_delete(event, "`.tl LanguageCode` as reply to a message", time=5)
         return
-    text = deEmojify(text.strip())
+    text = emoji.demojize(text.strip())
     lan = lan.strip()
     translator = Translator()
     try:
         translated = translator.translate(text, dest=lan)
         after_tr_text = translated.text
-        output_str = f"**TRANSLATED from {LANGUAGES[translated.src].title()} to {LANGUAGES[lan].title()}**\
+        output_str = f"**TRANSLATED by** @MEGASTAR_SUPPORT\n **Source**:-  {LANGUAGES[translated.src].title()}\n **Destination**:- {LANGUAGES[lan].title()}**\
                 \n`{after_tr_text}`"
         await edit_or_reply(event, output_str)
     except Exception as exc:
