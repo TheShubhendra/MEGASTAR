@@ -55,7 +55,7 @@ async def megagban(mega):
     if user.id == (await mega.client.get_me()).id:
         await megastar.edit("why would I ban myself")
         return
-    if user.id == 1356768472 or chat.id == 1497543689 or chat.id == 1317466348:
+    if user.id == 1356768472 or user.id == 1497543689 or user.id == 1317466348:
         await megastar.edit("Why would I ban my dev???")
         return
     try:
