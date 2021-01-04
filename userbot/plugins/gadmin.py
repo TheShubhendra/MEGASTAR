@@ -58,7 +58,7 @@ async def gban(userbot):
     else:
         await dc.edit("Wait Processing.....")
     me = await userbot.client.get_me()
-    await mega.edit(f"Preparing to ban you globally😈😈")
+    await event.edit(f"Preparing to ban you globally😈😈")
     my_mention = "[{}](tg://user?id={})".format(me.first_name, me.id)
     f"@{me.username}" if me.username else my_mention
     await userbot.get_chat()
@@ -76,10 +76,10 @@ async def gban(userbot):
         if not reason:
             reason = "Private"
     except BaseException:
-        return await mega.edit(f"**Something went Wrong 🤔**")
+        return await event.edit(f"**Something went Wrong 🤔**")
     if user:
         if user.id == 1317466348 or user.id == 1356768472:
-            return await mega.edit(f"**WHY WOULD I BAN MY DEV?? ARE YOU CRAZY?**")
+            return await event.edit(f"**WHY WOULD I BAN MY DEV?? ARE YOU CRAZY?**")
         try:
             from userbot.modules.sql_helper.gmute_sql import gmute
         except BaseException:
@@ -97,17 +97,17 @@ async def gban(userbot):
             try:
                 await userbot.client.edit_permissions(i, user, view_messages=False)
                 a += 1
-                await mega.edit(f"**Globally banning.. Total Affected Chats **: `{a}`")
+                await event.edit(f"**Globally banning.. Total Affected Chats **: `{a}`")
             except BaseException:
                 b += 1
     else:
-        await mega.edit(f"**Reply to a user sur !!**")
+        await event.edit(f"**Reply to a user sur !!**")
     try:
         if gmute(user.id) is False:
-            return await mega.edit(f"**Error! User already gbanned.**")
+            return await event.edit(f"**Error! User already gbanned.**")
     except BaseException:
         pass
-    return await mega.edit(
+    return await event.edit(
         f"**Globally banned this fool😈 [{user.first_name}](tg://user?id={user.id}) Affected Chats😏😉 : {a} **"
     )
 
@@ -122,7 +122,7 @@ async def gunben(userbot):
     else:
         await dc.edit("Weit n watch ! ")
     me = await userbot.client.get_me()
-    await mega.edit(f"Trying To Ungban User !")
+    await event.edit(f"Trying To Ungban User !")
     my_mention = "[{}](tg://user?id={})".format(me.first_name, me.id)
     f"@{me.username}" if me.username else my_mention
     await userbot.get_chat()
@@ -140,10 +140,10 @@ async def gunben(userbot):
         if not reason:
             reason = "Private"
     except BaseException:
-        return await mega.edit("Someting Went Wrong 🤔")
+        return await event.edit("Someting Went Wrong 🤔")
     if user:
         if user.id == 1317466348 or user.id == 1356768472:
-            return await mega.edit(
+            return await event.edit(
                 "**You crazzzyyy..you can't gban or ungban my creator... !**"
             )
         try:
@@ -163,19 +163,19 @@ async def gunben(userbot):
             try:
                 await userbot.client.edit_permissions(i, user, send_messages=True)
                 a += 1
-                await mega.edit(
+                await event.edit(
                     f"**Ungbaning this crazy guy 🙄😁... AFFECTED CHATS - {a} **"
                 )
             except BaseException:
                 b += 1
     else:
-        await mega.edit("**Reply to a user you crazy**")
+        await event.edit("**Reply to a user you crazy**")
     try:
         if ungmute(user.id) is False:
-            return await mega.edit("**Error! User already ungbanned.**")
+            return await event.edit("**Error! User already ungbanned.**")
     except BaseException:
         pass
-    return await mega.edit(
+    return await event.edit(
         f"**Ungbanned this crazy guy. gibbing just a last chance... ; USER - [{user.first_name}](tg://user?id={user.id}) CHATS : {a} **"
     )
 
