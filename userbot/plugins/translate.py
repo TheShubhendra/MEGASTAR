@@ -1,5 +1,5 @@
 from googletrans import LANGUAGES, Translator
-
+from emoji import deEmojify
 from ..utils import admin_cmd, edit_or_reply
 from . import BOTLOG, BOTLOG_CHATID, CMD_HELP
 
