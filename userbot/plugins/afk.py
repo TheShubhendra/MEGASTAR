@@ -11,8 +11,8 @@ from . import CMD_HELP
 global USER_AFK  # pylint:disable=E0602
 global afk_time  # pylint:disable=E0602
 global last_afk_message  # pylint:disable=E0602
-global afk_start # pylint:disable=E0602
-global afk_end # pylint:disable=E0602
+global afk_start  # pylint:disable=E0602
+global afk_end  # pylint:disable=E0602
 USER_AFK = {}
 afk_time = None
 last_afk_message = {}
