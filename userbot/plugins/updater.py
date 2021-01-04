@@ -121,7 +121,7 @@ async def upstream(ups):
         return
     if force_update:
         await ups.edit(
-            "Force-Syncing to latest stable userbot code, please wait Boss... Ill be up in time 😘😉 "
+            "Force-Syncing to latest stable userbot code, please wait Boss... Ill be up in time 😉 "
         )
     else:
         await ups.edit("`Updating userbot, please wait....you are my best boss ever 🤩🥳")
