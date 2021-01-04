@@ -26,8 +26,8 @@ async def _(event):
         return
     mone = await edit_or_reply(event, "`Processing ...`")
     input_str = event.pattern_match.group(1)
-    if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
-        os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
+    if not os.path.isdir(config.TMP_DOWNLOAD_DIRECTORY):
+        os.makedirs(config.TMP_DOWNLOAD_DIRECTORY)
     if event.reply_to_msg_id:
         start = datetime.now()
         reply_message = await event.get_reply_message()
@@ -35,7 +35,7 @@ async def _(event):
             c_time = time.time()
             downloaded_file_name = await bot.download_media(
                 reply_message,
-                Config.TMP_DOWNLOAD_DIRECTORY,
+                config.TMP_DOWNLOAD_DIRECTORY,
                 progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
                     progress(d, t, mone, c_time, "trying to download")
                 ),
@@ -52,7 +52,7 @@ async def _(event):
         start = datetime.now()
         url = input_str
         file_name = os.path.basename(url)
-        to_download_directory = Config.TMP_DOWNLOAD_DIRECTORY
+        to_download_directory = config.TMP_DOWNLOAD_DIRECTORY
         if "|" in input_str:
             url, file_name = input_str.split("|")
         url = url.strip()
