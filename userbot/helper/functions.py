@@ -3,8 +3,8 @@ import os
 from bs4 import BeautifulSoup
 
 
-async def legendmusic(legend, QUALITY):
-    search = legend
+async def megamusic(mega, QUALITY):
+    search = mega
     headers = {
         'User-Agent': 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)'}
     html = requests.get(
@@ -26,8 +26,8 @@ async def legendmusic(legend, QUALITY):
     os.system(command)
 
 
-async def legendmusicvideo(legend):
-    search = legend
+async def megamusicvideo(mega):
+    search = mega 
     headers = {
         'User-Agent': 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)'}
     html = requests.get(
