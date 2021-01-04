@@ -1,4 +1,4 @@
-from emoji import deEmojify
+import deEmojify
 from googletrans import LANGUAGES, Translator
 
 from ..utils import admin_cmd, edit_or_reply
