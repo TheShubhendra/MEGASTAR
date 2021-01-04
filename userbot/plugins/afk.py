@@ -20,6 +20,7 @@ afk_start = {}
 afk_end = {}
 reason = {}
 
+
 @borg.on(events.NewMessage(outgoing=True))  # pylint:disable=E0602
 async def set_not_afk(event):
 
