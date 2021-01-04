@@ -19,7 +19,8 @@ import userbot.plugins.sql_helper.gban_sql_helper as gban_sql
 from ..utils import admin_cmd, edit_or_reply
 from . import BOTLOG, BOTLOG_CHATID, CMD_HELP
 from .sql_helper.mute_sql import is_muted, mute, unmute
-MEGA_ID = ("")
+
+MEGA_ID = ""
 BANNED_RIGHTS = ChatBannedRights(
     until_date=None,
     view_messages=True,
