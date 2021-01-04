@@ -5,7 +5,7 @@ import datetime
 from telethon import events
 from telethon.tl import functions, types
 from userbot.utils import admin_cmd
-
+from . import CMD_HELP
 global USER_AFK  # pylint:disable=E0602
 global afk_time  # pylint:disable=E0602
 global last_afk_message  # pylint:disable=E0602
