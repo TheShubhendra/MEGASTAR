@@ -122,10 +122,10 @@ async def on_afk(event):
             else:
                 f"`{int(seconds)}s` **ago**"
         msg = None
-        message_to_reply = f"**My boss is busy right now...\ncommanded me to say it to you that you have to wait till he/she comes back online🥰\n He/She Has Been Gone For a light year** \n**Where He/She Is**: **It's A Secret 🤫**\n\n__ I'll back in a few Light years__\n**REASON**: {reason}\n[Don't spam please](https://telegra.ph/file/075a26d773e901f7fbb67.jpg) "
+        message_to_reply = f"My Boss is busy right now...\ncommanded me to say it to you that you have to wait till he/she comes back online🥰\n He/She Has Been Gone For a light year**\nWhere He/She Is: **It's A Secret 🤫** " + \
+            f"\n\nI'll back in a few [Light years](https://telegra.ph/file/075a26d773e901f7fbb67.jpg)\n**REASON**: {reason}" \
             if reason \
-            else f"**Important Notice**\n\n[My Boss died😓🥺...](https://telegra.ph/file/b7834560026a1b2b21678.jpg) "
-
+            else f"**Important Notice**\n\n[This User Is Ded Forever...](https://telegra.ph//file/a53fa950ff31781d5930a.jpg) "
         msg = await event.reply(message_to_reply)
         await asyncio.sleep(5)
         if event.chat_id in last_afk_message:  # pylint:disable=E0602
