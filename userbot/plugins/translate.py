@@ -7,7 +7,7 @@ import emoji
 from googletrans import Translator
 
 from userbot import CMD_HELP
-from userbot.utils import edit_or_reply, admin_cmd
+from userbot.utils import admin_cmd, edit_or_reply
 
 
 @borg.on(admin_cmd("tr ?(.*)"))
@@ -32,8 +32,8 @@ async def _(event):
     try:
         translated = translator.translate(text, dest=lan)
         after_tr_text = translated.text
-        
-        output_str = """**Translated By MEGASTAR USERBOT** 
+
+        output_str = """**Translated By MEGASTAR USERBOT**
          Source **( {} )**
          Translation **( {} )**
          {}""".format(
