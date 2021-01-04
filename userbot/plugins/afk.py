@@ -69,7 +69,7 @@ async def _(event):
         try:
             await borg.send_message(  # pylint:disable=E0602
                 config.PRIVATE_GROUP_ID,  # pylint:disable=E0602
-                f"My Boss Want {reason}",
+                f"My Boss Went because {reason}",
             )
         except Exception as e:  # pylint:disable=C0103,W0703
             logger.warn(str(e))  # pylint:disable=E0602
@@ -122,8 +122,9 @@ async def on_afk(event):
             else:
                 f"`{int(seconds)}s` **ago**"
         msg = None
-        message_to_reply = f"**My boss is busy right now...\ncommanded me to say it to you that you have to wait till he/she comes back online🥰\n He/She Has Been Gone For a light year** \n**Where He/She Is**: **It's A Secret 🤫**\n[I won't tell you😁](https://telegra.ph/file/075a26d773e901f7fbb67.jpg) "
-        +f"\n\n__ I'll back in a few Light years__\n**REASON**: {reason}" if reason else f"**Important Notice**\n\n[My Boss died😓🥺...](https://telegra.ph/file/b7834560026a1b2b21678.jpg) "
+        message_to_reply = f"**My boss is busy right now...\ncommanded me to say it to you that you have to wait till he/she comes back online🥰\n He/She Has Been Gone For a light year** \n**Where He/She Is**: **It's A Secret 🤫**\n[I won't tell you😁](https://telegra.ph/file/075a26d773e901f7fbb67.jpg) "\n\n__ I'll back in a few Light years__\n**REASON**: {reason}"
+            if reason
+            else f"**Important Notice**\n\n[My Boss died😓🥺...](https://telegra.ph/file/b7834560026a1b2b21678.jpg) "
 
         msg = await event.reply(message_to_reply)
         await asyncio.sleep(5)
