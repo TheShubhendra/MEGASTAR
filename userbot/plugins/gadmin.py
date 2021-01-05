@@ -53,9 +53,9 @@ async def gban(userbot):
     sender = await mg.get_sender()
     me = await mg.client.get_me()
     if not sender.id == me.id:
-        await mg.reply("Gbanning This User !")
+        mega = await mg.reply("Gbanning This User !")
     else:
-        await mg.edit("Wait Processing.....")
+        mega = await mg.edit("Wait Processing.....")
     me = await userbot.client.get_me()
     await mega.edit(f"Trying to ban you globally..weit nd watch you crazy guy")
     my_mention = "[{}](tg://user?id={})".format(me.first_name, me.id)
