@@ -2,16 +2,15 @@ import asyncio
 import os
 from datetime import datetime
 from pathlib import Path
-from userbot.utils import admin_cmd, load_module, remove_plugin
+
 from userbot import ALIVE_NAME
-from userbot import bot
+from userbot import bot 
+from userbot.utils import admin_cmd
+from userbot.utils import edit_or_reply as eor
 
-DELETE_TIMEOUT = 5
-
-
-thumb_image_path = "./Resources/Screenshot_2021-01-01-12-55-35-65.jpg"
-
-DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "MEGASTAR"
+DELETE_TIMEOUT = 3
+thumb_image_path = "./Resources/IMG_20210105_084756_233.jpg"
+DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "megastar"
 
 
 @borg.on(admin_cmd(pattern=r"send (?P<shortname>\w+)", outgoing=True))
@@ -35,13 +34,14 @@ async def send(event):
         )
         end = datetime.now()
         time_taken_in_ms = (end - start).seconds
-        await pro.edit(
-            f"**☞☞ Plugin name:** `{input_str}`\n**☞☞ Uploaded in {time_taken_in_ms} seconds only.**\n**☞☞ Uploaded by:** [{DEFAULTUSER}](tg://user?id={hmm})\n"
+        await eor(
+            pro,
+            f"**☞ Plugin name:** `{input_str}`\n**☞ Uploaded in {time_taken_in_ms} seconds only.**\n**☞ Uploaded by:** [{DEFAULTUSER}](tg://user?id={hmm})\nJoin @MEGASTAR_SUPPORT",
         )
         await asyncio.sleep(DELETE_TIMEOUT)
-        await event.delete()
+        await event.edit("__sent!!__😏") #only italic if loaded markdown else it doesn't look gr8
     else:
-        await edit_or_reply(event, "**404**: Write correct file name")
+        await eor(event, "**404**: __File Not Found__")
 
 
 @borg.on(admin_cmd(pattern="install"))
@@ -60,40 +60,40 @@ async def install(event):
                 path1 = Path(downloaded_file_name)
                 shortname = path1.stem
                 load_module(shortname.replace(".py", ""))
-                await event.edit(
-                    "`{}` successfully installed\nJoin @MEGASTAR_SUPPORT".format(
+                await eor(
+                    event,
+                    "Plugin successfully installed\n `{}`".format(
                         os.path.basename(downloaded_file_name)
-                    )
+                    ),
                 )
             else:
                 os.remove(downloaded_file_name)
-                await event.edit(
-                    "**Plugin cannot be installed or is pre-installed.**"
+                await eor(
+                    event,
+                    "**Error!**\nPlugin cannot be installed!\n Or may have been pre-installed.",
                 )
         except Exception as e:  # pylint:disable=C0103,W0703
-            await event.edit(str(e))
+            await eor(event, str(e))
             os.remove(downloaded_file_name)
     await asyncio.sleep(DELETE_TIMEOUT)
     await event.delete()
 
 
-@borg.on(admin_cmd(pattern=r"unload (?P<shortname>\w+)$"))
+@bot.on(admin_cmd(pattern=r"unload (?P<shortname>\w+)$"))
 async def unload(event):
     if event.fwd_from:
         return
     shortname = event.pattern_match["shortname"]
     try:
         remove_plugin(shortname)
-        await event.edit(f"Successfully unloaded {shortname}")
+        qwe = await eor(event, f" Successfully unloaded plugin {shortname}")
     except Exception as e:
-        await event.edit(
-            "Successfully unloaded {shortname}\n{}".format(
-                shortname, str(e)
-            )
+        await qwe.edit(
+            "Megastar has Successfully unloaded {shortname}\n{}".format(shortname, str(e))
         )
 
 
-@borg.on(admin_cmd(pattern=r"load (?P<shortname>\w+)$"))
+@bot.on(admin_cmd(pattern=r"load (?P<shortname>\w+)$"))
 async def load(event):
     if event.fwd_from:
         return
@@ -104,8 +104,8 @@ async def load(event):
         except BaseException:
             pass
         load_module(shortname)
-        await event.edit(f"Successfully loaded {shortname}")
+        qwe = await eor(event, f"Successfully loaded {shortname}")
     except Exception as e:
-        await event.edit(
-            f"Sorry,{shortname} can not be loaded\nbecause of the following error.\n{str(e)}"
+        await qwe.edit(
+            f"This plugin {shortname} could not be loaded because of the following error.\n{str(e)}"
         )
