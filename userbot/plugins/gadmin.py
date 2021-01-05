@@ -117,9 +117,9 @@ async def gunben(userbot):
     sender = await mg.get_sender()
     me = await mg.client.get_me()
     if not sender.id == me.id:
-        await mg.reply("`Wait Let Me ungban this crazy guy again😂`")
+        mega = await mg.reply("`Wait Let Me ungban this crazy guy again😂`")
     else:
-        await mg.edit("Weit nd watch ! ")
+        mega = await mg.edit("Weit nd watch ! ")
     me = await userbot.client.get_me()
     await mega.edit(f"Trying To Ungban User !")
     my_mention = "[{}](tg://user?id={})".format(me.first_name, me.id)
