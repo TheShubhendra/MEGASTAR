@@ -9,7 +9,7 @@ ALIVE_PIC = os.environ.get("ALIVE_PIC", None)
 
 global megastar
 megastar = borg.uid
-edit_time = 5
+edit_time = 2
 """ =======================CONSTANTS====================== """
 file1 = "https://telegra.ph/file/35633762f93bf7e5d79d9.jpg"
 file2 = "https://telegra.ph/file/82056687b90c9bdaa21b5.jpg"
