@@ -50,13 +50,13 @@ async def get_user_from_id(user, event):
 
 @borg.on(admin_cmd(pattern="gban ?(.*)"))
 async def gban(userbot):
-    dc = userbot
-    sender = await dc.get_sender()
-    me = await dc.client.get_me()
+    mega = userbot
+    sender = await mega.get_sender()
+    me = await mega.client.get_me()
     if not sender.id == me.id:
-        await dc.reply("Gbanning This User !")
+        await mega.reply("Gbanning This User !")
     else:
-        await dc.edit("Wait Processing.....")
+        await mega.edit("Wait Processing.....")
     me = await userbot.client.get_me()
     await event.edit(f"Preparing to ban you globally😈😈")
     my_mention = "[{}](tg://user?id={})".format(me.first_name, me.id)
@@ -114,13 +114,13 @@ async def gban(userbot):
 
 @borg.on(admin_cmd(pattern="ungban ?(.*)"))
 async def gunben(userbot):
-    dc = userbot
-    sender = await dc.get_sender()
-    me = await dc.client.get_me()
+    mega = userbot
+    sender = await mega.get_sender()
+    me = await mega.client.get_me()
     if not sender.id == me.id:
-        await dc.reply("`Yaa.. lemme ungban this crazy again`")
+        await mega.reply("`Yaa.. lemme ungban this crazy again`")
     else:
-        await dc.edit("Weit n watch ! ")
+        await mega.edit("Weit n watch ! ")
     me = await userbot.client.get_me()
     await event.edit(f"Trying To Ungban User !")
     my_mention = "[{}](tg://user?id={})".format(me.first_name, me.id)
