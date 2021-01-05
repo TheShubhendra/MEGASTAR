@@ -1,10 +1,9 @@
 # 🅼🄴🅶🄰🆂🅃🅰︎🅁🌹
 
 # 𝕀𝔻𝔼𝔸𝕃 𝕌𝕊𝔼ℝ𝔹𝕆𝕋 𝔹𝕐 𝔸 𝔹𝔼𝕊𝕋 𝕋𝔼𝔸𝕄
-  - `𝚃𝙴𝙰𝙼 𝙼𝙴𝙼𝙱𝙴𝚁𝚂`
+# [`𝚃𝙴𝙰𝙼 𝙼𝙴𝙼𝙱𝙴𝚁𝚂`](https://telegra.ph/%F0%9D%9A%81%F0%9D%99%B4%F0%9D%99%B0%F0%9D%99%BB-%F0%9D%99%BC%F0%9D%99%B4%F0%9D%99%B6%F0%9D%99%B0%F0%9D%9A%82%F0%9D%9A%83%F0%9D%99%B0%F0%9D%9A%81%F0%9D%9A%82-%F0%9D%9A%86%F0%9D%99%B7%F0%9D%99%BE-%F0%9D%99%B7%F0%9D%99%B4%F0%9D%99%BB%F0%9D%99%BF%F0%9D%99%B4%F0%9D%99%B3-%F0%9D%9A%83%F0%9D%99%BE-%F0%9D%99%BC%F0%9D%99%B0%F0%9D%99%BA%F0%9D%99%B4-%F0%9D%99%BC%F0%9D%99%B4%F0%9D%99%B6%F0%9D%99%B0%F0%9D%9A%82%F0%9D%9A%83%F0%9D%99%B0%F0%9D%9A%81-%F0%9D%9A%84%F0%9D%9A%82%F0%9D%99%B4%F0%9D%9A%81%F0%9D%99%B1%F0%9D%99%BE%F0%9D%9A%83-01-05)
 
-    [`ARITRA`](https://github.com/aritramandal) [`BRISTI`](https://github.com/Bristi-OP) [`KRISHAN`](https://github.com/krishan442) [`AMIT`](https://github.com/buddhhu) [`SACHIN`](https://github.com/ItzSjDude)
-
+    
 ![MEGASTARlogo](https://telegra.ph/file/1ae50911854f63793d1b6.png)
 ### STATUS
 
