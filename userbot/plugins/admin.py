@@ -133,12 +133,12 @@ async def promote(promt):
     catevent = await edit_or_reply(promt, "`Promoting...`")
     user, rank = await get_user_from_event(promt)
     if not rank:
-        rank = "Admin"
+        rank = "Megastar"
     if not user:
         return
     try:
         await promt.client(EditAdminRequest(promt.chat_id, user.id, new_rights, rank))
-        await catevent.edit("`Promoted Successfully! Now gib Party`")
+        await catevent.edit("`Promoted Successfully! Now dance🕺💃`")
     except BadRequestError:
         await catevent.edit(NO_PERM)
         return
@@ -179,7 +179,7 @@ async def demote(dmod):
     except BadRequestError:
         await catevent.edit(NO_PERM)
         return
-    await catevent.edit("`Demoted Successfully! Betterluck next time`")
+    await catevent.edit("`Demoted Successfully!!!`")
     if BOTLOG:
         await dmod.client.send_message(
             BOTLOG_CHATID,
@@ -201,7 +201,7 @@ async def ban(bon):
     user, reason = await get_user_from_event(bon)
     if not user:
         return
-    catevent = await edit_or_reply(bon, "`Whacking the pest!`")
+    catevent = await edit_or_reply(bon, "`Banning this nub!!!`")
     try:
         await bon.client(EditBannedRequest(bon.chat_id, user.id, BANNED_RIGHTS))
     except BadRequestError:
