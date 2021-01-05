@@ -207,12 +207,3 @@ async def handler(rkG):
                  except:       
                     rkG.reply("`No Permission To Ban.. @admins please ban him he is a globally banned user and a potential spammer...!`")                   
                     return 
-CMD_HELP.update(
-    {
-        "gadmin": "**Plugin : **`gadmin`\
-        \n\n**Syntax : **`.gban <username/reply/userid> <reason (optional)>`\
-\n**Function : **Bans the person in all groups where you are admin .\
-\n\n**Syntax : **`.ungban <username/reply/userid>`\
-\n**Function : **Reply someone's message with .ungban to remove them from the gbanned list.\
-    }
-)
