@@ -5,8 +5,8 @@ from pathlib import Path
 
 from userbot import ALIVE_NAME, bot
 from userbot.utils import admin_cmd
-from userbot.utils import load_module
 from userbot.utils import edit_or_reply as eor
+from userbot.utils import load_module
 
 DELETE_TIMEOUT = 3
 thumb_image_path = "./Resources/IMG_20210105_084756_233.jpg"
