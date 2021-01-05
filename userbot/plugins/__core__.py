@@ -3,8 +3,7 @@ import os
 from datetime import datetime
 from pathlib import Path
 
-from userbot import ALIVE_NAME
-from userbot import bot
+from userbot import ALIVE_NAME, bot
 from userbot.utils import admin_cmd
 from userbot.utils import edit_or_reply as eor
 
@@ -90,7 +89,9 @@ async def unload(event):
         qwe = await eor(event, f" Successfully unloaded plugin {shortname}")
     except Exception as e:
         await qwe.edit(
-            "Megastar has Successfully unloaded {shortname}\n{}".format(shortname, str(e))
+            "Megastar has Successfully unloaded {shortname}\n{}".format(
+                shortname, str(e)
+            )
         )
 
 
