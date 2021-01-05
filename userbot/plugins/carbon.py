@@ -9,7 +9,7 @@ from selenium.webdriver.chrome.options import Options
 from ..utils import admin_cmd, edit_or_reply
 from . import ALIVE_NAME, CHROME_DRIVER, CMD_HELP, GOOGLE_CHROME_BIN
 
-DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "LEGEND"
+DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "MEGASTAR"
 
 CARBONLANG = "auto"
 LANG = "en"
@@ -26,7 +26,7 @@ async def carbon_api(e):
         pcode = str(pcode[8:])
     elif textx:
         pcode = str(textx.message)  # Importing message to module
-    pcode = deEmojify(pcode)
+    pcode = demojize(pcode)
     code = quote_plus(pcode)  # Converting to urlencoded
     cat = await edit_or_reply(e, "`Carbonizing...\n25%`")
     url = CARBON.format(code=code, lang=CARBONLANG)
@@ -90,7 +90,7 @@ async def carbon_api(e):
     elif textx:
         pcode = str(textx.message)
         skeme = None  # Importing message to module
-    pcode = deEmojify(pcode)
+    pcode = demojize(pcode)
     code = quote_plus(pcode)  # Converting to urlencoded
     await cat.edit("`Meking Carbon...`\n`25%`")
     url = CARBON.format(code=code, lang=CARBONLANG)
