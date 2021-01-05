@@ -35,7 +35,7 @@ async def send(event):
         time_taken_in_ms = (end - start).seconds
         await eor(
             pro,
-            f"**☞ Plugin name:** `{input_str}`\n**☞ Uploaded in {time_taken_in_ms} seconds only.**\n**☞ Uploaded by:** [{DEFAULTUSER}](tg://user?id={hmm})\nJoin @MEGASTAR_SUPPORT",
+            f"**✧0 Plugin name:** `{input_str}`\n**➥ Uploaded in {time_taken_in_ms} seconds only.**\n**✞ Uploaded by:** [{DEFAULTUSER}](tg://user?id={hmm})\n✰Join @MEGASTAR_SUPPORT",
         )
         await asyncio.sleep(DELETE_TIMEOUT)
         # only italic if loaded markdown else it doesn't look gr8
