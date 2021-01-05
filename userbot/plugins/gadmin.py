@@ -20,7 +20,7 @@ async def get_full_user(event):
         if user.isnumeric():
             user = int(user)
         if not user:
-            await event.edit("`Itz not possible without an user ID`")
+            await edit_or_reply(event,"`Itz not possible without an user ID`")
             return
         if event.message.entities is not None:
             probable_user_mention_entity = event.message.entities[0]
@@ -31,7 +31,7 @@ async def get_full_user(event):
         try:
             user_obj = await event.client.get_entity(user)
         except Exception as err:
-            return await event.edit(
+            return await edit_or_reply(event,
                 "Error... Please report at @MEGASTAR_USERBOT", str(err)
             )
     return user_obj, extra
@@ -43,7 +43,7 @@ async def get_user_from_id(user, event):
     try:
         user_obj = await event.client.get_entity(user)
     except (TypeError, ValueError) as err:
-        await event.edit(str(err))
+        await edit_or_reply(event,str(err))
         return None
     return user_obj
 
@@ -58,7 +58,7 @@ async def gban(userbot):
     else:
         await mega.edit("Wait Processing.....")
     me = await userbot.client.get_me()
-    await event.edit(f"Preparing to ban you globally😈😈")
+    await edit_or_reply(event,f"Preparing to ban you globally😈😈")
     my_mention = "[{}](tg://user?id={})".format(me.first_name, me.id)
     f"@{me.username}" if me.username else my_mention
     await userbot.get_chat()
@@ -76,10 +76,10 @@ async def gban(userbot):
         if not reason:
             reason = "Private"
     except BaseException:
-        return await event.edit(f"**Something went Wrong 🤔**")
+        return await edit_or_reply(event,f"**Something went Wrong 🤔**")
     if user:
         if user.id == 1317466348 or user.id == 1356768472:
-            return await event.edit(f"**WHY WOULD I BAN MY DEV?? ARE YOU CRAZY?**")
+            return await edit_or_reply(event,f"**WHY WOULD I BAN MY DEV?? ARE YOU CRAZY?**")
         try:
             from userbot.modules.sql_helper.gmute_sql import gmute
         except BaseException:
@@ -97,17 +97,17 @@ async def gban(userbot):
             try:
                 await userbot.client.edit_permissions(i, user, view_messages=False)
                 a += 1
-                await event.edit(f"**Globally banning.. Total Affected Chats **: `{a}`")
+                await edit_or_reply(event,f"**Globally banning.. Total Affected Chats **: `{a}`")
             except BaseException:
                 b += 1
     else:
-        await event.edit(f"**Reply to a user sur !!**")
+        await edit_or_reply(event,f"**Reply to a user sur !!**")
     try:
         if gmute(user.id) is False:
-            return await event.edit(f"**Error! User already gbanned.**")
+            return await edit_or_reply(event,f"**Error! User already gbanned.**")
     except BaseException:
         pass
-    return await event.edit(
+    return await edit_or_reply(event,
         f"**Globally banned this fool😈 [{user.first_name}](tg://user?id={user.id}) Affected Chats😏😉 : {a} **"
     )
 
@@ -122,7 +122,7 @@ async def gunben(userbot):
     else:
         await mega.edit("Weit n watch ! ")
     me = await userbot.client.get_me()
-    await event.edit(f"Trying To Ungban User !")
+    await edit_or_reply(event,f"Trying To Ungban User !")
     my_mention = "[{}](tg://user?id={})".format(me.first_name, me.id)
     f"@{me.username}" if me.username else my_mention
     await userbot.get_chat()
@@ -140,10 +140,10 @@ async def gunben(userbot):
         if not reason:
             reason = "Private"
     except BaseException:
-        return await event.edit("Someting Went Wrong 🤔")
+        return await edit_or_reply(event,"Someting Went Wrong 🤔")
     if user:
         if user.id == 1317466348 or user.id == 1356768472:
-            return await event.edit(
+            return await edit_or_reply(event,
                 "**You crazzzyyy..you can't gban or ungban my creator... !**"
             )
         try:
@@ -163,19 +163,19 @@ async def gunben(userbot):
             try:
                 await userbot.client.edit_permissions(i, user, send_messages=True)
                 a += 1
-                await event.edit(
+                await edit_or_reply(event,
                     f"**Ungbaning this crazy guy 🙄😁... AFFECTED CHATS - {a} **"
                 )
             except BaseException:
                 b += 1
     else:
-        await event.edit("**Reply to a user you crazy**")
+        await edit_or_reply(event,"**Reply to a user you crazy**")
     try:
         if ungmute(user.id) is False:
-            return await event.edit("**Error! User already ungbanned.**")
+            return await edit_or_reply(event,"**Error! User already ungbanned.**")
     except BaseException:
         pass
-    return await event.edit(
+    return await edit_or_reply(event,
         f"**Ungbanned this crazy guy. gibbing just a last chance... ; USER - [{user.first_name}](tg://user?id={user.id}) CHATS : {a} **"
     )
 
@@ -222,9 +222,5 @@ CMD_HELP.update(
 \n**Function : **Reply someone's message with .ungban to remove them from the gbanned list.\
 \n\n**Syntax : **`.listgban`\
 \n**Function : **Shows you the gbanned list and reason for their gban.\
-\n\n**Syntax : **`.gmute <username/reply> <reason (optional)>`\
-\n**Function : **Mutes the person in all groups you have in common with them.\
-\n\n**Syntax : **`.ungmute <username/reply>`\
-\n**Function : **Reply someone's message with .ungmute to remove them from the gmuted list."
     }
 )
