@@ -87,8 +87,8 @@ async def on_afk(event):
     if USER_AFK and not (await event.get_sender()).bot:
         msg = None
         message_to_reply = (
-            f"**My Boss is busy right now...\ncommanded me to say it to you that you have to wait till he/she comes back online🥰\n He/She Has Been afk for: {total_afk_time}\nWhere He/She Is**: **It's A Secret 🤫**
-            + f"\n\n**I'll back in a few light year😉** **REASON**: {reason}
+            f"**My Boss is busy right now...\ncommanded me to say it to you that you have to wait till he/she comes back online🥰\n He/She Has Been afk for: {total_afk_time}\nWhere He/She Is**: **It's A Secret 🤫**"
+            + f"\n\n**I'll back in a few light year😉** **REASON**: {reason}"
   if reason
             else f"**I can't tell you where my boss is..Lemme think a bit**🤔🤔🤔"
         )
