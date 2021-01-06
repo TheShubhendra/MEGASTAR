@@ -41,7 +41,7 @@ async def set_not_afk(event):
         )
         try:
             await borg.send_message(  # pylint:disable=E0602
-                Config.PRIVATE_GROUP_BOT_API_ID,  # pylint:disable=E0602
+                config.PRIVATE_GROUP_ID,  # pylint:disable=E0602
                 "#AFKFALSE \nSet AFK mode to False\n"
                 + "__Back alive!__\n**No Longer afk.**\n `Was afk for:``"
                 + total_afk_time
@@ -50,7 +50,7 @@ async def set_not_afk(event):
         except Exception as e:  # pylint:disable=C0103,W0703
             await borg.send_message(  # pylint:disable=E0602
                 event.chat_id,
-                "Please set `PRIVATE_GROUP_BOT_API_ID` "
+                "Please set `PRIVATE_GROUP_ID` "
                 + "for the proper functioning of afk functionality "
                 + "Why??\n\n `{}`".format(str(e)),
                 reply_to=event.message.id,
@@ -115,8 +115,8 @@ async def on_afk(event):
         #           afk_since = f"`{int(seconds)}s` **ago**"
         msg = None
         message_to_reply = (
-            f"**My Boss is busy right now...\ncommanded me to say it to you that you have to wait till he/she comes back online🥰\n He/She Has Been afk for :- {total_afk_time}\nWhere He/She Is**: **It's A Secret 🤫** "
-            + f"\n\n**I'll back in a few** [Light years](https://telegra.ph/file/075a26d773e901f7fbb67.jpg)\n**REASON**: {reason}"
+            f"**My Boss is busy right now...\ncommanded me to say it to you that you have to wait till he/she comes back online🥰\n **AFK TIME→_→ {total_afk_time}\nWhere He/She Is**: **It's A Secret 🤫** "
+            + f"\n\n**I'll back in a few** [Light years](https://telegra.ph/file/075a26d773e901f7fbb67.jpg)\n**REASON**(☞^o^) ☞ {reason}"
             if reason
             else f"**Important Notice**\n\n[This User Is Ded Forever...](https://telegra.ph//file/a53fa950ff31781d5930a.jpg) "
         )
@@ -153,7 +153,7 @@ async def _(event):
         USER_AFK = f"yes: {reason}"  # pylint:disable=E0602
         if reason:
             await borg.send_message(
-                event.chat_id, f"**I shall be Going afk!**\n __Reason >>> {reason}__"
+                event.chat_id, f"**I shall be Going afk!**\n __Reason→_→ {reason}__"
             )
         else:
             await borg.send_message(event.chat_id, f"**I am Going afk!**")
@@ -161,7 +161,7 @@ async def _(event):
         await event.delete()
         try:
             await borg.send_message(  # pylint:disable=E0602
-                Config.PRIVATE_GROUP_BOT_API_ID,  # pylint:disable=E0602
+                config.PRIVATE_GROUP_ID,  # pylint:disable=E0602
                 f"#AFKTRUE \nSet AFK mode to True, and Reason is {reason}",
             )
         except Exception as e:  # pylint:disable=C0103,W0703
