@@ -8,6 +8,7 @@ from telethon.tl import functions, types
 
 from userbot import CMD_HELP
 from userbot.utils import admin_cmd
+
 global USER_AFK  # pylint:disable=E0602
 global afk_time  # pylint:disable=E0602
 global last_afk_message  # pylint:disable=E0602
@@ -114,7 +115,6 @@ async def on_afk(event):
         #           afk_since = f"`{int(seconds)}s` **ago**"
         msg = None
         message_to_reply = (
-            
             f"**My Boss is busy right now...\ncommanded me to say it to you that you have to wait till he/she comes back online🥰\n He/She Has Been afk for :- {total_afk_time}\nWhere He/She Is**: **It's A Secret 🤫** "
             + f"\n\n**I'll back in a few** [Light years](https://telegra.ph/file/075a26d773e901f7fbb67.jpg)\n**REASON**: {reason}"
             if reason
@@ -174,4 +174,3 @@ CMD_HELP.update(
         "\nUsage mention u as afk when someone tag or reply to any of ur msg or dm."
     }
 )
-
