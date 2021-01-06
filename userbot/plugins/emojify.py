@@ -23,8 +23,8 @@ async def itachi(event):
     result = ""
     for a in args:
         a = a.lower()
-        if a in emojize.kakashitext:
-            char = emojize.kakashiemoji[emojize.kakashitext.index(a)]
+        if a in emojify.kakashitext:
+            char = emojify.kakashiemoji[emojify.kakashitext.index(a)]
             result += char
         else:
             result += a
@@ -53,8 +53,8 @@ async def itachi(event):
     result = ""
     for a in arg:
         a = a.lower()
-        if a in emojize.kakashitext:
-            char = emojize.itachiemoji[emojize.kakashitext.index(a)].format(cj=emoji)
+        if a in emojify.kakashitext:
+            char = emojify.itachiemoji[emojify.kakashitext.index(a)].format(cj=emoji)
             result += char
         else:
             result += a
