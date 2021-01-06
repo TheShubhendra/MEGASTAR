@@ -234,7 +234,7 @@ async def hahahaha(event):
             pmpermit_sql.approve(chat.id, "**🌹My creator.. salute🌹**")
             await borg.send_message(
                 chat,
-                "**Boss Meet My Creator...My Godfather So He/she Will Automaticly Be Approved**",
+                "**Boss Meet My [Creator](https://telegra.ph/file/39f9c2ee7286772c5b9f1.jpg)😉😉....Being the Dev, He/she Will Automaticly Be Approved**",
             )
 
 
