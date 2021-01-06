@@ -57,7 +57,7 @@ async def set_not_afk(event):
                 reply_to=event.message.id,
                 silent=True,
             )
-        await asyncio.sleep(5)
+        await asyncio.sleep(0.001)
         await shite.delete()
         USER_AFK = {}  # pylint:disable=E0602
         afk_time = None  # pylint:disable=E0602
@@ -94,7 +94,7 @@ async def on_afk(event):
             else f"**I can't tell you where my boss is..Lemme think a bit**🤔🤔🤔"
         )
         msg = await event.reply(message_to_reply, file=pic)
-        await asyncio.sleep(2.5)
+        await asyncio.sleep(0.001)
         if event.chat_id in last_afk_message:  # pylint:disable=E0602
             await last_afk_message[event.chat_id].delete()  # pylint:disable=E0602
         last_afk_message[event.chat_id] = msg  # pylint:disable=E
