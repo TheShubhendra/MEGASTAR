@@ -36,7 +36,8 @@ async def set_not_afk(event):
             event.chat_id,
             "__Back alive!__\n**No Longer afk.**\n `Was afk for:``"
             + total_afk_time
-            + "`", file=pic
+            + "`",
+            file=pic,
         )
         try:
             await borg.send_message(  # pylint:disable=E0602
@@ -44,11 +45,11 @@ async def set_not_afk(event):
                 "#AFKFALSE \nSet AFK mode to False\n"
                 + "__Back alive!__\n**No Longer afk.**\n `Was afk for:``"
                 + total_afk_time
-                + "`", file=pic
+                + "`",
+                file=pic,
             )
         except Exception as e:  # pylint:disable=C0103,W0703
             await borg.send_message(  # pylint:disable=E0602 # Originally by @ProgrammingError
-
                 event.chat_id,
                 "Please set `PRIVATE_GROUP_BOT_API_ID` "
                 + "for the proper functioning of afk functionality "
@@ -89,7 +90,7 @@ async def on_afk(event):
         message_to_reply = (
             f"**My Boss is busy right now...\ncommanded me to say it to you that you have to wait till he/she comes back online🥰\n He/She Has Been afk for: {total_afk_time}\nWhere He/She Is**: **It's A Secret 🤫**"
             + f"\n\n**I'll back in a few light year😉** **REASON**: {reason}"
-  if reason
+            if reason
             else f"**I can't tell you where my boss is..Lemme think a bit**🤔🤔🤔"
         )
         msg = await event.reply(message_to_reply, file=pic)
@@ -128,7 +129,9 @@ async def _(event):
         USER_AFK = f"yes: {reason} {pic}"  # pylint:disable=E0602
         if reason:
             await borg.send_message(
-                event.chat_id, f"**I shall be Going afk!** __because ~ {reason}__", file=pic
+                event.chat_id,
+                f"**I shall be Going afk!** __because ~ {reason}__",
+                file=pic,
             )
         else:
             await borg.send_message(event.chat_id, f"**I am Going afk!**", file=pic)
@@ -137,12 +140,11 @@ async def _(event):
         try:
             await borg.send_message(  # pylint:disable=E0602
                 Config.PRIVATE_GROUP_BOT_API_ID,  # pylint:disable=E0602
-                f"#MAFKTRUE \nSet MAFK mode to True, and Reason is {reason}",file=pic
+                f"#MAFKTRUE \nSet MAFK mode to True, and Reason is {reason}",
+                file=pic,
             )
         except Exception as e:  # pylint:disable=C0103,W0703
             logger.warn(str(e))  # pylint:disable=E0602
-
-
 
 
 CMD_HELP.update(

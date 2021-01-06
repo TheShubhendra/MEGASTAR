@@ -7,7 +7,7 @@ import emoji
 
 from ..utils import admin_cmd, edit_or_reply
 from . import CMD_HELP
-from . import fonts as emojify
+
 
 @borg.on(admin_cmd(pattern="emoji(?: |$)(.*)"))
 async def itachi(event):
