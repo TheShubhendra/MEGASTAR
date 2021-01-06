@@ -1,4 +1,3 @@
-"""Syntax: .afk REASON"""
 import asyncio
 import datetime
 from datetime import datetime
@@ -37,20 +36,19 @@ async def set_not_afk(event):
             event.chat_id,
             "__Back alive!__\n**No Longer afk.**\n `Was afk for:``"
             + total_afk_time
-            + "`",
-            file=pic,
+            + "`", file=pic
         )
         try:
             await borg.send_message(  # pylint:disable=E0602
-                config.PRIVATE_GROUP_BOT_API_ID,  # pylint:disable=E0602
+                Config.PRIVATE_GROUP_BOT_API_ID,  # pylint:disable=E0602
                 "#AFKFALSE \nSet AFK mode to False\n"
                 + "__Back alive!__\n**No Longer afk.**\n `Was afk for:``"
                 + total_afk_time
-                + "`",
-                file=pic,
+                + "`", file=pic
             )
         except Exception as e:  # pylint:disable=C0103,W0703
-            await borg.send_message(  # pylint:disable=E0602
+            await borg.send_message(  # pylint:disable=E0602 # Originally by @ProgrammingError
+
                 event.chat_id,
                 "Please set `PRIVATE_GROUP_BOT_API_ID` "
                 + "for the proper functioning of afk functionality "
@@ -89,22 +87,23 @@ async def on_afk(event):
     if USER_AFK and not (await event.get_sender()).bot:
         msg = None
         message_to_reply = (
-            f"__My Boss Has Been 💫 AFK 💫 since__ `{total_afk_time}`\nWhere He/she Is: I don't know dear friend my boss is a too busy person "
-            + f"\n\n__I can't guarantee you that when he/she will come..__\n**REASON**: {reason}"
-            if reason
-            else f"**Heyy!**\n__I am currently unavailable. Since when? For {total_afk_time} I think.__\n\nWhen will I be back? Soon __Whenever I feel like coming back__"
+            f"**My Boss is busy right now...\ncommanded me to say it to you that you have to wait till he/she comes back online🥰\n He/She Has Been afk for: {total_afk_time}\nWhere He/She Is**: **It's A Secret 🤫**
+            + f"\n\n**I'll back in a few light year😉** **REASON**: {reason}
+  if reason
+            else f"**I can't tell you where my boss is..Lemme think a bit**🤔🤔🤔"
         )
         msg = await event.reply(message_to_reply, file=pic)
-        await asyncio.sleep(5)
+        await asyncio.sleep(2.5)
         if event.chat_id in last_afk_message:  # pylint:disable=E0602
             await last_afk_message[event.chat_id].delete()  # pylint:disable=E0602
-        last_afk_message[event.chat_id] = msg  # pylint:disable=E0602
+        last_afk_message[event.chat_id] = msg  # pylint:disable=E
 
 
-@borg.on(admin_cmd(pattern=r"mafk (.*) (.*)", outgoing=True))  # pylint:disable=E0602
+@borg.on(admin_cmd(pattern=r"mafk (.*)", outgoing=True))  # pylint:disable=E0602
 async def _(event):
     if event.fwd_from:
         return
+    atulbro = await event.get_reply_message()
     global USER_AFK  # pylint:disable=E0602
     global afk_time  # pylint:disable=E0602
     global last_afk_message  # pylint:disable=E0602
@@ -119,7 +118,7 @@ async def _(event):
     start_1 = datetime.now()
     afk_start = start_1.replace(microsecond=0)
     reason = event.pattern_match.group(1)
-    pic = event.pattern_match.group(2)
+    pic = await event.client.download_media(atulbro)
     if not USER_AFK:  # pylint:disable=E0602
         last_seen_status = await borg(  # pylint:disable=E0602
             functions.account.GetPrivacyRequest(types.InputPrivacyKeyStatusTimestamp())
@@ -129,28 +128,26 @@ async def _(event):
         USER_AFK = f"yes: {reason} {pic}"  # pylint:disable=E0602
         if reason:
             await borg.send_message(
-                event.chat_id,
-                f"**I shall be Going afk!** __because ~ {reason}__",
-                file=pic,
+                event.chat_id, f"**I shall be Going afk!** __because ~ {reason}__", file=pic
             )
         else:
             await borg.send_message(event.chat_id, f"**I am Going afk!**", file=pic)
-        await asyncio.sleep(5)
+        await asyncio.sleep(0.001)
         await event.delete()
         try:
             await borg.send_message(  # pylint:disable=E0602
-                config.PRIVATE_GROUP_BOT_API_ID,  # pylint:disable=E0602
-                f"#MAFKTRUE \nSet MAFK mode to True, and Reason is {reason}",
-                file=pic,
+                Config.PRIVATE_GROUP_BOT_API_ID,  # pylint:disable=E0602
+                f"#MAFKTRUE \nSet MAFK mode to True, and Reason is {reason}",file=pic
             )
         except Exception as e:  # pylint:disable=C0103,W0703
             logger.warn(str(e))  # pylint:disable=E0602
 
 
+
+
 CMD_HELP.update(
     {
-        "mafk": "__**PLUGIN NAME :** Afk__\
-\n\n** CMD ➥** `.mafk` [Optional Reason]\
-"
+        "mafk": ".mafk (reason) (Reply to any Media)"
+        "\nUsage mention u as afk with cool media when someone tag or reply to any of ur msg or dm."
     }
 )
