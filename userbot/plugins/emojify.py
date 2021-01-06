@@ -5,9 +5,11 @@ Userbot plugin for legend userbot
 """
 import emoji
 
+from userbot.helpers import fonts as emojify
+
 from ..utils import admin_cmd, edit_or_reply
 from . import CMD_HELP
-from userbot.helpers import fonts as emojify
+
 
 @borg.on(admin_cmd(pattern="emoji(?: |$)(.*)"))
 async def itachi(event):
