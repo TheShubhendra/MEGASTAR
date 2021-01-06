@@ -1,15 +1,11 @@
-
-### mEGASTARs
-import asyncio
-import random, re
-import datetime
-from telethon.tl.functions.account import UpdateNotifySettingsRequest
+# mEGASTARs
 from telegraph import Telegraph
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
+
 from userbot import CMD_HELP
 from userbot.utils import admin_cmd
-from var import Var
+
 telegraph = Telegraph()
 mee = telegraph.create_account(short_name="yohohehe")
 
@@ -17,38 +13,41 @@ mee = telegraph.create_account(short_name="yohohehe")
 @borg.on(admin_cmd(pattern="recognize ?(.*)"))
 async def _(event):
     if event.fwd_from:
-        return 
+        return
     if not event.reply_to_msg_id:
-       await event.edit("Reply to any user's media message.")
-       return
-    reply_message = await event.get_reply_message() 
+        await event.edit("Reply to any user's media message.")
+        return
+    reply_message = await event.get_reply_message()
     if not reply_message.media:
-       await event.edit("reply to media file")
-       return
+        await event.edit("reply to media file")
+        return
     chat = "@Rekognition_Bot"
-    sender = reply_message.sender
+    reply_message.sender
     if reply_message.sender.bot:
-       await event.edit("Reply to actual users message.")
-       return
+        await event.edit("Reply to actual users message.")
+        return
     cat = await event.edit("recognizeing this media")
     async with event.client.conversation(chat) as conv:
-          try:     
-              response = conv.wait_event(events.NewMessage(incoming=True,from_users=461083923))
-              await event.client.forward_messages(chat, reply_message)
-              response = await response 
-          except YouBlockedUserError: 
-              await event.edit("unblock @Rekognition_Bot and try again")
-              await cat.delete()
-              return
-          if response.text.startswith("See next message."):
-              response = conv.wait_event(events.NewMessage(incoming=True,from_users=461083923))
-              response = await response
-              cat = response.message.message
-              await event.edit(cat)
-      
-          else:
-              await event.edit("sorry, I couldnt find it")
-              
+        try:
+            response = conv.wait_event(
+                events.NewMessage(incoming=True, from_users=461083923)
+            )
+            await event.client.forward_messages(chat, reply_message)
+            response = await response
+        except YouBlockedUserError:
+            await event.edit("unblock @Rekognition_Bot and try again")
+            await cat.delete()
+            return
+        if response.text.startswith("See next message."):
+            response = conv.wait_event(
+                events.NewMessage(incoming=True, from_users=461083923)
+            )
+            response = await response
+            cat = response.message.message
+            await event.edit(cat)
+
+        else:
+            await event.edit("sorry, I couldnt find it")
 
 
 @borg.on(admin_cmd(pattern="wspr ?(.*)"))
@@ -58,11 +57,10 @@ async def wspr(event):
     wwwspr = event.pattern_match.group(1)
     botusername = "@whisperBot"
     if event.reply_to_msg_id:
-        reply_to_id = await event.get_reply_message()
-    tap = await bot.inline_query(botusername, wwwspr) 
+        await event.get_reply_message()
+    tap = await bot.inline_query(botusername, wwwspr)
     await tap[0].click(event.chat_id)
     await event.delete()
-
 
 
 @borg.on(admin_cmd(pattern="purl ?(.*)"))
@@ -90,7 +88,7 @@ async def _(event):
         await event.client.send_message(
             event.chat_id, response.message, reply_to=reply_message
         )
-  
+
 
 @borg.on(admin_cmd(pattern="limits ?(.*)"))
 async def _(event):
@@ -105,63 +103,70 @@ async def _(event):
                 await conv.get_response()
                 await conv.send_message("/start")
                 danish = await conv.get_response()
-                final = ("HeHe", "")
                 await borg.send_message(event.chat_id, danish.text)
                 await event.delete()
             except YouBlockedUserError:
                 await event.edit("**Error:** `unblock` @spambot `and retry!")
 
+
 @borg.on(admin_cmd(pattern="sgm ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
-        return 
+        return
     if not event.reply_to_msg_id:
-       await event.edit("**Reply to an user message.**")
-       return
-    reply_message = await event.get_reply_message() 
+        await event.edit("**Reply to an user message.**")
+        return
+    reply_message = await event.get_reply_message()
     if not reply_message.text:
-       await event.edit("**Reply to a message.**")
-       return
+        await event.edit("**Reply to a message.**")
+        return
     chat = "@sangmatainfo_bot"
-    sender = reply_message.sender
+    reply_message.sender
     await event.edit("**Getting user's name history..**")
     async with event.client.conversation(chat) as conv:
-          try:     
-              response = conv.wait_event(events.NewMessage(incoming=True,from_users=461843263))
-              await event.client.forward_messages(chat, reply_message)
-              response = await response 
-          except YouBlockedUserError: 
-              await event.reply("Please unblock me @SangMataInfo_bot")
-              return
-          await event.delete()
-          await event.client.send_message(event.chat_id, response.message, reply_to=reply_message)
+        try:
+            response = conv.wait_event(
+                events.NewMessage(incoming=True, from_users=461843263)
+            )
+            await event.client.forward_messages(chat, reply_message)
+            response = await response
+        except YouBlockedUserError:
+            await event.reply("Please unblock me @SangMataInfo_bot")
+            return
+        await event.delete()
+        await event.client.send_message(
+            event.chat_id, response.message, reply_to=reply_message
+        )
+
 
 @borg.on(admin_cmd(pattern="reader ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
-        return 
+        return
     if not event.reply_to_msg_id:
-       await event.edit("**Reply to a URL.**")
-       return
-    reply_message = await event.get_reply_message() 
+        await event.edit("**Reply to a URL.**")
+        return
+    reply_message = await event.get_reply_message()
     if not reply_message.text:
-       await event.edit("**Reply to a url message.**")
-       return
+        await event.edit("**Reply to a url message.**")
+        return
     chat = "@chotamreaderbot"
-    sender = reply_message.sender
+    reply_message.sender
     await event.edit("**Making instant view...**")
     async with event.client.conversation(chat) as conv:
-          try:     
-              response = conv.wait_event(events.NewMessage(incoming=True,from_users=272572121))
-              await event.client.forward_messages(chat, reply_message)
-              response = await response 
-          except YouBlockedUserError: 
-              await event.reply("Please unblock me @chotamreaderbot")
-              return
-          await event.delete()
-          await event.client.send_message(event.chat_id, response.message, reply_to=reply_message)
-
-
+        try:
+            response = conv.wait_event(
+                events.NewMessage(incoming=True, from_users=272572121)
+            )
+            await event.client.forward_messages(chat, reply_message)
+            response = await response
+        except YouBlockedUserError:
+            await event.reply("Please unblock me @chotamreaderbot")
+            return
+        await event.delete()
+        await event.client.send_message(
+            event.chat_id, response.message, reply_to=reply_message
+        )
 
 
 CMD_HELP.update(
