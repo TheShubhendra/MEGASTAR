@@ -28,7 +28,7 @@ async def set_not_afk(event):
     afk_end = back_alive.replace(microsecond=0)
     if afk_start != {}:
         str((afk_end - afk_start))
-    now = datetime.datetime.now()
+    datetime.datetime.now()
     current_message = event.message.message
     if ".afk" not in current_message and "yes" in USER_AFK:  # pylint:disable=E0602
         try:
