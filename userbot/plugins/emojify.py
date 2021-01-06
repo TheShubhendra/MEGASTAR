@@ -1,11 +1,9 @@
 """
 Created by @Jisan7509
 modified by  @mrconfused
-Userbot plugin for legend userbot
+Userbot plugin for MEGASTAR userbot
 """
 import emoji
-
-from userbot.helpers import fonts as emojify
 
 from ..utils import admin_cmd, edit_or_reply
 from . import CMD_HELP
@@ -25,8 +23,8 @@ async def itachi(event):
     result = ""
     for a in args:
         a = a.lower()
-        if a in emojify.kakashitext:
-            char = emojify.kakashiemoji[emojify.kakashitext.index(a)]
+        if a in emojize.kakashitext:
+            char = emojize.kakashiemoji[emojize.kakashitext.index(a)]
             result += char
         else:
             result += a
@@ -42,7 +40,7 @@ async def itachi(event):
     if not args:
         await edit_or_reply(
             event, "`What am I Supposed to do with this stupid, Give me a text. `"
-        )
+        )q
         return
     try:
         emoji, arg = args.split(" ", 1)
@@ -55,8 +53,8 @@ async def itachi(event):
     result = ""
     for a in arg:
         a = a.lower()
-        if a in emojify.kakashitext:
-            char = emojify.itachiemoji[emojify.kakashitext.index(a)].format(cj=emoji)
+        if a in emojize.kakashitext:
+            char = emojize.itachiemoji[emojize.kakashitext.index(a)].format(cj=emoji)
             result += char
         else:
             result += a
