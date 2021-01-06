@@ -41,7 +41,7 @@ async def set_not_afk(event):
         )
         try:
             await borg.send_message(  # pylint:disable=E0602
-                Config.PRIVATE_GROUP_BOT_API_ID,  # pylint:disable=E0602
+                config.PRIVATE_GROUP_ID,  # pylint:disable=E0602
                 "#AFKFALSE \nSet AFK mode to False\n"
                 + "__Back alive!__\n**No Longer afk.**\n `Was afk for:``"
                 + total_afk_time
@@ -139,7 +139,7 @@ async def _(event):
         await event.delete()
         try:
             await borg.send_message(  # pylint:disable=E0602
-                Config.PRIVATE_GROUP_BOT_API_ID,  # pylint:disable=E0602
+                config.PRIVATE_GROUP_ID,  # pylint:disable=E0602
                 f"#MAFKTRUE \nSet MAFK mode to True, and Reason is {reason}",
                 file=pic,
             )
