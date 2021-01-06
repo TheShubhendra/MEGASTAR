@@ -40,7 +40,7 @@ async def itachi(event):
     if not args:
         await edit_or_reply(
             event, "`What am I Supposed to do with this stupid, Give me a text. `"
-        )q
+        )
         return
     try:
         emoji, arg = args.split(" ", 1)
