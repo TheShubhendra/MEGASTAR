@@ -116,12 +116,14 @@ async def facepalm(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
         await e.edit("ㅤㅤㅤㅤ")
 
+
 @borg.on(admin_cmd("repo$"))
 # @register(outgoing=True, pattern="^.fp$")
 async def facepalm(e):
     if not e.text[0].isalpha() and e.text[0] not in ("/", "#", "@", "!"):
-        await e.edit("**Click [mEGASTARs](https://GitHub.com/Bristi-OP/MEGASTAR) to open this userbot's repo**")
-
+        await e.edit(
+            "**Click [mEGASTARs](https://GitHub.com/Bristi-OP/MEGASTAR) to open this userbot's repo**"
+        )
 
 
 CMD_HELP.update({"leave": "Leave a Chat"})
