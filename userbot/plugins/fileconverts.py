@@ -19,40 +19,6 @@ if not os.path.isdir("./temp"):
     os.makedirs("./temp")
 
 
-@borg.on(admin_cmd(pattern="stoi"))
-async def _(cat):
-    if cat.fwd_from:
-        return
-    reply_to_id = cat.message.id
-    if cat.reply_to_msg_id:
-        reply_to_id = cat.reply_to_msg_id
-    event = await edit_or_reply(cat, "Converting.....")
-    if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
-        os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
-    if event.reply_to_msg_id:
-        filename = "hi.jpg"
-        file_name = filename
-        reply_message = await event.get_reply_message()
-        to_download_directory = Config.TMP_DOWNLOAD_DIRECTORY
-        downloaded_file_name = os.path.join(to_download_directory, file_name)
-        downloaded_file_name = await cat.client.download_media(
-            reply_message, downloaded_file_name
-        )
-        if os.path.exists(downloaded_file_name):
-            caat = await cat.client.send_file(
-                event.chat_id,
-                downloaded_file_name,
-                force_document=False,
-                reply_to=reply_to_id,
-            )
-            os.remove(downloaded_file_name)
-            await event.delete()
-        else:
-            await event.edit("Can't Convert")
-    else:
-        await event.edit("Syntax : `.stoi` reply to a Telegram normal sticker")
-
-
 @borg.on(admin_cmd(pattern="itos"))
 async def _(cat):
     if cat.fwd_from:
@@ -61,13 +27,13 @@ async def _(cat):
     if cat.reply_to_msg_id:
         reply_to_id = cat.reply_to_msg_id
     event = await edit_or_reply(cat, "Converting.....")
-    if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
-        os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
+    if not os.path.isdir(config.TMP_DOWNLOAD_DIRECTORY):
+        os.makedirs(config.TMP_DOWNLOAD_DIRECTORY)
     if event.reply_to_msg_id:
         filename = "hi.webp"
         file_name = filename
         reply_message = await event.get_reply_message()
-        to_download_directory = Config.TMP_DOWNLOAD_DIRECTORY
+        to_download_directory = config.TMP_DOWNLOAD_DIRECTORY
         downloaded_file_name = os.path.join(to_download_directory, file_name)
         downloaded_file_name = await cat.client.download_media(
             reply_message, downloaded_file_name
@@ -219,7 +185,7 @@ async def _(event):
         c_time = time.time()
         downloaded_file_name = await event.client.download_media(
             reply_message,
-            Config.TMP_DOWNLOAD_DIRECTORY,
+            config.TMP_DOWNLOAD_DIRECTORY,
             progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
                 progress(d, t, event, c_time, "trying to download")
             ),
@@ -240,7 +206,7 @@ async def _(event):
         if input_str == "voice":
             new_required_file_caption = "voice_" + str(round(time.time())) + ".opus"
             new_required_file_name = (
-                Config.TMP_DOWNLOAD_DIRECTORY + "/" + new_required_file_caption
+                config.TMP_DOWNLOAD_DIRECTORY + "/" + new_required_file_caption
             )
             command_to_run = [
                 "ffmpeg",
@@ -261,7 +227,7 @@ async def _(event):
         elif input_str == "mp3":
             new_required_file_caption = "mp3_" + str(round(time.time())) + ".mp3"
             new_required_file_name = (
-                Config.TMP_DOWNLOAD_DIRECTORY + "/" + new_required_file_caption
+                config.TMP_DOWNLOAD_DIRECTORY + "/" + new_required_file_caption
             )
             command_to_run = [
                 "ffmpeg",
