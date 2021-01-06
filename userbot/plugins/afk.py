@@ -27,7 +27,7 @@ async def set_not_afk(event):
     back_alive = datetime.now()
     afk_end = back_alive.replace(microsecond=0)
     if afk_start != {}:
-        str((afk_end - afk_start))
+        total_afk_time = str((afk_end - afk_start))
     current_message = event.message.message
     if ".afk" not in current_message and "yes" in USER_AFK:  # pylint:disable=E0602
         try:
@@ -98,7 +98,7 @@ async def on_afk(event):
     back_alivee = datetime.now()
     afk_end = back_alivee.replace(microsecond=0)
     if afk_start != {}:
-        str((afk_end - afk_start))
+        total_afk_time = str((afk_end - afk_start))
     current_message_text = event.message.message.lower()
     if "afk" in current_message_text:
         # userbot's should not reply to other userbot's
@@ -107,7 +107,7 @@ async def on_afk(event):
     if USER_AFK and not (await event.get_sender()).bot:  # pylint:disable=E0602
         msg = None
         message_to_reply = (
-            f"**My Boss is busy right now...\ncommanded me to say it to you that you have to wait till he/she comes back online🥰\n He/She Has Been Gone For a light year\nWhere He/She Is**: **It's A Secret 🤫** "
+            f"**My Boss is busy right now...\ncommanded me to say it to you that you have to wait till he/she comes back online🥰\n He/She Has Been afk for :- {total_afk_time}\nWhere He/She Is**: **It's A Secret 🤫** "
             + f"\n\n**I'll back in a few** [Light years](https://telegra.ph/file/075a26d773e901f7fbb67.jpg)\n**REASON**: {reason}"
             if reason
             else f"**Important Notice**\n\n[This User Is Ded Forever...](https://telegra.ph//file/a53fa950ff31781d5930a.jpg) "
