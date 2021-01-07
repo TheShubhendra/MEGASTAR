@@ -25,7 +25,9 @@ if config.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             buttons = [
                 (
                     custom.Button.inline("Stats", data="stats"),
-                    Button.url("Repo", "https://github.com/bristipgl1709/megastar userbot"),
+                    Button.url(
+                        "Repo", "https://github.com/bristipgl1709/megastar userbot"
+                    ),
                 )
             ]
             if PGL_IMG and PGL_IMG.endswith((".jpg", ".png")):
@@ -102,7 +104,7 @@ if config.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             secret = os.path.join("./userbot", "secrets.txt")
             try:
                 jsondata = json.load(open(secret))
-            except:
+            except BaseException:
                 jsondata = False
             try:
                 # if u is user id
@@ -127,7 +129,7 @@ if config.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
                 else:
                     bristipgl = f"[{u.first_name}](tg://user?id={u.id})"
                 u = int(u.id)
-            except:
+            except BaseException:
                 return
             timestamp = int(time.time() * 2)
             newsecret = {str(timestamp): {"userid": u, "text": txct}}
