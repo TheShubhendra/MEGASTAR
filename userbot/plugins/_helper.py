@@ -2,7 +2,7 @@ import asyncio
 
 from telethon import functions
 
-from . import ALIVE_NAME, CMD_HELP
+from . import ALIVE_NAME, CMD_HELP, bristialive
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Megastar"
 
