@@ -3,7 +3,7 @@ import asyncio
 from ..utils import admin_cmd, edit_or_reply
 from . import ALIVE_NAME
 
-DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "cat"
+DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "MEGASTAR"
 
 
 @borg.on(admin_cmd(outgoing=True, pattern="kilr( (.*)|$)"))
