@@ -59,8 +59,8 @@ async def cmd_list(event):
 async def _(event):
     if event.fwd_from:
         return
-    result = await borg(functions.help.GetNearestDcRequest())  # pylint:disable=E0602
-    await event.edit(result.stringify())
+    results = await borg(functions.help.GetNearestDcRequest())  # pylint:disable=E0602
+    await event.edit(results.stringify())
 
 
 @borg.on(admin_cmd(pattern="config"))  # pylint:disable=E0602
