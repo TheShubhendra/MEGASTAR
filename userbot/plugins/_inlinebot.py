@@ -26,7 +26,7 @@ if config.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
                 (
                     custom.Button.inline("Stats", data="stats"),
                     Button.url(
-                        "Repo", "https://github.com/bristipgl1709/megastar userbot"
+                        "Repo", "https://github.com/Bristi-OP/MEGASTAR"
                     ),
                 )
             ]
