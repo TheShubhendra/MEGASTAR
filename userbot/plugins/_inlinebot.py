@@ -9,10 +9,10 @@ from telethon import Button, custom, events
 
 from . import CMD_LIST, catalive
 
-PGL_IMG = Config.ALIVE_PIC or None
+PGL_IMG = config.ALIVE_PIC or None
 BTN_URL_REGEX = re.compile(r"(\[([^\[]+?)\]\<buttonurl:(?:/{0,2})(.+?)(:same)?\>)")
 
-if Config.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
+if config.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
 
     @tgbot.on(events.InlineQuery)
     async def inline_handler(event):
@@ -25,9 +25,7 @@ if Config.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             buttons = [
                 (
                     custom.Button.inline("Stats", data="stats"),
-                    Button.url(
-                        "Repo", "https://github.com/bristipgl1709/megastar userbot"
-                    ),
+                    Button.url("Repo", "https://github.com/bristipgl1709/megastar userbot"),
                 )
             ]
             if PGL_IMG and PGL_IMG.endswith((".jpg", ".png")):
@@ -104,7 +102,7 @@ if Config.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             secret = os.path.join("./userbot", "secrets.txt")
             try:
                 jsondata = json.load(open(secret))
-            except BaseException:
+            except:
                 jsondata = False
             try:
                 # if u is user id
@@ -129,7 +127,7 @@ if Config.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
                 else:
                     bristipgl = f"[{u.first_name}](tg://user?id={u.id})"
                 u = int(u.id)
-            except BaseException:
+            except:
                 return
             timestamp = int(time.time() * 2)
             newsecret = {str(timestamp): {"userid": u, "text": txct}}
@@ -258,14 +256,14 @@ if Config.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
 
 
 def paginate_help(page_number, loaded_plugins, prefix):
-    number_of_rows = Config.NO_OF_BUTTONS_DISPLAYED_IN_H_ME_CMD
-    number_of_cols = Config.NO_OF_COLOUMS_DISPLAYED_IN_H_ME_CMD
+    number_of_rows = config.NO_OF_BUTTONS_DISPLAYED_IN_H_ME_CMD
+    number_of_cols = config.NO_OF_COLOUMS_DISPLAYED_IN_H_ME_CMD
     helpable_plugins = [p for p in loaded_plugins if not p.startswith("_")]
     helpable_plugins = sorted(helpable_plugins)
     modules = [
         custom.Button.inline(
             "{} {} {}".format(
-                Config.EMOJI_TO_DISPLAY_IN_HELP, x, Config.EMOJI_TO_DISPLAY_IN_HELP
+                config.EMOJI_TO_DISPLAY_IN_HELP, x, config.EMOJI_TO_DISPLAY_IN_HELP
             ),
             data="us_plugin_{}".format(x),
         )
@@ -295,11 +293,11 @@ def paginate_help(page_number, loaded_plugins, prefix):
         ] + [
             (
                 custom.Button.inline(
-                    "⌫", data="{}_prev({})".format(prefix, modulo_page)
+                    "☜", data="{}_prev({})".format(prefix, modulo_page)
                 ),
                 custom.Button.inline("Close", data="close"),
                 custom.Button.inline(
-                    "⌦", data="{}_next({})".format(prefix, modulo_page)
+                    "☞", data="{}_next({})".format(prefix, modulo_page)
                 ),
             )
         ]
