@@ -12,7 +12,7 @@ DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "legend"
 async def _(event):
     if event.fwd_from:
         return
-    animation_interval = 5
+    animation_interval = 2
     animation_ttl = range(0, 16)
     await event.edit("wishing...")
     animation_chars = [
