@@ -54,7 +54,7 @@ if config.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             buttons = paginate_help(0, CMD_LIST, "helpme")
             result = builder.article(
                 "© Megastart",
-                text="{}\nCurrently Loaded Plugins: {}".format(query, len(CMD_LIST)),
+                text="{}\n**Currently Loaded Plugins**: {}".format(query, len(CMD_LIST)),
                 buttons=buttons,
                 link_preview=False,
             )
@@ -159,7 +159,7 @@ if config.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             # https://t.me/TelethonChat/115200
             await event.edit(buttons=buttons)
         else:
-            reply_pop_up_alert = "Please get your own megastar userbot, and don't use mine! Join @megastar userbot17 help"
+            reply_pop_up_alert = "Please get your own megastar userbot, and don't use mine! Join @megastar_userbot help"
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
     @tgbot.on(
@@ -219,7 +219,7 @@ if config.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             else:
                 reply_pop_up_alert = help_string
             reply_pop_up_alert += (
-                "Use .unload {} to remove this plugin ©megastar userbot".format(
+                "**Use .unload {} to remove this plugin \n©megastar userbot**".format(
                     plugin_name
                 )
             )
