@@ -18,9 +18,7 @@ async def cmd_list(event):
         reply_to_id = event.reply_to_msg_id
     input_str = event.pattern_match.group(1)
     if input_str == "text":
-        string = (
-            "Total {count} commands found in {plugincount} plugins of Megastar userbot\n\n"
-        )
+        string = "Total {count} commands found in {plugincount} plugins of Megastar userbot\n\n"
         count = 0
         plugincount = 0
         for i in sorted(CMD_LIST):
@@ -42,7 +40,9 @@ async def cmd_list(event):
                 .get("key")
             )
             url = f"https://nekobin.com/{key}"
-            reply_text = f"**All commands of the MEGASTAR userbot can be seen [here]({url})**"
+            reply_text = (
+                f"**All commands of the MEGASTAR userbot can be seen [here]({url})**"
+            )
             await event.edit(reply_text)
             return
         await event.edit(string.format(count=count, plugincount=plugincount))
@@ -83,8 +83,6 @@ async def cmd_list(event):
                 string += " "
                 count += 1
             await event.edit(string.format(count=count), parse_mode="HTML")
-
-
 
 
 @borg.on(admin_cmd(outgoing=True, pattern="plinfo ?(.*)"))
