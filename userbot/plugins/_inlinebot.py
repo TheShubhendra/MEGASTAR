@@ -11,6 +11,7 @@ from . import CMD_LIST
 
 PGL_IMG = config.ALIVE_PIC or None
 BTN_URL_REGEX = re.compile(r"(\[([^\[]+?)\]\<buttonurl:(?:/{0,2})(.+?)(:same)?\>)")
+DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "MEGASTAR"
 
 if config.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
 
