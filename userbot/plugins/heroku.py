@@ -199,7 +199,7 @@ async def _(dyno):
 
     await asyncio.sleep(5)
     await dyno.delete()
-    return os.remove("megastarlogs.txt")
+    return os.remove("logs.txt")
 
 
 def prettyjson(obj, indent=2, maxlinelength=80):
