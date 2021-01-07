@@ -111,4 +111,3 @@ async def lst(event):
     else:
         await runcmd(catcmd)
         await edit_or_reply(event, f"Succesfully removed `{path}` file")
-
