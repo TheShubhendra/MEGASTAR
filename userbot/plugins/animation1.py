@@ -66,7 +66,9 @@ async def _(event):
         return
     animation_interval = 3
     animation_ttl = range(18)
-    event = await edit_or_reply(event, "Calling Krishan choudhary (ceo of telegram)......")
+    event = await edit_or_reply(
+        event, "Calling Krishan choudhary (ceo of telegram)......"
+    )
     animation_chars = [
         "`Connecting To Telegram Headquarters...`",
         "`Call Connected to @Kkchoudhary3108.`",
