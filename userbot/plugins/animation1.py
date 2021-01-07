@@ -4,7 +4,7 @@ from collections import deque
 from .. import ALIVE_NAME
 from ..utils import admin_cmd, edit_or_reply
 
-DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "cat"
+DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "mEGASTARs"
 
 
 @borg.on(admin_cmd(pattern="stupid$"))
@@ -78,7 +78,7 @@ async def _(event):
         "`Me: Hello Sir, Please Ban This Telegram Account.`",
         "`Pavel Durov : May I Know Who is This?`",
         f"`Me: Yo Brah, I Am` {DEFAULTUSER} ",
-        "`Pavel Durov : OMG!!! Long time no see, Wassup cat...\nI'll Make Sure That Guy Account Will Get Blocked Within 24Hrs.`",
+        "`Pavel Durov : OMG!!! Long time no see, Wassup bruh...\nI'll Make Sure That Guy Account Will Get Blocked Within 24Hrs.`",
         "`Me: Thanks, See You Later Brah.`",
         "`Pavel Durov : Please Don't Thank Brah, Telegram Is Our's. Just Gimme A Call When You Become Free.`",
         "`Me: Is There Any Issue/Emergency???`",
@@ -198,7 +198,7 @@ async def _(event):
         deq.rotate(1)
 
 
-@borg.on(admin_cmd(pattern="gangasta$"))
+@borg.on(admin_cmd(pattern="gang$"))
 async def _(event):
     event = await edit_or_reply(event, "gangasta")
     await event.edit("EVERyBOdy")
@@ -223,7 +223,7 @@ async def timer_blankx(e):
     e = await edit_or_reply(e, "charging")
     txt = (
         e.text[10:]
-        + "\n\n`Tesla Wireless Charging (beta) Started...\nDevice Detected: Nokia 1100\nBattery Percentage:` "
+        + "\n\n`Tesla Wireless Charging (beta) Started...\nDevice Detected: iphone 12\nBattery Percentage:` "
     )
     j = 10
     k = j
@@ -233,6 +233,6 @@ async def timer_blankx(e):
         await asyncio.sleep(1)
     await asyncio.sleep(1)
     await e.edit(
-        "`Tesla Wireless Charging (beta) Completed...\nDevice Detected: Nokia 1100 (Space Grey Varient)\nBattery Percentage:` [100%](https://telegra.ph/file/a45aa7450c8eefed599d9.mp4) ",
+        "`Tesla Wireless Charging (beta) Completed...\nDevice Detected: iPhone 12 (Space Grey Varient)\nBattery Percentage:` [100%](https://telegra.ph/file/a45aa7450c8eefed599d9.mp4) ",
         link_preview=True,
     )
