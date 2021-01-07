@@ -7,7 +7,7 @@ import time
 
 from telethon import Button, custom, events
 
-from . import CMD_LIST, megalive
+from . import CMD_LIST
 
 PGL_IMG = config.ALIVE_PIC or None
 BTN_URL_REGEX = re.compile(r"(\[([^\[]+?)\]\<buttonurl:(?:/{0,2})(.+?)(:same)?\>)")
@@ -247,13 +247,6 @@ if config.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
         else:
             reply_pop_up_alert = "Please get your own megastar userbot, and don't use mine! Join @megastar userbot17 help "
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
-
-    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"stats")))
-    async def on_plug_in_callback_query_handler(event):
-        statstext = await megalive()
-        reply_pop_up_alert = statstext
-        await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
-
 
 def paginate_help(page_number, loaded_plugins, prefix):
     number_of_rows = config.NO_OF_BUTTONS_DISPLAYED_IN_H_ME_CMD
