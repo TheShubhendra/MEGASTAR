@@ -1,13 +1,13 @@
 import asyncio
 
-import requests
 from telethon import functions
 
-from . import ALIVE_NAME, CMD_HELP, CMD_LIST
+from . import ALIVE_NAME, CMD_HELP
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Megastar"
 
 HELPTYPE = config.HELP_INLINETYPE or True
+
 
 @borg.on(admin_cmd(outgoing=True, pattern="plinfo ?(.*)"))
 async def info(event):
