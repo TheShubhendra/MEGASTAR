@@ -54,7 +54,9 @@ if config.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             buttons = paginate_help(0, CMD_LIST, "helpme")
             result = builder.article(
                 "© Megastart",
-                text="{}\n**Currently Loaded Plugins**: {}".format(
+                text="{}\n**Megastar Helper😉 Provided by 🤗{DEFAULTUSER}🤗 to reveal all the plugins
+                          \nCheck** `.help plugin name` **for commands, in case popup doesn't appear..
+                          \nCheck** `.plinfo plugin name` **for usage of thoose plugins and commands**\n\n**Currently Loaded Plugins**: {}".format(
                     query, len(CMD_LIST)
                 ),
                 buttons=buttons,
