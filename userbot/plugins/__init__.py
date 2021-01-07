@@ -108,9 +108,8 @@ def check_data_base_heal_th():
         output = "Functioning"
         is_database_working = True
     return is_database_working, output
-async def alive():
+async def megalive():
     _, check_sgnirts = check_data_base_heal_th()
-    sudo = "Enabled" if config.SUDO_USERS else "Disabled"
     uptime = await get_readable_time((time.time() - StartTime))
     try:
         useragent = (
