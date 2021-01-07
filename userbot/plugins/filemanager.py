@@ -7,7 +7,6 @@ import os
 import time
 from pathlib import Path
 
-from .. import CMD_HELP
 from ..utils import admin_cmd, edit_or_reply, humanbytes
 
 
@@ -113,20 +112,3 @@ async def lst(event):
         await runcmd(catcmd)
         await edit_or_reply(event, f"Succesfully removed `{path}` file")
 
-
-CMD_HELP.update(
-    {
-        "filemanager": "**Plugin :**`filemanager`\
-     \n\nList Files plugin for userbot \
-     \n**Syntax :** `.ls`\
-     \n**Usage :** will return files from current working directory\
-     \n\n**Syntax :** .ls path\
-     \n**Usage :** will return output according to path  \
-     \n\n**Syntax :** .ls file path\
-     \n**Usage :** will return file details\
-     \n\nSimple Module for people who dont wanna use shell executor for listing files.\
-     \n\n**Syntax :** `.rem path`\
-     \n**Usage :** To delete the required item from the bot server\
-"
-    }
-)
