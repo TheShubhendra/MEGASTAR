@@ -248,6 +248,7 @@ if config.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             reply_pop_up_alert = "Please get your own megastar userbot, and don't use mine! Join @megastar userbot17 help "
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
+
 def paginate_help(page_number, loaded_plugins, prefix):
     number_of_rows = config.NO_OF_BUTTONS_DISPLAYED_IN_H_ME_CMD
     number_of_cols = config.NO_OF_COLOUMS_DISPLAYED_IN_H_ME_CMD
