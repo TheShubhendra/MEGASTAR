@@ -121,7 +121,7 @@ async def upstream(ups):
         return
     if force_update:
         await ups.edit(
-            "Force-Syncing to latest stable userbot code, please wait Boss... Ill be up in time 😉 "
+            "༒**Megastar is being updated now**༒..\n**please wait Boss just wait for some minutes... Ill be up in time** 😉 "
         )
     else:
         await ups.edit("`Updating userbot, please wait....you are my best boss ever 🤩🥳")
@@ -168,7 +168,7 @@ async def upstream(ups):
             await ups.edit("`⬛⬛⬛⬛ \n⬛❇️❇️⬛ \n⬛❇️❇️⬛ \n⬛⬛⬛⬛`")
             await asyncio.sleep(1)
         await ups.edit(
-            "**⚜️Updating MEGASTAR ub ⚜️\n\nYou are the 👑KING👑 Boss!!\n\nPlease wait 5 minutes 😁😁\nThen try ** `.alive` **to check if I'm tuned.. 😎😎\n\nPowered by :-\n[© MEGASTAR UB](https://t.me/MEGASTAR_SUPPORT)**"
+            "**༒𝚄𝙿𝙳𝙰𝚃𝙸𝙽𝙶 𝙼𝙴𝙶𝙰𝚂𝚃𝙰𝚁 𝚄𝚂𝙴𝚁𝙱𝙾𝚃༒\nBoss!!Please wait 5 minutes 😁😁\nThen try**  `.alive` **to check if I'm tuned.. 😎😎\n\nPowered by :-\n[MEGASTAR UB](https://t.me/MEGASTAR_SUPPORT)**"
         )
         remote.push(refspec="HEAD:refs/heads/master", force=True)
     else:
