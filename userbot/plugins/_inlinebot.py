@@ -11,7 +11,8 @@ from . import CMD_LIST
 
 PGL_IMG = config.ALIVE_PIC or None
 BTN_URL_REGEX = re.compile(r"(\[([^\[]+?)\]\<buttonurl:(?:/{0,2})(.+?)(:same)?\>)")
-DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "MEGASTAR"
+ALIVE_NAME = os.environ.get("ALIVE_NAME", None)
+
 
 if config.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
 
@@ -55,7 +56,7 @@ if config.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             buttons = paginate_help(0, CMD_LIST, "helpme")
             result = builder.article(
                 "© Megastart",
-                text="{}\nMegastar Helper😉 Provided by 🤗{DEFAULTUSER}🤗 to reveal all the plugins\nCheck `.help plugin name` for commands, in case popup doesn't appear..\nCheck `.plinfo plugin name` for usage of thoose plugins and commands\n\nCurrently Loaded Plugins: {}".format(
+                text="{}\nMegastar Helper😉 Provided by 🤗{ALIVE_NAME}🤗 to reveal all the plugins\nCheck `.help plugin name` for commands, in case popup doesn't appear..\nCheck `.plinfo plugin name` for usage of thoose plugins and commands\n\nCurrently Loaded Plugins: {}".format(
                     query, len(CMD_LIST)
                 ),
                 buttons=buttons,
