@@ -3,7 +3,7 @@ import asyncio
 import requests
 from telethon import functions
 
-from . import ALIVE_NAME, CMD_LIST, yaml_format
+from . import ALIVE_NAME, CMD_LIST
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Megastar"
 
