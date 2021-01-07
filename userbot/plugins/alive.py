@@ -22,6 +22,7 @@ pm_caption += (
 )
 pm_caption += "༒About My System༒ \n\n"
 pm_caption += "➥ **ᴛᴇʟᴇᴛʜᴏɴ ᴠᴇʀꜱɪᴏɴ** ☞ 1.17.5\n"
+pm_caption += "➥ **𝙿𝚈𝚃𝙷𝙾𝙽 𝚅𝙴𝚁𝚂𝙸𝙾𝙽** ☞ [3.9.1](https://www.python.org/downloads/release/python-391/)\n"
 pm_caption += "➥ **ꜱᴜᴘᴘᴏʀᴛ ᴄʜᴀɴɴᴇʟ** ☞ [ᴊᴏɪɴ](https://t.me/MEGASTAR_USERBOT)\n"
 pm_caption += "➥ **ꜱᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ** ☞ [ᴊᴏɪɴ](https://t.me/MEGASTAR_SUPPORT)\n"
 pm_caption += "➥ **ʟɪᴄᴇɴꜱᴇ**  ☞ [ AGPL-3.0 License](https://github.com/Bristi-OP/MEGASTAR/blob/master/LICENSE)\n"
