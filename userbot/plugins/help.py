@@ -84,7 +84,6 @@ async def cmd_list(event):
             await event.edit(string.format(count=count), parse_mode="HTML")
 
 
-
 @borg.on(admin_cmd(outgoing=True, pattern="plinfo ?(.*)"))
 async def info(event):
     """ For .info command,"""
