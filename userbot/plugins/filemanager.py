@@ -7,8 +7,8 @@ import os
 import time
 from pathlib import Path
 
-from ..utils import admin_cmd, edit_or_reply, humanbytes
 from .. import CMD_HELP
+from ..utils import admin_cmd, edit_or_reply, humanbytes
 
 
 @borg.on(admin_cmd(pattern="ls ?(.*)"))
