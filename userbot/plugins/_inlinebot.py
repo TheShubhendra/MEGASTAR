@@ -7,14 +7,16 @@ import time
 
 from telethon import Button, custom, events
 
+from userbot import ALIVE_NAME
+
 from . import CMD_LIST
+
+DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "@MEGASTAR_SUPPORT"
 
 PGL_IMG = config.ALIVE_PIC or None
 BTN_URL_REGEX = re.compile(r"(\[([^\[]+?)\]\<buttonurl:(?:/{0,2})(.+?)(:same)?\>)")
-ALIVE_NAME = os.environ.get("ALIVE_NAME", None)
 
-
-if config.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
+if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
 
     @tgbot.on(events.InlineQuery)
     async def inline_handler(event):
@@ -33,20 +35,20 @@ if config.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             if PGL_IMG and PGL_IMG.endswith((".jpg", ".png")):
                 result = builder.photo(
                     PGL_IMG,
-                    # title="Alive pgl",
+                    # title="Alive ",
                     text=query,
                     buttons=buttons,
                 )
             elif PGL_IMG:
                 result = builder.document(
                     PGL_IMG,
-                    title="Alive pgl",
+                    title="Alive",
                     text=query,
                     buttons=buttons,
                 )
             else:
                 result = builder.article(
-                    title="Alive pgl",
+                    title="Alive",
                     text=query,
                     buttons=buttons,
                 )
@@ -55,9 +57,9 @@ if config.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             rev_text = query[::-1]
             buttons = paginate_help(0, CMD_LIST, "helpme")
             result = builder.article(
-                "© Megastart",
-                text="{}\nMegastar Helper😉 Provided by 🤗{ALIVE_NAME}🤗 to reveal all the plugins\nCheck `.help plugin name` for commands, in case popup doesn't appear..\nCheck `.plinfo plugin name` for usage of thoose plugins and commands\n\nCurrently Loaded Plugins: {}".format(
-                    query, len(CMD_LIST)
+                "© Megastar",
+                text="{}** Helper.. Provided by ✨{}✨ \n`Megastar Helper to reveal all the commands** 🥳`\n__Do .help plugin_name for commands, in case popup doesn't appear.__ @MEGASTAR_SUPPORT\nCurrently Loaded Plugins: {}".format(
+                    query, DEFAULTUSER, len(CMD_LIST)
                 ),
                 buttons=buttons,
                 link_preview=False,
@@ -88,8 +90,8 @@ if config.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
                 else:
                     note_data += markdown_note[prev:to_check]
                     prev = match.start(1) - 1
-
-            note_data += markdown_note[prev:]
+            else:
+                note_data += markdown_note[prev:]
             message_text = note_data.strip()
             tl_ib_buttons = ibuild_keyboard(buttons)
             result = builder.article(
@@ -114,12 +116,12 @@ if config.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
                 try:
                     u = await event.client.get_entity(u)
                     if u.username:
-                        bristipgl = f"@{u.username}"
+                        krishan = f"@{u.username}"
                     else:
-                        bristipgl = f"[{u.first_name}](tg://user?id={u.id})"
+                        krishan = f"[{u.first_name}](tg://user?id={u.id})"
                 except ValueError:
                     # ValueError: Could not find the input entity
-                    bristipgl = f"[user](tg://user?id={u})"
+                    krishan = f"[user](tg://user?id={u})"
             except ValueError:
                 # if u is username
                 try:
@@ -127,9 +129,9 @@ if config.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
                 except ValueError:
                     return
                 if u.username:
-                    bristipgl = f"@{u.username}"
+                    krishan = f"@{u.username}"
                 else:
-                    bristipgl = f"[{u.first_name}](tg://user?id={u.id})"
+                    krishan = f"[{u.first_name}](tg://user?id={u.id})"
                 u = int(u.id)
             except BaseException:
                 return
@@ -141,7 +143,7 @@ if config.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             ]
             result = builder.article(
                 title="secret message",
-                text=f"🔒 A whisper message to {bristipgl}, Only he/she can open it.",
+                text=f"🔒 A whisper message to {shiva}, Only he/she can open it.",
                 buttons=buttons,
             )
             await event.answer([result] if result else None)
@@ -163,7 +165,7 @@ if config.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             # https://t.me/TelethonChat/115200
             await event.edit(buttons=buttons)
         else:
-            reply_pop_up_alert = "Please get your own megastar userbot, and don't use mine! Join @megastar_userbot help"
+            reply_pop_up_alert = "Please get your own Megastar userbot, and don't use mine! Join @MEGASTAR_SUPPORT for help"
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
     @tgbot.on(
@@ -180,7 +182,7 @@ if config.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             # https://t.me/TelethonChat/115200
             await event.edit(buttons=buttons)
         else:
-            reply_pop_up_alert = "Please get your own megastar userbot, and don't use mine! Join @megastar userbot17 help "
+            reply_pop_up_alert = "Please get your own Megastar userbot, and don't use mine! Join @MEGASTAR_SUPPORT for help "
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"secret_(.*)")))
@@ -203,11 +205,7 @@ if config.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             reply_pop_up_alert = "This message no longer exists "
         await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
-    @tgbot.on(
-        events.callbackquery.CallbackQuery(  # pylint:disable=E0602
-            data=re.compile(b"us_plugin_(.*)")
-        )
-    )
+    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"us_plugin_(.*)")))
     async def on_plug_in_callback_query_handler(event):
         if event.query.user_id == bot.uid:
             plugin_name = event.data_match.group(1).decode("UTF-8")
@@ -223,7 +221,7 @@ if config.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             else:
                 reply_pop_up_alert = help_string
             reply_pop_up_alert += (
-                "**Use .unload {} to remove this plugin \n©megastar userbot**".format(
+                "Use .unload {} to remove this plugin \n megastar userbot".format(
                     plugin_name
                 )
             )
@@ -241,16 +239,22 @@ if config.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
                         caption=plugin_name,
                     )
         else:
-            reply_pop_up_alert = "Please get your own megastar userbot, and don't use mine! Join @megastar userbot17 help "
+            reply_pop_up_alert = "Please get your own MEGASTAR userbot, and don't use mine! Join @MEGASTAR_SUPPORT for help "
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"close")))
     async def on_plug_in_callback_query_handler(event):
         if event.query.user_id == bot.uid:
-            await event.edit("menu closed")
+            await event.edit("Help .menu closed")
         else:
-            reply_pop_up_alert = "Please get your own megastar userbot, and don't use mine! Join @megastar userbot17 help "
+            reply_pop_up_alert = "Please get your own MEGASTAR userbot, and don't use mine! Join @MEGASTAR_SUPPORT for help "
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
+
+    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"stats")))
+    async def on_plug_in_callback_query_handler(event):
+        statstext = await alive()
+        reply_pop_up_alert = statstext
+        await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
 
 def paginate_help(page_number, loaded_plugins, prefix):
@@ -293,7 +297,7 @@ def paginate_help(page_number, loaded_plugins, prefix):
                 custom.Button.inline(
                     "☜", data="{}_prev({})".format(prefix, modulo_page)
                 ),
-                custom.Button.inline("Close", data="close"),
+                custom.Button.inline("⌧", data="close"),
                 custom.Button.inline(
                     "☞", data="{}_next({})".format(prefix, modulo_page)
                 ),
