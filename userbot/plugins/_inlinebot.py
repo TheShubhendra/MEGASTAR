@@ -7,16 +7,12 @@ import time
 
 from telethon import Button, custom, events
 
-from userbot import ALIVE_NAME
+from . import CMD_LIST, catalive
 
-from . import CMD_LIST
-
-DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "@MEGASTAR_SUPPORT"
-
-PGL_IMG = config.ALIVE_PIC or None
+PGL_IMG = Config.ALIVE_PIC or None
 BTN_URL_REGEX = re.compile(r"(\[([^\[]+?)\]\<buttonurl:(?:/{0,2})(.+?)(:same)?\>)")
 
-if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
+if Config.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
 
     @tgbot.on(events.InlineQuery)
     async def inline_handler(event):
@@ -29,38 +25,36 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             buttons = [
                 (
                     custom.Button.inline("Stats", data="stats"),
-                    Button.url("Repo", "https://github.com/Bristi-OP/MEGASTAR"),
+                    Button.url("Repo", "https://github.com/bristipgl1709/megastar userbot"),
                 )
             ]
             if PGL_IMG and PGL_IMG.endswith((".jpg", ".png")):
                 result = builder.photo(
                     PGL_IMG,
-                    # title="Alive ",
+                    # title="Alive pgl",
                     text=query,
                     buttons=buttons,
                 )
             elif PGL_IMG:
                 result = builder.document(
                     PGL_IMG,
-                    title="Alive",
+                    title="Alive pgl",
                     text=query,
                     buttons=buttons,
                 )
             else:
                 result = builder.article(
-                    title="Alive",
+                    title="Alive pgl",
                     text=query,
                     buttons=buttons,
                 )
             await event.answer([result] if result else None)
-        elif event.query.user_id == bot.uid and query.startswith("**Userbot**"):
+        elif event.query.user_id == bot.uid and query.startswith("Userbot"):
             rev_text = query[::-1]
             buttons = paginate_help(0, CMD_LIST, "helpme")
             result = builder.article(
-                "© Megastar",
-                text="{}** Helper.. Provided by →_→{} \n`Megastar Helper to reveal all the commands 🥳`\nDo** ```.help plugin_name``` **for commands, in case popup doesn't appear... @MEGASTAR_SUPPORT\nCurrently Loaded Plugins**: {}".format(
-                    query, DEFAULTUSER, len(CMD_LIST)
-                ),
+                "© Megastart",
+                text="{}\nCurrently Loaded Plugins: {}".format(query, len(CMD_LIST)),
                 buttons=buttons,
                 link_preview=False,
             )
@@ -90,8 +84,8 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
                 else:
                     note_data += markdown_note[prev:to_check]
                     prev = match.start(1) - 1
-            else:
-                note_data += markdown_note[prev:]
+
+            note_data += markdown_note[prev:]
             message_text = note_data.strip()
             tl_ib_buttons = ibuild_keyboard(buttons)
             result = builder.article(
@@ -108,7 +102,7 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             secret = os.path.join("./userbot", "secrets.txt")
             try:
                 jsondata = json.load(open(secret))
-            except BaseException:
+            except:
                 jsondata = False
             try:
                 # if u is user id
@@ -116,12 +110,12 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
                 try:
                     u = await event.client.get_entity(u)
                     if u.username:
-                        krishan = f"@{u.username}"
+                        bristipgl = f"@{u.username}"
                     else:
-                        krishan = f"[{u.first_name}](tg://user?id={u.id})"
+                        bristipgl = f"[{u.first_name}](tg://user?id={u.id})"
                 except ValueError:
                     # ValueError: Could not find the input entity
-                    krishan = f"[user](tg://user?id={u})"
+                    bristipgl = f"[user](tg://user?id={u})"
             except ValueError:
                 # if u is username
                 try:
@@ -129,11 +123,11 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
                 except ValueError:
                     return
                 if u.username:
-                    krishan = f"@{u.username}"
+                    bristipgl = f"@{u.username}"
                 else:
-                    krishan = f"[{u.first_name}](tg://user?id={u.id})"
+                    bristipgl = f"[{u.first_name}](tg://user?id={u.id})"
                 u = int(u.id)
-            except BaseException:
+            except:
                 return
             timestamp = int(time.time() * 2)
             newsecret = {str(timestamp): {"userid": u, "text": txct}}
@@ -143,7 +137,7 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             ]
             result = builder.article(
                 title="secret message",
-                text=f"🔒 A whisper message to {shiva}, Only he/she can open it.",
+                text=f"🔒 A whisper message to {bristipgl}, Only he/she can open it.",
                 buttons=buttons,
             )
             await event.answer([result] if result else None)
@@ -165,7 +159,7 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             # https://t.me/TelethonChat/115200
             await event.edit(buttons=buttons)
         else:
-            reply_pop_up_alert = "Please get your own Megastar userbot, and don't use mine! Join @MEGASTAR_SUPPORT for help"
+            reply_pop_up_alert = "Please get your own megastar userbot, and don't use mine! Join @megastar userbot17 help"
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
     @tgbot.on(
@@ -182,7 +176,7 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             # https://t.me/TelethonChat/115200
             await event.edit(buttons=buttons)
         else:
-            reply_pop_up_alert = "Please get your own Megastar userbot, and don't use mine! Join @MEGASTAR_SUPPORT for help "
+            reply_pop_up_alert = "Please get your own megastar userbot, and don't use mine! Join @megastar userbot17 help "
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"secret_(.*)")))
@@ -205,7 +199,11 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             reply_pop_up_alert = "This message no longer exists "
         await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
-    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"us_plugin_(.*)")))
+    @tgbot.on(
+        events.callbackquery.CallbackQuery(  # pylint:disable=E0602
+            data=re.compile(b"us_plugin_(.*)")
+        )
+    )
     async def on_plug_in_callback_query_handler(event):
         if event.query.user_id == bot.uid:
             plugin_name = event.data_match.group(1).decode("UTF-8")
@@ -220,9 +218,11 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
                 reply_pop_up_alert = "{} is useless".format(plugin_name)
             else:
                 reply_pop_up_alert = help_string
-                reply_pop_up_alert += "Use .unload {} to remove this plugin \n →_→megastar userbot".format(
+            reply_pop_up_alert += (
+                "Use .unload {} to remove this plugin ©megastar userbot".format(
                     plugin_name
                 )
+            )
             try:
                 await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
             except BaseException:
@@ -237,33 +237,33 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
                         caption=plugin_name,
                     )
         else:
-            reply_pop_up_alert = "Please get your own MEGASTAR userbot, and don't use mine! Join @MEGASTAR_SUPPORT for help "
+            reply_pop_up_alert = "Please get your own megastar userbot, and don't use mine! Join @megastar userbot17 help "
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"close")))
     async def on_plug_in_callback_query_handler(event):
         if event.query.user_id == bot.uid:
-            await event.edit("𝙷𝚎𝚕𝚙 𝚖𝚎𝚗𝚞 𝚌𝚕𝚘𝚜𝚎𝚍\n 𝚠𝚛𝚒𝚝𝚎 .𝚑𝚎𝚕𝚙 𝚝𝚘 𝚐𝚎𝚝 𝚝𝚑𝚎 𝚖𝚎𝚗𝚞 𝚊𝚐𝚊𝚒𝚗")
+            await event.edit("menu closed")
         else:
-            reply_pop_up_alert = "Please get your own MEGASTAR userbot, and don't use mine! Join @MEGASTAR_SUPPORT for help "
+            reply_pop_up_alert = "Please get your own megastar userbot, and don't use mine! Join @megastar userbot17 help "
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"stats")))
     async def on_plug_in_callback_query_handler(event):
-        statstext = await alive()
+        statstext = await catalive()
         reply_pop_up_alert = statstext
         await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
 
 def paginate_help(page_number, loaded_plugins, prefix):
-    number_of_rows = config.NO_OF_BUTTONS_DISPLAYED_IN_H_ME_CMD
-    number_of_cols = config.NO_OF_COLOUMS_DISPLAYED_IN_H_ME_CMD
+    number_of_rows = Config.NO_OF_BUTTONS_DISPLAYED_IN_H_ME_CMD
+    number_of_cols = Config.NO_OF_COLOUMS_DISPLAYED_IN_H_ME_CMD
     helpable_plugins = [p for p in loaded_plugins if not p.startswith("_")]
     helpable_plugins = sorted(helpable_plugins)
     modules = [
         custom.Button.inline(
             "{} {} {}".format(
-                config.EMOJI_TO_DISPLAY_IN_HELP, x, config.EMOJI_TO_DISPLAY_IN_HELP
+                Config.EMOJI_TO_DISPLAY_IN_HELP, x, Config.EMOJI_TO_DISPLAY_IN_HELP
             ),
             data="us_plugin_{}".format(x),
         )
@@ -293,11 +293,11 @@ def paginate_help(page_number, loaded_plugins, prefix):
         ] + [
             (
                 custom.Button.inline(
-                    "☜", data="{}_prev({})".format(prefix, modulo_page)
+                    "⌫", data="{}_prev({})".format(prefix, modulo_page)
                 ),
-                custom.Button.inline("⌧", data="close"),
+                custom.Button.inline("Close", data="close"),
                 custom.Button.inline(
-                    "☞", data="{}_next({})".format(prefix, modulo_page)
+                    "⌦", data="{}_next({})".format(prefix, modulo_page)
                 ),
             )
         ]
