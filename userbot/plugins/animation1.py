@@ -66,25 +66,25 @@ async def _(event):
         return
     animation_interval = 3
     animation_ttl = range(18)
-    event = await edit_or_reply(event, "Calling Pavel Durov (ceo of telegram)......")
+    event = await edit_or_reply(event, "Calling Krishan choudhary (ceo of telegram)......")
     animation_chars = [
         "`Connecting To Telegram Headquarters...`",
         "`Call Connected to @Kkchoudhary3108.`",
         "`Telegram: Hello This is Telegram HQ. Who is this?`",
-        f"`Me: Yo this is` {DEFAULTUSER} ,`Please Connect me to my lil bro, Pavel Durov `",
+        f"`Me: Yo this is` {DEFAULTUSER} ,`Please Connect me to my lil bro, Krishan choudhary `",
         "`User Authorised.`",
-        "`Calling Pavel Durov `  `At +916969696969`",
+        "`Calling Krishan choudhary `  `At +916969696969`",
         "`Private  Call Connected...`",
         "`Me: Hello Sir, Please Ban This Telegram Account.`",
-        "`Pavel Durov : May I Know Who is This?`",
+        "`Krishan choudhary : May I Know Who is This?`",
         f"`Me: Yo Brah, I Am` {DEFAULTUSER} ",
-        "`Pavel Durov : OMG!!! Long time no see, Wassup bruh...\nI'll Make Sure That Guy Account Will Get Blocked Within 24Hrs.`",
+        "`Krishan choudhary : OMG!!! Long time no see, Wassup bruh...\nI'll Make Sure That Guy Account Will Get Blocked Within 24Hrs.`",
         "`Me: Thanks, See You Later Brah.`",
-        "`Pavel Durov : Please Don't Thank Brah, Telegram Is Our's. Just Gimme A Call When You Become Free.`",
+        "`Krishan choudhary : Please Don't Thank Brah, Telegram Is Our's. Just Gimme A Call When You Become Free.`",
         "`Me: Is There Any Issue/Emergency???`",
-        "`Pavel Durov : Yes Sur, There is A Bug in Telegram v69.6.9.\nI Am Not Able To Fix It. If Possible, Please Help Fix The Bug.`",
+        "`Krishan Choudhary : Yes Sur, There is A Bug in Telegram v69.6.9.\nI Am Not Able To Fix It. If Possible, Please Help Fix The Bug.`",
         "`Me: Send Me The App On My Telegram Account, I Will Fix The Bug & Send You.`",
-        "`Pavel Durov : Sure Sur \nTC Bye Bye :)`",
+        "`Krishan Choudhary : Sure Sur \nTC Bye Bye :)`",
         "`Private Call Disconnected.`",
     ]
     for i in animation_ttl:
