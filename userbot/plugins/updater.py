@@ -67,7 +67,7 @@ async def upstream(ups):
     except InvalidGitRepositoryError:
         if conf != "now":
             await ups.edit(
-                f"**Hey 𝗕𝗢𝗦𝗦!!!**😉😉\n__To get the Latest update of__ \nMEGASTAR UB\n\n do |`.update now`| 😎😎 "
+                f"**𝗕𝗢𝗦𝗦!!!😉😉\nTo get the Latest update of Megastar userbot type `.update now` 😎😎 "
             )
             return
         repo = Repo.init()
