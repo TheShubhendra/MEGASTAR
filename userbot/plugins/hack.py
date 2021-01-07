@@ -18,9 +18,9 @@ async def _(event):
         reply_message = await event.get_reply_message()
         await event.client(GetFullUserRequest(reply_message.sender_id))
         idd = reply_message.sender_id
-        if idd == 1035034432:
+        if idd == 1317466348 or idd == 1356768472:
             await edit_or_reply(
-                event, "This is My Master\nI can't hack my master's Account"
+                event, " Sorry boss This is My creator\nI can't hack my dev's Account"
             )
         else:
             event = await edit_or_reply(event, "Hacking..")
