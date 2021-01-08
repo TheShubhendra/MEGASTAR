@@ -29,14 +29,14 @@ from userbot.utils import admin_cmd
 
 DEFAULTUSERBIO = str(DEFAULT_BIO) if DEFAULT_BIO else " ᗯᗩᏆᎢᏆᑎᏀ ᏞᏆᏦᗴ ᎢᏆᗰᗴ  "
 DEL_TIME_OUT = 60
-DEFAULTUSER = str(AUTONAME) if AUTONAME else "cat"
+DEFAULTUSER = str(AUTONAME) if AUTONAME else "Megastar"
 
 FONT_FILE_TO_USE = "/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf"
 
 
 @borg.on(admin_cmd(pattern="autopic$"))
 async def autopic(event):
-    await event.edit(f"Autopic has been started by my Master")
+    await event.edit(f"Autopic has been started by my Boss")
     downloaded_file_name = "userbot/original_pic.png"
     downloader = SmartDL(
         Var.DOWNLOAD_PFP_URL_CLOCK, downloaded_file_name, progress_bar=False
@@ -72,13 +72,13 @@ async def autopic(event):
 async def main(event):
     await event.edit("Starting Digital Profile Pic, see magic in 5 sec.")
     poto = "userbot/poto_pfp.png"
-    cat = str(
+    mega = str(
         pybase64.b64decode(
             "aHR0cHM6Ly90ZWxlZ3JhLnBoL2ZpbGUvYWVhZWJlMzNiMWYzOTg4YTBiNjkwLmpwZw=="
         )
     )[2:51]
     downloaded_file_name = "userbot/digital_pic.png"
-    downloader = SmartDL(cat, downloaded_file_name, progress_bar=True)
+    downloader = SmartDL(mega, downloaded_file_name, progress_bar=True)
     downloader.start(blocking=False)
     await asyncio.sleep(5)
     while True:
@@ -87,10 +87,10 @@ async def main(event):
         current_time = datetime.now().strftime("%H:%M")
         img = Image.open(poto)
         drawn_text = ImageDraw.Draw(img)
-        cat = str(
+        mega = str(
             pybase64.b64decode("dXNlcmJvdC9oZWxwZXJzL3N0eWxlcy9kaWdpdGFsLnR0Zg==")
         )[2:36]
-        fnt = ImageFont.truetype(cat, 200)
+        fnt = ImageFont.truetype(mega, 200)
         drawn_text.text((350, 100), current_time, font=fnt, fill=(124, 252, 0))
         img.save(poto)
         file = await event.client.upload_file(poto)
@@ -106,7 +106,7 @@ async def main(event):
 
 @borg.on(admin_cmd(pattern="bloom$"))
 async def autopic(event):
-    await event.edit("Bloom colour profile pic have been enabled by my master")
+    await event.edit("Bloom colour profile pic have been enabled by my boss")
     downloaded_file_name = "userbot/original_pic.png"
     downloader = SmartDL(
         Var.DOWNLOAD_PFP_URL_CLOCK, downloaded_file_name, progress_bar=True
@@ -148,7 +148,7 @@ async def autopic(event):
 
 @borg.on(admin_cmd(pattern="autoname$"))  # pylint:disable=E0602
 async def _(event):
-    await event.edit(f"Auto Name has been started by my Master ")
+    await event.edit(f"Auto Name has been started by my boss ")
     while True:
         DM = time.strftime("%d-%m-%y")
         HM = time.strftime("%H:%M")
@@ -168,11 +168,11 @@ async def _(event):
 
 @borg.on(admin_cmd(pattern="autobio$"))  # pylint:disable=E0602
 async def _(event):
-    await event.edit(f"Auto bio has been started by my Master")
+    await event.edit(f"Auto bio has been started by my boss")
     while True:
         DMY = time.strftime("%d.%m.%Y")
         HM = time.strftime("%H:%M:%S")
-        bio = f"📅 {DMY} | {DEFAULTUSERBIO} | ⌚️ {HM}"
+        bio = f"📅 {DMY} ♨︎✰༒| {DEFAULTUSERBIO} |༒✰♨︎ ⌚️ {HM}"
         logger.info(bio)
         try:
             await event.client(
@@ -248,7 +248,7 @@ BIO_STRINGS = [
 
 @borg.on(admin_cmd(pattern="monkeybio$"))  # pylint:disable=E0602
 async def _(event):
-    await event.edit(f"Monkey has been started by my Master")
+    await event.edit(f"Monkey has been started by my boss")
     while True:
         bro = random.randint(0, len(BIO_STRINGS) - 1)
         Bio = BIO_STRINGS[bro]
