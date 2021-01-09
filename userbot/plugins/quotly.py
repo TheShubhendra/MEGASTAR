@@ -3,13 +3,12 @@ imported from nicegrill
 modified by @mrconfused
 QuotLy: Avaible commands: .qbot
 """
-import os
-
+import datetime
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
-
-from .. import CMD_HELP
-from ..utils import admin_cmd, edit_or_reply
+from telethon.tl.functions.account import UpdateNotifySettingsRequest
+from userbot import bot, CMD_HELP
+from userbot.utils import admin_cmd
 
 
 @borg.on(admin_cmd(pattern="q(?: |$)(.*)", outgoing=True))
@@ -40,38 +39,33 @@ async def stickerchat(quotes):
     os.remove("./temp/sticker.webp")
 
 
-@borg.on(admin_cmd(pattern="qbot(?: |$)(.*)", outgoing=True))
+
+@borg.on(admin_cmd(pattern=r"qbot"))
 async def _(event):
     if event.fwd_from:
-        return
+        return 
     if not event.reply_to_msg_id:
-        await edit_or_reply(event, "```Reply to any user message.```")
-        return
-    reply_message = await event.get_reply_message()
-    if not reply_message.text:
-        await edit_or_reply(event, "```Reply to text message```")
-        return
+       await event.edit("```Reply to any user message.```")
+       return
+    reply_message = await event.get_reply_message() 
+    
     chat = "@QuotLyBot"
-    event = await edit_or_reply(event, "```Making a Quote```")
-    async with event.client.conversation(chat) as conv:
-        try:
-            response = conv.wait_event(
-                events.NewMessage(incoming=True, from_users=1031952739)
-            )
-            await event.client.forward_messages(chat, reply_message)
-            response = await response
-        except YouBlockedUserError:
-            await event.edit("```Please unblock me (@QuotLyBot) u Nigga```")
-            return
-        await event.client.send_read_acknowledge(conv.chat_id)
-        if response.text.startswith("Hi!"):
-            await event.edit(
-                "```Can you kindly disable your forward privacy settings for good?```"
-            )
-        else:
-            await event.delete()
-            await event.client.send_message(event.chat_id, response.message)
-
+    sender = reply_message.sender
+    
+    await event.edit("Making a Quote")
+    async with bot.conversation(chat) as conv:
+          try:     
+              response = conv.wait_event(events.NewMessage(incoming=True,from_users=1031952739))
+              await bot.forward_messages(chat, reply_message)
+              response = await response 
+          except YouBlockedUserError: 
+              await event.reply("Please unblock @QuotLyBot and try again")
+              return
+          if response.text.startswith("Hi!"):
+             await event.edit("Can you kindly disable your forward privacy settings for good?")
+          else: 
+             await event.delete()   
+             await event.client.send_file(event.chat_id, response.message , reply_to=reply_message) 
 
 CMD_HELP.update(
     {
