@@ -1,4 +1,4 @@
-# CatUserbot module for getting the weather of a city.
+# Userbot module for getting the weather of a city.
 
 # Copyright (C) 2019 The Raphielscape Company LLC.
 #
