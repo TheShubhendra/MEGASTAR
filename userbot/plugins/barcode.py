@@ -4,11 +4,12 @@ By @snappy101
 """
 
 import asyncio
-import barcode
 import os
-import time
-from barcode.writer import ImageWriter
 from datetime import datetime
+
+import barcode
+from barcode.writer import ImageWriter
+
 from userbot.utils import admin_cmd
 
 
