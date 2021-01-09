@@ -101,10 +101,10 @@ CMD_HELP.update(
         "button": "**Plugin : **`button`\
     \n\n**SYNTAX : **`.cbutton`\
     \n**USAGE :** Buttons must be in the format as [Name on button]<buttonurl:link you want to open> and markdown is Default to html\
-    \n**EXAMPLE :** `.cbutton test [google]<buttonurl:https://www.google.com> [catuserbot]<buttonurl:https://t.me/catuserbot17:same> [support]<buttonurl:https://t.me/catuserbot_support>`\
+    \n**EXAMPLE :** `.cbutton test [google]<buttonurl:https://www.google.com> [mEGASTARs]<buttonurl:https://t.me/MEGASTAR_SUPPORT:same> [support]<buttonurl:https://t.me/catuserbot_support>`\
     \n\n**SYNTAX : **`.ibutton`\
     \n**USAGE :** Buttons must be in the format as [Name on button]<buttonurl:link you want to open>\
-    \n**EXAMPLE :** `.ibutton test [google]<buttonurl:https://www.google.com> [catuserbot]<buttonurl:https://t.me/catuserbot17:same> [support]<buttonurl:https://t.me/catuserbot_support>`\
+    \n**EXAMPLE :** `.ibutton test [google]<buttonurl:https://www.google.com> [mEGASTARs]<buttonurl:https://t.me/MEGASTAR_SUPPORT:same> [support]<buttonurl:https://t.me/catuserbot_support>`\
     "
     }
 )
