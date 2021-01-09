@@ -58,7 +58,7 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             buttons = paginate_help(0, CMD_LIST, "helpme")
             result = builder.article(
                 "© Megastar",
-                text="{} **Help menu Provided by ✨{}✨ \nMegastar Helper to reveal all the commands 🥳\nDo** `.help plugin_name` **for commands, in case popup doesn't appear or do\n @MEGASTAR_SUPPORT\nCurrently Loaded Plugins**: {}".format(
+                text="{} **Help menu Provided by ✨{}✨ \nMegastar Helper to reveal all the commands 🥳\nDo** `.help plugin_name` **for commands, in case popup doesn't appear.🌹\n @MEGASTAR_SUPPORT\nCurrently Loaded Plugins**: {}".format(
                     query, DEFAULTUSER, len(CMD_LIST)
                 ),
                 buttons=buttons,
