@@ -1,6 +1,6 @@
 # plugin made by @helloji123bot
 # keep credits
-""" Syntax .animate<any name>
+""" Syntax .animate<any name> """
 import asyncio
 from userbot.utils import admin_cmd
 
