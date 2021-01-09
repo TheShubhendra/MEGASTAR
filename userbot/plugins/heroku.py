@@ -168,11 +168,11 @@ async def dyno_usage(dyno):
     return await dyno.edit(
         "**∂ʏռσ ʊֆαɢɛ**:\n\n"
         f" -> `∂ʏռσ ʋֆαɢɛ ғσʀ`  **{Var.HEROKU_APP_NAME}**:\n"
-        f"     •  `{AppHours}`**ɦօʊʀ**  `{AppMinutes}`**ʍɨռ**  "
+        f"     •  `{AppHours}` **ɦօʊʀ**  `{AppMinutes}` **ʍɨռ**  "
         f"**|**  [`{AppPercentage}`**%**]"
         "\n\n"
         " -> `∂ʏռσ нσʋʀ զʋσтα ʀɛмαιռιиɢ ғσʀ тнιֆ мσռтн`:\n"
-        f"     •  `{hours}`**нσʋя**  `{minutes}`**мιи**  "
+        f"     •  `{hours}` **нσʋя**  `{minutes}` **мιи**  "
         f"**|**  [`{percentage}`**%**]"
     )
 
