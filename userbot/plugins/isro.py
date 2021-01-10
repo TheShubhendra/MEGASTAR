@@ -6,7 +6,7 @@ built by @r4v4n4"""
 import asyncio
 
 
-@borg.on(mellow_cmd(pattern=r"isro"))
+@borg.on(admin_cmd(pattern=r"isro"))
 async def _(event):
     if event.fwd_from:
         return
