@@ -25,7 +25,7 @@ DEFAULTUSER = (
 CUSTOM_MIDDLE_PMP = (
     str(CUSTOM_PMPERMIT)
     if CUSTOM_PMPERMIT
-    else "**YOU HAVE TRESPASSED TO MY MASTER'S/MISTRESS'S INBOX** \n`THIS IS ILLEGAL AND REGARDED AS A CRIME`"
+    else "**YOU HAVE TRESPASSED TO MY MASTERS INBOX** \n`THIS IS ILLEGAL AND REGARDED AS A CRIME`"
 )
 USER_BOT_WARN_ZERO = "`  You Have Been Blocked Due To Spamming Of My Master's/Mistress's Inbox Now it's his/her wish to unblock you or not.` "
 USER_BOT_NO_WARN = (
@@ -57,9 +57,7 @@ if Var.PRIVATE_GROUP_ID is not None:
                     del PREV_REPLY_MESSAGE[chat.id]
                 pmpermit_sql.approve(chat.id, reason)
                 await event.edit(
-                    "Approved to pm [{firstname}](tg://user?id={})".format(
-                        firstname, chat.id
-                    )
+                    "Approved to pm [{}](tg://user?id={})".format(firstname, chat.id)
                 )
                 await asyncio.sleep(3)
                 await event.delete()
@@ -104,9 +102,7 @@ if Var.PRIVATE_GROUP_ID is not None:
                 if pmpermit_sql.is_approved(chat.id):
                     pmpermit_sql.disapprove(chat.id)
                     await event.edit(
-                        "Disapproved [{firstname}](tg://user?id={})".format(
-                            firstname, chat.id
-                        )
+                        "Disapproved [{}](tg://user?id={})".format(firstname, chat.id)
                     )
                     await asyncio.sleep(3)
                     await event.delete()
