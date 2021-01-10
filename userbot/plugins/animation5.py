@@ -1,4 +1,3 @@
-
 import asyncio
 
 from userbot import ALIVE_NAME
@@ -457,13 +456,6 @@ async def _(event):
     for i in animation_ttl:
         await asyncio.sleep(animation_interval)
         await event.edit(animation_chars[i % 18])
-
-import asyncio
-
-from userbot import ALIVE_NAME
-from userbot.utils import admin_cmd
-
-from ..utils import admin_cmd, edit_or_reply
 
 
 @borg.on(admin_cmd(pattern=f"loading", outgoing=True))
