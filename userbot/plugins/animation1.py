@@ -158,7 +158,7 @@ async def _(event):
     await asyncio.sleep(4)
     for i in animation_ttl:
         await asyncio.sleep(animation_interval)
-        await event.edit(animation_chars[i % 10])
+        await event.edit(animation_chars[i % 30])
 
 
 @borg.on(admin_cmd(pattern=f"hypno", outgoing=True))
