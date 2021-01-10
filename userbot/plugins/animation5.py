@@ -32,7 +32,7 @@ async def _(event):
         await event.edit(animation_chars[i % 4])
 
 
-@borg.on(admin_cmd(pattern=f"up", outgoing=True))
+@borg.on(admin_cmd(pattern=f"on", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
