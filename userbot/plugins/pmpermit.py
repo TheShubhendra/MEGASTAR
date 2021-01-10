@@ -57,7 +57,9 @@ if Var.PRIVATE_GROUP_ID is not None:
                     del PREV_REPLY_MESSAGE[chat.id]
                 pmpermit_sql.approve(chat.id, reason)
                 await event.edit(
-                    "Approved to pm [{firstname}](tg://user?id={})".format(firstname, chat.id)
+                    "Approved to pm [{firstname}](tg://user?id={})".format(
+                        firstname, chat.id
+                    )
                 )
                 await asyncio.sleep(3)
                 await event.delete()
