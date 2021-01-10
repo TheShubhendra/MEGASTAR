@@ -25,7 +25,7 @@ DEFAULTUSER = (
 CUSTOM_MIDDLE_PMP = (
     str(CUSTOM_PMPERMIT)
     if CUSTOM_PMPERMIT
-    else "**YOU HAVE TRESPASSED TO MY MASTERS INBOX** \n`THIS IS ILLEGAL AND REGARDED AS A CRIME`"
+    else "**YOU HAVE TRESPASSED TO MY MASTER'S/MISTRESS'S INBOX** \n`THIS IS ILLEGAL AND REGARDED AS A CRIME`"
 )
 USER_BOT_WARN_ZERO = "`  You Have Been Blocked Due To Spamming Of My Master's/Mistress's Inbox Now it's his/her wish to unblock you or not.` "
 USER_BOT_NO_WARN = (
