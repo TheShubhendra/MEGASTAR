@@ -7,7 +7,7 @@ from . import ALIVE_NAME
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "legend"
 
 
-@borg.on(admin_cmd(pattern=r"star$", outgoing=True))
+@borg.on(admin_cmd(pattern=r"star", outgoing=True))
 async def _(event):
     event = await edit_or_reply(event, "`stars.....`")
     deq = deque(list("🦋✨🦋✨🦋✨🦋✨"))
@@ -17,7 +17,7 @@ async def _(event):
         deq.rotate(1)
 
 
-@borg.on(admin_cmd(pattern=r"boxs$", outgoing=True))
+@borg.on(admin_cmd(pattern=r"boxs", outgoing=True))
 async def _(event):
     event = await edit_or_reply(event, "`boxs...`")
     deq = deque(list("🟥🟧🟨🟩🟦🟪🟫⬛⬜"))
@@ -27,7 +27,7 @@ async def _(event):
         deq.rotate(1)
 
 
-@borg.on(admin_cmd(pattern=r"rain$", outgoing=True))
+@borg.on(admin_cmd(pattern=r"rain", outgoing=True))
 async def _(event):
     event = await edit_or_reply(event, "`Raining.......`")
     deq = deque(list("🌬☁️🌩🌨🌧🌦🌥⛅🌤"))
@@ -37,7 +37,7 @@ async def _(event):
         deq.rotate(1)
 
 
-@borg.on(admin_cmd(pattern=r"deploy$", outgoing=True))
+@borg.on(admin_cmd(pattern=r"deploy", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -63,7 +63,7 @@ async def _(event):
         await event.edit(animation_chars[i % 12])
 
 
-@borg.on(admin_cmd(pattern=r"dump$", outgoing=True))
+@borg.on(admin_cmd(pattern=r"dump", outgoing=True))
 async def _(message):
     try:
         obj = message.pattern_match.group(1)
@@ -103,7 +103,7 @@ async def _(message):
                 return
 
 
-@borg.on(admin_cmd(pattern=r"fleaveme$", outgoing=True))
+@borg.on(admin_cmd(pattern=r"fleaveme", outgoing=True))
 async def _(event):
     animation_interval = 1
     animation_ttl = range(10)
@@ -128,7 +128,7 @@ async def _(event):
         await event.edit(animation_chars[i % 10])
 
 
-@borg.on(admin_cmd(pattern=r"loveu$", outgoing=True))
+@borg.on(admin_cmd(pattern=r"loveu", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -177,7 +177,7 @@ async def _(event):
         await event.edit(animation_chars[i % 35])
 
 
-@borg.on(admin_cmd(pattern=r"plane$", outgoing=True))
+@borg.on(admin_cmd(pattern=r"plane", outgoing=True))
 async def _(event):
     event = await edit_or_reply(event, "Wait for plane...")
     await event.edit("✈-------------")
@@ -197,7 +197,7 @@ async def _(event):
     await asyncio.sleep(3)
 
 
-@borg.on(admin_cmd(pattern=r"police$", outgoing=True))
+@borg.on(admin_cmd(pattern=r"police", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -223,7 +223,7 @@ async def _(event):
         await event.edit(animation_chars[i % 12])
 
 
-@borg.on(admin_cmd(pattern=r"jio$", outgoing=True))
+@borg.on(admin_cmd(pattern=r"jio", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -256,7 +256,7 @@ async def _(event):
         await event.edit(animation_chars[i % 19])
 
 
-@borg.on(admin_cmd(pattern=r"solarsystem$", outgoing=True))
+@borg.on(admin_cmd(pattern=r"solarsystem", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
