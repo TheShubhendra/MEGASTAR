@@ -7,9 +7,9 @@ import asyncio
 
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.types import MessageMediaPhoto
-from userbot.utils import admin_cmd
 
 from userbot import CMD_HELP
+from userbot.utils import admin_cmd
 
 thumb_image_path = config.TMP_DOWNLOAD_DIRECTORY + "/thumb_image.jpg"
 
@@ -31,9 +31,7 @@ async def _(event):
         await event.edit("Reply to actual users message.")
         return
     else:
-        await event.edit(
-            "Transfiguration Time! Haha lemme memefy it 😉"
-        )
+        await event.edit("Transfiguration Time! Haha lemme memefy it 😉")
     await borg.download_file(reply_message.media)
 
     async with borg.conversation("@TgMemeRobot") as conv:
