@@ -45,7 +45,7 @@ pybase64
 PyDictionary
 pyDownload
 pyfiglet
-pygi
+pygita
 PyGithub
 pylast
 PyLyrics
