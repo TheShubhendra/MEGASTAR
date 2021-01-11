@@ -76,6 +76,16 @@
       "value": "",
       "required": false
     },
+    "GITA_CLIENT_ID":{
+      "description": "Needed for gita plugin. Follow https://bhagavadgita.io to get your.",
+      "value":"",
+      "required": false
+    },
+    "GITA_CLIENT_SECRET":{
+      "description": "Needed for gita plugin. Follow https://bhagavadgita.io to get your.",
+      "value":"",
+      "required": false
+    },
     "OCR_SPACE_API_KEY": {
       "description": "Register an account on ocr.space to get this value(API key)....",
       "value": "",
