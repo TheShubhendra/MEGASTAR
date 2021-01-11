@@ -1,4 +1,4 @@
-# Author: Shubhendra Kushswaha (@TheShubhendra)
+# Author: Shubhendra Kushwaha (@TheShubhendra)
 # Email: shubhendrakushwaha94@gmail.com
 import pygita
 
@@ -12,7 +12,7 @@ if CLIENT_ID and CLIENT_SECRET:
     pygita.auth(CLIENT_ID, CLIENT_SECRET)
 
 
-@borg.on(admin_cmd(pattern="gita +(.*) +(.*)"))
+@borg.on(admin_cmd(pattern=r"gita (\d)+ (\d)+$"))
 async def gita(event):
     """ To get a specific verse from a specific chapter in English. """
     if CLIENT_ID is None or CLIENT_SECRET is None:
@@ -32,7 +32,7 @@ async def gita(event):
 async def gita(event):
     """ To get a specific verse from a specific chapter in Hindi. """
     if CLIENT_ID is None or CLIENT_SECRET is None:
-        await edit_delete(
+        await event.edit(
             event,
             "`Please add required GITA_CLIENT_SECRET and GITA_CLIENT_ID env var`",
             10,
