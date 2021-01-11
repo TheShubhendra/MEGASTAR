@@ -2,7 +2,7 @@
 # Email: shubhendrakushwaha94@gmail.com
 import pygita
 
-from userbot.utils import admin_cmd
+from userbot.utils import admin_cmd, edit_or_reply
 
 CLIENT_ID = Var.GITA_CLIENT_ID
 CLIENT_SECRET = Var.GITA_CLIENT_SECRET
@@ -16,7 +16,7 @@ if CLIENT_ID and CLIENT_SECRET:
 async def gita(event):
     """ To get a specific verse from a specific chapter in English. """
     if CLIENT_ID is None or CLIENT_SECRET is None:
-        await edit_delete(
+        await edit(
             event,
             "`Please add required GITA_CLIENT_SECRET and GITA_CLIENT_ID env var`",
             10,
