@@ -24,7 +24,7 @@ async def gita(event):
     await event.edit(f'**{verse.text}** {verse.meaning}')
 
 
-@borg.on(admin_cmd(pattern=""))
+@borg.on(admin_cmd(pattern="gita +(.*) +(.*) hi"))
 async def gita(event):
     """ To get a specific verse from a specific chapter in Hindi. """
     if CLIENT_ID is None or CLIENT_SECRET is None:
