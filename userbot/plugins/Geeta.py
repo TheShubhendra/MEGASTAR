@@ -2,7 +2,7 @@
 # Email: shubhendrakushwaha94@gmail.com
 import pygita
 
-from userbot.utils import admin_cmd, edit_or_reply
+from userbot.utils import admin_cmd
 
 CLIENT_ID = Var.GITA_CLIENT_ID
 CLIENT_SECRET = Var.GITA_CLIENT_SECRET
