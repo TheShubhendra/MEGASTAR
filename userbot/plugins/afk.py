@@ -116,7 +116,7 @@ async def on_afk(event):
         msg = None
         message_to_reply = (
             f"**My Boss is busy right now...\ncommanded me to say it to you that you have to wait till he/she comes back online🥰\n **AFK TIME→_→ {total_afk_time}\nWhere He/She Is**: **It's A Secret 🤫** "
-            + f"\n\n**I'll back in a few** [Light years](https://telegra.ph/file/075a26d773e901f7fbb67.jpg)\n**REASON**(☞^o^) ☞ {reason}"
+            + f"\n\n**I'll back in a few** [century](https://telegra.ph/file/075a26d773e901f7fbb67.jpg)\n**REASON**(☞^o^) ☞ {reason}"
             if reason
             else f"**Important Notice**\n\n[This User Is Ded Forever...](https://telegra.ph//file/a53fa950ff31781d5930a.jpg) "
         )
