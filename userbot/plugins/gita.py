@@ -21,7 +21,7 @@ async def gita(event):
     chapter_number = int(event.pattern_match.group(1))
     verse_number = int(event.pattern_match.group(2))
     verse = pygita.get_verse(chapter_number, verse_number, language="en")
-    await event.edit(verse.text)
+    await event.edit(f'**{verse.text}** {verse.meaning}')
 
 
 @borg.on(admin_cmd(pattern="gita +(.*) +(.*) hi"))
@@ -33,4 +33,4 @@ async def gita(event):
     chapter_number = int(event.pattern_match.group(1))
     verse_number = int(event.pattern_match.group(2))
     verse = pygita.get_verse(chapter_number, verse_number, language="hi")
-    await event.edit(verse.text)
+    await event.edit(f'**{verse.text}** {verse.meaning}')
