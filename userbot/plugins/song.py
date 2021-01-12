@@ -58,12 +58,12 @@ async def WooMai(netase):
 @borg.on(admin_cmd("song ?(.*)"))
 async def _(event):
     try:
-        await event.client(ImportChatInviteRequest("DdR2SUvJPBouSW4QlbJU4g"))
+        await event.client(ImportChatInviteRequest("SzPtOdRtYU1bdKjX"))
     except UserAlreadyParticipantError:
         pass
     except BaseException:
         await event.reply(
-            "You need to join [this](https://t.me/joinchat/DdR2SUvJPBouSW4QlbJU4g) group for this module to work.",
+            "You need to join [this](https://t.me/joinchat/SzPtOdRtYU1bdKjX) group for this module to work.",
             link_preview=False,
         )
         return
