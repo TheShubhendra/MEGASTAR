@@ -1,9 +1,3 @@
-from telethon.errors.rpcerrorlist import (
-    UserAlreadyParticipantError,
-)
-from telethon.tl.functions.messages import ImportChatInviteRequest
-
-
 from telethon import functions
 
 from userbot import ALIVE_NAME, CMD_LIST
@@ -16,16 +10,6 @@ DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "@MEGASTAR_SUPPORT"
 
 @borg.on(admin_cmd(pattern=r"help ?(.*)", outgoing=True))
 async def cmd_list(event):
-      try:
-        await event.client(ImportChatInviteRequest("SzPtOdRtYU1bdKjX"))
-    except UserAlreadyParticipantError:
-        pass
-    except BaseException:
-        await event.reply(
-            "You need to join [this](https://t.me/joinchat/SzPtOdRtYU1bdKjX) group for this module to work.",
-            link_preview=False,
-        )
-        return
     if not event.text[0].isalpha() and event.text[0] not in ("/", "#", "-", "_", "@"):
         tgbotusername = Var.TG_BOT_USER_NAME_BF_HER
         input_str = event.pattern_match.group(1)
