@@ -8,11 +8,8 @@ CLIENT_ID = Var.GITA_CLIENT_ID
 CLIENT_SECRET = Var.GITA_CLIENT_SECRET
 """ Get API crendentials from https://bhagavadgita.io . """
 
-if CLIENT_ID and CLIENT_SECRET:
-    pygita.auth(CLIENT_ID, CLIENT_SECRET)
 
-
-@borg.on(admin_cmd(pattern=r"gita (\d)+ (\d)+$"))
+@borg.on(admin_cmd(pattern="gita +(.*) +(.*)$"))
 async def gita(event):
     """ To get a specific verse from a specific chapter in English. """
     if CLIENT_ID is None or CLIENT_SECRET is None:
@@ -22,13 +19,14 @@ async def gita(event):
             10,
         )
         return
+    pygita.auth(CLIENT_ID, CLIENT_SECRET)
     chapter_number = int(event.pattern_match.group(1))
     verse_number = int(event.pattern_match.group(2))
     verse = pygita.get_verse(chapter_number, verse_number, language="en")
     await event.edit(f"**{verse.text}** {verse.meaning}")
 
 
-@borg.on(admin_cmd(pattern="gita +(.*) +(.*) hi"))
+@borg.on(admin_cmd(pattern="gita +(.*) +(.*) hi$"))
 async def gita(event):
     """ To get a specific verse from a specific chapter in Hindi. """
     if CLIENT_ID is None or CLIENT_SECRET is None:
@@ -38,6 +36,7 @@ async def gita(event):
             10,
         )
         return
+    pygita.auth(CLIENT_ID, CLIENT_SECRET)
     chapter_number = int(event.pattern_match.group(1))
     verse_number = int(event.pattern_match.group(2))
     verse = pygita.get_verse(chapter_number, verse_number, language="hi")
