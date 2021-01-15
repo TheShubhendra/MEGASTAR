@@ -8,7 +8,7 @@ from telethon.errors.rpcerrorlist import YouBlockedUserError
 
 from userbot import CMD_HELP, bot
 from userbot.utils import admin_cmd
-
+from userbot.helpers.qhelper import process
 
 @borg.on(admin_cmd(pattern="q(?: |$)(.*)", outgoing=True))
 async def stickerchat(quotes):
