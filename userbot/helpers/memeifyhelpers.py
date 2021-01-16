@@ -16,7 +16,7 @@ from PIL import Image, ImageDraw, ImageFont
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from wand.color import Color
 from wand.drawing import Drawing
-from wand.image import Image as catimage
+from wand.image import Image as image
 
 from . import unzip
 
@@ -60,7 +60,7 @@ def get_warp_length(width):
     return int((20.0 / 1024.0) * (width + 0.0))
 
 
-async def viper_meme(topString, bottomString, filename, endname):
+async def mega_meme(topString, bottomString, filename, endname):
     img = Image.open(filename)
     imageSize = img.size
     # find biggest font size that works
@@ -108,8 +108,8 @@ async def viper_meme(topString, bottomString, filename, endname):
     img.save(endname)
 
 
-async def viper_meeme(upper_text, lower_text, picture_name, endname):
-    main_image = catimage(filename=picture_name)
+async def mega_meeme(upper_text, lower_text, picture_name, endname):
+    main_image = image(filename=picture_name)
     main_image.resize(1024, int(
         ((main_image.height * 1.0) / (main_image.width * 1.0)) * 1024.0))
     upper_text = "\n".join(
@@ -193,8 +193,8 @@ async def make_gif(event, file):
             response = response if response.media else await conv.get_response()
             response if response.media else await conv.get_response()
             await event.client.send_read_acknowledge(conv.chat_id)
-            catfile = await event.client.download_media(catresponse, "./temp")
-            return await unzip(catfile)
+            file = await event.client.download_media(response, "./temp")
+            return await unzip(file)
         except YouBlockedUserError:
             return "Unblock @tgstogifbot"
 
