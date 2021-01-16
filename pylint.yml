@@ -1,0 +1,39 @@
+name: Bristi
+
+on: push
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - uses: actions/checkout@v2
+
+      - name: Find and Replace
+
+        uses: jacobtomlinson/gha-find-replace@master
+
+        with:
+
+          find: "Config"
+
+          replace: "config"
+
+      - name: Create Pull Request
+
+        uses: stefanzweifel/git-auto-commit-action@v4
+
+        with:
+
+          commit_message: 'Fixing bugs'
+
+          commit_options: '--no-verify'
+
+          repository: .
+
+          commit_user_name: aritramandal
+
+          commit_user_email: aritramandal517@gmail.com
