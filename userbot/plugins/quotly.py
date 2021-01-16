@@ -3,12 +3,13 @@ imported from nicegrill
 modified by @mrconfused
 QuotLy: Avaible commands: .qbot
 """
+import os
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
 from userbot import CMD_HELP, bot
 from userbot.utils import admin_cmd
-
+from userbot.helpers import process
 
 @borg.on(admin_cmd(pattern="q(?: |$)(.*)", outgoing=True))
 async def stickerchat(quotes):
