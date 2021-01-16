@@ -3,6 +3,7 @@ imported from nicegrill
 modified by @mrconfused
 QuotLy: Avaible commands: .qbot
 """
+import os
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
