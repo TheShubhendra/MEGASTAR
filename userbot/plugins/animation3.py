@@ -7,7 +7,7 @@ from . import ALIVE_NAME
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "legend"
 
 
-@borg.on(admin_cmd(pattern=r"star", outgoing=True))
+@borg.on(admin_cmd(pattern=r"butterfly", outgoing=True))
 async def _(event):
     event = await edit_or_reply(event, "`stars.....`")
     deq = deque(list("🦋✨🦋✨🦋✨🦋✨"))
