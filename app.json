@@ -176,7 +176,11 @@
       "description": "Set The emojies You Want to Add In Help Command!!",
       "value": "",
       "required": true
-    }, 
+    },
+    "PM_SECURITY":{
+      "description": "If you don't want pm security write 'Disable' otherwise leave it blank",
+      "required": false
+    },
     "TZ": {
       "description": "Required for Correct Time for autopic get from http://www.timezoneconverter.com/cgi-bin/findzone.tzc",
       "value": "Asia/Kolkata",
