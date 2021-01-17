@@ -32,7 +32,7 @@ async def _(event):
     try:
         r.raise_for_status()
     except requests.exceptions.HTTPError:
-        devent.edit(str(r.json()))
+        await devent.edit(str(r.json()))
         return
     if "status" in r.json():
         return await devent.edit(r.json()["status"])
