@@ -41,7 +41,6 @@ async def _(event):
     except ValueError:
         await devent.edit("Server could not complete your request")
         return
-    
 
     await devent.delete()
     await borg.send_message(event.chat_id, file=output_url)
