@@ -8,7 +8,7 @@ from telethon.tl.functions.users import GetFullUserRequest
 import userbot.plugins.sql_helper.pmpermit_sql as pmpermit_sql
 from userbot import ALIVE_NAME, CMD_HELP, CUSTOM_PMPERMIT
 from userbot.utils import admin_cmd
-
+PM_SECURITY = config.PM_SECURITY
 PMPERMIT_PIC = os.environ.get("PMPERMIT_PIC", None)
 if PMPERMIT_PIC is None:
     WARN_PIC = "{PMPERMIT_PIC}"
@@ -177,6 +177,10 @@ if Var.PRIVATE_GROUP_ID is not None:
             # don't log verified accounts
 
             return
+
+        if PM_SECURITY == "DISABLE":
+            return
+
 
         if any([x in event.raw_text for x in ("/start", "1", "2", "3", "4", "5")]):
             return
