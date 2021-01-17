@@ -178,7 +178,7 @@
       "required": true
     },
     "PM_SECURITY":{
-      "description": "If you don't want pm security write 'Disable' otherwise leave it blank",
+      "description": "If you don't want pm security write 'DISABLE' otherwise leave it blank",
       "required": false
     },
     "TZ": {
