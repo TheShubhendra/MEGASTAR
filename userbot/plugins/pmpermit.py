@@ -9,7 +9,7 @@ import userbot.plugins.sql_helper.pmpermit_sql as pmpermit_sql
 from userbot import ALIVE_NAME, CMD_HELP, CUSTOM_PMPERMIT
 from userbot.utils import admin_cmd
 
-PM_SECURITY = config.PM_SECURITY
+PM_SECURITY = os.environ.get("PM_SECURITY", None)
 PMPERMIT_PIC = os.environ.get("PMPERMIT_PIC", None)
 if PMPERMIT_PIC is None:
     WARN_PIC = "{PMPERMIT_PIC}"
