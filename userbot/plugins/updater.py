@@ -54,7 +54,7 @@ async def upstream(ups):
     force_update = False
     try:
         txt = "Oops.. Updater cannot continue due to "
-        txt += "some problems occured`\n\n**LOGTRACE:**\n"
+        txt += "some problems occured\n\n**LOGTRACE:**\n"
         repo = Repo()
     except NoSuchPathError as error:
         await ups.edit(f"{txt}\ndirectory {error} is not found")
@@ -67,7 +67,7 @@ async def upstream(ups):
     except InvalidGitRepositoryError:
         if conf != "now":
             await ups.edit(
-                f"𝗕𝗢𝗦𝗦!!!😉😉\nTo get the Latest update of Megastar userbot type `.update now` 😏😏 "
+                f"𝗕𝗢𝗦𝗦!!!😉😉\nTo get the Latest update of Megastar userbot type .update now 😏😏 "
             )
             return
         repo = Repo.init()
@@ -80,10 +80,10 @@ async def upstream(ups):
     ac_br = repo.active_branch.name
     if ac_br != "master":
         await ups.edit(
-            f"**[UPDATER]:**` Looks like you are using your own custom branch ({ac_br}). "
+            f"**[UPDATER]:** Looks like you are using your own custom branch ({ac_br}). "
             "in that case, Updater is unable to identify "
             "which branch is to be merged. "
-            "please checkout to any official branch`"
+            "please checkout to any official branch"
         )
         repo.__del__()
         return
@@ -102,10 +102,10 @@ async def upstream(ups):
         return
     if conf != "now" and not force_update:
         changelog_str = (
-            f"**New UPDATE available for [{ac_br}]:\n\nCHANGELOG:**\n`{changelog}`"
+            f"**New UPDATE available for [{ac_br}]:\n\nCHANGELOG:**\n{changelog}"
         )
         if len(changelog_str) > 4096:
-            await ups.edit("`Changelog is too big, view the file to see it.`")
+            await ups.edit("Changelog is too big, view the file to see it.")
             file = open("output.txt", "w+")
             file.write(changelog_str)
             file.close()
@@ -117,14 +117,14 @@ async def upstream(ups):
             remove("output.txt")
         else:
             await ups.edit(changelog_str)
-        await ups.respond("do `.update now` to update")
+        await ups.respond("do .update now to update")
         return
     if force_update:
         await ups.edit(
             "༒**Megastar is being updated now**༒..\n**please wait Boss just wait for some minutes... Ill be up in time** 😉 "
         )
     else:
-        await ups.edit("`Updating userbot, please wait....you are my best boss ever 🤩🥳")
+        await ups.edit("Updating userbot, please wait....you are my best boss ever 🤩🥳")
     if HEROKU_API_KEY is not None:
         import heroku3
 
@@ -133,7 +133,7 @@ async def upstream(ups):
         heroku_applications = heroku.apps()
         if not HEROKU_APP_NAME:
             await ups.edit(
-                "Please set up the `HEROKU_APP_NAME` variable to be able to update userbot."
+                "Please set up the HEROKU_APP_NAME variable to be able to update userbot."
             )
             repo.__del__()
             return
@@ -143,7 +143,7 @@ async def upstream(ups):
                 break
         if heroku_app is None:
             await ups.edit(
-                f"{txt}\n`Invalid Heroku credentials for updating userbot dyno.`"
+                f"{txt}\nInvalid Heroku credentials for updating userbot dyno."
             )
             repo.__del__()
             return
@@ -157,18 +157,18 @@ async def upstream(ups):
             remote.set_url(heroku_git_url)
         else:
             remote = repo.create_remote("heroku", heroku_git_url)
-            await ups.edit("`⬛⬛⬛⬛ \n⬛✳️✳️⬛ \n⬛✳️✳️⬛ \n⬛⬛⬛⬛`")
+            await ups.edit("⬛⬛⬛⬛ \n⬛✳️✳️⬛ \n⬛✳️✳️⬛ \n⬛⬛⬛⬛")
             await asyncio.sleep(1)
-            await ups.edit("`⬛⬛⬛⬛ \n⬛🔴🔴⬛ \n⬛🔴🔴⬛ \n⬛⬛⬛⬛`")
+            await ups.edit("⬛⬛⬛⬛ \n⬛🔴🔴⬛ \n⬛🔴🔴⬛ \n⬛⬛⬛⬛")
             await asyncio.sleep(1)
-            await ups.edit("`⬛⬛⬛⬛ \n⬛🌕🌕⬛ \n⬛🌕🌕⬛ \n⬛⬛⬛⬛`")
+            await ups.edit("⬛⬛⬛⬛ \n⬛🌕🌕⬛ \n⬛🌕🌕⬛ \n⬛⬛⬛⬛")
             await asyncio.sleep(1)
-            await ups.edit("`⬛⬛⬛⬛ \n⬛🔵🔵⬛ \n⬛🔵🔵⬛ \n⬛⬛⬛⬛`")
+            await ups.edit("⬛⬛⬛⬛ \n⬛🔵🔵⬛ \n⬛🔵🔵⬛ \n⬛⬛⬛⬛")
             await asyncio.sleep(1)
-            await ups.edit("`⬛⬛⬛⬛ \n⬛❇️❇️⬛ \n⬛❇️❇️⬛ \n⬛⬛⬛⬛`")
+            await ups.edit("⬛⬛⬛⬛ \n⬛❇️❇️⬛ \n⬛❇️❇️⬛ \n⬛⬛⬛⬛")
             await asyncio.sleep(1)
         await ups.edit(
-            "**༒𝚄𝙿𝙳𝙰𝚃𝙸𝙽𝙶 𝙼𝙴𝙶𝙰𝚂𝚃𝙰𝚁 𝚄𝚂𝙴𝚁𝙱𝙾𝚃༒\nBoss!!Please wait 5 minutes 😁😁\nThen try**  `.alive` **to check if I'm tuned.. 😎😎\n\nPowered by :-\n[MEGASTAR UB](https://t.me/MEGASTAR_SUPPORT)**"
+            "**༒𝚄𝙿𝙳𝙰𝚃𝙸𝙽𝙶 𝙼𝙴𝙶𝙰𝚂𝚃𝙰𝚁 𝚄𝚂𝙴𝚁𝙱𝙾𝚃༒\nBoss!!Please wait 5 minutes 😁😁\nThen try**  .alive **to check if I'm tuned.. 😎😎\n\nPowered by :-\n[MEGASTAR UB](https://t.me/MEGASTAR_SUPPORT)**"
         )
         remote.push(refspec="HEAD:refs/heads/master", force=True)
     else:
@@ -178,7 +178,7 @@ async def upstream(ups):
             repo.git.reset("--hard", "FETCH_HEAD")
         await update_requirements()
         await ups.edit(
-            "`Successfully Updated!\n" "Bot is restarting... Wait for a second!`"
+            "Successfully Updated!\n" "Bot is restarting... Wait for a second!"
         )
         # Spin a new instance of bot
         args = [sys.executable, "-m", "userbot"]
