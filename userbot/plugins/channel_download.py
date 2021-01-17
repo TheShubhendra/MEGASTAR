@@ -15,9 +15,9 @@ from ..utils import admin_cmd, edit_or_reply
 async def get_media(event):
     if event.fwd_from:
         return
-    tempdir = Config.TMP_DOWNLOAD_DIRECTORY
+    tempdir = config.TMP_DOWNLOAD_DIRECTORY
     try:
-        os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
+        os.makedirs(config.TMP_DOWNLOAD_DIRECTORY)
     except BaseException:
         pass
     catty = event.pattern_match.group(1)
@@ -48,9 +48,9 @@ async def get_media(event):
 async def get_media(event):
     if event.fwd_from:
         return
-    tempdir = Config.TMP_DOWNLOAD_DIRECTORY
+    tempdir = config.TMP_DOWNLOAD_DIRECTORY
     try:
-        os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
+        os.makedirs(config.TMP_DOWNLOAD_DIRECTORY)
     except BaseException:
         pass
     channel_username = event.pattern_match.group(1)
