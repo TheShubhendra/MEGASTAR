@@ -1,6 +1,5 @@
-from userbot.utils import admin_cmd
 from userbot import CMD_HELP
-from userbot import bot
+from userbot.utils import admin_cmd
 
 
 @borg.on(admin_cmd(pattern=r"hhi ?(.*)"))
@@ -16,20 +15,20 @@ async def hhi(event):
         f"{a}{b}{b}{a}{b}{a}{a}{a}\n{a}{b}{b}{a}{b}{b}{a}{b}\n{a}{a}{a}{a}{b}{b}{a}{b}\n{a}{b}{b}{a}{b}{b}{a}{b}\n{a}{b}{b}{a}{b}{a}{a}{a}\n☁☁☁☁☁☁☁☁"
     )
 
+
 @borg.on(admin_cmd(pattern=r"gws?(.*)"))
 async def gws(event):
     giveVar = event.text
-    '''m = giveVar[5:-1]
-    if not m:'''
+    """m = giveVar[5:-1]
+    if not m:"""
     m = " Get Well Soon ! "
     a = giveVar[-1:]
-    if a=="s":
+    if a == "s":
         a = "🌹"
     elif not a:
         a = "🌹"
-    await event.edit(
-        f"{a}{a}{a}{a}{a}{a}{a} \n{a} {m}{a}\n{a}{a}{a}{a}{a}{a}{a}"
-    )
+    await event.edit(f"{a}{a}{a}{a}{a}{a}{a} \n{a} {m}{a}\n{a}{a}{a}{a}{a}{a}{a}")
+
 
 CMD_HELP.update(
     {
