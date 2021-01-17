@@ -29,6 +29,11 @@ async def _(event):
         headers={"api-key": Mega},
     )
     os.remove(media)
+    try:
+        r.raise_for_status()
+    except requests.exceptions.HTTPError:
+        devent.edit(str(r.json()))
+        return
     if "status" in r.json():
         return await devent.edit(r.json()["status"])
     r_json = r.json()["output_url"]
