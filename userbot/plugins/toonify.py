@@ -36,14 +36,15 @@ async def _(event):
         return
     if "status" in r.json():
         return await devent.edit(r.json()["status"])
-    r_json = r.json()["output_url"]
-    pic_id = r.json()["id"]
-
-    link = f"https://api.deepai.org/job-view-file/{pic_id}/inputs/image.jpg"
-    result = f"{r_json}"
+    try:
+        output_url = r.json()["output_url"]
+    except ValueError:
+        await devent.edit("Server could not complete your request")
+        return
+    
 
     await devent.delete()
-    await borg.send_message(event.chat_id, file=result)
+    await borg.send_message(event.chat_id, file=output_url)
 
 
 CMD_HELP.update(
