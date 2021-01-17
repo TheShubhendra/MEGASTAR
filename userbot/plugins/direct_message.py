@@ -1,26 +1,26 @@
 # By @HeisenbergTheDanger and @xditya
 
-import os
-import re
 from telethon import *
-from userbot import bot
-from userbot.utils import admin_cmd
+
 from userbot import CMD_HELP
+from userbot.utils import admin_cmd
+
+
 @borg.on(admin_cmd(pattern="dm ?(.*)"))
 async def _(mg):
- 
+
     d = mg.pattern_match.group(1)
-    
+
     c = d.split(" ")
 
     chat_id = c[0]
-    try:  
+    try:
         chat_id = int(chat_id)
-   
+
     except BaseException:
-        
+
         pass
-  
+
     msg = ""
     masg = await mg.get_reply_message()
     if mg.reply_to_msg_id:
@@ -36,4 +36,9 @@ async def _(mg):
     except BaseException:
         await mg.edit(".dm (username) (text)")
 
-CMD_HELP.update({"dm": ".dm (username) (text)\n or\n .dm (username)(reply to msg)\n it'll forward the replyed msg"})
+
+CMD_HELP.update(
+    {
+        "dm": ".dm (username) (text)\n or\n .dm (username)(reply to msg)\n it'll forward the replyed msg"
+    }
+)
