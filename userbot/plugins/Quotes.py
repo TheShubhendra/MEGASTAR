@@ -297,42 +297,42 @@ GDMORNING = [
 ]
 
 
-@borg.on(admin_cmd(pattern=f"love$", outgoing=True))
+@borg.on(admin_cmd(pattern=f"love", outgoing=True))
 async def love(chutiyappa):
     await chutiyappa.edit(choice(LOVESTR))
 
 
-@borg.on(admin_cmd(pattern=f"metoo$", outgoing=True))
+@borg.on(admin_cmd(pattern=f"metoo", outgoing=True))
 async def metoo(hahayes):
     await hahayes.edit(choice(METOOSTR))
 
 
-@borg.on(admin_cmd(pattern=f"gdnoon$", outgoing=True))
+@borg.on(admin_cmd(pattern=f"gdnoon", outgoing=True))
 async def noon(noon):
     await noon.edit(choice(GDNOON))
 
 
-@borg.on(admin_cmd(pattern=f"chase$", outgoing=True))
+@borg.on(admin_cmd(pattern=f"chase", outgoing=True))
 async def police(chase):
     await chase.edit(choice(CHASE_STR))
 
 
-@borg.on(admin_cmd(pattern=f"qhi$", outgoing=True))
+@borg.on(admin_cmd(pattern=f"qhi", outgoing=True))
 async def hoi(hello):
     await hello.edit(choice(HELLOSTR))
 
 
-@borg.on(admin_cmd(pattern=f"gdbye$", outgoing=True))
+@borg.on(admin_cmd(pattern=f"gdbye", outgoing=True))
 async def bhago(bhagobc):
     await bhagobc.edit(choice(BYESTR))
 
 
-@borg.on(admin_cmd(pattern=f"gdn$", outgoing=True))
+@borg.on(admin_cmd(pattern=f"gdnight", outgoing=True))
 async def night(night):
     await night.edit(choice(GDNIGHT))
 
 
-@borg.on(admin_cmd(pattern=f"gdm$", outgoing=True))
+@borg.on(admin_cmd(pattern=f"gdmorn", outgoing=True))
 async def morning(morning):
     await morning.edit(choice(GDMORNING))
 
