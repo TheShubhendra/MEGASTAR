@@ -1,3 +1,4 @@
+# this plugin is useless
 import re
 import bs4
 import requests
@@ -10,13 +11,14 @@ async def gizoogle(event):
     input_str = event.pattern_match.group(1)
     await event.edit("Processing...")
     if not input_str:
-        return await event.edit("I can't gizoogle nothing.")
-    try:
-        result = text(input_str)
-    except:
-        result = "Failed to gizoogle the text."
-    finally:
-        return await event.edit(result)
+        return await event.edit("I can gizoogle nothing.")
+    else:
+        try:
+            result = text(input_str)
+        except:
+            result = "Failed to gizoogle the text."
+        finally:
+            return await event.edit(result)
 
 def text(input_text: str) -> str:
         """Taken from https://github.com/chafla/gizoogle-py/blob/master/gizoogle.py"""
