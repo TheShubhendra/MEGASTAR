@@ -97,7 +97,7 @@ G = (
     "╬═╬ Hello, My Friend :D \n"
     "╬═╬☻/ \n"
     "╬═╬/▌ \n"
-    "╬═╬/ \\n"
+    "╬═╬/ \"
 )
 
 H = (
@@ -317,71 +317,71 @@ R = (
 )
 
 
-@borg.on(admin_cmd(pattern=r"monster$"))
+@borg.on(admin_cmd(pattern=r"monster"))
 async def bluedevilmonster(monster):
     await edit_or_reply(monster, A)
 
 
-@borg.on(admin_cmd(pattern=r"pig$"))
+@borg.on(admin_cmd(pattern=r"pig"))
 async def bluedevilpig(pig):
     await edit_or_reply(pig, B)
 
 
-@borg.on(admin_cmd(pattern=r"gun$"))
+@borg.on(admin_cmd(pattern=r"gun"))
 async def bluedevilgun(gun):
     await edit_or_reply(gun, D)
 
 
-@borg.on(admin_cmd(pattern=r"dog$"))
+@borg.on(admin_cmd(pattern=r"dog"))
 async def bluedevildog(dog):
     await edit_or_reply(dog, E)
 
 
-@borg.on(admin_cmd(pattern=r"hello$"))
+@borg.on(admin_cmd(pattern=r"hello"))
 async def bluedevilhello(hello):
     await edit_or_reply(hello, F)
 
 
-@borg.on(admin_cmd(pattern=r"hmf$"))
+@borg.on(admin_cmd(pattern=r"hmf"))
 async def bluedevilhmf(hmf):
     await edit_or_reply(hmf, G)
 
 
-@borg.on(admin_cmd(pattern=r"couple$"))
+@borg.on(admin_cmd(pattern=r"couple"))
 async def bluedevilcouple(couple):
     await edit_or_reply(couple, H)
 
 
-@borg.on(admin_cmd(pattern=r"sup$"))
+@borg.on(admin_cmd(pattern=r"sup"))
 async def bluedevilsupreme(supreme):
     await edit_or_reply(supreme, I)
 
 
-@borg.on(admin_cmd(pattern=r"india$"))
+@borg.on(admin_cmd(pattern=r"india"))
 async def bluedevilindia(india):
     await edit_or_reply(india, J)
 
 
-@borg.on(admin_cmd(pattern=r"wc$"))
+@borg.on(admin_cmd(pattern=r"wc"))
 async def bluedevilwelcome(welcome):
     await edit_or_reply(welcome, K)
 
 
-@borg.on(admin_cmd(pattern=r"snk$"))
+@borg.on(admin_cmd(pattern=r"snk"))
 async def bluedevilsnake(snake):
     await edit_or_reply(snake, L)
 
 
-@borg.on(admin_cmd(pattern=r"bye$"))
+@borg.on(admin_cmd(pattern=r"bye"))
 async def bluedevilbye(bye):
     await edit_or_reply(bye, O)
 
 
-@borg.on(admin_cmd(pattern=r"shitos$"))
+@borg.on(admin_cmd(pattern=r"shitos"))
 async def bluedevilshitos(shitos):
     await edit_or_reply(shitos, P)
 
 
-@borg.on(admin_cmd(pattern=r"dislike$"))
+@borg.on(admin_cmd(pattern=r"dislike"))
 async def bluedevildislike(dislike):
     await edit_or_reply(dislike, R)
