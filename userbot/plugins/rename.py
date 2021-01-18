@@ -13,7 +13,7 @@ thumb_image_path = config.TMP_DOWNLOAD_DIRECTORY + "thumb_image.jpg"
 async def _(event):
     if event.fwd_from:
         return
-    event = await edit_or_reply(
+    await edit_or_reply(
         event,
         "`Renaming in process 🙄🙇‍♂️🙇‍♂️🙇‍♀️ It might take some time if file size is big`",
     )
