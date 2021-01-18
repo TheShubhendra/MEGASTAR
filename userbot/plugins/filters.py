@@ -1,88 +1,96 @@
-# ported from paperplaneExtended by avinashreddy3108 for media support
+
+import asyncio
 import re
+from telethon import events, utils
+from telethon.tl import types
+from userbot.plugins.sql_helper.filter_sql import get_filter, add_filter, remove_filter, get_all_filters, remove_all_filters
+from userbot import CMD_HELP
 
-from telethon import events
-
-from .. import BOTLOG_CHATID, CMD_HELP, bot
-from ..utils import admin_cmd, edit_or_reply
-from .sql_helper.filter_sql import (
-    add_filter,
-    get_filters,
-    remove_all_filters,
-    remove_filter,
-)
+DELETE_TIMEOUT = 0
+TYPE_TEXT = 0
+TYPE_PHOTO = 1
+TYPE_DOCUMENT = 2
 
 
-@borg.on(events.NewMessage(incoming=True))
-async def filter_incoming_handler(handler):
-    try:
-        if not (await handler.get_sender()).bot:
-            name = handler.raw_text
-            filters = get_filters(handler.chat_id)
-            if not filters:
-                return
-            for trigger in filters:
-                pattern = r"( |^|[^\w])" + re.escape(trigger.keyword) + r"( |$|[^\w])"
-                if re.search(pattern, name, flags=re.IGNORECASE):
-                    if trigger.f_mesg_id:
-                        msg_o = await handler.client.get_messages(
-                            entity=BOTLOG_CHATID, ids=int(trigger.f_mesg_id)
-                        )
-                        await handler.reply(msg_o.message, file=msg_o.media)
-                    elif trigger.reply:
-                        await handler.reply(trigger.reply)
-    except AttributeError:
-        pass
+global last_triggered_filters
+last_triggered_filters = {}  # pylint:disable=E0602
 
 
-@borg.on(admin_cmd(pattern="filter (.*)"))
-async def add_new_filter(new_handler):
-    keyword = new_handler.pattern_match.group(1)
-    string = new_handler.text.partition(keyword)[2]
-    msg = await new_handler.get_reply_message()
-    msg_id = None
-    if msg and msg.media and not string:
-        if BOTLOG_CHATID:
-            await new_handler.client.send_message(
-                BOTLOG_CHATID,
-                f"#FILTER\
-            \nCHAT ID: {new_handler.chat_id}\
-            \nTRIGGER: {keyword}\
-            \n\nThe following message is saved as the filter's reply data for the chat, please do NOT delete it !!",
-            )
-            msg_o = await new_handler.client.forward_messages(
-                entity=BOTLOG_CHATID,
-                messages=msg,
-                from_peer=new_handler.chat_id,
-                silent=True,
-            )
-            msg_id = msg_o.id
-        else:
-            await edit_or_reply(
-                new_handler,
-                "`Saving media as reply to the filter requires the BOTLOG_CHATID to be set.`",
-            )
-            return
-    elif new_handler.reply_to_msg_id and not string:
-        rep_msg = await new_handler.get_reply_message()
-        string = rep_msg.text
-    success = "`Filter` **{}** `{} successfully`"
-    if add_filter(str(new_handler.chat_id), keyword, string, msg_id) is True:
-        return await edit_or_reply(new_handler, success.format(keyword, "added"))
-    remove_filter(str(new_handler.chat_id), keyword)
-    if add_filter(str(new_handler.chat_id), keyword, string, msg_id) is True:
-        return await edit_or_reply(new_handler, success.format(keyword, "Updated"))
-    await edit_or_reply(new_handler, f"Error while setting filter for {keyword}")
+@command(incoming=True)
+async def on_snip(event):
+    global last_triggered_filters
+    name = event.raw_text
+    if event.chat_id in last_triggered_filters:
+        if name in last_triggered_filters[event.chat_id]:
+            # avoid userbot spam
+            # "I demand rights for us bots, we are equal to you humans." -Henri Koivuneva (t.me/UserbotTesting/2698)
+            return False
+    snips = get_all_filters(event.chat_id)
+    if snips:
+        for snip in snips:
+            pattern = r"( |^|[^\w])" + re.escape(snip.keyword) + r"( |$|[^\w])"
+            if re.search(pattern, name, flags=re.IGNORECASE):
+                if snip.snip_type == TYPE_PHOTO:
+                    media = types.InputPhoto(
+                        int(snip.media_id),
+                        int(snip.media_access_hash),
+                        snip.media_file_reference
+                    )
+                elif snip.snip_type == TYPE_DOCUMENT:
+                    media = types.InputDocument(
+                        int(snip.media_id),
+                        int(snip.media_access_hash),
+                        snip.media_file_reference
+                    )
+                else:
+                    media = None
+                message_id = event.message.id
+                if event.reply_to_msg_id:
+                    message_id = event.reply_to_msg_id
+                await event.reply(
+                    snip.reply,
+                    file=media
+                )
+                if event.chat_id not in last_triggered_filters:
+                    last_triggered_filters[event.chat_id] = []
+                last_triggered_filters[event.chat_id].append(name)
+                await asyncio.sleep(DELETE_TIMEOUT)
+                last_triggered_filters[event.chat_id].remove(name)
 
 
-@borg.on(admin_cmd(pattern="filters$"))
+@command(pattern="^.savefilter (.*)")
+async def on_snip_save(event):
+    name = event.pattern_match.group(1)
+    msg = await event.get_reply_message()
+    if msg:
+        snip = {'type': TYPE_TEXT, 'text': msg.message or ''}
+        if msg.media:
+            media = None
+            if isinstance(msg.media, types.MessageMediaPhoto):
+                media = utils.get_input_photo(msg.media.photo)
+                snip['type'] = TYPE_PHOTO
+            elif isinstance(msg.media, types.MessageMediaDocument):
+                media = utils.get_input_document(msg.media.document)
+                snip['type'] = TYPE_DOCUMENT
+            if media:
+                snip['id'] = media.id
+                snip['hash'] = media.access_hash
+                snip['fr'] = media.file_reference
+        add_filter(event.chat_id, name, snip['text'], snip['type'], snip.get('id'), snip.get('hash'), snip.get('fr'))
+        await event.edit(f"filter {name} saved successfully. Get it with {name}")
+    else:
+        await event.edit("Reply to a message with `savefilter keyword` to save the filter")
+
+
+@command(pattern="^.listfilters$")
 async def on_snip_list(event):
-    OUT_STR = "There are no filters in this chat."
-    filters = get_filters(event.chat_id)
-    for filt in filters:
-        if OUT_STR == "There are no filters in this chat.":
-            OUT_STR = "Active filters in this chat:\n"
-        OUT_STR += "👉 `{}`\n".format(filt.keyword)
+    all_snips = get_all_filters(event.chat_id)
+    OUT_STR = "Available Filters in the Current Chat:\n"
+    if len(all_snips) > 0:
+        for a_snip in all_snips:
+            OUT_STR += f"👉 {a_snip.keyword} \n"
+    else:
+        OUT_STR = "No Filters. Start Saving using `.savefilter`"
     if len(OUT_STR) > 4096:
         with io.BytesIO(str.encode(OUT_STR)) as out_file:
             out_file.name = "filters.text"
@@ -92,44 +100,35 @@ async def on_snip_list(event):
                 force_document=True,
                 allow_cache=False,
                 caption="Available Filters in the Current Chat",
-                reply_to=event,
+                reply_to=event
             )
             await event.delete()
     else:
-        await edit_or_reply(event, OUT_STR)
+        await event.edit(OUT_STR)
 
 
-@borg.on(admin_cmd(pattern="stop (.*)"))
-async def remove_a_filter(r_handler):
-    filt = r_handler.pattern_match.group(1)
-    if not remove_filter(r_handler.chat_id, filt):
-        await r_handler.edit("Filter` {} `doesn't exist.".format(filt))
-    else:
-        await r_handler.edit("Filter `{} `was deleted successfully".format(filt))
+@command(pattern="^.clearfilter (.*)")
+async def on_snip_delete(event):
+    name = event.pattern_match.group(1)
+    remove_filter(event.chat_id, name)
+    await event.edit(f"filter {name} deleted successfully")
 
 
-@borg.on(admin_cmd(pattern="rmfilters$"))
+@command(pattern="^.clearallfilters$")
 async def on_all_snip_delete(event):
-    filters = get_filters(event.chat_id)
-    if filters:
-        remove_all_filters(event.chat_id)
-        await edit_or_reply(event, f"filters in current chat deleted successfully")
-    else:
-        await edit_or_reply(event, f"There are no filters in this group")
-
+    remove_all_filters(event.chat_id)
+    await event.edit(f"filters **in current chat** deleted successfully")
 
 CMD_HELP.update(
     {
-        "filters": "**Plugin :**`filters`\
-    \n\n**Synatx :** `.filters`\
-    \n**Usage: **Lists all active (of your userbot) filters in a chat.\
-    \n\n*Synatx :** `.filter`  reply to a message with .filter <keyword>\
-    \n**Usage: **Saves the replied message as a reply to the 'keyword'.\
-    \nThe bot will reply to the message whenever 'keyword' is mentioned.\
-    \nWorks with everything from files to stickers.\
-    \n\n*Synatx :** `.stop <keyword>`\
-    \n**Usage: **Stops the specified keyword.\
-    \n\n*Synatx :** `.rmfilters` \
-    \n**Usage: **Removes all filters of your userbot in the chat."
+        "filters": "__**PLUGIN NAME :** filters__\
+    \n\n** CMD ** `.savefilter (text/filter key) (reply to msg)`\
+    \n**USAGE     **save ur filter in chat when someone type that key it reply with the msg u put on reply (note:-it activate only when someone reply not u. \
+    \n\n** CMD ** `.listfilters`\
+    \n**USAGE     **list all ur filters in a chat\
+    \n\n** CMD ** `.clearfilter(key/text)`\
+    \n**USAGE     **stop the filter u put on the key\
+    \n\n** CMD ** `.clearallfilters`\
+    \n**USAGE     **clear all ur filters"
     }
 )
