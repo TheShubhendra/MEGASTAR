@@ -1,6 +1,5 @@
 """
 Created by @Jisan7509
-plugin for Cat_Userbot
 """
 
 from telethon.errors.rpcerrorlist import YouBlockedUserError
@@ -9,13 +8,13 @@ from ..utils import admin_cmd, edit_or_reply
 from . import CMD_HELP
 
 
-@borg.on(admin_cmd(pattern=r"score$"))
+@borg.on(admin_cmd(pattern=r"score"))
 async def _(event):
     if event.fwd_from:
         return
     chat = "@cricbuzz_bot"
     reply_to_id = event.message
-    catevent = await edit_or_reply(event, "```Gathering info...```")
+    megaevent = await edit_or_reply(event, "Gathering info...")
     async with event.client.conversation(chat) as conv:
         try:
             msg_start = await conv.send_message("/start")
@@ -24,12 +23,12 @@ async def _(event):
             respond = await conv.get_response()
             await event.client.send_read_acknowledge(conv.chat_id)
         except YouBlockedUserError:
-            await catevent.edit("Unblock @cricbuzz_bot & try again")
+            await megaevent.edit("Unblock @cricbuzz_bot & try again")
             return
         if respond.text.startswith("I can't find that"):
-            await catevent.edit("sorry i can't find it")
+            await megaevent.edit("sorry i can't find it")
         else:
-            await catevent.delete()
+            await megaevent.delete()
             await event.client.send_message(
                 event.chat_id, respond.message, reply_to=reply_to_id
             )
@@ -45,7 +44,7 @@ async def _(event):
     details = event.pattern_match.group(1)
     chat = "@cricbuzz_bot"
     reply_to_id = event.message
-    catevent = await edit_or_reply(event, "```Gathering info...```")
+    megaevent = await edit_or_reply(event, "Collecting information...")
     async with event.client.conversation(chat) as conv:
         try:
             msg_start = await conv.send_message("/start")
@@ -54,12 +53,12 @@ async def _(event):
             respond = await conv.get_response()
             await event.client.send_read_acknowledge(conv.chat_id)
         except YouBlockedUserError:
-            await catevent.edit("Unblock @cricbuzz_bot & try again")
+            await megaevent.edit("Unblock @cricbuzz_bot & try again")
             return
         if respond.text.startswith("I can't find that"):
-            await catevent.edit("sorry i can't find it")
+            await megaevent.edit("sorry i can't find it")
         else:
-            await catevent.delete()
+            await megaevent.delete()
             await event.client.send_message(
                 event.chat_id, respond.message, reply_to=reply_to_id
             )
@@ -70,11 +69,12 @@ async def _(event):
 
 CMD_HELP.update(
     {
-        "cricket": "**Plugin :** `cricket`\
-      \n\n**  • Syntax : **`.score` \
+        "cricket": "**Plugin :** cricket\
+      \n\n**  • Syntax : **.score \
       \n**  • Function : **__To see score of ongoing matches.__\
-      \n\n**  • Syntax : **`.cric <commnd>`\
+      \n\n**  • Syntax : **.cric <commnd>\
       \n**  • Function : **__That will send details like scoreboard or commentary.__\
-      \n\n**  • Example :-** `.cric /scorecard_30....`"
+      \n\n**  • Example :-** .cric /score...."
     }
 )
+ 
