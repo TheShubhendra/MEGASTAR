@@ -77,4 +77,3 @@ CMD_HELP.update(
       \n\n**  • Example :-** .cric /score...."
     }
 )
- 
