@@ -83,9 +83,7 @@ async def lyrics(lyric):
     if len(args) < 1:
         await edit_or_reply(lyric, "Please provide artist and song names")
         return
-    megaevent = await edit_or_reply(
-        lyric, f"Searching lyrics for {artist} - {song}..."
-    )
+    megaevent = await edit_or_reply(lyric, f"Searching lyrics for {artist} - {song}...")
     try:
         songs = genius.search_song(song, artist)
     except TypeError:
@@ -104,9 +102,7 @@ async def lyrics(lyric):
         )
         os.remove("lyrics.txt")
     else:
-        await megaevent.edit(
-            f"**Search query**: \n{artist} - {song}\n\n{songs.lyrics}"
-        )
+        await megaevent.edit(f"**Search query**: \n{artist} - {song}\n\n{songs.lyrics}")
     return
 
 
