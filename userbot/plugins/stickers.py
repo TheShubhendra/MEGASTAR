@@ -21,7 +21,7 @@ from telethon.tl.types import (
 )
 
 from userbot import CMD_HELP, bot
-from userbot.utils import register
+from userbot.utils import register as megastar
 
 KANGING_STR = [
     "Using Witchery to kang this sticker...",
@@ -29,15 +29,15 @@ KANGING_STR = [
     "Inviting this sticker over to my pack...",
     "Kanging this sticker...",
     "Hey that's a nice sticker!\nMind if I kang?!..",
-    "hehe me stel ur stikér\nhehe.",
+    "Hehe me stel ur stikér\nhehe.",
     "Ay look over there (☉｡☉)!→\nWhile I kang this...",
-    "Roses are red violets are blue, kanging this sticker so my pacc looks cool",
+    "Roses are red violets are blue, kanging this sticker so my  sticker pack looks cool",
     "Imprisoning this sticker...",
-    "Mr.Steal Your Sticker is stealing this sticker... ",
+    "Mr.Steal is stealing this sticker...hehe",
 ]
 
 
-@register(outgoing=True, pattern="^.kang")
+@megastar(outgoing=True, pattern="^.kang")
 async def kang(args):
     """ For .kang command, kangs stickers or creates new ones. """
     user = await bot.get_me()
@@ -283,7 +283,7 @@ async def resize_photo(photo):
     return image
 
 
-@register(outgoing=True, pattern="^.stkrinfo$")
+@megastar(outgoing=True, pattern="^.stkrinfo$")
 async def get_pack_info(event):
     if not event.is_reply:
         await event.edit("`I can't fetch info from nothing, can I ?!`")
