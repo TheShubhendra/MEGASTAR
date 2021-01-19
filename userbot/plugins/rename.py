@@ -3,7 +3,7 @@ import os
 import time
 from datetime import datetime
 
-from ..utils import admin_cmd, edit_or_reply
+from ..utils import admin_cmd, edit_or_reply, progress
 from . import CMD_HELP
 
 thumb_image_path = config.TMP_DOWNLOAD_DIRECTORY + "thumb_image.jpg"
