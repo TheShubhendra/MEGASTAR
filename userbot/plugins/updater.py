@@ -21,6 +21,21 @@ requirements_path = path.join(
 )
 
 
+async def update(event, repo, ups_rem, ac_br):
+    try:
+        ups_rem.pull(ac_br)
+    except GitCommandError:
+        repo.git.reset("--hard", "FETCH_HEAD")
+    await update_requirements()
+    await event.edit(
+        "**Update Sucessfull, Please give me some time to restart the bot..**"
+    )
+    # Spin a new instance of bot
+    args = [sys.executable, "-m", "fridaybot"]
+    execle(sys.executable, *args, environ)
+    return
+
+
 async def gen_chlog(repo, diff):
     ch_log = ""
     d_form = "%d/%m/%y"
@@ -119,6 +134,10 @@ async def upstream(ups):
             await ups.edit(changelog_str)
         await ups.respond("do .update now to update")
         return
+    if conf == "now":
+        await event.edit("**Just wait for a minute....**")
+        await update(event, repo, ups_rem, ac_br)
+    return
     if force_update:
         await ups.edit(
             "༒**Megastar is being updated now**༒..\n**please wait Boss just wait for some minutes... Ill be up in time** 😉 "
