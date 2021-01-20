@@ -31,7 +31,7 @@ async def update(event, repo, ups_rem, ac_br):
         "**Update Sucessfull, Please give me some time to restart the bot..**"
     )
     # Spin a new instance of bot
-    args = [sys.executable, "-m", "fridaybot"]
+    args = [sys.executable, "-m", "userbot"]
     execle(sys.executable, *args, environ)
     return
 
@@ -135,8 +135,8 @@ async def upstream(ups):
         await ups.respond("do .update now to update")
         return
     if conf == "now":
-        await event.edit("**Just wait for a minute....**")
-        await update(event, repo, ups_rem, ac_br)
+        await ups.edit("**Just wait for a minute....**")
+        await update(ups, repo, ups_rem, ac_br)
     return
     if force_update:
         await ups.edit(
