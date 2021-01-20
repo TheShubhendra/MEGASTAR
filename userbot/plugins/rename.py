@@ -34,6 +34,18 @@ async def _(event):
                 progress(d, t, event, c_time, "trying to download", file_name)
             ),
         )
+        await borg.send_file(
+                event.chat_id,
+                downloaded_file_name,
+                force_document=True,
+                supports_streaming=False,
+                allow_cache=False,
+                reply_to=event.message.id,
+                thumb=thumb,
+                progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
+                    progress(d, t, event, c_time, "trying to upload")
+                )
+            )
         end = datetime.now()
         ms = (end - start).seconds
         if os.path.exists(downloaded_file_name):
