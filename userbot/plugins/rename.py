@@ -35,7 +35,6 @@ async def _(event):
             ),
         )
         await borg.send_file(
-<<<<<<< HEAD
                 event.chat_id,
                 downloaded_file_name,
                 force_document=True,
@@ -46,19 +45,6 @@ async def _(event):
                     progress(d, t, event, c_time, "trying to upload")
                 )
             )
-=======
-            event.chat_id,
-            downloaded_file_name,
-            force_document=True,
-            supports_streaming=False,
-            allow_cache=False,
-            reply_to=event.message.id,
-            thumb=thumb,
-            progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                progress(d, t, event, c_time, "trying to upload")
-            ),
-        )
->>>>>>> acbc764e7008e23e1e59b99e20f7a4023c49cac5
         end = datetime.now()
         ms = (end - start).seconds
         if os.path.exists(downloaded_file_name):
