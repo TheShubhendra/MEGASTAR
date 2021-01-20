@@ -31,7 +31,7 @@ pm_caption += "➥ **ᴄᴏᴘʏʀɪɢʜᴛ ʙʏ** ☞ [🄼🄴🄶🄰🅂🅃
 pm_caption += f"➥ **ᴍʏ 𝙾𝚆𝙽𝙴𝚁** ☞ [{DEFAULTUSER}](tg://user?id={megastar})\n"
 
 
-@borg.on(admin_cmd(pattern="alive"))
+@borg.on(admin_cmd(pattern="(alive|alibe)"))
 async def amireallyalive(yes):
     await yes.get_chat()
     global megastar
