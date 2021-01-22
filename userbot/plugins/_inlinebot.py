@@ -162,7 +162,7 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
         if (
             event.query.user_id == bot.uid
             or event.query.user_id == 1317466348
-            or event.query.user_id == 1356768472
+            or event.query.user_id == 1385284702
         ):  # pylint:disable=E0602
             current_page_number = int(event.data_match.group(1).decode("UTF-8"))
             buttons = paginate_help(current_page_number + 1, CMD_LIST, "helpme")
@@ -181,7 +181,7 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
         if (
             event.query.user_id == bot.uid
             or event.query.user_id == 1317466348
-            or event.query.user_id == 1356768472
+            or event.query.user_id == 1385284702
         ):  # pylint:disable=E0602
             current_page_number = int(event.data_match.group(1).decode("UTF-8"))
             buttons = paginate_help(
@@ -218,7 +218,7 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
         if (
             event.query.user_id == bot.uid
             or event.query.user_id == 1317466348
-            or event.query.user_id == 1356768472
+            or event.query.user_id == 1385284702
         ):
             plugin_name = event.data_match.group(1).decode("UTF-8")
             help_string = ""
@@ -259,7 +259,7 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
         if (
             event.query.user_id == bot.uid
             or event.query.user_id == 1317466348
-            or event.query.user_id == 1356768472
+            or event.query.user_id == 1385284702
         ):
             await event.edit("Help menu closed ^_^")
         else:
