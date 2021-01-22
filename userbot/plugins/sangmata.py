@@ -43,10 +43,11 @@ async def _(event):
             await event.edit("User never changed his Username...")
         else:
             await event.delete()
-            await event.client.send_message(event.chat_id, response2.message)
-
-            await event.client.send_message(event.chat_id, response3.message)
-
+            try:
+                await event.client.send_message(event.chat_id, response1.message)
+                await event.client.send_message(event.chat_id, response2.message)
+                await event.client.send_message(event.chat_id, response3.message)
+    
 
 CMD_HELP.update(
     {
