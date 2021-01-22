@@ -23,7 +23,7 @@ async def lydia_disable_enable(event):
     if event.fwd_from:
         return
     if Var.LYDIA_API_KEY is None:
-        await edit_delete(event, "`Please add required LYDIA_API_KEY env var`", 10)
+        await edit_or_reply(event, "`Please add required LYDIA_API_KEY env var`", 10)
         return
     pglevent = await edit_or_reply(event, "`.....`")
     input_str = event.pattern_match.group(1)
@@ -92,7 +92,7 @@ async def lydia_disable_enable(event):
             else:
                 await pglevent.edit(output_str)
         else:
-            await edit_delete(
+            await edit_or_reply(
                 pglevent,
                 "`Reply To A User's Message to Add / Remove them from Lydia Auto-Chat.`",
                 5,
