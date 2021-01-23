@@ -37,6 +37,11 @@
       "value": "MEGASTAR USERBOT IS BEST ",
       "required": true
     },
+    "DEEP_AI":{
+      "description": "Get this value from deepai.org",
+      "value": "bad63525-5292-4e55-ab70-81decdd38d69",
+      "required": false
+    },
     "ALIVE_PIC": {
       "description": "put here any telegraph media link for .awake cmd.",
       "value": "https://telegra.ph/file/1ae50911854f63793d1b6.png",
