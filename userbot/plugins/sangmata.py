@@ -48,11 +48,3 @@ async def _(event):
                 await event.client.send_message(event.chat_id, response2.message)
                 await event.client.send_message(event.chat_id, response3.message)
     
-
-CMD_HELP.update(
-    {
-        "sangmata": "__**PLUGIN NAME :** sangmata__\
-    \n\n📌** CMD ★** `.sg`\
-    \n**USAGE   ★  **Retrieves the name and username history of the replied user even if he has forwarded message privacy..! This may not always work as perfect it should be..if doesn't then try once again.."
-    }
-)
