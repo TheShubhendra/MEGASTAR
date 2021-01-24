@@ -1,4 +1,5 @@
 # Retrieves the name history and the username history of the replied user..
+from asyncio.exceptions import TimeoutError
 from telethon import events
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 
@@ -38,6 +39,9 @@ async def _(event):
             response3 = await response3
         except YouBlockedUserError:
             await event.reply("Please unblock ( @Sangmatainfo_bot ) ")
+            return
+        except TimeoutError:
+            await event.reply("No records found, may be user have never changed his username")
             return
         if response1.text.startswith("No records found"):
             await event.edit("User never changed his Username...")
