@@ -23,34 +23,21 @@ async def _(event):
     await event.edit("Checking...")
     async with event.client.conversation(chat) as conv:
         try:
-            # await conv.send_message("/search_id {}".format(sender))
-            response1 = conv.wait_event(
-                events.NewMessage(incoming=True, from_users=461843263)
-            )
-            response2 = conv.wait_event(
-                events.NewMessage(incoming=True, from_users=461843263)
-            )
-            response3 = conv.wait_event(
-                events.NewMessage(incoming=True, from_users=461843263)
-            )
             await conv.send_message("/search_id {}".format(sender))
-            response1 = await response1
-            response2 = await response2
-            response3 = await response3
+            response1 = await conv.get_response()
+            await event.reply(response1.text)
+            response2 = await conv.get_response()
+            await event.reply(response2.text)
+            response3 = await conv.get_response()
+            await event.reply(response3.text)
+
         except YouBlockedUserError:
             await event.reply("Please unblock ( @Sangmatainfo_bot ) ")
             return
         except TimeoutError:
             await event.reply("No records found, may be user have never changed his username")
-            return
-        if response1.text.startswith("No records found"):
-            await event.edit("User never changed his Username...")
-        else:
-            await event.delete()
-            await event.client.send_message(event.chat_id, response2.message)
-
-            await event.client.send_message(event.chat_id, response3.message)
-
+        event.delete()
+        
 
 CMD_HELP.update(
     {
