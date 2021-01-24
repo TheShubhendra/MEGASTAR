@@ -4,8 +4,8 @@ from datetime import datetime
 from time import time
 
 from coffeehouse.api import API
-from coffeehouse.lydia import LydiaAI
 from coffeehouse.exception import CoffeeHouseError
+from coffeehouse.lydia import LydiaAI
 
 from ..utils import admin_cmd, edit_or_reply
 from . import BOTLOG, BOTLOG_CHATID, CMD_HELP
