@@ -5,6 +5,7 @@ from time import time
 
 from coffeehouse.api import API
 from coffeehouse.lydia import LydiaAI
+from coffeehouse.exception import CoffeeHouseError
 
 from ..utils import admin_cmd, edit_or_reply
 from . import BOTLOG, BOTLOG_CHATID, CMD_HELP
@@ -132,7 +133,7 @@ async def on_new_message(event):
                     await asyncio.sleep(2)
                     output = lydia.think_thought(session_id, query)
                     await event.reply(output)
-            except cf.exception.CoffeeHouseError as e:
+            except CoffeeHouseError as e:
                 logger.info(str(e))
 
 
