@@ -38,7 +38,7 @@ async def _(event):
             await event.reply(
                 "No records found, may be user have never changed his username"
             )
-        event.delete()
+        await event.delete()
 
 
 CMD_HELP.update(
