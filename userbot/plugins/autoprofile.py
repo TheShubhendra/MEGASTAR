@@ -34,7 +34,7 @@ DEFAULTUSER = str(AUTONAME) if AUTONAME else "Megastar"
 FONT_FILE_TO_USE = "/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf"
 
 
-@borg.on(admin_cmd(pattern="autopic$"))
+@borg.on(admin_cmd(pattern="autopic"))
 async def autopic(event):
     await event.edit(f"Autopic has been started by my Boss")
     downloaded_file_name = "userbot/original_pic.png"
@@ -68,7 +68,7 @@ async def autopic(event):
             return
 
 
-@borg.on(admin_cmd(pattern="digitalpfp$"))
+@borg.on(admin_cmd(pattern="digitalpfp"))
 async def main(event):
     await event.edit("Starting Digital Profile Pic, see magic in 5 sec.")
     poto = "userbot/poto_pfp.png"
@@ -104,7 +104,7 @@ async def main(event):
         await asyncio.sleep(60)
 
 
-@borg.on(admin_cmd(pattern="bloom$"))
+@borg.on(admin_cmd(pattern="bloom"))
 async def autopic(event):
     await event.edit("Bloom colour profile pic have been enabled by my boss")
     downloaded_file_name = "userbot/original_pic.png"
@@ -146,13 +146,13 @@ async def autopic(event):
             return
 
 
-@borg.on(admin_cmd(pattern="autoname$"))  # pylint:disable=E0602
+@borg.on(admin_cmd(pattern="autoname"))  # pylint:disable=E0602
 async def _(event):
     await event.edit(f"Auto Name has been started by my boss ")
     while True:
         DM = time.strftime("%d-%m-%y")
         HM = time.strftime("%H:%M")
-        name = f"⌚️ {HM}||›  {DEFAULTUSER} ‹||📅 {DM}"
+        name = f"⌚️ {HM}||›༒✰ ✘ {DEFAULTUSER} ✘ ✰༒‹||📅 {DM}"
         logger.info(name)
         try:
             await event.client(
@@ -166,13 +166,13 @@ async def _(event):
         await asyncio.sleep(DEL_TIME_OUT)
 
 
-@borg.on(admin_cmd(pattern="autobio$"))  # pylint:disable=E0602
+@borg.on(admin_cmd(pattern="autobio"))  # pylint:disable=E0602
 async def _(event):
     await event.edit(f"Auto bio has been started by my boss")
     while True:
         DMY = time.strftime("%d.%m.%Y")
         HM = time.strftime("%H:%M:%S")
-        bio = f"📅 {DMY} ♨︎✰༒| {DEFAULTUSERBIO} |༒✰♨︎ ⌚️ {HM}"
+        bio = f"📅 {DMY}  {DEFAULTUSERBIO}  ⌚️ {HM}"
         logger.info(bio)
         try:
             await event.client(
@@ -246,7 +246,7 @@ BIO_STRINGS = [
 ]
 
 
-@borg.on(admin_cmd(pattern="monkeybio$"))  # pylint:disable=E0602
+@borg.on(admin_cmd(pattern="monkeybio"))  # pylint:disable=E0602
 async def _(event):
     await event.edit(f"Monkey has been started by my boss")
     while True:
