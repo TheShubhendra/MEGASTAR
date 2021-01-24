@@ -19,14 +19,14 @@ from . import CMD_HELP
 
 @borg.on(admin_cmd(pattern="restart"))
 async def _(event):
-    await event.edit("Restarting ▰▱▱▱▱▱▱▱18%...")
+    await event.edit("Restarting ▰▱▱▱▱▱▱▱▱▱10%...")
     await asyncio.sleep(1)
-    await event.edit("Restarting ▰▰▰▰▱▱▱▱49.6%...")
+    await event.edit("Restarting ▰▰▰▰▰▱▱▱▱▱50%...")
     await asyncio.sleep(1)
-    await event.edit("Restarting ▰▰▰▰▰▰▰▰100%...")
+    await event.edit("Restarting ▰▰▰▰▰▰▰▰▰▰100%...")
     await asyncio.sleep(0.1)
     await event.edit(
-        "Restarted.....wi8 5 min then type `.alive` to check if  I'm alive "
+        "ʀɛֆтαʀтɛ∂.....աαιт 5 мιռ тнɛռ тʏρɛ `.alive` тσ cнɛcκ ιғ ι αм ωσʀᏦιռɢ "
     )
     await borg.disconnect()
     os.execl(sys.executable, sys.executable, *sys.argv)
