@@ -61,7 +61,7 @@ async def _(event):
                 ms_two = (end - start).seconds
                 os.remove(downloaded_file_name)
                 await event.edit(
-                    "File uploaded ser By MEGASTAR USERBOT https://telegra.ph{} ".format(
+                    "File uploaded By MEGASTAR USERBOT https://telegra.ph{} ".format(
                         media_urls[0], (ms + ms_two)
                     ),
                     link_preview=True,
@@ -90,7 +90,7 @@ async def _(event):
             end = datetime.now()
             ms = (end - start).seconds
             await event.edit(
-                "Pasted ser https://telegra.ph/{} in {} seconds.".format(
+                "Pasted https://telegra.ph/{} in {} seconds.".format(
                     response["path"], ms
                 ),
                 link_preview=True,
