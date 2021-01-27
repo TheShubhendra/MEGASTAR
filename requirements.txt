@@ -45,7 +45,7 @@ pybase64
 PyDictionary
 pyDownload
 pyfiglet
-pygita
+pygita==1.0.0
 PyGithub
 pylast
 PyLyrics
