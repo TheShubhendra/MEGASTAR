@@ -28,7 +28,7 @@
 
 
 
-### By TEAM - `✰𝙈𝙀𝙂𝘼𝙎𝙏𝘼𝙍™
+### By TEAM - `✰𝙈𝙀𝙂𝘼𝙎𝙏𝘼𝙍™`
 
 
 ### MEGASTAR USERBOT SUPPORT CHANNEL
@@ -90,8 +90,7 @@ Fortunately there are no Mandatory vars for the UniBorg Support Config.
 
     - `APP_ID`:   You can get this value from https://my.telegram.org
     - `API_HASH`:   You can get this value from https://my.telegram.org
-    - `HEROKU_API`: You can get this value from https://dashboard.heroku.com/account 
-
+    
 - The userbot will not work without setting the mandatory vars.
 
 # Licence
