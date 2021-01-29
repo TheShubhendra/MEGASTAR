@@ -22,6 +22,7 @@ COLLECTION_STRING = [
     "iron-man-wallpapers",
 ]
 
+IS_ACTIVATED = False
 
 async def animepp():
     os.system("rm -rf donot.jpg")
@@ -42,10 +43,25 @@ async def animepp():
 
 @borg.on(admin_cmd(pattern="avdp ?(.*)"))
 async def main(event):
+    global IS_ACTIVATED
     await event.edit("**Starting Avengers Profile Pic...\n\nDone !!! Check Your DP **")
-    while True:
+    IS_ACTIVATED = True
+    while IS_ACTIVATED:
         await animepp()
         file = await event.client.upload_file("donottouch.jpg")
         await event.client(functions.photos.UploadProfilePhotoRequest(file))
         os.system("rm -rf donottouch.jpg")
         await asyncio.sleep(1000)  # Edit this to your required needs
+
+
+@borg.on(admin_cmd(pattern="avdpoff ?(.*)"))
+async def turnoff(event):
+    global IS_ACTIVATED
+    if IS_ACTIVATED:
+        await event.edit("**Turning off Avengers DP.**")
+        IS_ACTIVATED = False
+        await event.delete()
+    else:
+        await event.edit("Avengers dp is not activated.")
+        asyncio.sleep(3)
+        event.delete()
