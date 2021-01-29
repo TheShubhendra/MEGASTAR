@@ -24,6 +24,7 @@ COLLECTION_STRING = [
 
 IS_ACTIVATED = False
 
+
 async def animepp():
     os.system("rm -rf donot.jpg")
     rnd = random.randint(0, len(COLLECTION_STRING) - 1)
