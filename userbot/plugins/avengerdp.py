@@ -54,7 +54,7 @@ async def main(event):
         await asyncio.sleep(1000)  # Edit this to your required needs
 
 
-@borg.on(admin_cmd(pattern="avdpoff ?(.*)"))
+@borg.on(admin_cmd(pattern="offavdp ?(.*)"))
 async def turnoff(event):
     global IS_ACTIVATED
     if IS_ACTIVATED:
