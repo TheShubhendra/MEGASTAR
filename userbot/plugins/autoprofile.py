@@ -24,7 +24,7 @@ from pySmartDL import SmartDL
 from telethon.errors import FloodWaitError
 from telethon.tl import functions
 
-from userbot import CMD_HELP, DEFAULT_BIO
+from userbot import CMD_HELP, DEFAULT_BIO, ALIVE_NAME
 from userbot.utils import admin_cmd
 
 DEFAULTUSERBIO = str(DEFAULT_BIO) if DEFAULT_BIO else " ᗯᗩᏆᎢᏆᑎᏀ ᏞᏆᏦᗴ ᎢᏆᗰᗴ  "
