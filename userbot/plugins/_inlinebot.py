@@ -272,6 +272,20 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
         statstext = await alive()
         reply_pop_up_alert = statstext
         await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
+    
+    @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"reopen")))
+    async def reopen(event):
+        buttons = paginate_help(0, CMD_LIST, "helpme")
+            result = builder.article(
+                "© Megastar",
+                text="{} **Help menu Provided by ✨{}✨ \nMegastar Helper to reveal all the commands 🥳\nDo** `.help plugin_name` **for commands, in case popup doesn't appear.🌹\n @MEGASTAR_SUPPORT\nCurrently Loaded Plugins**: {}".format(
+                    event.query, DEFAULTUSER, len(CMD_LIST)
+                ),
+                buttons=buttons,
+                link_preview=False,
+            )
+            await event.answer([result] if result else None)
+        
 
 
 def paginate_help(page_number, loaded_plugins, prefix):
