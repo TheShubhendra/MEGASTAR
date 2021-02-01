@@ -8,6 +8,7 @@ import requests
 import spamwatch as spam_watch
 from validators.url import url
 
+from . import alive
 from .. import *
 from ..config import config
 
