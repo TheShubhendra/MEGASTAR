@@ -3,11 +3,12 @@ Syntax: .update
 \nAll Credits goes to © MEGASTAR UB
 \nFor this awasome plugin.\nPorted from PpaperPlane Extended"""
 import asyncio
+import logging
 import sys
 from os import environ, execle, path, remove
-import logging
+
 from git import Repo
-from git.exc import GitCommandError, InvalidGitRepositoryError, NoSuchPathError
+from git.exc import GitCommandError, InvalidGitRepositoryError
 
 from userbot import CMD_HELP
 from userbot.utils import admin_cmd
@@ -97,8 +98,8 @@ async def upstream(ups):
     ups_rem.fetch(ac_br)
     changelog = await gen_chlog(repo, f"HEAD..upstream/{ac_br}")
     changelog_str = (
-            f"**New UPDATE available for [{ac_br}]:\n\nCHANGELOG:**\n{changelog}"
-        )
+        f"**New UPDATE available for [{ac_br}]:\n\nCHANGELOG:**\n{changelog}"
+    )
     if not changelog and not force_update:
         await ups.edit(
             f"\n**{ac_br} please redeploy me I have some internal problems i guess**\n"
@@ -106,7 +107,7 @@ async def upstream(ups):
         repo.__del__()
         return
     if conf != "now":
-        
+
         if len(changelog_str) > 4096:
             await ups.edit("Changelog is too big, view the file to see it.")
             file = open("output.txt", "w+")
@@ -124,7 +125,7 @@ async def upstream(ups):
         return
     await ups.edit("**Just wait for a minute....**")
     await update(ups, repo, ups_rem, ac_br)
-        return
+    return
     if force_update:
         await ups.edit(
             "༒**Megastar is being updated now**༒..\n**please wait Boss just wait for some minutes... Ill be up in time** 😉 "
