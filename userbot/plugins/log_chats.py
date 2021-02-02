@@ -73,7 +73,7 @@ async def log_tagged_messages(event):
         pass
     await asyncio.sleep(5)
     text = f"#TAGS 🏷️\n<b>Group : </b><code>{hmm.title}</code>\n"
-    m_type = message_type(event) == "Text"
+    m_type = message_type(event.message) == "Text"
     if m_type == "Text":
         text += "💬<b>Message:</b> {event.message.message}"
     else:
