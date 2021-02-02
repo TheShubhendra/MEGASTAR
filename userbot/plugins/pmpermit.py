@@ -113,14 +113,14 @@ if Var.PRIVATE_GROUP_ID is not None:
         if event.fwd_from:
             return
         approved_users = pmpermit_sql.get_all_approved()
-        APPROVED_PMs = "Current Approved PMs\n"
+        APPROVED_PMs = "Currently Approved PMs\n"
         if len(approved_users) > 0:
             for a_user in approved_users:
                 if a_user.reason:
-                    APPROVED_PMs += f"👉 [{a_user.chat_id}](tg://user?id={a_user.chat_id}) for {a_user.reason}\n"
+                    APPROVED_PMs += f"☞ [{a_user.chat_id}](tg://user?id={a_user.chat_id}) for {a_user.reason}\n"
                 else:
                     APPROVED_PMs += (
-                        f"👉 [{a_user.chat_id}](tg://user?id={a_user.chat_id})\n"
+                        f"☞ [{a_user.chat_id}](tg://user?id={a_user.chat_id})\n"
                     )
         else:
             APPROVED_PMs = "no Approved PMs (yet)"
