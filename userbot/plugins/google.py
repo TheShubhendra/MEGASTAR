@@ -20,7 +20,7 @@ opener.addheaders = [("User-agent", useragent)]
 
 @borg.on(admin_cmd(outgoing=True, pattern=r"gs (.*)"))
 async def gsearch(q_event):
-    event = await edit_or_reply(q_event, "`searching........`")
+    event = await edit_or_reply(q_event, "searching........")
     match = q_event.pattern_match.group(1)
     page = re.findall(r"page=\d+", match)
     try:
@@ -38,16 +38,16 @@ async def gsearch(q_event):
             title = gresults["titles"][i]
             link = gresults["links"][i]
             desc = gresults["descriptions"][i]
-            msg += f"👉[{title}]({link})\n`{desc}`\n\n"
+            msg += f"👉[{title}]({link})\n{desc}\n\n"
         except IndexError:
             break
     await event.edit(
-        "**Search Query:**\n`" + match + "`\n\n**Results:**\n" + msg, link_preview=False
+        "**Search Query:**\n" + match + "\n\n**Results:**\n" + msg, link_preview=False
     )
     if BOTLOG:
         await q_event.client.send_message(
             BOTLOG_CHATID,
-            "Google Search query `" + match + "` was executed successfully",
+            "Google Search query " + match + " was executed successfully",
         )
 
 
@@ -121,14 +121,14 @@ async def _(img):
         photo = io.BytesIO()
         await bot.download_media(message, photo)
     else:
-        await edit_or_reply(img, "`Reply to photo or sticker nigger.`")
+        await edit_or_reply(img, "Reply to photo or sticker nigger.")
         return
     if photo:
-        event = await edit_or_reply(img, "`Processing...`")
+        event = await edit_or_reply(img, "Processing...")
         try:
             image = Image.open(photo)
         except OSError:
-            await event.edit("`Unsupported , most likely.`")
+            await event.edit("Unsupported , most likely.")
             return
         name = "okgoogle.png"
         image.save(name, "PNG")
@@ -140,20 +140,20 @@ async def _(img):
         fetchUrl = response.headers["Location"]
         if response != 400:
             await img.edit(
-                "`Image successfully uploaded to Google. Maybe.`"
-                "\n`Parsing source now. Maybe.`"
+                "Image successfully uploaded to Google. Maybe."
+                "\nParsing source now. Maybe."
             )
         else:
-            await event.edit("`Google told me to fuck off.`")
+            await event.edit("Google told me to fuck off.")
             return
         os.remove(name)
         match = await ParseSauce(fetchUrl + "&preferences?hl=en&fg=1#languages")
         guess = match["best_guess"]
         imgspage = match["similar_images"]
         if guess and imgspage:
-            await event.edit(f"[{guess}]({fetchUrl})\n\n`Looking for this Image...`")
+            await event.edit(f"[{guess}]({fetchUrl})\n\nLooking for this Image...")
         else:
-            await event.edit("`Can't find this piece of shit.`")
+            await event.edit("Can't find this piece of shit.")
             return
 
         lim = img.pattern_match.group(1) or 3
@@ -211,12 +211,12 @@ async def scam(results, lim):
 
 CMD_HELP.update(
     {
-        "google": "**Plugin :**`google`\
-        \n\n**Syntax :** `.gs <limit> <query>` or `.gs <limit> (replied message)`\
+        "google": "**Plugin :**google\
+        \n\n**Syntax :** .gs <limit> <query> or .gs <limit> (replied message)\
         \n**Function : **will google  search and sends you top 10 results links.\
-        \n\n**Syntax :** `.grs` reply to image\
+        \n\n**Syntax :** .grs reply to image\
         \n**Function : **will google reverse search the image and shows you the result.\
-        \n\n**Syntax : **`.reverse limit`\
+        \n\n**Syntax : **.reverse limit\
         \n**Function : **Reply to a pic/sticker to revers-search it on Google Images !!"
     }
 )
