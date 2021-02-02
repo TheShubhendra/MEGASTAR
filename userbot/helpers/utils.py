@@ -98,7 +98,7 @@ def yaml_format(obj, indent=0, max_str_len=256, max_byte_len=64):
 
 def message_type(message):
     if message and message.text:
-        media = "text"
+        media = "Text"
     elif message and message.photo:
         media = "Photo"
     elif message and message.audio:

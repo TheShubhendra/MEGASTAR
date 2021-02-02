@@ -73,9 +73,9 @@ async def log_tagged_messages(event):
         pass
     await asyncio.sleep(5)
     text = f"#TAGS 🏷️\n<b>Group : </b><code>{hmm.title}</code>\n"
-    m_type = message_type(event.message) == "Text"
+    m_type = message_type(event.message)
     if m_type == "Text":
-        text += "💬<b>Message:</b> {event.message.message}"
+        text += f"💬<b>Message:</b> {event.message.message}"
     else:
         text += f"<b>Message type:</b> {m_type}"
     text += f"\n<b>🌐Message link: </b><a href = 'https://t.me/c/{hmm.id}/{event.message.id}'> link</a>"
