@@ -3,12 +3,11 @@ Syntax: .update
 \nAll Credits goes to © MEGASTAR UB
 \nFor this awasome plugin.\nPorted from PpaperPlane Extended"""
 import asyncio
-import logging
 import sys
 from os import environ, execle, path, remove
 
 from git import Repo
-from git.exc import GitCommandError, InvalidGitRepositoryError
+from git.exc import GitCommandError, InvalidGitRepositoryError, NoSuchPathError
 
 from userbot import CMD_HELP
 from userbot.utils import admin_cmd
@@ -41,7 +40,9 @@ async def gen_chlog(repo, diff):
     ch_log = ""
     d_form = "%d/%m/%y"
     for c in repo.iter_commits(diff):
-        ch_log += f"༒[{c.committed_datetime.strftime(d_form)}]: ➣ {c.summary} by ✘ {c.author} ✘\n"
+        ch_log += (
+            f"༒[{c.committed_datetime.strftime(d_form)}]: {c.summary} by ʚ{c.author}ɞ\n"
+        )
     return ch_log
 
 
@@ -67,8 +68,23 @@ async def upstream(ups):
     off_repo = UPSTREAM_REPO_URL
     force_update = False
     try:
+        txt = "Oops.. Updater cannot continue due to "
+        txt += "some problems occured\n\n**LOGTRACE:**\n"
         repo = Repo()
+    except NoSuchPathError as error:
+        await ups.edit(f"{txt}\ndirectory {error} is not found")
+        repo.__del__()
+        return
+    except GitCommandError as error:
+        await ups.edit(f"{txt}\nEarly failure! {error}")
+        repo.__del__()
+        return
     except InvalidGitRepositoryError:
+        if conf != "now":
+            await ups.edit(
+                f"𝗕𝗢𝗦𝗦!!!😉😉\nTo get the Latest update of Megastar userbot type .update now 😏😏 "
+            )
+            return
         repo = Repo.init()
         origin = repo.create_remote("upstream", off_repo)
         origin.fetch()
@@ -76,8 +92,6 @@ async def upstream(ups):
         repo.create_head("master", origin.refs.master)
         repo.heads.master.set_tracking_branch(origin.refs.master)
         repo.heads.master.checkout(True)
-    except Exception as e:
-        await ups.edit(f"`{e}`")
     ac_br = repo.active_branch.name
     if ac_br != "master":
         await ups.edit(
@@ -90,22 +104,21 @@ async def upstream(ups):
         return
     try:
         repo.create_remote("upstream", off_repo)
-    except BaseException as e:
-        logging.log(30, e)
+    except BaseException:
+        pass
     ups_rem = repo.remote("upstream")
     ups_rem.fetch(ac_br)
     changelog = await gen_chlog(repo, f"HEAD..upstream/{ac_br}")
-    changelog_str = (
-        f"**New UPDATE available for [{ac_br}]:\n\nCHANGELOG:**\n{changelog}"
-    )
     if not changelog and not force_update:
         await ups.edit(
             f"\n**{ac_br} please redeploy me I have some internal problems i guess**\n"
         )
         repo.__del__()
         return
-    if conf != "now":
-
+    if conf != "now" and not force_update:
+        changelog_str = (
+            f"**New UPDATE available for [{ac_br}]:\n\nCHANGELOG:**\n{changelog}"
+        )
         if len(changelog_str) > 4096:
             await ups.edit("Changelog is too big, view the file to see it.")
             file = open("output.txt", "w+")
@@ -121,8 +134,9 @@ async def upstream(ups):
             await ups.edit(changelog_str)
         await ups.respond("do .update now to update")
         return
-    await ups.edit("**Just wait for a minute....**")
-    await update(ups, repo, ups_rem, ac_br)
+    if conf == "now":
+        await ups.edit("**Just wait for a minute....**")
+        await update(ups, repo, ups_rem, ac_br)
     return
     if force_update:
         await ups.edit(
