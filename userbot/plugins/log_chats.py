@@ -4,7 +4,7 @@ import asyncio
 from telethon import events
 
 import userbot.plugins.sql_helper.no_log_pms_sql as no_log_pms_sql
-
+from userbot.helpers.utils import message_type
 from ..utils import admin_cmd
 from . import BOTLOG, BOTLOG_CHATID, CMD_HELP, LOGS
 
@@ -71,11 +71,17 @@ async def log_tagged_messages(event):
     except BaseException:
         pass
     await asyncio.sleep(5)
+    text = f"#TAGS 🏷️\n<b>Group : </b><code>{hmm.title}</code>\n"
+    m_type = message_type(event) == "Text"
+    if m_type == "Text":
+        text += "💬<b>Message:</b> {event.message.message}"
+    else:
+        text += f"<b>Message type:</b> {m_type}"
+    text += f"\n<b>🌐Message link: </b><a href = 'https://t.me/c/{hmm.id}/{event.message.id}'> link</a>"
     if not event.is_private:
         await event.client.send_message(
             config.PM_LOGGR_BOT_API_ID,
-            f"#TAGS \n<b>Group : </b><code>{hmm.title}</code>\
-                        \n<b>Message : </b><a href = 'https://t.me/c/{hmm.id}/{event.message.id}'> link</a>",
+            text,
             parse_mode="html",
             link_preview=False,
         )
