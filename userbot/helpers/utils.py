@@ -94,3 +94,27 @@ def yaml_format(obj, indent=0, max_str_len=256, max_byte_len=64):
         return repr(obj)
 
     return "".join(result)
+
+
+def message_type(message):
+    if message and message.text:
+        media = "text"
+    elif message and message.photo:
+        media = "Photo"
+    elif message and message.audio:
+        media = "Audio"
+    elif message and message.voice:
+        media = "Voice"
+    elif message and message.video_note:
+        media = "Video Note"
+    elif message and message.gif:
+        media = "Gif"
+    elif message and message.sticker:
+        media = "Sticker"
+    elif message and message.video:
+        media = "Video"
+    elif message and message.document:
+        media = "Document"
+    else:
+        media = "Unknown"
+    return media
