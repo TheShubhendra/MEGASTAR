@@ -269,7 +269,9 @@ async def watcher(event):
 @borg.on(admin_cmd("mute(?: |$)(.*)"))
 async def startmute(event):
     if event.is_private:
-        await event.edit("aapke muh me de diya gya h ab aap chupchap usko rkhe bina bole!")
+        await event.edit(
+            "aapke muh me de diya gya h ab aap chupchap usko rkhe bina bole!"
+        )
         await sleep(3)
         await event.get_reply_message()
         userid = event.chat_id
@@ -284,7 +286,9 @@ async def startmute(event):
         except Exception as e:
             await event.edit("Error occured!\nError is " + str(e))
         else:
-            await event.edit("Successfully muh me de diya gya of that person.\n**｀-´)⊃━☆ﾟ.*･｡ﾟ **")
+            await event.edit(
+                "Successfully muh me de diya gya of that person.\n**｀-´)⊃━☆ﾟ.*･｡ﾟ **"
+            )
         if BOTLOG:
             await event.client.send_message(
                 BOTLOG_CHATID,
@@ -378,7 +382,9 @@ async def endmute(event):
         except Exception as e:
             await event.edit("Error occured!\nError is " + str(e))
         else:
-            await event.edit("Successfully muh se nikal liya of that person\n乁( ◔ ౪◔)「    ┑(￣Д ￣)┍")
+            await event.edit(
+                "Successfully muh se nikal liya of that person\n乁( ◔ ౪◔)「    ┑(￣Д ￣)┍"
+            )
         if BOTLOG:
             await event.client.send_message(
                 BOTLOG_CHATID,
@@ -488,7 +494,9 @@ async def kick(usr):
             f"`Kicked` [{user.first_name}](tg://user?id={user.id})`!`\nReason: {reason}"
         )
     else:
-        await megaevent.edit(f"`bhg bsdk` [{user.first_name}](tg://user?id={user.id})`!`")
+        await megaevent.edit(
+            f"`bhg bsdk` [{user.first_name}](tg://user?id={user.id})`!`"
+        )
     if BOTLOG:
         await usr.client.send_message(
             BOTLOG_CHATID,
