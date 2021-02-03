@@ -287,7 +287,7 @@ async def startmute(event):
             await event.edit("Error occured!\nError is " + str(e))
         else:
             await event.edit(
-                "Successfully kept cow dung in that person's mouth 😈.\n¯\_༼ •́ ͜ʖ •̀ ༽_/¯"
+                r"Successfully kept cow dung in that person's mouth 😈.\n¯\_༼ •́ ͜ʖ •̀ ༽_/¯"
             )
         if BOTLOG:
             await event.client.send_message(
@@ -494,9 +494,7 @@ async def kick(usr):
             f"Kicked [{user.first_name}](tg://user?id={user.id})!\nReason: {reason}"
         )
     else:
-        await megaevent.edit(
-            f"Bhg bsdk 😈 [{user.first_name}](tg://user?id={user.id})!"
-        )
+        await megaevent.edit(f"Bhg bsdk 😈 [{user.first_name}](tg://user?id={user.id})!")
     if BOTLOG:
         await usr.client.send_message(
             BOTLOG_CHATID,
