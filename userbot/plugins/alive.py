@@ -15,6 +15,7 @@ file1 = "https://telegra.ph/file/35633762f93bf7e5d79d9.jpg"
 file2 = "https://telegra.ph/file/82056687b90c9bdaa21b5.jpg"
 file3 = "https://telegra.ph/file/1ae50911854f63793d1b6.png"
 file4 = "https://telegra.ph/file/66fc6846b5589d62c9c5a.jpg"
+file5 = "https://telegra.ph/file/fcd882b6f9c2ff7209873.jpg"
 """ =======================CONSTANTS====================== """
 pm_caption = "**🄼🄴🄶🄰🅂🅃🄰🅁 🄸🅂 🄾🄽🄻🄸🄽🄴 **\n\n"
 pm_caption += (
@@ -59,6 +60,9 @@ async def amireallyalive(yes):
 
     await asyncio.sleep(edit_time)
     await on.edit(file=file4)
+    
+    await asyncio.sleep(edit_time)
+    await on.edit(file=file5)
 
     """ For .alive command, check if the bot is running.  """
 
