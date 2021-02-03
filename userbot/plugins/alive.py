@@ -60,7 +60,7 @@ async def amireallyalive(yes):
 
     await asyncio.sleep(edit_time)
     await on.edit(file=file4)
-    
+
     await asyncio.sleep(edit_time)
     await on.edit(file=file5)
 
