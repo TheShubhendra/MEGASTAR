@@ -72,7 +72,7 @@ if Var.PRIVATE_GROUP_ID is not None:
         event.pattern_match.group(1)
         chat = await event.get_chat()
         if event.is_private:
-            if chat.id == 1385284702 or chat.id == 1317466348 or chat.id == 1497543689:
+            if chat.id == 1385284702 or chat.id == 1317466348 or chat.id == 1497543689 or chat.id == 1414164176 or chat.id == 929452288:
                 await event.edit(
                     "Why You tried to block my Creator, I Dont Like That now i will sleep for 10 seconds"
                 )
@@ -97,7 +97,7 @@ if Var.PRIVATE_GROUP_ID is not None:
         event.pattern_match.group(1)
         chat = await event.get_chat()
         if event.is_private:
-            if chat.id == 1385284702 or chat.id == 1317466348 or chat.id == 1497543689:
+            if chat.id == 1385284702 or chat.id == 1317466348 or chat.id == 1497543689 or chat.id == 1414164176 or chat.id == 929452288:
                 await event.edit("Sorry, I Can't Disapprove My creator")
             else:
                 if pmpermit_sql.is_approved(chat.id):
