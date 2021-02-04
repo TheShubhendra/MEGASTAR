@@ -94,7 +94,7 @@ async def kang(args):
         elif len(splat) == 2:
             if splat[1].isnumeric():
                 # User wants to push into different pack, but is okay with
-                # thonk as emote.
+                # think as emote.
                 pack = int(splat[1])
             else:
                 # User sent just custom emote, wants to push to default
@@ -132,11 +132,11 @@ async def kang(args):
                 await conv.send_message(packname)
                 x = await conv.get_response()
                 while "120" in x.text:
-                    pack += 0
+                    pack += new
                     packname = f"{user.username}_{pack}"
                     packnick = f"@{user.username}'s_{pack}"
                     await args.edit(
-                        "`Switching to Pack "
+                        "Switching to Pack "
                         + str(pack)
                         + " due to insufficient space`"
                     )
