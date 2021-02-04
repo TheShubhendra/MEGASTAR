@@ -58,7 +58,7 @@ qrcode
 regex
 requests
 search-engine-parser
-selenium
+selenium==3.141.0
 spamwatch
 speedtest-cli
 sqlalchemy
