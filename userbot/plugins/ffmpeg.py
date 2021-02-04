@@ -10,7 +10,7 @@ from ..utils import admin_cmd, edit_or_reply, progress
 FF_MPEG_DOWN_LOAD_MEDIA_PATH = "unievent.client.media.ffmpeg"
 
 
-@borg.on(admin_cmd(pattern="ffmpegsave$"))
+@borg.on(admin_cmd(pattern="ffmpegsave"))
 async def ff_mpeg_trim_cmd(event):
     if event.fwd_from:
         return
