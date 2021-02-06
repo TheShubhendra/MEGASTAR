@@ -47,7 +47,7 @@ if ALIVE_PIC is not None:
 
 
 print("Everything is Alright, Do .alive or .help to Check Online Status of Your Bot !!")
-print(" Your megastar is awake now 🥳 thank to @none1p and @YOU_ARE_UNDER_ARREST for this awesome userbot made by them !!")
+print(" Your megastar is awake now 🥳 credit goes to team Megastar for this awesome userbot made by them !!")
 
 
 if len(argv) not in (1, 3, 4):
