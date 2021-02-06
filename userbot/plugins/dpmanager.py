@@ -25,7 +25,7 @@ async def delete_all_dp(event):
         )
 
 
-@borg.on(admin_cmd(pattern="deldp +(.*)$"))
+@borg.on(admin_cmd(pattern="deldp +(.*)"))
 async def delete_all_dp(event):
     client = event.client
     pics = await client.get_profile_photos("me")
