@@ -3,41 +3,29 @@ Syntax: .exec Code"""
 import asyncio
 import io
 import sys
-import time
 import traceback
 
 from .. import CMD_HELP
 from ..utils import admin_cmd, edit_or_reply
 
 
-@command(pattern="^.bash ?(.*)")
+@borg.on(admin_cmd(pattern="bash (.*)"))
 async def _(event):
-    if event.fwd_from:
+    if event.fwd_from or event.via_bot_id:
         return
-    PROCESS_RUN_TIME = 100
-    cmd = event.pattern_match.group(1)
+    cmd = "".join(event.text.split(maxsplit=1)[1:])
     reply_to_id = event.message.id
     if event.reply_to_msg_id:
         reply_to_id = event.reply_to_msg_id
-    time.time() + PROCESS_RUN_TIME
     process = await asyncio.create_subprocess_shell(
         cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
     )
     stdout, stderr = await process.communicate()
-    e = stderr.decode()
-    if not e:
-        e = "No Error"
-    o = stdout.decode()
-    if not o:
-        o = "◘ Tip: \nIf you want to see the results of your code, I suggest printing them to stdout."
-    else:
-        _o = o.split("\n")
-        o = "\n".join(_o)
-    OUTPUT = f"◘ QUERY:\n__Command:__\n{cmd} \n◘ PID:\n{process.pid}\n\n◘ stderr: \n{e}\nOutput:\n{o}"
-    if len(OUTPUT) > 4095:
+    OUTPUT = f"`{stdout.decode()}`"
+    if len(OUTPUT) > config.MAX_MESSAGE_SIZE_LIMIT:
         with io.BytesIO(str.encode(OUTPUT)) as out_file:
-            out_file.name = "exec.text"
-            await bot.send_file(
+            out_file.name = "bash.text"
+            await event.client.send_file(
                 event.chat_id,
                 out_file,
                 force_document=True,
@@ -46,7 +34,8 @@ async def _(event):
                 reply_to=reply_to_id,
             )
             await event.delete()
-    await event.edit(OUTPUT)
+    else:
+        await edit_or_reply(event, OUTPUT)
 
 
 @borg.on(admin_cmd(pattern="exec (.*)"))
