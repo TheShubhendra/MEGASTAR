@@ -82,11 +82,6 @@ async def upstream(ups):
         repo.__del__()
         return
     except InvalidGitRepositoryError:
-        if conf != "now":
-            await ups.edit(
-                f"𝗕𝗢𝗦𝗦!!!😉😉\nTo get the Latest update of Megastar userbot type .update now 😏😏 "
-            )
-            return
         repo = Repo.init()
         origin = repo.create_remote("upstream", off_repo)
         origin.fetch()
@@ -111,13 +106,13 @@ async def upstream(ups):
     ups_rem = repo.remote("upstream")
     ups_rem.fetch(ac_br)
     changelog = await gen_chlog(repo, f"HEAD..upstream/{ac_br}")
-    if not changelog and not force_update:
+    if not changelog:
         await ups.edit(
-            f"\n**{ac_br} please redeploy me I have some internal problems i guess**\n"
+            f"\n**Your bot is up-to-date.**\n"
         )
         repo.__del__()
         return
-    if conf != "now" and not force_update:
+    if conf != "now":
         changelog_str = (
             f"**New UPDATE available for [{ac_br}]:\n\nCHANGELOG:**\n{changelog}"
         )
@@ -146,6 +141,8 @@ async def upstream(ups):
         )
     else:
         await ups.edit("Updating userbot, please wait....you are my best boss ever 🤩🥳")
+    if conf != "deploy":
+        return
     if HEROKU_API_KEY is not None:
         import heroku3
 
