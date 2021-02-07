@@ -231,9 +231,9 @@ def register(**args):
                 pass
 
             try:
-                CMD_LIST[file_test].append(cmd.replace("$",""))
+                CMD_LIST[file_test].append(cmd.replace("$", ""))
             except BaseException:
-                CMD_LIST.update({file_test: [cmd.replace("$","")]})
+                CMD_LIST.update({file_test: [cmd.replace("$", "")]})
         except BaseException:
             pass
 
