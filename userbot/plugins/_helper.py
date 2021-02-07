@@ -1,3 +1,4 @@
+import io
 from telethon import functions
 
 from userbot import ALIVE_NAME, CMD_LIST
@@ -39,7 +40,7 @@ async def cmd_list(event):
             if input_str in CMD_LIST:
                 string = "Commands found in {}:".format(input_str)
                 for i in CMD_LIST[input_str]:
-                    string += "    " + i
+                    string += "    " + i.replace("$","")
                     string += "\n"
                 await event.edit(string)
             else:
