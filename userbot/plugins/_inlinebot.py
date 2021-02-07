@@ -295,7 +295,7 @@ def paginate_help(page_number, loaded_plugins, prefix):
     modules = [
         custom.Button.inline(
             "{} {} {}".format(
-                config.EMOJI_TO_DISPLAY_IN_HELP, x.replace("$",""), config.EMOJI_TO_DISPLAY_IN_HELP
+                config.EMOJI_TO_DISPLAY_IN_HELP, x, config.EMOJI_TO_DISPLAY_IN_HELP
             ),
             data="us_plugin_{}".format(x),
         )
