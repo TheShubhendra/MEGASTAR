@@ -12,7 +12,7 @@ from git.exc import GitCommandError, InvalidGitRepositoryError, NoSuchPathError
 from userbot import CMD_HELP
 from userbot.utils import admin_cmd
 
-UPSTREAM_REPO_URL = "https://github.com/Bristi-OP/MEGASTAR"
+UPSTREAM_REPO_URL = environ.get("GITHUB_REPO_URL","https://github.com/Bristi-OP/MEGASTAR")
 HEROKU_API_KEY = Var.HEROKU_API_KEY
 HEROKU_APP_NAME = Var.HEROKU_APP_NAME
 
