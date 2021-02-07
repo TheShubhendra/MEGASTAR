@@ -106,11 +106,13 @@ async def upstream(ups):
     ups_rem = repo.remote("upstream")
     ups_rem.fetch(ac_br)
     changelog = await gen_chlog(repo, f"HEAD..upstream/{ac_br}")
-    if not changelog:
-        await ups.edit(
-            f"\n**Your bot is up-to-date.**\n"
-        )
+    if not changelog and not force_update:
+        await ups.edit(f"\n**Your bot is up-to-date.**\n")
         repo.__del__()
+    if conf != "now" and force_update:
+        await ups.edit(
+            f"𝗕𝗢𝗦𝗦!!!😉😉\nIt doesn't seems like a git repository. So I can't generate chageloh. To get the Latest update of Megastar userbot type .update now 😏😏 "
+        )
         return
     if conf != "now":
         changelog_str = (

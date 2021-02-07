@@ -23,9 +23,7 @@ else:
         print("Initiating Inline Bot")
         # ForTheGreatrerGood of beautification
         bot.tgbot = TelegramClient(
-            "TG_BOT_TOKEN",
-            api_id=Var.APP_ID,
-            api_hash=Var.API_HASH
+            "TG_BOT_TOKEN", api_id=Var.APP_ID, api_hash=Var.API_HASH
         ).start(bot_token=Var.TG_BOT_TOKEN_BF_HER)
         print("Initialisation finished with no errors")
         print("Starting Userbot")
@@ -34,7 +32,7 @@ else:
     else:
         bot.start()
 
-path = 'userbot/plugins/*.py'
+path = "userbot/plugins/*.py"
 files = glob.glob(path)
 for name in files:
     with open(name) as f:
@@ -47,7 +45,9 @@ if ALIVE_PIC is not None:
 
 
 print("Everything is Alright, Do .alive or .help to Check Online Status of Your Bot !!")
-print(" Your megastar is awake now 🥳 credit goes to team Megastar for this awesome userbot made by them !! For support join @MEGASTAR_SUPPORT")
+print(
+    " Your megastar is awake now 🥳 credit goes to team Megastar for this awesome userbot made by them !! For support join @MEGASTAR_SUPPORT"
+)
 
 
 if len(argv) not in (1, 3, 4):

@@ -24,30 +24,26 @@ def command(**args):
         return print("stupidity at its best🥱")
     else:
         pattern = args.get("pattern", None)
-        allow_edited_updates = args.get('allow_edited_updates', False)
+        allow_edited_updates = args.get("allow_edited_updates", False)
         args["incoming"] = args.get("incoming", False)
         args["outgoing"] = True
         if bool(args["incoming"]):
             args["outgoing"] = False
 
         try:
-            if pattern is not None and not pattern.startswith('(?i)'):
-                args['pattern'] = '(?i)' + pattern
+            if pattern is not None and not pattern.startswith("(?i)"):
+                args["pattern"] = "(?i)" + pattern
         except BaseException:
             pass
 
-        reg = re.compile('(.*)')
+        reg = re.compile("(.*)")
         if pattern is not None:
             try:
                 cmd = re.search(reg, pattern)
                 try:
-                    cmd = cmd.group(1).replace(
-                        "$",
-                        "").replace(
-                        "\\",
-                        "").replace(
-                        "^",
-                        "")
+                    cmd = (
+                        cmd.group(1).replace("$", "").replace("\\", "").replace("^", "")
+                    )
                 except BaseException:
                     pass
 
@@ -59,7 +55,7 @@ def command(**args):
                 pass
 
         if "allow_edited_updates" in args:
-            del args['allow_edited_updates']
+            del args["allow_edited_updates"]
 
         def decorator(func):
             if allow_edited_updates:
@@ -80,6 +76,7 @@ def load_module(shortname):
     elif shortname.endswith("_"):
         import userbot.utils
         import importlib
+
         path = Path(f"userbot/plugins/{shortname}.py")
         name = "userbot.plugins.{}".format(shortname)
         spec = importlib.util.spec_from_file_location(name, path)
@@ -89,6 +86,7 @@ def load_module(shortname):
     else:
         import userbot.utils
         import importlib
+
         path = Path(f"userbot/plugins/{shortname}.py")
         name = "userbot.plugins.{}".format(shortname)
         spec = importlib.util.spec_from_file_location(name, path)
@@ -137,57 +135,56 @@ def remove_plugin(shortname):
 
 
 def admin_cmd(pattern=None, **args):
-    args['func'] = lambda e: e.via_bot_id is None
+    args["func"] = lambda e: e.via_bot_id is None
 
     stack = inspect.stack()
-    allow_sudo = args.get('allow_sudo', False)
+    allow_sudo = args.get("allow_sudo", False)
     previous_stack_frame = stack[1]
     file_test = Path(previous_stack_frame.filename)
-    file_test = file_test.stem.replace('.py', '')
+    file_test = file_test.stem.replace(".py", "")
 
     # get the pattern from the decorator
 
     if pattern is not None:
         if pattern.startswith(r"\#"):
-            args['pattern'] = re.compile(pattern)
+            args["pattern"] = re.compile(pattern)
         else:
-            args['pattern'] = re.compile(config.COMMAND_HAND_LER
-                                         + pattern)
+            args["pattern"] = re.compile(config.COMMAND_HAND_LER + pattern)
             cmd = config.COMMAND_HAND_LER + pattern
             try:
                 CMD_LIST[file_test].append(cmd)
             except BaseException:
                 CMD_LIST.update({file_test: [cmd]})
 
-    args['outgoing'] = True
+    args["outgoing"] = True
 
     # should this command be available for other users?
 
     if allow_sudo:
-        args['from_users'] = list(config.SUDO_USERS)
+        args["from_users"] = list(config.SUDO_USERS)
 
         # Mutually exclusive with outgoing (can only set one of either).
 
-        args['incoming'] = True
-        del args['allow_sudo']
+        args["incoming"] = True
+        del args["allow_sudo"]
 
-    elif 'incoming' in args and not args['incoming']:
+    elif "incoming" in args and not args["incoming"]:
 
         # error handling condition check
 
-        args['outgoing'] = True
+        args["outgoing"] = True
 
     # add blacklist chats, UB should not respond in these chats
 
-    args['blacklist_chats'] = True
+    args["blacklist_chats"] = True
     black_list_chats = list(config.UB_BLACK_LIST_CHAT)
     if len(black_list_chats) > 0:
-        args['chats'] = black_list_chats
+        args["chats"] = black_list_chats
 
     # add blacklist chats, UB should not respond in these chats
 
-    if 'allow_edited_updates' in args and args['allow_edited_updates']:
-        del args['allow_edited_updates']
+    if "allow_edited_updates" in args and args["allow_edited_updates"]:
+        del args["allow_edited_updates"]
 
     # check if the plugin should listen for outgoing 'messages'
 
@@ -206,27 +203,21 @@ def register(**args):
     previous_stack_frame = stack[1]
     file_test = Path(previous_stack_frame.filename)
     file_test = file_test.stem.replace(".py", "")
-    pattern = args.get('pattern', None)
-    disable_edited = args.get('disable_edited', True)
+    pattern = args.get("pattern", None)
+    disable_edited = args.get("disable_edited", True)
 
-    if pattern is not None and not pattern.startswith('(?i)'):
-        args['pattern'] = '(?i)' + pattern
+    if pattern is not None and not pattern.startswith("(?i)"):
+        args["pattern"] = "(?i)" + pattern
 
     if "disable_edited" in args:
-        del args['disable_edited']
+        del args["disable_edited"]
 
-    reg = re.compile('(.*)')
+    reg = re.compile("(.*)")
     if pattern is not None:
         try:
             cmd = re.search(reg, pattern)
             try:
-                cmd = cmd.group(1).replace(
-                    "$",
-                    "").replace(
-                    "\\",
-                    "").replace(
-                    "^",
-                    "")
+                cmd = cmd.group(1).replace("$", "").replace("\\", "").replace("^", "")
             except BaseException:
                 pass
 
@@ -257,6 +248,7 @@ def errors_handler(func):
             return await func(event)
         except Exception:
             pass
+
     return wrapper
 
 
@@ -272,18 +264,17 @@ async def progress(current, total, event, start, type_of_ps, file_name=None):
         time_to_completion = round((total - current) / speed) * 1000
         estimated_total_time = elapsed_time + time_to_completion
         progress_str = "[{0}{1}]\nProgress: {2}%\n".format(
-            ''.join(["█" for i in range(math.floor(percentage / 5))]),
-            ''.join(["░" for i in range(20 - math.floor(percentage / 5))]),
-            round(percentage, 2))
-        tmp = progress_str + \
-            "{0} of {1}\nETA: {2}".format(
-                humanbytes(current),
-                humanbytes(total),
-                time_formatter(estimated_total_time)
-            )
+            "".join(["█" for i in range(math.floor(percentage / 5))]),
+            "".join(["░" for i in range(20 - math.floor(percentage / 5))]),
+            round(percentage, 2),
+        )
+        tmp = progress_str + "{0} of {1}\nETA: {2}".format(
+            humanbytes(current), humanbytes(total), time_formatter(estimated_total_time)
+        )
         if file_name:
-            await event.edit("{}\nFile Name: `{}`\n{}".format(
-                type_of_ps, file_name, tmp))
+            await event.edit(
+                "{}\nFile Name: `{}`\n{}".format(type_of_ps, file_name, tmp)
+            )
         else:
             await event.edit("{}\n{}".format(type_of_ps, tmp))
 
@@ -295,7 +286,7 @@ def humanbytes(size):
     if not size:
         return ""
     # 2 ** 10 = 1024
-    power = 2**10
+    power = 2 ** 10
     raised_to_pow = 0
     dict_power_n = {0: "", 1: "Ki", 2: "Mi", 3: "Gi", 4: "Ti"}
     while size > power:
@@ -311,15 +302,17 @@ def time_formatter(milliseconds: int) -> str:
     minutes, seconds = divmod(seconds, 60)
     hours, minutes = divmod(minutes, 60)
     days, hours = divmod(hours, 24)
-    tmp = ((str(days) + " day(s), ") if days else "") + \
-        ((str(hours) + " hour(s), ") if hours else "") + \
-        ((str(minutes) + " minute(s), ") if minutes else "") + \
-        ((str(seconds) + " second(s), ") if seconds else "") + \
-        ((str(milliseconds) + " millisecond(s), ") if milliseconds else "")
+    tmp = (
+        ((str(days) + " day(s), ") if days else "")
+        + ((str(hours) + " hour(s), ") if hours else "")
+        + ((str(minutes) + " minute(s), ") if minutes else "")
+        + ((str(seconds) + " second(s), ") if seconds else "")
+        + ((str(milliseconds) + " millisecond(s), ") if milliseconds else "")
+    )
     return tmp[:-2]
 
 
-class Loader():
+class Loader:
     def __init__(self, func=None, **args):
         self.Var = Var
         bot.add_event_handler(func, events.NewMessage(**args))
@@ -341,6 +334,7 @@ async def eor(event, text):
             return await reply_to.reply(text)
         return await event.reply(text)
     return await event.edit(text)
+
 
 # TGBot
 
@@ -394,6 +388,7 @@ def load_tgbot(shortname):
         import importlib
         import sys
         from pathlib import Path
+
         path = Path(f"userbot/plugins/legendbot/tgbot/{shortname}.py")
         name = "userbot.plugins.legendbot.tgbot.{}".format(shortname)
         spec = importlib.util.spec_from_file_location(name, path)

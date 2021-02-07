@@ -24,13 +24,24 @@ thumb_image_path = config.TMP_DOWNLOAD_DIRECTORY + "thumb_image.jpg"
 
 def get_video_thumb(file, output=None, width=90):
     metadata = extractMetadata(createParser(file))
-    p = subprocess.Popen([
-        'ffmpeg', '-i', file,
-        '-ss', str(int((0, metadata.get('duration').seconds)[metadata.has('duration')] / 2)),
-        '-filter:v', 'scale={}:-1'.format(width),
-        '-vframes', '1',
-        output,
-    ], stdout=subprocess.PIPE, stderr=subprocess.DEVNULL)
+    p = subprocess.Popen(
+        [
+            "ffmpeg",
+            "-i",
+            file,
+            "-ss",
+            str(
+                int((0, metadata.get("duration").seconds)[metadata.has("duration")] / 2)
+            ),
+            "-filter:v",
+            "scale={}:-1".format(width),
+            "-vframes",
+            "1",
+            output,
+        ],
+        stdout=subprocess.PIPE,
+        stderr=subprocess.DEVNULL,
+    )
     if not p.returncode and os.path.lexists(file):
         return output
 
@@ -39,7 +50,9 @@ def get_video_thumb(file, output=None, width=90):
 async def _(event):
     if event.fwd_from:
         return
-    await event.edit("Renaming in process 🙄🙇‍♂️🙇‍♂️🙇‍♀️ It might take some time if file size is big")
+    await event.edit(
+        "Renaming in process 🙄🙇‍♂️🙇‍♂️🙇‍♀️ It might take some time if file size is big"
+    )
     input_str = event.pattern_match.group(1)
     if not os.path.isdir(config.TMP_DOWNLOAD_DIRECTORY):
         os.makedirs(config.TMP_DOWNLOAD_DIRECTORY)
@@ -55,12 +68,14 @@ async def _(event):
             downloaded_file_name,
             progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
                 progress(d, t, event, c_time, "trying to download")
-            )
+            ),
         )
         end = datetime.now()
         ms = (end - start).seconds
         if os.path.exists(downloaded_file_name):
-            await event.edit("Downloaded to `{}` in {} seconds.".format(downloaded_file_name, ms))
+            await event.edit(
+                "Downloaded to `{}` in {} seconds.".format(downloaded_file_name, ms)
+            )
         else:
             await event.edit("Error Occurred\n {}".format(input_str))
     else:
@@ -74,7 +89,9 @@ async def _(event):
     thumb = None
     if os.path.exists(thumb_image_path):
         thumb = thumb_image_path
-    await event.edit("Rename & Upload in process 🙄🙇‍♂️🙇‍♂️🙇‍♀️ It might take some time if file size is big")
+    await event.edit(
+        "Rename & Upload in process 🙄🙇‍♂️🙇‍♂️🙇‍♀️ It might take some time if file size is big"
+    )
     input_str = event.pattern_match.group(1)
     if not os.path.isdir(config.TMP_DOWNLOAD_DIRECTORY):
         os.makedirs(config.TMP_DOWNLOAD_DIRECTORY)
@@ -90,8 +107,7 @@ async def _(event):
             downloaded_file_name,
             progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
                 progress(d, t, event, c_time, "trying to download")
-            )
-
+            ),
         )
         end = datetime.now()
         ms_one = (end - start).seconds
@@ -107,13 +123,16 @@ async def _(event):
                 thumb=thumb,
                 progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
                     progress(d, t, event, c_time, "trying to upload")
-                )
-
+                ),
             )
             end_two = datetime.now()
             os.remove(downloaded_file_name)
             ms_two = (end_two - end).seconds
-            await event.edit("Downloaded in {} seconds. Uploaded in {} seconds.".format(ms_one, ms_two))
+            await event.edit(
+                "Downloaded in {} seconds. Uploaded in {} seconds.".format(
+                    ms_one, ms_two
+                )
+            )
         else:
             await event.edit("File Not Found {}".format(input_str))
     else:
@@ -124,7 +143,9 @@ async def _(event):
 async def _(event):
     if event.fwd_from:
         return
-    await event.edit("Rename & Upload as Streamable in process 🙄🙇‍♂️🙇‍♂️🙇‍♀️ It might take some time if file size is big")
+    await event.edit(
+        "Rename & Upload as Streamable in process 🙄🙇‍♂️🙇‍♂️🙇‍♀️ It might take some time if file size is big"
+    )
     input_str = event.pattern_match.group(1)
     if not os.path.isdir(config.TMP_DOWNLOAD_DIRECTORY):
         os.makedirs(config.TMP_DOWNLOAD_DIRECTORY)
@@ -140,15 +161,18 @@ async def _(event):
             downloaded_file_name,
             progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
                 progress(d, t, event, c_time, "trying to download")
-            )
+            ),
         )
         end_one = datetime.now()
         ms_one = (end_one - start).seconds
         if os.path.exists(downloaded_file_name):
             thumb = None
-            if not downloaded_file_name.endswith(
-                    (".mkv", ".mp4", ".mp3", ".flac")):
-                await event.edit("Sorry. But I don't think {} is a streamable file. Please try again.\n**Supported Formats**: MKV, MP4, MP3, FLAC".format(downloaded_file_name))
+            if not downloaded_file_name.endswith((".mkv", ".mp4", ".mp3", ".flac")):
+                await event.edit(
+                    "Sorry. But I don't think {} is a streamable file. Please try again.\n**Supported Formats**: MKV, MP4, MP3, FLAC".format(
+                        downloaded_file_name
+                    )
+                )
                 return False
             if os.path.exists(thumb_image_path):
                 thumb = thumb_image_path
@@ -160,7 +184,7 @@ async def _(event):
             width = 0
             height = 0
             if metadata.has("duration"):
-                duration = metadata.get('duration').seconds
+                duration = metadata.get("duration").seconds
             if os.path.exists(thumb_image_path):
                 metadata = extractMetadata(createParser(thumb_image_path))
                 if metadata.has("width"):
@@ -170,7 +194,7 @@ async def _(event):
             # Telegram only works with MP4 files
             # this is good, since with MKV files sent as streamable Telegram responds,
             # Bad Request: VIDEO_CONTENT_TYPE_INVALID
-           # c_time = time.time()
+            # c_time = time.time()
             try:
                 await borg.send_file(
                     event.chat_id,
@@ -186,9 +210,9 @@ async def _(event):
                             w=width,
                             h=height,
                             round_message=False,
-                            supports_streaming=True
+                            supports_streaming=True,
                         )
-                    ]
+                    ],
                 )
             except Exception as e:
                 await event.edit(str(e))
@@ -196,11 +220,17 @@ async def _(event):
                 end = datetime.now()
                 os.remove(downloaded_file_name)
                 ms_two = (end - end_one).seconds
-                await event.edit("Downloaded in {} seconds. Uploaded in {} seconds.".format(ms_one, ms_two))
+                await event.edit(
+                    "Downloaded in {} seconds. Uploaded in {} seconds.".format(
+                        ms_one, ms_two
+                    )
+                )
         else:
             await event.edit("File Not Found {}".format(input_str))
     else:
-        await event.edit("Syntax // .rnstreamupload file.name as reply to a Telegram media")
+        await event.edit(
+            "Syntax // .rnstreamupload file.name as reply to a Telegram media"
+        )
 
 
 @borg.on(admin_cmd(pattern="rndlup (.*)"))
@@ -235,16 +265,19 @@ async def _(event):
         downloader.get_speed()
         round(diff) * 1000
         progress_str = "[{0}{1}]\nProgress: {2}%".format(
-            ''.join(["█" for i in range(math.floor(percentage / 5))]),
-            ''.join(["░" for i in range(20 - math.floor(percentage / 5))]),
-            round(percentage, 2))
+            "".join(["█" for i in range(math.floor(percentage / 5))]),
+            "".join(["░" for i in range(20 - math.floor(percentage / 5))]),
+            round(percentage, 2),
+        )
         estimated_total_time = downloader.get_eta(human=True)
         try:
             current_message = f"trying to download\n"
             current_message += f"URL: {url}\n"
             current_message += f"File Name: {file_name}\n"
             current_message += f"{progress_str}\n"
-            current_message += f"{humanbytes(downloaded)} of {humanbytes(total_length)}\n"
+            current_message += (
+                f"{humanbytes(downloaded)} of {humanbytes(total_length)}\n"
+            )
             current_message += f"ETA: {estimated_total_time}"
             if round(diff % 10.00) == 0 and current_message != display_message:
                 await event.edit(current_message)
@@ -254,7 +287,9 @@ async def _(event):
     end = datetime.now()
     ms_dl = (end - start).seconds
     if downloader.isSuccessful():
-        await event.edit("Downloaded to `{}` in {} seconds.".format(downloaded_file_name, ms_dl))
+        await event.edit(
+            "Downloaded to `{}` in {} seconds.".format(downloaded_file_name, ms_dl)
+        )
         if os.path.exists(downloaded_file_name):
             c_time = time.time()
             await borg.send_file(
@@ -267,12 +302,16 @@ async def _(event):
                 thumb=thumb,
                 progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
                     progress(d, t, event, c_time, "trying to upload")
-                )
+                ),
             )
             end_two = datetime.now()
             os.remove(downloaded_file_name)
             ms_two = (end_two - end).seconds
-            await event.edit("Downloaded in {} seconds. Uploaded in {} seconds.".format(ms_dl, ms_two))
+            await event.edit(
+                "Downloaded in {} seconds. Uploaded in {} seconds.".format(
+                    ms_dl, ms_two
+                )
+            )
         else:
             await event.edit("File Not Found {}".format(input_str))
     else:
