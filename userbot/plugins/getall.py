@@ -1,5 +1,4 @@
 # salute to the creator
-from telethon.tl.types import ChannelParticipantsAdmins
 
 from userbot.utils import admin_cmd
 
