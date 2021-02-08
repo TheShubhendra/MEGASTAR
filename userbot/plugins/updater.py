@@ -82,6 +82,11 @@ async def upstream(ups):
         repo.__del__()
         return
     except InvalidGitRepositoryError:
+        if conf is None and force_update:
+            await ups.edit(
+                f"𝗕𝗢𝗦𝗦!!!😉😉\nIt doesn't seem like a git repository. So I can't generate changelog. To get the Latest update of Megastar userbot type .update now 😏😏 "
+            )
+        return
         repo = Repo.init()
         origin = repo.create_remote("upstream", off_repo)
         origin.fetch()
@@ -109,11 +114,6 @@ async def upstream(ups):
     if not changelog and not force_update:
         await ups.edit(f"\n**Your bot is up-to-date.**\n")
         repo.__del__()
-    if conf != "now" and force_update:
-        await ups.edit(
-            f"𝗕𝗢𝗦𝗦!!!😉😉\nIt doesn't seems like a git repository. So I can't generate chageloh. To get the Latest update of Megastar userbot type .update now 😏😏 "
-        )
-        return
     if conf != "now":
         changelog_str = (
             f"**New UPDATE available for [{ac_br}]:\n\nCHANGELOG:**\n{changelog}"
