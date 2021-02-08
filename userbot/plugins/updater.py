@@ -86,7 +86,7 @@ async def upstream(ups):
             await ups.edit(
                 f"𝗕𝗢𝗦𝗦!!!😉😉\nIt doesn't seem like a git repository. So I can't generate changelog. To get the Latest update of Megastar userbot type .update now 😏😏 "
             )
-        return
+            return
         repo = Repo.init()
         origin = repo.create_remote("upstream", off_repo)
         origin.fetch()
