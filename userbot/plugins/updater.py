@@ -82,7 +82,7 @@ async def upstream(ups):
         repo.__del__()
         return
     except InvalidGitRepositoryError:
-        if conf is None and force_update:
+        if conf is None or conf == "":
             await ups.edit(
                 f"𝗕𝗢𝗦𝗦!!!😉😉\nIt doesn't seem like a git repository. So I can't generate changelog. To get the Latest update of Megastar userbot type .update now 😏😏 "
             )
