@@ -21,7 +21,9 @@ async def get_readable_time(seconds: int) -> str:
     time_suffix_list = ["s", "m", "h", "days"]
     while count < 4:
         count += 1
-        remainder, result = divmod(seconds, 60) if count < 3 else divmod(seconds, 24)
+        remainder, result = divmod(
+            seconds, 60) if count < 3 else divmod(
+            seconds, 24)
         if seconds == 0 and remainder == 0:
             break
         time_list.append(int(result))
@@ -157,7 +159,8 @@ def deEmojify(inputString: str) -> str:
 
 
 def Build_Poll(options):
-    return [PollAnswer(option, bytes(i)) for i, option in enumerate(options, start=1)]
+    return [PollAnswer(option, bytes(i))
+            for i, option in enumerate(options, start=1)]
 
 
 def convert_toimage(image):
@@ -201,8 +204,10 @@ async def fakegs(search, result):
     drawing = ImageDraw.Draw(img)
     blue = (0, 0, 255)
     black = (0, 0, 0)
-    font1 = ImageFont.truetype("userbot/helpers/styles/ProductSans-BoldItalic.ttf", 20)
-    font2 = ImageFont.truetype("userbot/helpers/styles/ProductSans-Light.ttf", 23)
+    font1 = ImageFont.truetype(
+        "userbot/helpers/styles/ProductSans-BoldItalic.ttf", 20)
+    font2 = ImageFont.truetype(
+        "userbot/helpers/styles/ProductSans-Light.ttf", 23)
     drawing.text((450, 258), result, fill=blue, font=font1)
     drawing.text((270, 37), search, fill=black, font=font2)
     img.save("./temp/temp.jpg")
@@ -285,7 +290,8 @@ async def tweets(text1, text2):
 
 
 async def iphonex(text):
-    r = requests.get(f"https://nekobot.xyz/api/imagegen?type=iphonex&url={text}").json()
+    r = requests.get(
+        f"https://nekobot.xyz/api/imagegen?type=iphonex&url={text}").json()
     sandy = r.get("message")
     pagalurl = url(sandy)
     if not pagalurl:
@@ -313,7 +319,8 @@ async def baguette(text):
 
 
 async def threats(text):
-    r = requests.get(f"https://nekobot.xyz/api/imagegen?type=threats&url={text}").json()
+    r = requests.get(
+        f"https://nekobot.xyz/api/imagegen?type=threats&url={text}").json()
     sandy = r.get("message")
     pagalurl = url(sandy)
     if not pagalurl:
@@ -328,7 +335,8 @@ async def threats(text):
 
 
 async def lolice(text):
-    r = requests.get(f"https://nekobot.xyz/api/imagegen?type=lolice&url={text}").json()
+    r = requests.get(
+        f"https://nekobot.xyz/api/imagegen?type=lolice&url={text}").json()
     sandy = r.get("message")
     pagalurl = url(sandy)
     if not pagalurl:
@@ -343,7 +351,8 @@ async def lolice(text):
 
 
 async def trash(text):
-    r = requests.get(f"https://nekobot.xyz/api/imagegen?type=trash&url={text}").json()
+    r = requests.get(
+        f"https://nekobot.xyz/api/imagegen?type=trash&url={text}").json()
     sandy = r.get("message")
     pagalurl = url(sandy)
     if not pagalurl:
@@ -358,7 +367,8 @@ async def trash(text):
 
 
 async def awooify(text):
-    r = requests.get(f"https://nekobot.xyz/api/imagegen?type=awooify&url={text}").json()
+    r = requests.get(
+        f"https://nekobot.xyz/api/imagegen?type=awooify&url={text}").json()
     sandy = r.get("message")
     pagalurl = url(sandy)
     if not pagalurl:

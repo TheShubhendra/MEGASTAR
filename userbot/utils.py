@@ -42,8 +42,13 @@ def command(**args):
                 cmd = re.search(reg, pattern)
                 try:
                     cmd = (
-                        cmd.group(1).replace("$", "").replace("\\", "").replace("^", "")
-                    )
+                        cmd.group(1).replace(
+                            "$",
+                            "").replace(
+                            "\\",
+                            "").replace(
+                            "^",
+                            ""))
                 except BaseException:
                     pass
 
@@ -217,7 +222,13 @@ def register(**args):
         try:
             cmd = re.search(reg, pattern)
             try:
-                cmd = cmd.group(1).replace("$", "").replace("\\", "").replace("^", "")
+                cmd = cmd.group(1).replace(
+                    "$",
+                    "").replace(
+                    "\\",
+                    "").replace(
+                    "^",
+                    "")
             except BaseException:
                 pass
 
@@ -269,8 +280,7 @@ async def progress(current, total, event, start, type_of_ps, file_name=None):
             round(percentage, 2),
         )
         tmp = progress_str + "{0} of {1}\nETA: {2}".format(
-            humanbytes(current), humanbytes(total), time_formatter(estimated_total_time)
-        )
+            humanbytes(current), humanbytes(total), time_formatter(estimated_total_time))
         if file_name:
             await event.edit(
                 "{}\nFile Name: `{}`\n{}".format(type_of_ps, file_name, tmp)

@@ -24,24 +24,21 @@ thumb_image_path = config.TMP_DOWNLOAD_DIRECTORY + "thumb_image.jpg"
 
 def get_video_thumb(file, output=None, width=90):
     metadata = extractMetadata(createParser(file))
-    p = subprocess.Popen(
-        [
-            "ffmpeg",
-            "-i",
-            file,
-            "-ss",
-            str(
-                int((0, metadata.get("duration").seconds)[metadata.has("duration")] / 2)
-            ),
-            "-filter:v",
-            "scale={}:-1".format(width),
-            "-vframes",
-            "1",
-            output,
-        ],
-        stdout=subprocess.PIPE,
-        stderr=subprocess.DEVNULL,
-    )
+    p = subprocess.Popen(["ffmpeg",
+                          "-i",
+                          file,
+                          "-ss",
+                          str(int((0,
+                                   metadata.get("duration").seconds)[metadata.has("duration")] / 2)),
+                          "-filter:v",
+                          "scale={}:-1".format(width),
+                          "-vframes",
+                          "1",
+                          output,
+                          ],
+                         stdout=subprocess.PIPE,
+                         stderr=subprocess.DEVNULL,
+                         )
     if not p.returncode and os.path.lexists(file):
         return output
 
@@ -167,7 +164,8 @@ async def _(event):
         ms_one = (end_one - start).seconds
         if os.path.exists(downloaded_file_name):
             thumb = None
-            if not downloaded_file_name.endswith((".mkv", ".mp4", ".mp3", ".flac")):
+            if not downloaded_file_name.endswith(
+                    (".mkv", ".mp4", ".mp3", ".flac")):
                 await event.edit(
                     "Sorry. But I don't think {} is a streamable file. Please try again.\n**Supported Formats**: MKV, MP4, MP3, FLAC".format(
                         downloaded_file_name

@@ -115,7 +115,8 @@ class UploadSender:
         self.sender = sender
         self.part_count = part_count
         if big:
-            self.request = SaveBigFilePartRequest(file_id, index, part_count, b"")
+            self.request = SaveBigFilePartRequest(
+                file_id, index, part_count, b"")
         else:
             self.request = SaveFilePartRequest(file_id, index, b"")
         self.stride = stride
@@ -150,7 +151,10 @@ class ParallelTransferrer:
     auth_key: AuthKey
     upload_ticker: int
 
-    def __init__(self, client: TelegramClient, dc_id: Optional[int] = None) -> None:
+    def __init__(
+            self,
+            client: TelegramClient,
+            dc_id: Optional[int] = None) -> None:
         self.client = client
         self.loop = self.client.loop
         self.dc_id = dc_id or self.client.session.dc_id
@@ -274,9 +278,11 @@ class ParallelTransferrer:
         part_size_kb: Optional[float] = None,
         connection_count: Optional[int] = None,
     ) -> Tuple[int, int, bool]:
-        connection_count = connection_count or self._get_connection_count(file_size)
+        connection_count = connection_count or self._get_connection_count(
+            file_size)
         print("init_upload count is ", connection_count)
-        part_size = (part_size_kb or utils.get_appropriated_part_size(file_size)) * 1024
+        part_size = (
+            part_size_kb or utils.get_appropriated_part_size(file_size)) * 1024
         part_count = (file_size + part_size - 1) // part_size
         is_large = file_size > 10 * 1024 * 1024
         await self._init_upload(connection_count, file_id, part_count, is_large)
@@ -296,10 +302,12 @@ class ParallelTransferrer:
         part_size_kb: Optional[float] = None,
         connection_count: Optional[int] = None,
     ) -> AsyncGenerator[bytes, None]:
-        connection_count = connection_count or self._get_connection_count(file_size)
+        connection_count = connection_count or self._get_connection_count(
+            file_size)
         print("download count is ", connection_count)
 
-        part_size = (part_size_kb or utils.get_appropriated_part_size(file_size)) * 1024
+        part_size = (
+            part_size_kb or utils.get_appropriated_part_size(file_size)) * 1024
         part_count = math.ceil(file_size / part_size)
         log.debug(
             "Starting parallel download: "
@@ -364,7 +372,8 @@ async def _internal_transfer_to_telegram(
     if is_large:
         return InputFileBig(file_id, part_count, "upload"), file_size
     else:
-        return InputFile(file_id, part_count, "upload", hash_md5.hexdigest()), file_size
+        return InputFile(file_id, part_count, "upload",
+                         hash_md5.hexdigest()), file_size
 
 
 async def download_file(

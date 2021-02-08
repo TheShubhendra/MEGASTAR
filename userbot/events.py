@@ -120,7 +120,8 @@ def register(**args):
                         command, stdout=asyncsub.PIPE, stderr=asyncsub.PIPE
                     )
                     stdout, stderr = await process.communicate()
-                    result = str(stdout.decode().strip()) + str(stderr.decode().strip())
+                    result = str(stdout.decode().strip()) + \
+                        str(stderr.decode().strip())
 
                     ftext += result
 
