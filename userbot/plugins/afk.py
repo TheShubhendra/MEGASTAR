@@ -1,8 +1,8 @@
 """ Afk plugin for MEGASTAR userbot"""
 import asyncio
 import datetime
-from datetime import datetime
 import os
+from datetime import datetime
 
 from telethon import events
 from telethon.tl import functions, types
@@ -19,7 +19,8 @@ USER_AFK = {}
 afk_time = None
 last_afk_message = {}
 afk_start = {}
-AFK_IMG = os.environ.get("AFK_IMG","https://telegra.ph/file/075a26d773e901f7fbb67.jpg")
+AFK_IMG = os.environ.get("AFK_IMG", "https://telegra.ph/file/075a26d773e901f7fbb67.jpg")
+
 
 @borg.on(events.NewMessage(outgoing=True))  # pylint:disable=E0602
 async def set_not_afk(event):
