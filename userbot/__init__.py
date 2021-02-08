@@ -1,4 +1,3 @@
-
 from requests import get
 from pySmartDL import SmartDL
 import pylast
@@ -40,10 +39,7 @@ ALIVE_PIC = os.environ.get("ALIVE_PIC", None)
 
 # Bot Logs setup:
 if bool(ENV):
-    CONSOLE_LOGGER_VERBOSE = sb(
-        os.environ.get(
-            "CONSOLE_LOGGER_VERBOSE",
-            "False"))
+    CONSOLE_LOGGER_VERBOSE = sb(os.environ.get("CONSOLE_LOGGER_VERBOSE", "False"))
 
     if CONSOLE_LOGGER_VERBOSE:
         basicConfig(
@@ -52,14 +48,15 @@ if bool(ENV):
         )
     else:
         basicConfig(
-            format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
-            level=INFO)
+            format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=INFO
+        )
     LOGS = getLogger(__name__)
 
     # Check if the config was edited by using the already used variable.
     # Basically, its the 'virginity check' for the config file ;)
     CONFIG_CHECK = os.environ.get(
-        "___________PLOX_______REMOVE_____THIS_____LINE__________", None)
+        "___________PLOX_______REMOVE_____THIS_____LINE__________", None
+    )
 
     if CONFIG_CHECK:
         LOGS.info(
@@ -82,10 +79,7 @@ if bool(ENV):
     PM_AUTO_BAN = sb(os.environ.get("PM_AUTO_BAN", "False"))
 
     # Console verbose logging
-    CONSOLE_LOGGER_VERBOSE = sb(
-        os.environ.get(
-            "CONSOLE_LOGGER_VERBOSE",
-            "False"))
+    CONSOLE_LOGGER_VERBOSE = sb(os.environ.get("CONSOLE_LOGGER_VERBOSE", "False"))
 
     # SQL Database URI
     DB_URI = os.environ.get("DATABASE_URL", None)
@@ -111,7 +105,7 @@ if bool(ENV):
     # FedBan Premium Module
     F_BAN_LOGGER_GROUP = os.environ.get("F_BAN_LOGGER_GROUP", None)
 
-# Heroku Credentials for updater.
+    # Heroku Credentials for updater.
     HEROKU_MEMEZ = sb(os.environ.get("HEROKU_MEMEZ", "False"))
     HEROKU_APP_NAME = os.environ.get("HEROKU_APP_NAME", None)
     HEROKU_API_KEY = os.environ.get("HEROKU_API_KEY", None)
@@ -137,8 +131,8 @@ if bool(ENV):
 
     # Upstream Repo
     UPSTREAM_REPO_URL = os.environ.get(
-        "UPSTREAM_REPO_URL",
-        "https://github.com/Marshmellow098/MY-THINGS.git")
+        "UPSTREAM_REPO_URL", "https://github.com/Marshmellow098/MY-THINGS.git"
+    )
 
     # Last.fm Module
     BIO_PREFIX = os.environ.get("BIO_PREFIX", None)
@@ -150,10 +144,12 @@ if bool(ENV):
     LASTFM_PASSWORD_PLAIN = os.environ.get("LASTFM_PASSWORD", None)
     LASTFM_PASS = pylast.md5(LASTFM_PASSWORD_PLAIN)
     if not LASTFM_USERNAME == "None":
-        lastfm = pylast.LastFMNetwork(api_key=LASTFM_API,
-                                      api_secret=LASTFM_SECRET,
-                                      username=LASTFM_USERNAME,
-                                      password_hash=LASTFM_PASS)
+        lastfm = pylast.LastFMNetwork(
+            api_key=LASTFM_API,
+            api_secret=LASTFM_SECRET,
+            username=LASTFM_USERNAME,
+            password_hash=LASTFM_PASS,
+        )
     else:
         lastfm = None
 
@@ -162,22 +158,19 @@ if bool(ENV):
     G_DRIVE_CLIENT_SECRET = os.environ.get("G_DRIVE_CLIENT_SECRET", None)
     G_DRIVE_AUTH_TOKEN_DATA = os.environ.get("G_DRIVE_AUTH_TOKEN_DATA", None)
     GDRIVE_FOLDER_ID = os.environ.get("GDRIVE_FOLDER_ID", None)
-    TEMP_DOWNLOAD_DIRECTORY = os.environ.get("TEMP_DOWNLOAD_DIRECTORY",
-                                             "./downloads")
+    TEMP_DOWNLOAD_DIRECTORY = os.environ.get("TEMP_DOWNLOAD_DIRECTORY", "./downloads")
 else:
     # Put your ppe vars here if you are using local hosting
     PLACEHOLDER = None
 
 # Setting Up CloudMail.ru and MEGA.nz extractor binaries,
 # and giving them correct perms to work properly.
-if not os.path.exists('bin'):
-    os.mkdir('bin')
+if not os.path.exists("bin"):
+    os.mkdir("bin")
 
 binaries = {
-    "https://raw.githubusercontent.com/yshalsager/megadown/master/megadown":
-    "bin/megadown",
-    "https://raw.githubusercontent.com/yshalsager/cmrudl.py/master/cmrudl.py":
-    "bin/cmrudl"
+    "https://raw.githubusercontent.com/yshalsager/megadown/master/megadown": "bin/megadown",
+    "https://raw.githubusercontent.com/yshalsager/cmrudl.py/master/cmrudl.py": "bin/cmrudl",
 }
 
 for binary, path in binaries.items():

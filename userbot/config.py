@@ -11,8 +11,7 @@ class config(object):
     # Get this value from my.telegram.org! Please do not steal
     APP_ID = int(os.environ.get("APP_ID", 6))
     API_HASH = os.environ.get("API_HASH", "eb06d4abfb49dc3eeb1aeb98ae0f581e")
-    SCREEN_SHOT_LAYER_ACCESS_KEY = os.environ.get(
-        "SCREEN_SHOT_LAYER_ACCESS_KEY", None)
+    SCREEN_SHOT_LAYER_ACCESS_KEY = os.environ.get("SCREEN_SHOT_LAYER_ACCESS_KEY", None)
     # string session for running on Heroku
     # some people upload their session files on GitHub or other third party hosting
     # websites, this might prevent the un-authorized use of the
@@ -29,13 +28,11 @@ class config(object):
         PRIVATE_GROUP_ID = int(PRIVATE_GROUP_ID)
     # Send .get_id in any channel to fill this value. ReQuired for @Manuel15
     # inspiration to work!
-    PRIVATE_CHANNEL_BOT_API_ID = os.environ.get(
-        "PRIVATE_CHANNEL_BOT_API_ID", None)
+    PRIVATE_CHANNEL_BOT_API_ID = os.environ.get("PRIVATE_CHANNEL_BOT_API_ID", None)
     if PRIVATE_CHANNEL_BOT_API_ID:
         PRIVATE_CHANNEL_BOT_API_ID = int(PRIVATE_CHANNEL_BOT_API_ID)
         # This is required for the plugins involving the file system.
-    TMP_DOWNLOAD_DIRECTORY = os.environ.get(
-        "TMP_DOWNLOAD_DIRECTORY", "./DOWNLOADS/")
+    TMP_DOWNLOAD_DIRECTORY = os.environ.get("TMP_DOWNLOAD_DIRECTORY", "./DOWNLOADS/")
     # This is required for the speech to text module. Get your USERNAME from
     # https://console.bluemix.net/docs/services/speech-to-text/getting-started.html
     IBM_WATSON_CRED_URL = os.environ.get("IBM_WATSON_CRED_URL", None)
@@ -113,9 +110,7 @@ class config(object):
     # malicious users could do ".exec rm -rf /*"
     SUDO_USERS = {int(x) for x in os.environ.get("SUDO_USERS", "").split()}
     # Google Drive ()
-    CHROME_BIN = os.environ.get(
-        "CHROME_BIN",
-        "/app/.apt/usr/bin/google-chrome")
+    CHROME_BIN = os.environ.get("CHROME_BIN", "/app/.apt/usr/bin/google-chrome")
     CHROME_DRIVER = os.environ.get(
         "CHROME_DRIVER", "/app/.chromedriver/bin/chromedriver"
     )
