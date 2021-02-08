@@ -2,6 +2,7 @@
 import asyncio
 import datetime
 from datetime import datetime
+import os
 
 from telethon import events
 from telethon.tl import functions, types
@@ -18,7 +19,7 @@ USER_AFK = {}
 afk_time = None
 last_afk_message = {}
 afk_start = {}
-
+AFK_IMG = os.environ.get("AFK_IMG","https://telegra.ph/file/075a26d773e901f7fbb67.jpg")
 
 @borg.on(events.NewMessage(outgoing=True))  # pylint:disable=E0602
 async def set_not_afk(event):
@@ -116,7 +117,7 @@ async def on_afk(event):
         msg = None
         message_to_reply = (
             f"**My Boss is busy right now...\ncommanded me to say it to you that you have to wait till he/she comes back online🥰\n **AFK TIME→_→ {total_afk_time}\n**Where He/She Is : It's A Secret 🤫** "
-            + f"\n\n**I'll back in a few** [century](https://telegra.ph/file/075a26d773e901f7fbb67.jpg)\nREASON(☞^o^) ☞ {reason}"
+            + f"\n\n**I'll back in a few** [century]({AFK_IMG})\nREASON(☞^o^) ☞ {reason}"
             if reason
             else f"**Important Notice**\n\n[This User Is Ded Forever...](https://telegra.ph/file/c2c238158bb715eafdda5.jpg) "
         )
