@@ -21,7 +21,14 @@ async def _(event):
         cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
     )
     stdout, stderr = await process.communicate()
-    OUTPUT = f"`{stdout.decode()}`\n\n**stderr**\n`{stderr.decode()}`"
+    out = stdout.decode()
+    err = stderr.decode()
+    if len(err) < 1 and len(out) < 1:
+        OUTPUT = f"`{out}`\n\n**stderr**\n`{err}`"
+    elif len(err) < 1:
+        OUTPUT = f"`{out}`"
+    else:
+        OUTPUT = f"**stderr**\n`{err}`"
     if len(OUTPUT) > config.MAX_MESSAGE_SIZE_LIMIT:
         with io.BytesIO(str.encode(OUTPUT)) as out_file:
             out_file.name = "bash.text"
