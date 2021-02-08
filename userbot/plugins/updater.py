@@ -111,7 +111,7 @@ async def upstream(ups):
     ups_rem = repo.remote("upstream")
     ups_rem.fetch(ac_br)
     changelog = await gen_chlog(repo, f"HEAD..upstream/{ac_br}")
-    if not changelog and not force_update:
+    if not changelog and not force_update and conf != "deploy":
         await ups.edit(f"\n**Your bot is up-to-date.**\n")
         repo.__del__()
         return
