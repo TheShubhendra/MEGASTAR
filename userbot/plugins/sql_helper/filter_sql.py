@@ -15,8 +15,12 @@ class Filters(BASE):
     def __init__(
         self,
         chat_id,
-        keyword, reply, snip_type,
-        media_id=None, media_access_hash=None, media_file_reference=None
+        keyword,
+        reply,
+        snip_type,
+        media_id=None,
+        media_access_hash=None,
+        media_file_reference=None,
     ):
         self.chat_id = chat_id
         self.keyword = keyword
@@ -41,8 +45,7 @@ def get_filter(chat_id, keyword):
 
 def get_all_filters(chat_id):
     try:
-        return SESSION.query(Filters).filter(
-            Filters.chat_id == str(chat_id)).all()
+        return SESSION.query(Filters).filter(Filters.chat_id == str(chat_id)).all()
     except BaseException:
         return None
     finally:
@@ -50,13 +53,14 @@ def get_all_filters(chat_id):
 
 
 def add_filter(
-        chat_id,
-        keyword,
-        reply,
-        snip_type,
-        media_id,
-        media_access_hash,
-        media_file_reference):
+    chat_id,
+    keyword,
+    reply,
+    snip_type,
+    media_id,
+    media_access_hash,
+    media_file_reference,
+):
     adder = SESSION.query(Filters).get((str(chat_id), keyword))
     if adder:
         adder.reply = reply
@@ -65,8 +69,15 @@ def add_filter(
         adder.media_access_hash = media_access_hash
         adder.media_file_reference = media_file_reference
     else:
-        adder = Filters(chat_id, keyword, reply, snip_type, media_id,
-                        media_access_hash, media_file_reference)
+        adder = Filters(
+            chat_id,
+            keyword,
+            reply,
+            snip_type,
+            media_id,
+            media_access_hash,
+            media_file_reference,
+        )
     SESSION.add(adder)
     SESSION.commit()
 
@@ -79,8 +90,7 @@ def remove_filter(chat_id, keyword):
 
 
 def remove_all_filters(chat_id):
-    saved_filter = SESSION.query(Filters).filter(
-        Filters.chat_id == str(chat_id))
+    saved_filter = SESSION.query(Filters).filter(Filters.chat_id == str(chat_id))
     if saved_filter:
         saved_filter.delete()
         SESSION.commit()

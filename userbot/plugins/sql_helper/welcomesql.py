@@ -32,8 +32,9 @@ def getwelcome(chat_id):
 
 def getcurrent_welcome_settings(chat_id):
     try:
-        return (SESSION.query(JoinWelcome).filter(
-            JoinWelcome.chat_id == str(chat_id)).one())
+        return (
+            SESSION.query(JoinWelcome).filter(JoinWelcome.chat_id == str(chat_id)).one()
+        )
     except BaseException:
         return None
     finally:
@@ -70,4 +71,6 @@ def updateprevious_welcome(chat_id, previous_welcome):
     row = SESSION.query(JoinWelcome).get(str(chat_id))
     row.previous_welcome = previous_welcome
     SESSION.commit()
+
+
 # legend userbot
