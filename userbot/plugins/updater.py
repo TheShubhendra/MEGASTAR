@@ -114,6 +114,7 @@ async def upstream(ups):
     if not changelog and not force_update:
         await ups.edit(f"\n**Your bot is up-to-date.**\n")
         repo.__del__()
+        return
     if conf != "now":
         changelog_str = (
             f"**New UPDATE available for [{ac_br}]:\n\nCHANGELOG:**\n{changelog}"
