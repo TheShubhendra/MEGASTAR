@@ -3,7 +3,7 @@ from telethon import events
 from .. import BOTLOG_CHATID, CMD_HELP, bot
 from ..utils import admin_cmd, edit_or_reply
 from .sql_helper import pmpermit_sql as pmpermit_sql
-from .sql_helper.welcomesql import (
+from .sql_helper.welcome_sql import (
     add_welcome_setting,
     get_current_welcome_settings,
     rm_welcome_setting,
