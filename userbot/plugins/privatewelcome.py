@@ -4,15 +4,15 @@ from .. import BOTLOG_CHATID, CMD_HELP, bot
 from ..utils import admin_cmd, edit_or_reply
 from .sql_helper import pmpermit_sql as pmpermit_sql
 from .sql_helper.welcomesql import (
-    addwelcome_setting,
-    getcurrent_welcome_settings,
-    rmwelcome_setting,
+    add_welcome_setting,
+    get_current_welcome_settings,
+    rm_welcome_setting,
 )
 
 
 @borg.on(events.ChatAction)
 async def _(event):
-    cws = getcurrent_welcome_settings(event.chat_id)
+    cws = get_current_welcome_settings(event.chat_id)
     if (
         cws
         and (event.user_joined or event.user_added)
@@ -99,17 +99,17 @@ async def save_welcome(event):
         rep_msg = await event.get_reply_message()
         string = rep_msg.text
     success = "`Welcome note {} for this chat.`"
-    if addwelcome_setting(event.chat_id, 0, string, msg_id) is True:
+    if add_welcome_setting(event.chat_id, 0, string, msg_id) is True:
         return await edit_or_reply(event, success.format("saved"))
-    rmwelcome_setting(event.chat_id)
-    if addwelcome_setting(event.chat_id, 0, string, msg_id) is True:
+    rm_welcome_setting(event.chat_id)
+    if add_welcome_setting(event.chat_id, 0, string, msg_id) is True:
         return await edit_or_reply(event, success.format("updated"))
     await edit_or_reply("Error while setting welcome in this group")
 
 
 @borg.on(admin_cmd(pattern="clearpwel$"))
 async def del_welcome(event):
-    if rmwelcome_setting(event.chat_id) is True:
+    if rm_welcome_setting(event.chat_id) is True:
         await edit_or_reply(event, "`Welcome note deleted for this chat.`")
     else:
         await edit_or_reply(event, "`Do I have a welcome note here ?`")
@@ -117,7 +117,7 @@ async def del_welcome(event):
 
 @borg.on(admin_cmd(pattern="listpwel$"))
 async def show_welcome(event):
-    cws = getcurrent_welcome_settings(event.chat_id)
+    cws = get_current_welcome_settings(event.chat_id)
     if not cws:
         await edit_or_reply(event, "`No pwelcome message saved here.`")
         return
