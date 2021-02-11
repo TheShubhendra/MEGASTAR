@@ -25,5 +25,6 @@ async def get_pic(event):
     url = getPixabay(key)
     if url is None:
         await event.edit("No pic found.")
+        return
     image = get(url).content
-    await event.edit(key,file=image)
+    await event.edit(file=image)
