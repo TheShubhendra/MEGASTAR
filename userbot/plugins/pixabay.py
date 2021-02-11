@@ -29,4 +29,5 @@ async def get_pic(event):
         await event.edit("No pic found.")
         return
     image = get(url).content
-    await event.edit(file=image)
+    await event.client.send_file(event.chat_id, file=image)
+    await event.delete()
