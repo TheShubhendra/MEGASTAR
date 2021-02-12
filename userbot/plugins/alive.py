@@ -1,3 +1,4 @@
+# credit dc (@danish00)
 import asyncio
 import os
 
