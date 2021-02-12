@@ -1,6 +1,6 @@
 from telethon import events
 
-from .. import BOTLOG_CHATID, CMD_HELP, bot
+from .. import PM_LOGGR_BOT_API_ID, CMD_HELP, bot
 from ..utils import admin_cmd, edit_or_reply
 from .sql_helper import pmpermit_sql as pmpermit_sql
 from .sql_helper.welcome_sql import (
@@ -42,7 +42,7 @@ async def _(event):
         if cws:
             if cws.f_mesg_id:
                 msg_o = await event.client.get_messages(
-                    entity=BOTLOG_CHATID, ids=int(cws.f_mesg_id)
+                    entity=PM_LOGGR_BOT_API_ID, ids=int(cws.f_mesg_id)
                 )
                 file_media = msg_o.media
                 current_saved_welcome_message = msg_o.message
@@ -78,21 +78,21 @@ async def save_welcome(event):
     string = "".join(event.text.split(maxsplit=1)[1:])
     msg_id = None
     if msg and msg.media and not string:
-        if BOTLOG_CHATID:
+        if PM_LOGGR_BOT_API_ID:
             await bot.send_message(
-                BOTLOG_CHATID,
+                PM_LOGGR_BOT_API_ID,
                 f"#WELCOME_NOTE\
                 \nCHAT ID: {event.chat_id}\
                 \nThe following message is saved as the welcome note for the {event.chat.title}, Dont delete this message !!",
             )
             msg_o = await event.client.forward_messages(
-                entity=BOTLOG_CHATID, messages=msg, from_peer=event.chat_id, silent=True
+                entity=PM_LOGGR_BOT_API_ID, messages=msg, from_peer=event.chat_id, silent=True
             )
             msg_id = msg_o.id
         else:
             await edit_or_reply(
                 event,
-                "`Saving media as part of the welcome note requires the BOTLOG_CHATID to be set.`",
+                "`Saving media as part of the welcome note requires the PM_LOGGR_BOT_API_ID to be set.`",
             )
             return
     elif event.reply_to_msg_id and not string:
@@ -122,7 +122,7 @@ async def show_welcome(event):
         await edit_or_reply(event, "`No pwelcome message saved here.`")
         return
     if cws.f_mesg_id:
-        msg_o = await bot.get_messages(entity=BOTLOG_CHATID, ids=int(cws.f_mesg_id))
+        msg_o = await bot.get_messages(entity=PM_LOGGR_BOT_API_ID, ids=int(cws.f_mesg_id))
         await edit_or_reply(
             event, "`I am currently pwelcoming new users with this welcome note.`"
         )
