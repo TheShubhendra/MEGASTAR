@@ -21,7 +21,7 @@ async def _(event):
         and (event.user_joined or event.user_added)
         and not (await event.get_user()).bot
     ):
-        if Config.CLEAN_WELCOME:
+        if config.CLEAN_WELCOME:
             try:
                 await bot.delete_messages(event.chat_id, cws.previous_welcome)
             except Exception as e:
