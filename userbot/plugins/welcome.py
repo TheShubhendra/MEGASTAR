@@ -9,7 +9,7 @@ from userbot.plugins.sql_helper.welcome_sql import (
     update_previous_welcome,
 )
 
-from .. import PM_LOGGR_BOT_API_ID, CMD_HELP, LOGS, bot
+from .. import CMD_HELP, LOGS, PM_LOGGR_BOT_API_ID, bot
 from ..utils import admin_cmd, edit_or_reply
 
 
@@ -92,7 +92,10 @@ async def save_welcome(event):
                 \nThe following message is saved as the welcome note for the {event.chat.title}, Don't delete this message !!",
             )
             msg_o = await event.client.forward_messages(
-                entity=PM_LOGGR_BOT_API_ID, messages=msg, from_peer=event.chat_id, silent=True
+                entity=PM_LOGGR_BOT_API_ID,
+                messages=msg,
+                from_peer=event.chat_id,
+                silent=True,
             )
             msg_id = msg_o.id
         else:
@@ -128,7 +131,9 @@ async def show_welcome(event):
         await edit_or_reply(event, "`No welcome message saved here.`")
         return
     if cws.f_mesg_id:
-        msg_o = await bot.get_messages(entity=PM_LOGGR_BOT_API_ID, ids=int(cws.f_mesg_id))
+        msg_o = await bot.get_messages(
+            entity=PM_LOGGR_BOT_API_ID, ids=int(cws.f_mesg_id)
+        )
         await edit_or_reply(
             event, "`I am currently welcoming new users with this welcome note.`"
         )
