@@ -1,6 +1,6 @@
 from telethon import events
 
-from .. import CMD_HELP, PM_LOGGR_BOT_API_ID, bot
+from .. import CMD_HELP, bot
 from ..utils import admin_cmd, edit_or_reply
 from .sql_helper import pmpermit_sql as pmpermit_sql
 from .sql_helper.welcome_sql import (
@@ -8,7 +8,7 @@ from .sql_helper.welcome_sql import (
     get_current_welcome_settings,
     rm_welcome_setting,
 )
-
+PM_LOGGR_BOT_API_ID = config.PM_LOGGR_BOT_API_ID
 
 @borg.on(events.ChatAction)
 async def _(event):
