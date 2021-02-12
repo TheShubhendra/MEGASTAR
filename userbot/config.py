@@ -56,7 +56,7 @@ class config(object):
     TG_BOT_USER_NAME_BF_HER = os.environ.get("TG_BOT_USER_NAME_BF_HER", None)
     NO_LOG_P_M_S = bool(os.environ.get("NO_LOG_P_M_S", True))
     THUMB_IMAGE = os.environ.get(
-        "THUMB_IMAGE", "https://telegra.ph/file/ca95524e4734b0d5461b5.jpg"
+        "THUMB_IMAGE", "https://telegra.ph/file/9d6c71b12d7b38b130099.jpg"
     )
     # Genius lyrics get this value from https://genius.com/developers both has
     # same values
@@ -85,7 +85,7 @@ class config(object):
     ALIVE_PIC = os.environ.get("ALIVE_PIC", None)
     # in pm permit pic
     PMPERMIT_PIC = os.environ.get("PMPERMIT_PIC", None)
-    CUSTOM_PMPERMIT_TEXT = os.environ.get("CUSTOM_PMPERMIT_TEXT", None)
+    CUSTOM_PMPERMIT = os.environ.get("CUSTOM_PMPERMIT", None)
     # Get your own API key from https://www.remove.bg/ or
     # feel free to use http://telegram.dog/Remove_BGBot
     REM_BG_API_KEY = os.environ.get("REM_BG_API_KEY", None)
