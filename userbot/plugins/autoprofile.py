@@ -24,7 +24,7 @@ from pySmartDL import SmartDL
 from telethon.errors import FloodWaitError
 from telethon.tl import functions
 
-from userbot import ALIVE_NAME, CMD_HELP, DEFAULT_BIO
+from userbot import ALIVE_NAME, CMD_HELP
 from userbot.utils import admin_cmd
 
 DEFAULTUSERBIO = str(BIO_MSG) if BIO_MSG else " ᗯᗩᏆᎢᏆᑎᏀ ᏞᏆᏦᗴ ᎢᏆᗰᗴ  "
@@ -88,7 +88,8 @@ async def main(event):
         img = Image.open(poto)
         drawn_text = ImageDraw.Draw(img)
         mega = str(
-            pybase64.b64decode("dXNlcmJvdC9oZWxwZXJzL3N0eWxlcy9kaWdpdGFsLnR0Zg==") #userbot/helpers/styles/digital.ttf
+            # userbot/helpers/styles/digital.ttf
+            pybase64.b64decode("dXNlcmJvdC9oZWxwZXJzL3N0eWxlcy9kaWdpdGFsLnR0Zg==")
         )[2:36]
         fnt = ImageFont.truetype(mega, 200)
         drawn_text.text((350, 100), current_time, font=fnt, fill=(124, 252, 0))
