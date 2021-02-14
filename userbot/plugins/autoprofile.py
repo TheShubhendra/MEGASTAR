@@ -27,10 +27,11 @@ from telethon.tl import functions
 from userbot import ALIVE_NAME, CMD_HELP
 from userbot.utils import admin_cmd
 
+BIO_MSG = os.environ.get("BIO_MSG", None)
 DEFAULTUSERBIO = str(BIO_MSG) if BIO_MSG else " ᗯᗩᏆᎢᏆᑎᏀ ᏞᏆᏦᗴ ᎢᏆᗰᗴ  "
 DEL_TIME_OUT = 60
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Megastar"
-BIO_MSG = config.BIO_MSG
+
 FONT_FILE_TO_USE = "/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf"
 
 
