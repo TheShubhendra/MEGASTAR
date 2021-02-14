@@ -28,7 +28,7 @@
       "required": false
     },
     "ALIVE_NAME": {
-      "description": "Fill your Full name or Username like @YOU_ARE_UNDER_ARREST and @none1p and @Kkchoudhary3108.",
+      "description": "Fill your Full name or Username like @none1p or @Kkchoudhary3108.",
       "value": "",
       "required": false
     },
