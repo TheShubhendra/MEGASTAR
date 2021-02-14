@@ -27,7 +27,7 @@ from telethon.tl import functions
 from userbot import ALIVE_NAME, CMD_HELP, DEFAULT_BIO
 from userbot.utils import admin_cmd
 
-DEFAULTUSERBIO = str(DEFAULT_BIO) if DEFAULT_BIO else " ᗯᗩᏆᎢᏆᑎᏀ ᏞᏆᏦᗴ ᎢᏆᗰᗴ  "
+DEFAULTUSERBIO = str(BIO_MSG) if BIO_MSG else " ᗯᗩᏆᎢᏆᑎᏀ ᏞᏆᏦᗴ ᎢᏆᗰᗴ  "
 DEL_TIME_OUT = 60
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Megastar"
 
@@ -74,7 +74,7 @@ async def main(event):
     poto = "userbot/poto_pfp.png"
     mega = str(
         pybase64.b64decode(
-            "aHR0cHM6Ly90ZWxlZ3JhLnBoL2ZpbGUvYWVhZWJlMzNiMWYzOTg4YTBiNjkwLmpwZw=="
+            "aHR0cHM6Ly90ZWxlZ3JhLnBoL2ZpbGUvZjg1NGFiYjI3MGExZDhkZjMwZTFmLmpwZw=="
         )
     )[2:51]
     downloaded_file_name = "userbot/digital_pic.png"
@@ -88,7 +88,7 @@ async def main(event):
         img = Image.open(poto)
         drawn_text = ImageDraw.Draw(img)
         mega = str(
-            pybase64.b64decode("dXNlcmJvdC9oZWxwZXJzL3N0eWxlcy9kaWdpdGFsLnR0Zg==")
+            pybase64.b64decode("dXNlcmJvdC9oZWxwZXJzL3N0eWxlcy9kaWdpdGFsLnR0Zg==") #userbot/helpers/styles/digital.ttf
         )[2:36]
         fnt = ImageFont.truetype(mega, 200)
         drawn_text.text((350, 100), current_time, font=fnt, fill=(124, 252, 0))
