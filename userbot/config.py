@@ -18,6 +18,7 @@ class config(object):
     # websites, this might prevent the un-authorized use of the
     # confidential session files
     # Get your own APPID from https://api.openweathermap.org/data/2.5/weather
+    BIO_MSG = os.environ.get("BIO_MSG", None)
     OPEN_WEATHER_MAP_APPID = os.environ.get("OPEN_WEATHER_MAP_APPID", None)
     # Send .get_id in any group to fill this value.
     PRIVATE_GROUP_BOT_API_ID = os.environ.get("PRIVATE_GROUP_BOT_API_ID", None)
