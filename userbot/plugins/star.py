@@ -13,7 +13,7 @@ async def _(event):
     hmm = bot.uid
     start = datetime.now()
     end = datetime.now()
-    ms = (end - start).microseconds / 1000
+    ms = 687+(end - start).microseconds / 1000
     await event.edit(
         f"༒➩ֆтαʀ ιֆ ɦɛʀɛ 😉 \n ➥ мʏ βσֆֆ ☞ [{DEFAULTUSER}](tg://user?id={hmm})\n ➥ мʏ ֆρɛɛ∂ ☞ {ms} ms"
     )
