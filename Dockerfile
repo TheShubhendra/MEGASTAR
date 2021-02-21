@@ -1,13 +1,7 @@
-FROM Bristi-OP/MEGASTAR:latest
-
-#clonning repo 
-RUN git clone https://github.com/Bristi-OP/MEGASTAR.git/root/userbot
-#working directory 
-WORKDIR /root/userbot
-
-# Install requirements
+FROM python:3.9
+WORKDIR /userbot
+RUN git clone https://github.com/Bristi-OP/MEGASTAR.git .
+RUN apt-get install -y pv tree mediainfo p7zip-full
 RUN pip3 install -U -r requirements.txt
-
 ENV PATH="/home/userbot/bin:$PATH"
-
 CMD ["python3","-m","userbot"]
