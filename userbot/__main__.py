@@ -38,7 +38,11 @@ for name in files:
     with open(name) as f:
         path1 = Path(f.name)
         shortname = path1.stem
-        load_module(shortname.replace(".py", ""))
+        try:
+            load_module(shortname.replace(".py", ""))
+        except Exception as e:
+            print(f"Couldn't load {shortname} plugin.")
+            print(e)
 
 if ALIVE_PIC is not None:
     print("♨︎☞ Alive Pic Added Successfully ☜♨︎")
