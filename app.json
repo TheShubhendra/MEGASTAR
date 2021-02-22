@@ -12,6 +12,7 @@
   "repository": "https://github.com/Bristi-OP/MEGASTAR/",
   "website": "https://github.com/Bristi-OP/MEGASTAR/",
   "success_url": "https://t.me/MEGASTAR_SUPPORT/",
+  "stack": "container",
   "env": {
     "ENV": {
       "description": "Setting this to ANYTHING will enable heroku.",
@@ -197,6 +198,16 @@
       "required": false 
     }
   },
+   "WEB_CONCURRENCY":{
+      "description":"The number of processes to run.",
+      "value":"1"
+   },
+   "formation":{
+      "worker":{
+         "quantity":1,
+         "size":"standard-1x"
+      }
+   },
   "addons": [
     {
       "plan": "heroku-postgresql",
