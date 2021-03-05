@@ -3,7 +3,6 @@
 # See LICENCE  or go to https://github.com/Bristi-OP/MEGASTAR/LICENSE for
 # full license details.
 from telethon.sync import events
-import asyncio
 
 WORD_REVERSE_ACTIVATED = False
 SEN_REVERSE_ACTIVATED = False
@@ -17,8 +16,9 @@ async def test(event):
         await event.edit(" ".join(sen))
     elif WORD_REVERSE_ACTIVATED:
         words = text.split()
-        words = list(map(lambda x:x[::-1],words))
+        words = list(map(lambda x: x[::-1], words))
         await event.edit(" ".join(words))
+
 
 @borg.on(events.NewMessage(pattern=r".reverse (sen|word) (on|off)", outgoing=True))
 async def toggle_reverse(event):
@@ -52,4 +52,8 @@ async def reverse_status(event):
         s = "Activated"
     else:
         s = "Deactivated"
-    await event.edit("`Status of reverse plugin\nReverse Word: {}\nReverse Sentence: {}`".format(w,s))
+    await event.edit(
+        "`Status of reverse plugin\nReverse Word: {}\nReverse Sentence: {}`".format(
+            w, s
+        )
+    )
