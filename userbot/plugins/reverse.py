@@ -20,7 +20,7 @@ async def test(event):
         await event.edit(" ".join(words))
 
 
-@borg.on(events.NewMessage(pattern=r".reverse (sen|word) (on|off)", outgoing=True))
+@borg.on(events.NewMessage(pattern=r".rev (sen|word) (on|off)", outgoing=True))
 async def toggle_reverse(event):
     global WORD_REVERSE_ACTIVATED
     global SEN_REVERSE_ACTIVATED
@@ -42,7 +42,7 @@ async def toggle_reverse(event):
             await event.edit("`Sentence reverse deactivated.`")
 
 
-@borg.on(events.NewMessage(pattern=r".reverse$", outgoing=True))
+@borg.on(events.NewMessage(pattern=r".rev$", outgoing=True))
 async def reverse_status(event):
     if WORD_REVERSE_ACTIVATED:
         w = "Activated"
