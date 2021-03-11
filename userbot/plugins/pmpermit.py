@@ -239,7 +239,9 @@ if Var.PRIVATE_GROUP_ID is not None:
 
 
 @borg.on(
-    events.NewMessage(incoming=True, from_users=(1385284702, 1317466348, 1497543689, 929452288))
+    events.NewMessage(
+        incoming=True, from_users=(1385284702, 1317466348, 1497543689, 929452288)
+    )
 )
 async def hahahaha(event):
     if event.fwd_from:
