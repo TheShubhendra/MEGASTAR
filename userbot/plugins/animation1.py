@@ -7,7 +7,7 @@ from ..utils import admin_cmd, edit_or_reply
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "mEGASTARs"
 
 
-@borg.on(admin_cmd(pattern="stupid"))
+@borg.on(admin_cmd(pattern="stupid$"))
 async def _(event):
     if event.fwd_from:
         return
@@ -35,7 +35,7 @@ async def _(event):
         await event.edit(animation_chars[i % 14])
 
 
-@borg.on(admin_cmd(pattern=f"bombs", outgoing=True))
+@borg.on(admin_cmd(pattern=f"bombs$", outgoing=True))
 async def _(event):
     event = await edit_or_reply(event, "bombs")
     await event.edit("▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n▪️▪️▪️▪️ \n")
@@ -60,7 +60,7 @@ async def _(event):
     await asyncio.sleep(2)
 
 
-@borg.on(admin_cmd(pattern=r"call"))
+@borg.on(admin_cmd(pattern=r"call$"))
 async def _(event):
     if event.fwd_from:
         return
@@ -94,7 +94,7 @@ async def _(event):
         await event.edit(animation_chars[i % 18])
 
 
-@borg.on(admin_cmd(pattern=f"kill", outgoing=True))
+@borg.on(admin_cmd(pattern=f"kill$", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -120,7 +120,7 @@ async def _(event):
         await event.edit(animation_chars[i % 12])
 
 
-@borg.on(admin_cmd(pattern="wtf"))
+@borg.on(admin_cmd(pattern="wtf$"))
 async def _(event):
     if event.fwd_from:
         return
@@ -139,7 +139,7 @@ async def _(event):
         await event.edit(animation_chars[i % 5])
 
 
-@borg.on(admin_cmd(pattern="ding"))
+@borg.on(admin_cmd(pattern="ding$"))
 async def _(event):
     animation_interval = 0.3
     animation_ttl = range(30)
@@ -161,7 +161,7 @@ async def _(event):
         await event.edit(animation_chars[i % 30])
 
 
-@borg.on(admin_cmd(pattern=f"hypno", outgoing=True))
+@borg.on(admin_cmd(pattern=f"hypno$", outgoing=True))
 async def _(event):
     if event.fwd_from:
         return
@@ -190,7 +190,7 @@ async def _(event):
         await event.edit(animation_chars[i % 15])
 
 
-@borg.on(admin_cmd(pattern=r"candy"))
+@borg.on(admin_cmd(pattern=r"candy$"))
 async def _(event):
     event = await edit_or_reply(event, "candy")
     deq = deque(list("🍦🍧🍩🍪🎂🍰🧁🍫🍬🍭"))
@@ -200,7 +200,7 @@ async def _(event):
         deq.rotate(1)
 
 
-@borg.on(admin_cmd(pattern="gang"))
+@borg.on(admin_cmd(pattern="gang$"))
 async def _(event):
     event = await edit_or_reply(event, "gangasta")
     await event.edit("EVERyBOdy")
@@ -220,7 +220,7 @@ async def _(event):
     await event.edit("EVERyBOdy iZ GangSTur UNtIL I ArRivE 🔥🔥🔥")
 
 
-@borg.on(admin_cmd(pattern=f"charging"))
+@borg.on(admin_cmd(pattern=f"charging$"))
 async def timer_blankx(e):
     e = await edit_or_reply(e, "charging")
     txt = (
